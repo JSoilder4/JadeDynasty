@@ -37,13 +37,7 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.GM.playerdead)
-        {
-            velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
-            velocity.y = Input.GetAxisRaw("Vertical");// * speed;
 
-            velocity = Vector3.Normalize(velocity);
-            velocity *= speed;
 
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             if (mousePos.x > transform.localPosition.x)
@@ -57,7 +51,7 @@ public class playerMove : MonoBehaviour
                 gunSprite.flipY = true;
             }
 
-            rb.MovePosition(transform.position + velocity * Time.deltaTime);
+           
 
 
 
@@ -65,12 +59,26 @@ public class playerMove : MonoBehaviour
 
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
-        }
+        
         
     }
     private void FixedUpdate()
     {
-        
+        if (!GameManager.GM.playerdead)
+        {
+            velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
+            velocity.y = Input.GetAxisRaw("Vertical");// * speed;
+
+            velocity = Vector3.Normalize(velocity);
+            velocity *= speed;
+        }
+            rb.velocity = velocity * Time.fixedDeltaTime;
+            //rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+    }
+    private void LateUpdate()
+    {
+        //rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+        //rb.velocity = velocity * Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
