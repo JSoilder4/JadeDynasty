@@ -1,0 +1,2311 @@
+fileFormatVersion: 2
+guid: a0d7fa73a20ac58439f303944c0963df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8879028530476698884
+    second: FREE___Top-Down Dungeon Tileset_0
+  - first:
+      213: -7680024733974816582
+    second: FREE___Top-Down Dungeon Tileset_1
+  - first:
+      213: -9073718345811725026
+    second: FREE___Top-Down Dungeon Tileset_2
+  - first:
+      213: -2305084314813845244
+    second: FREE___Top-Down Dungeon Tileset_3
+  - first:
+      213: -3684468011910536474
+    second: FREE___Top-Down Dungeon Tileset_4
+  - first:
+      213: -435356111196610142
+    second: FREE___Top-Down Dungeon Tileset_5
+  - first:
+      213: 6772736497348927550
+    second: FREE___Top-Down Dungeon Tileset_6
+  - first:
+      213: 171314680178903235
+    second: FREE___Top-Down Dungeon Tileset_7
+  - first:
+      213: -1036294994829406627
+    second: FREE___Top-Down Dungeon Tileset_8
+  - first:
+      213: 3332449741833144327
+    second: FREE___Top-Down Dungeon Tileset_9
+  - first:
+      213: -5496305996195341127
+    second: FREE___Top-Down Dungeon Tileset_10
+  - first:
+      213: 5075462756101429280
+    second: FREE___Top-Down Dungeon Tileset_11
+  - first:
+      213: -9030991854104003505
+    second: FREE___Top-Down Dungeon Tileset_12
+  - first:
+      213: -1850314098008148500
+    second: FREE___Top-Down Dungeon Tileset_13
+  - first:
+      213: -3465495675977157983
+    second: FREE___Top-Down Dungeon Tileset_14
+  - first:
+      213: 5164898863290289173
+    second: FREE___Top-Down Dungeon Tileset_15
+  - first:
+      213: -1905424229992067954
+    second: FREE___Top-Down Dungeon Tileset_16
+  - first:
+      213: -7619878861198210438
+    second: FREE___Top-Down Dungeon Tileset_17
+  - first:
+      213: -7303703474631363797
+    second: FREE___Top-Down Dungeon Tileset_18
+  - first:
+      213: 2869013423836861942
+    second: FREE___Top-Down Dungeon Tileset_19
+  - first:
+      213: 5759790363845625979
+    second: FREE___Top-Down Dungeon Tileset_20
+  - first:
+      213: -8461510727669482141
+    second: FREE___Top-Down Dungeon Tileset_21
+  - first:
+      213: 1054426688283347356
+    second: FREE___Top-Down Dungeon Tileset_22
+  - first:
+      213: 1328950197857400178
+    second: FREE___Top-Down Dungeon Tileset_23
+  - first:
+      213: -4438757760403094367
+    second: FREE___Top-Down Dungeon Tileset_24
+  - first:
+      213: -6225015890024232599
+    second: FREE___Top-Down Dungeon Tileset_25
+  - first:
+      213: 9153291293581030380
+    second: FREE___Top-Down Dungeon Tileset_26
+  - first:
+      213: 2533673797120314082
+    second: FREE___Top-Down Dungeon Tileset_27
+  - first:
+      213: 5157621827221687064
+    second: FREE___Top-Down Dungeon Tileset_28
+  - first:
+      213: -6014860733199496061
+    second: FREE___Top-Down Dungeon Tileset_29
+  - first:
+      213: 4833597990783266320
+    second: FREE___Top-Down Dungeon Tileset_30
+  - first:
+      213: -3132678569565552885
+    second: FREE___Top-Down Dungeon Tileset_31
+  - first:
+      213: -9059616371127585341
+    second: FREE___Top-Down Dungeon Tileset_32
+  - first:
+      213: -5316639174878259533
+    second: FREE___Top-Down Dungeon Tileset_33
+  - first:
+      213: -3310037608482089593
+    second: FREE___Top-Down Dungeon Tileset_34
+  - first:
+      213: -4611154904567575654
+    second: FREE___Top-Down Dungeon Tileset_35
+  - first:
+      213: 1301131421954413280
+    second: FREE___Top-Down Dungeon Tileset_36
+  - first:
+      213: 8653444232637447615
+    second: FREE___Top-Down Dungeon Tileset_37
+  - first:
+      213: -3215673305684703518
+    second: FREE___Top-Down Dungeon Tileset_38
+  - first:
+      213: -1578231116312596413
+    second: FREE___Top-Down Dungeon Tileset_39
+  - first:
+      213: -6889796258561506580
+    second: FREE___Top-Down Dungeon Tileset_40
+  - first:
+      213: -8785261170015750074
+    second: FREE___Top-Down Dungeon Tileset_41
+  - first:
+      213: 3863527913378669878
+    second: FREE___Top-Down Dungeon Tileset_42
+  - first:
+      213: 7649803322898692402
+    second: FREE___Top-Down Dungeon Tileset_43
+  - first:
+      213: -3148675199055734937
+    second: FREE___Top-Down Dungeon Tileset_44
+  - first:
+      213: -8255256298658374514
+    second: FREE___Top-Down Dungeon Tileset_45
+  - first:
+      213: 6213831760903653868
+    second: FREE___Top-Down Dungeon Tileset_46
+  - first:
+      213: -8250821900527278472
+    second: FREE___Top-Down Dungeon Tileset_47
+  - first:
+      213: -3178785821876597134
+    second: FREE___Top-Down Dungeon Tileset_48
+  - first:
+      213: -3059872359408089321
+    second: FREE___Top-Down Dungeon Tileset_49
+  - first:
+      213: -2676669152486283743
+    second: FREE___Top-Down Dungeon Tileset_50
+  - first:
+      213: 5961896773915192828
+    second: FREE___Top-Down Dungeon Tileset_51
+  - first:
+      213: 8700840176511856502
+    second: FREE___Top-Down Dungeon Tileset_52
+  - first:
+      213: -8078812011099832507
+    second: FREE___Top-Down Dungeon Tileset_53
+  - first:
+      213: 6578939275238641166
+    second: FREE___Top-Down Dungeon Tileset_54
+  - first:
+      213: -4832057568497212636
+    second: FREE___Top-Down Dungeon Tileset_55
+  - first:
+      213: -3019542167849929741
+    second: FREE___Top-Down Dungeon Tileset_56
+  - first:
+      213: -5385917011475815802
+    second: FREE___Top-Down Dungeon Tileset_57
+  - first:
+      213: -3604356078205985601
+    second: FREE___Top-Down Dungeon Tileset_58
+  - first:
+      213: -6168325960346209053
+    second: FREE___Top-Down Dungeon Tileset_59
+  - first:
+      213: -5891485506998643499
+    second: FREE___Top-Down Dungeon Tileset_60
+  - first:
+      213: -4593641864891253672
+    second: FREE___Top-Down Dungeon Tileset_61
+  - first:
+      213: -7078592957752416680
+    second: FREE___Top-Down Dungeon Tileset_62
+  - first:
+      213: 2514003472106410521
+    second: FREE___Top-Down Dungeon Tileset_63
+  - first:
+      213: 6817159413254890660
+    second: FREE___Top-Down Dungeon Tileset_64
+  - first:
+      213: 7467899659225307450
+    second: FREE___Top-Down Dungeon Tileset_65
+  - first:
+      213: -6494238824014132653
+    second: FREE___Top-Down Dungeon Tileset_66
+  - first:
+      213: 6249965724513008114
+    second: FREE___Top-Down Dungeon Tileset_67
+  - first:
+      213: -8612678645398021485
+    second: FREE___Top-Down Dungeon Tileset_68
+  - first:
+      213: 2738213402085932406
+    second: FREE___Top-Down Dungeon Tileset_69
+  - first:
+      213: -4538116666078324175
+    second: FREE___Top-Down Dungeon Tileset_70
+  - first:
+      213: 4714717679124092466
+    second: FREE___Top-Down Dungeon Tileset_71
+  - first:
+      213: -7865331222487164541
+    second: FREE___Top-Down Dungeon Tileset_72
+  - first:
+      213: -1808707281540652229
+    second: FREE___Top-Down Dungeon Tileset_73
+  - first:
+      213: -3560119822958401259
+    second: FREE___Top-Down Dungeon Tileset_74
+  - first:
+      213: -36152212819879533
+    second: FREE___Top-Down Dungeon Tileset_75
+  - first:
+      213: 8991502199829677482
+    second: FREE___Top-Down Dungeon Tileset_76
+  - first:
+      213: -8801606176562907777
+    second: FREE___Top-Down Dungeon Tileset_77
+  - first:
+      213: -834498192275621131
+    second: FREE___Top-Down Dungeon Tileset_78
+  - first:
+      213: 590512191817562227
+    second: FREE___Top-Down Dungeon Tileset_79
+  - first:
+      213: -689867949836630914
+    second: FREE___Top-Down Dungeon Tileset_80
+  - first:
+      213: 2589308560471791185
+    second: FREE___Top-Down Dungeon Tileset_81
+  - first:
+      213: 7782057875078068993
+    second: FREE___Top-Down Dungeon Tileset_82
+  - first:
+      213: 2867475134801013358
+    second: FREE___Top-Down Dungeon Tileset_83
+  - first:
+      213: 1131478048557371458
+    second: FREE___Top-Down Dungeon Tileset_84
+  - first:
+      213: -2712202935362480268
+    second: FREE___Top-Down Dungeon Tileset_85
+  - first:
+      213: -6887353006849396731
+    second: FREE___Top-Down Dungeon Tileset_86
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94af86566fea3849afcd23d2cd643b2
+      internalID: -8879028530476698884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b13388b0a11884a9941150fd27418b
+      internalID: -7680024733974816582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06a80c3fb8f6114daeb179b0b50ef22
+      internalID: -9073718345811725026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8317086f00e59cd4aa8ecd662b4ac2d4
+      internalID: -2305084314813845244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370a81065ebd4e148b825fec443c0b4a
+      internalID: -3684468011910536474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5a58526ce36e8448f28986c34008d8
+      internalID: -435356111196610142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08be418a1f7485644a10cf595820a8ed
+      internalID: 6772736497348927550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45e3c0293501cb41ab226700d611825
+      internalID: 171314680178903235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d677405edd9ef4c9366c4b1e37be29
+      internalID: -1036294994829406627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_9
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdde10a5c613fd84f821d499d5af8ff5
+      internalID: 3332449741833144327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91bb4cb6328c1c4eac0d575a50cd58a
+      internalID: -5496305996195341127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6eefd9333f5ba45a9ab2cea644e773
+      internalID: 5075462756101429280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf016ef93c7ec247aedcc221b4f8b64
+      internalID: -9030991854104003505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34844a9778cdd1447b41ed70c405a14b
+      internalID: -1850314098008148500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d251d6335eef5349aee1465bf585a97
+      internalID: -3465495675977157983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b15eba01837a34d960da76875a3e5e
+      internalID: 5164898863290289173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 001c0a31764ee954b9f4f4f484be801c
+      internalID: -1905424229992067954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_17
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f28dd30eb3d8584bbe6dfd66026d93e
+      internalID: -7619878861198210438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_18
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7306b9df520df439d536cdfd299817
+      internalID: -7303703474631363797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_19
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1676bc8552bf13747a6d2b3fbc8f2897
+      internalID: 2869013423836861942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8559302cdf4e364990ecfc016bca23a
+      internalID: 5759790363845625979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa1136c4a63f4a40ac175d385a434c6
+      internalID: -8461510727669482141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_22
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bf5add110224a42a687fd85d3ea075
+      internalID: 1054426688283347356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2f56abdfa0aea46a9fc96ee8c7f048
+      internalID: 1328950197857400178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_24
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e471b6b7262b9574cab9493674a2c4ad
+      internalID: -4438757760403094367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efeaefa33433844e87733104d608460
+      internalID: -6225015890024232599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_26
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b12a04b1264d18945b66ff10ee333e1d
+      internalID: 9153291293581030380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654830a260b67d4498d5e86ec2708367
+      internalID: 2533673797120314082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_28
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5267e4ebf02d1a44c8b100a4e4e6cb29
+      internalID: 5157621827221687064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5f8612f622e4b4796a5d92f6f8096d
+      internalID: -6014860733199496061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_30
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f583af6c0490414e9e36cb3e166f38e
+      internalID: 4833597990783266320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_31
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03c0b33f54f42c4895b69e00de1503a
+      internalID: -3132678569565552885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_32
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158d0363a3cbe4d45ab0d939dfabcf1d
+      internalID: -9059616371127585341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f2159eccb3738409450bf76c21cf98
+      internalID: -5316639174878259533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047f896910111de4587c372d7ffc5a4c
+      internalID: -3310037608482089593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_35
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff41e0b07b20c946baab9adccfc7bde
+      internalID: -4611154904567575654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919be449896d44c439b4ab6f678ad2bc
+      internalID: 1301131421954413280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_37
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ccaa9b27bd37544fb63ac1054193458
+      internalID: 8653444232637447615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_38
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a93cd3ba6dbe947bad2b8c5f03f74d
+      internalID: -3215673305684703518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_39
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fffdc181766c8499b1a233554ec1d5
+      internalID: -1578231116312596413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfb9d818c6fa824f98d091e7b7082b7
+      internalID: -6889796258561506580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909089508ed318a4aa69204b19542f0b
+      internalID: -8785261170015750074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_42
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 656ac23e7587f36449be9931bfb62ff4
+      internalID: 3863527913378669878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f128d9114f84f349bc07b80cb98bd44
+      internalID: 7649803322898692402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_44
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46761d4e638637489467526eb17a6a0
+      internalID: -3148675199055734937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_45
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130c09b297754824ab1bba2f291db048
+      internalID: -8255256298658374514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_46
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d3b9d011988de4588134a7fc19a203
+      internalID: 6213831760903653868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_47
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 887ef36095441ca41b37efe033521122
+      internalID: -8250821900527278472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_48
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b039d5eaf128fc4f80d405704b49200
+      internalID: -3178785821876597134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_49
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640c242c8f5d3db408347591113014d3
+      internalID: -3059872359408089321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 593334db868ef5248a2a0d0ef9ccecfd
+      internalID: -2676669152486283743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_51
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3cc9c916742dc46b2e6b6bbc5675e4
+      internalID: 5961896773915192828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_52
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7782a04dd6103a64ea677e1fce7adc0c
+      internalID: 8700840176511856502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_53
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be452f6db5f69064291c4d812479a7df
+      internalID: -8078812011099832507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_54
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09fcb6fe0b9a88846b0416bf0eb5f6e2
+      internalID: 6578939275238641166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_55
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666e9400d074b094cbf97fc2950b92b0
+      internalID: -4832057568497212636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a2ac1df79b2854f93af1cd4fe7d278
+      internalID: -3019542167849929741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_57
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41616650341989c4ba0acbe9d9b89eca
+      internalID: -5385917011475815802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_58
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad478c9e9a26c24f8277190b3221b39
+      internalID: -3604356078205985601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_59
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d23c3a9a3ef3143af23ed7a99d4b84
+      internalID: -6168325960346209053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_60
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4ec16a662dacd46a230acf55ebe5ed
+      internalID: -5891485506998643499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3a4874709509346a81c2ba1724e0b8
+      internalID: -4593641864891253672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_62
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d26699bb114e5479e7a268f86f83b6
+      internalID: -7078592957752416680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_63
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49361eefb4dd1249b8b1b4bdb29f71b
+      internalID: 2514003472106410521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_64
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1207ace307aea9b4181c2af424b1150d
+      internalID: 6817159413254890660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_65
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69705cdc72d48d48a8c20c6274e1f88
+      internalID: 7467899659225307450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_66
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac411a712a2e774b9488855d3a890ab
+      internalID: -6494238824014132653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01eb00467bc4e843a1e7238dcf91514
+      internalID: 6249965724513008114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_68
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb034e4ed2efe344900501a3b6db80d
+      internalID: -8612678645398021485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_69
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb61a827fc186174693878ea2ea6c6d6
+      internalID: 2738213402085932406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_70
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c06d914e08a504880679993b90feeb
+      internalID: -4538116666078324175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_71
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ef406f5fbae024ea2c84140795bf8c
+      internalID: 4714717679124092466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcefde704bcd9614d9511700b2eaf428
+      internalID: -7865331222487164541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_73
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928ea9c153b212b4dbae1b354d418b3b
+      internalID: -1808707281540652229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_74
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217d41b01b7a97c45a2314e79aa249df
+      internalID: -3560119822958401259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_75
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a700ffbdb8a8464a9f7f7e5a51a3413
+      internalID: -36152212819879533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_76
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0450e12d5562d2a47b2886e50be62122
+      internalID: 8991502199829677482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48d67c52dd2bd347afff4d6616a749f
+      internalID: -8801606176562907777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_78
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a3936593a5985428abaa486a046f16
+      internalID: -834498192275621131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_79
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6accc486ebb72ee49bf7cca9b7349f63
+      internalID: 590512191817562227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_80
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a65eb39e7b119f4dac3be1d1df2bbbe
+      internalID: -689867949836630914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_81
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0133c639b6c4843881e85df5c9e176
+      internalID: 2589308560471791185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_82
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb74d2d45775ef45b7c8c24afdc553a
+      internalID: 7782057875078068993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_83
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffcd14660faa694f847a74cb91de658
+      internalID: 2867475134801013358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_84
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6702ada1ac4aaed4096c70aa9b73ee51
+      internalID: 1131478048557371458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_85
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28fe3f2a0df2a144a372582b9f4850d
+      internalID: -2712202935362480268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE___Top-Down Dungeon Tileset_86
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5929d775e95a84408141514eda73e74
+      internalID: -6887353006849396731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FREE___Top-Down Dungeon Tileset_64: 6817159413254890660
+      FREE___Top-Down Dungeon Tileset_85: -2712202935362480268
+      FREE___Top-Down Dungeon Tileset_80: -689867949836630914
+      FREE___Top-Down Dungeon Tileset_84: 1131478048557371458
+      FREE___Top-Down Dungeon Tileset_21: -8461510727669482141
+      FREE___Top-Down Dungeon Tileset_6: 6772736497348927550
+      FREE___Top-Down Dungeon Tileset_1: -7680024733974816582
+      FREE___Top-Down Dungeon Tileset_24: -4438757760403094367
+      FREE___Top-Down Dungeon Tileset_71: 4714717679124092466
+      FREE___Top-Down Dungeon Tileset_3: -2305084314813845244
+      FREE___Top-Down Dungeon Tileset_76: 8991502199829677482
+      FREE___Top-Down Dungeon Tileset_46: 6213831760903653868
+      FREE___Top-Down Dungeon Tileset_52: 8700840176511856502
+      FREE___Top-Down Dungeon Tileset_69: 2738213402085932406
+      FREE___Top-Down Dungeon Tileset_39: -1578231116312596413
+      FREE___Top-Down Dungeon Tileset_33: -5316639174878259533
+      FREE___Top-Down Dungeon Tileset_7: 171314680178903235
+      FREE___Top-Down Dungeon Tileset_30: 4833597990783266320
+      FREE___Top-Down Dungeon Tileset_18: -7303703474631363797
+      FREE___Top-Down Dungeon Tileset_9: 3332449741833144327
+      FREE___Top-Down Dungeon Tileset_31: -3132678569565552885
+      FREE___Top-Down Dungeon Tileset_53: -8078812011099832507
+      FREE___Top-Down Dungeon Tileset_66: -6494238824014132653
+      FREE___Top-Down Dungeon Tileset_27: 2533673797120314082
+      FREE___Top-Down Dungeon Tileset_51: 5961896773915192828
+      FREE___Top-Down Dungeon Tileset_40: -6889796258561506580
+      FREE___Top-Down Dungeon Tileset_70: -4538116666078324175
+      FREE___Top-Down Dungeon Tileset_60: -5891485506998643499
+      FREE___Top-Down Dungeon Tileset_38: -3215673305684703518
+      FREE___Top-Down Dungeon Tileset_49: -3059872359408089321
+      FREE___Top-Down Dungeon Tileset_23: 1328950197857400178
+      FREE___Top-Down Dungeon Tileset_22: 1054426688283347356
+      FREE___Top-Down Dungeon Tileset_54: 6578939275238641166
+      FREE___Top-Down Dungeon Tileset_83: 2867475134801013358
+      FREE___Top-Down Dungeon Tileset_13: -1850314098008148500
+      FREE___Top-Down Dungeon Tileset_10: -5496305996195341127
+      FREE___Top-Down Dungeon Tileset_4: -3684468011910536474
+      FREE___Top-Down Dungeon Tileset_82: 7782057875078068993
+      FREE___Top-Down Dungeon Tileset_41: -8785261170015750074
+      FREE___Top-Down Dungeon Tileset_79: 590512191817562227
+      FREE___Top-Down Dungeon Tileset_58: -3604356078205985601
+      FREE___Top-Down Dungeon Tileset_75: -36152212819879533
+      FREE___Top-Down Dungeon Tileset_78: -834498192275621131
+      FREE___Top-Down Dungeon Tileset_29: -6014860733199496061
+      FREE___Top-Down Dungeon Tileset_57: -5385917011475815802
+      FREE___Top-Down Dungeon Tileset_74: -3560119822958401259
+      FREE___Top-Down Dungeon Tileset_56: -3019542167849929741
+      FREE___Top-Down Dungeon Tileset_17: -7619878861198210438
+      FREE___Top-Down Dungeon Tileset_14: -3465495675977157983
+      FREE___Top-Down Dungeon Tileset_34: -3310037608482089593
+      FREE___Top-Down Dungeon Tileset_50: -2676669152486283743
+      FREE___Top-Down Dungeon Tileset_2: -9073718345811725026
+      FREE___Top-Down Dungeon Tileset_0: -8879028530476698884
+      FREE___Top-Down Dungeon Tileset_72: -7865331222487164541
+      FREE___Top-Down Dungeon Tileset_8: -1036294994829406627
+      FREE___Top-Down Dungeon Tileset_20: 5759790363845625979
+      FREE___Top-Down Dungeon Tileset_48: -3178785821876597134
+      FREE___Top-Down Dungeon Tileset_11: 5075462756101429280
+      FREE___Top-Down Dungeon Tileset_12: -9030991854104003505
+      FREE___Top-Down Dungeon Tileset_68: -8612678645398021485
+      FREE___Top-Down Dungeon Tileset_67: 6249965724513008114
+      FREE___Top-Down Dungeon Tileset_55: -4832057568497212636
+      FREE___Top-Down Dungeon Tileset_25: -6225015890024232599
+      FREE___Top-Down Dungeon Tileset_62: -7078592957752416680
+      FREE___Top-Down Dungeon Tileset_28: 5157621827221687064
+      FREE___Top-Down Dungeon Tileset_61: -4593641864891253672
+      FREE___Top-Down Dungeon Tileset_32: -9059616371127585341
+      FREE___Top-Down Dungeon Tileset_43: 7649803322898692402
+      FREE___Top-Down Dungeon Tileset_16: -1905424229992067954
+      FREE___Top-Down Dungeon Tileset_63: 2514003472106410521
+      FREE___Top-Down Dungeon Tileset_81: 2589308560471791185
+      FREE___Top-Down Dungeon Tileset_77: -8801606176562907777
+      FREE___Top-Down Dungeon Tileset_86: -6887353006849396731
+      FREE___Top-Down Dungeon Tileset_15: 5164898863290289173
+      FREE___Top-Down Dungeon Tileset_59: -6168325960346209053
+      FREE___Top-Down Dungeon Tileset_47: -8250821900527278472
+      FREE___Top-Down Dungeon Tileset_44: -3148675199055734937
+      FREE___Top-Down Dungeon Tileset_37: 8653444232637447615
+      FREE___Top-Down Dungeon Tileset_26: 9153291293581030380
+      FREE___Top-Down Dungeon Tileset_36: 1301131421954413280
+      FREE___Top-Down Dungeon Tileset_45: -8255256298658374514
+      FREE___Top-Down Dungeon Tileset_73: -1808707281540652229
+      FREE___Top-Down Dungeon Tileset_65: 7467899659225307450
+      FREE___Top-Down Dungeon Tileset_5: -435356111196610142
+      FREE___Top-Down Dungeon Tileset_42: 3863527913378669878
+      FREE___Top-Down Dungeon Tileset_19: 2869013423836861942
+      FREE___Top-Down Dungeon Tileset_35: -4611154904567575654
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
