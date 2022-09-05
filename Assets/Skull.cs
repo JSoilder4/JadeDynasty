@@ -25,19 +25,22 @@ public class Skull : enemy
         base.Update();
         //timer -= Time.deltaTime;
         //facePlayer();
-        if(visable)
+       
+        
+    }
+    private void FixedUpdate()
+    {
+        if (visable)
         {
-            if(!earthed)
-            attackPlayer();
+            if (!earthed)
+                attackPlayer();
             if (earthed)
             {
                 rb.AddForce(-rb.velocity);
             }
             //checkHealth();
         }
-        
     }
-
     public void attackPlayer()
     {
         //float x = player.transform.position.x - transform.position.x;
