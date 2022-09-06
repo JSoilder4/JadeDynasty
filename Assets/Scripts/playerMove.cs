@@ -21,6 +21,8 @@ public class playerMove : MonoBehaviour
 
     public SpriteRenderer gunSprite;
 
+    public Transform gunRotato;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,8 @@ public class playerMove : MonoBehaviour
         pms = this;
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        gunSprite = GetComponentInChildren<SpriteRenderer>();
+        //gunSprite = GetComponentInChildren<SpriteRenderer>();
+        //gunRotatoRB = GetComponentInChildren<Rigidbody2D>();
 
         coords[0] = 0;
         coords[1] = 0;
@@ -42,12 +45,12 @@ public class playerMove : MonoBehaviour
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             if (mousePos.x > transform.localPosition.x)
             {
-                sprite.flipY = false;
+                sprite.flipX = false; //replace later; moving to animation system
                 gunSprite.flipY = false;
             }
             else
             {
-                sprite.flipY = true;
+                sprite.flipX = true; //replace later
                 gunSprite.flipY = true;
             }
 
@@ -58,7 +61,8 @@ public class playerMove : MonoBehaviour
             lookDir = mousePos - rb.position;
 
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
+
+        gunRotato.eulerAngles = new Vector3(0,0,angle);
         
         
     }
