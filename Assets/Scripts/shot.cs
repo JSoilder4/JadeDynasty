@@ -200,7 +200,7 @@ public class shot : MonoBehaviour
         angle = Mathf.Atan2(vectorToMouse.y, vectorToMouse.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
     }
-    public void bigBullets()
+    public void bigBullets() //turn into binding of isaac coal? change color instead of size?
     {
         bigBulletTimer -= Time.deltaTime;
         transform.localScale = new Vector3(transform.localScale.x+shotspeed*1.5f,transform.localScale.y+shotspeed*1.5f,0);
