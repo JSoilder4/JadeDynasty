@@ -62,13 +62,13 @@ public class GameManager : MonoBehaviour
         //effect
         rGun.playPickupSound();
 
-        int gtI = gun.gunTypeIndex;
+        gunEnumScript.gunType gT = gun.gunType;
         int damage = gun.damage;
         float betweenshottimer = gun.bSTog;
         float reloadtimer = gun.reloadTimer;
         float shotspeed = gun.shotSpeed;
-        int elementIndex = gun.elementIndex;
-        int effectIndex = gun.effectIndex;
+        gunEnumScript.element element = gun.element;
+        gunEnumScript.effect effect = gun.effect;
 
         gun.gunTypeIndex = rGun.gunTypeIndex;
         gun.damage = rGun.damage;
@@ -78,13 +78,13 @@ public class GameManager : MonoBehaviour
         gun.elementIndex = rGun.elementIndex;
         gun.effectIndex = rGun.effectIndex;
 
-        rGun.gunTypeIndex = gtI;
+        rGun.gunTypeIndex = gT;
         rGun.damage = damage;
         rGun.betweenShotTimer = betweenshottimer;
         rGun.reloadTimer = reloadtimer;
         rGun.shotSpeed = shotspeed;
-        rGun.elementIndex = elementIndex;
-        rGun.effectIndex = effectIndex;
+        rGun.elementIndex = element;
+        rGun.effectIndex = effect;
 
 
     }

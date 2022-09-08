@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class gun : MonoBehaviour
 {
-    public enum gunType
-    {
-        Pistol,
-        Shotgun,
-        Sniper,
-        SMG
-    }
-    public gunType theGunType;
+    //public enum gunType
+    //{
+    //    Pistol,
+    //    Shotgun,
+    //    Sniper,
+    //    SMG
+    //}
+    //public gunType theGunType;
     
 
     public static gun gunScript;
@@ -21,7 +21,7 @@ public class gun : MonoBehaviour
     public Vector3 lookDirection;
     [Header("Gun")]
     public SpriteRenderer sprite;
-    public int gunTypeIndex;//Pistol 0, Shotgun 1, Sniper 2, SMG 3
+    public gunEnumScript.gunType gunType;//Pistol 0, Shotgun 1, Sniper 2, SMG 3
     [Header("Gun Modifiers")]
     public int damage;
     public float betweenShotTimer;
@@ -29,9 +29,9 @@ public class gun : MonoBehaviour
     public float reloadTimer;
     [Header("Shot")]
     public float shotSpeed;
-    public int elementIndex;//nothing 0, fire 1, water 2, earth 3, air 4
+    public gunEnumScript.element element;//nothing 0, fire 1, water 2, earth 3, air 4
     [Header("Shot Effect")]
-    public int effectIndex;//nothing 0, sciShot 1, split 2, explode 3, radiation 4, 
+    public gunEnumScript.effect effect;//nothing 0, sciShot 1, split 2, explode 3, radiation 4, 
 
     public Sprite pistol, shotgun, sniper, smg;
     public Color clense;
@@ -55,12 +55,12 @@ public class gun : MonoBehaviour
         gunScript = this;
         clense = sprite.color;
 
-        theGunType = (gunType)3;
-        print(theGunType);
+        //theGunType = (gunType)3;
+        //print(theGunType);
 
         
 
-        gunTypeIndex = 0;
+        gunType = (gunEnumScript.gunType) 0;
         damage = 10;
         bSTog = 0.25f;
         betweenShotTimer = bSTog;
@@ -106,7 +106,7 @@ public class gun : MonoBehaviour
     }
     public void resetGun()
     {
-        gunTypeIndex = 0;
+        gunType = (gunEnumScript.gunType) 0;
         damage = 10;
         bSTog = 0.25f;
         betweenShotTimer = bSTog;
@@ -117,38 +117,76 @@ public class gun : MonoBehaviour
     }
     public void spriteUpdate()
     {
-        if (gunTypeIndex == 0)
+        switch (gunType)
         {
-            sprite.sprite = pistol;
-          //  transform.localScale = new Vector3(10, 10, 0);//temp
+            case gunEnumScript.gunType.Pistol:
+                sprite.sprite = pistol;
+                break;
+            case gunEnumScript.gunType.Shotgun:
+                sprite.sprite = shotgun;
+                break;
+            case gunEnumScript.gunType.Sniper:
+                sprite.sprite = sniper;
+                break;
+            case gunEnumScript.gunType.SMG:
+                sprite.sprite = smg;
+                break;
+
+                break;
         }
-        else if (gunTypeIndex == 1)
+
+        //if (gunTypeIndex == 0)
+        //{
+        //    sprite.sprite = pistol;
+        //  //  transform.localScale = new Vector3(10, 10, 0);//temp
+        //}
+        //else if (gunTypeIndex == 1)
+        //{
+        //    sprite.sprite = shotgun;
+        //   // transform.localScale = new Vector3(10, 10, 0);//temp
+        //}
+        //else if (gunTypeIndex == 2)
+        //{
+        //    sprite.sprite = sniper;
+        //   // transform.localScale = new Vector3(1, 1, 0);//temp
+        //}
+        //else if (gunTypeIndex == 3)
+        //{
+        //    sprite.sprite = smg;
+        //   // transform.localScale = new Vector3(10, 10, 0);//temp
+        //}
+        switch (element)
         {
-            sprite.sprite = shotgun;
-           // transform.localScale = new Vector3(10, 10, 0);//temp
+            case gunEnumScript.element.Nothing:
+                sprite.color = clense;
+                break;
+            case gunEnumScript.element.Fire:
+                sprite.color = fire;
+                break;
+            case gunEnumScript.element.Water:
+                sprite.color = water;
+                break;
+            case gunEnumScript.element.Earth:
+                sprite.color = earth;
+                break;
+            case gunEnumScript.element.Air:
+                sprite.color = air;
+                break;
+
+                break;
         }
-        else if (gunTypeIndex == 2)
-        {
-            sprite.sprite = sniper;
-           // transform.localScale = new Vector3(1, 1, 0);//temp
-        }
-        else if (gunTypeIndex == 3)
-        {
-            sprite.sprite = smg;
-           // transform.localScale = new Vector3(10, 10, 0);//temp
-        }
-        if (elementIndex == 0)
-        {
-            sprite.color = clense;
-        }
-        else if (elementIndex == 1)
-            sprite.color = fire;
-        else if (elementIndex == 2)
-            sprite.color = water;
-        else if (elementIndex == 3)
-            sprite.color = earth;
-        else if (elementIndex == 4)
-            sprite.color = air;
+        //if (elementIndex == 0)
+        //{
+        //    sprite.color = clense;
+        //}
+        //else if (elementIndex == 1)
+        //    sprite.color = fire;
+        //else if (elementIndex == 2)
+        //    sprite.color = water;
+        //else if (elementIndex == 3)
+        //    sprite.color = earth;
+        //else if (elementIndex == 4)
+        //    sprite.color = air;
     }
     public void playShootSound()
     {

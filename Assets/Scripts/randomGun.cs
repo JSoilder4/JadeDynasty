@@ -58,7 +58,7 @@ public class randomGun : MonoBehaviour
     }
     public void rollGun()
     {
-        resetRoll();
+        //resetRoll();
         gunType = (gunEnumScript.gunType) Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
 
         switch (gunType)
@@ -91,6 +91,7 @@ public class randomGun : MonoBehaviour
                 break;
         }
 
+        //DELETE LATER
         //if (gunType[0]) //Pistol
         //{
         //    damage = 10;
@@ -120,84 +121,106 @@ public class randomGun : MonoBehaviour
         //    shotSpeed = Random.Range(0.1f, 0.4f);
         //}
         
-        elemental[Random.Range(0, elemental.Length)] = true;
-        effect[Random.Range(0, effect.Length)] = true;
+       // elemental[Random.Range(0, elemental.Length)] = true;
+       // effect[Random.Range(0, effect.Length)] = true;
 
-        for (int i = 0; i < elemental.Length; i++)
-        {
-            if (elemental[i])
-            {
-                elementIndex = i;
-            }
-        }
-        for (int i = 0; i < effect.Length; i++)
-        {
-            if (effect[i])
-            {
-                effectIndex = i;
-            }
-        }
-        for (int i = 0; i < gunType.Length; i++)
-        {
-            if (gunType[i])
-            {
-                gunTypeIndex = i;
-            }
-        }
+        elemental = (element)(gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+        effect = (effect)(gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+
+
+
+        //for (int i = 0; i < elemental.Length; i++)
+        //{
+        //    if (elemental[i])
+        //    {
+        //        elementIndex = i;
+        //    }
+        //}
+        //for (int i = 0; i < effect.Length; i++)
+        //{
+        //    if (effect[i])
+        //    {
+        //        effectIndex = i;
+        //    }
+        //}
+        //for (int i = 0; i < gunType.Length; i++)
+        //{
+        //    if (gunType[i])
+        //    {
+        //        gunTypeIndex = i;
+        //    }
+        //}
     }
-    public void resetRoll()
-    {
-        for (int i = 0; i < gunType.Length; i++)
-        {
-            gunType[i] = false;
-        }
-        for (int i = 0; i < elemental.Length; i++)
-        {
-            elemental[i] = false;
-        }
-        for (int i = 0; i < effect.Length; i++)
-        {
-            effect[i] = false;
-        }
-    }
+    //public void resetRoll()
+    //{
+    //    for (int i = 0; i < gunType.Length; i++)
+    //    {
+    //        gunType[i] = false;
+    //    }
+    //    for (int i = 0; i < elemental.Length; i++)
+    //    {
+    //        elemental[i] = false;
+    //    }
+    //    for (int i = 0; i < effect.Length; i++)
+    //    {
+    //        effect[i] = false;
+    //    }
+    //}
     
     private void Update()
     {
-        if (gunTypeIndex == 0)
+        switch (gunType)
         {
-            sprite.sprite = pistol;
-              //transform.localScale = new Vector3(10, 10, 0);//temp
-            
-        }
-        else if (gunTypeIndex == 1)
-        {
-            sprite.sprite = shotgun;
-             //transform.localScale = new Vector3(10, 10, 0);//temp
-        }
-        else if (gunTypeIndex == 2)
-        {
-            sprite.sprite = sniper;
-             //transform.localScale = new Vector3(10, 10, 0);//temp
-        }
-        else if (gunTypeIndex == 3)
-        {
-            sprite.sprite = smg;
-           //  transform.localScale = new Vector3(10, 10, 0);//temp
+            case gunEnumScript.gunType.Pistol:
+                sprite.sprite = pistol;
+                break;
+            case gunEnumScript.gunType.Shotgun:
+                sprite.sprite = shotgun;
+                break;
+            case gunEnumScript.gunType.Sniper:
+                sprite.sprite = sniper;
+                break;
+            case gunEnumScript.gunType.SMG:
+                sprite.sprite = smg;
+                break;
+
+                break;
         }
     }
     private void LateUpdate()
     {
-        if (elementIndex == 0)
+        switch (element)
         {
-            sprite.color = clense;
+            case gunEnumScript.element.Nothing:
+                sprite.color = clense;
+                break;
+            case gunEnumScript.element.Fire:
+                sprite.color = fire;
+                break;
+            case gunEnumScript.element.Water:
+                sprite.color = water;
+                break;
+            case gunEnumScript.element.Earth:
+                sprite.color = earth;
+                break;
+            case gunEnumScript.element.Air:
+                sprite.color = air;
+                break;
+
+                break;
         }
-        else if (elementIndex == 1)
-            sprite.color = fire;
-        else if (elementIndex == 2)
-            sprite.color = water;
-        else if (elementIndex == 3)
-            sprite.color = earth;
-        else if (elementIndex == 4)
-            sprite.color = air;
+
+        //if (elementIndex == 0)
+        //{
+        //    sprite.color = clense;
+        //}
+        //else if (elementIndex == 1)
+        //    sprite.color = fire;
+        //else if (elementIndex == 2)
+        //    sprite.color = water;
+        //else if (elementIndex == 3)
+        //    sprite.color = earth;
+        //else if (elementIndex == 4)
+        //    sprite.color = air;
     }
 }
