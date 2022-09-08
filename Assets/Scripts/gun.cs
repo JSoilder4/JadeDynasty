@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class gun : MonoBehaviour
 {
+    public enum gunType
+    {
+        Pistol,
+        Shotgun,
+        Sniper,
+        SMG
+    }
+    public gunType theGunType;
+    
+
     public static gun gunScript;
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -45,6 +55,11 @@ public class gun : MonoBehaviour
         gunScript = this;
         clense = sprite.color;
 
+        theGunType = (gunType)3;
+        print(theGunType);
+
+        
+
         gunTypeIndex = 0;
         damage = 10;
         bSTog = 0.25f;
@@ -59,7 +74,9 @@ public class gun : MonoBehaviour
     {
         betweenShotTimer -= Time.deltaTime;
        // lookDirection = playerMove.pms.lookDir;
-        if (Input.GetButtonDown("Fire1"))
+
+
+        if (Input.GetButtonDown("Fire1")) //semi-auto
         {
             if (betweenShotTimer <= 0)
             {
@@ -74,7 +91,7 @@ public class gun : MonoBehaviour
 
             }
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //full auto
         {
             if (betweenShotTimer <= 0)
             {
