@@ -12,7 +12,7 @@ public class randomGun : MonoBehaviour
     public SpriteRenderer sprite;
     //public bool[] gunType = new bool[4];//Pistol 0, Shotgun 1, Sniper 2, SMG 3
     //public int gunTypeIndex; //swap
-    gunEnumScript.gunType gunType;
+    public gunEnumScript.gunType gunType;
 
 
     [Header("Gun Modifiers")]
@@ -24,12 +24,12 @@ public class randomGun : MonoBehaviour
     public float shotSpeed; //swap
     //public bool[] elemental =  new bool[5]; //nothing 0, fire 1, water 2, earth 3, air 4
     //public int elementIndex; //swap
-    gunEnumScript.element element;
+    public gunEnumScript.element element;
 
     [Header("Shot Effect")]
     //public bool[] effect = new bool[5]; //nothing 0, sciShot 1, explode 2, comet 3, bigBullets 4,
     //public int effectIndex; //swap
-    gunEnumScript.effect effect;
+    public gunEnumScript.effect effect;
 
     public Sprite pistol, shotgun, sniper, smg;
 
@@ -124,8 +124,8 @@ public class randomGun : MonoBehaviour
        // elemental[Random.Range(0, elemental.Length)] = true;
        // effect[Random.Range(0, effect.Length)] = true;
 
-        elemental = (element)(gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
-        effect = (effect)(gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        element = (gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+        effect = (gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
 
 
 

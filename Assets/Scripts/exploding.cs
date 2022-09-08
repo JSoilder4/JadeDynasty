@@ -36,18 +36,26 @@ public class exploding : MonoBehaviour
     void Update()
     {
         transform.localScale += scaleModVector;
-        if (gun.gunScript.elementIndex == 0)
+        switch (gun.gunScript.element)
         {
+            case gunEnumScript.element.Nothing:
+                //sprite.color = clense;
+                break;
+            case gunEnumScript.element.Fire:
+                sprite.color = fire;
+                break;
+            case gunEnumScript.element.Water:
+                sprite.color = water;
+                break;
+            case gunEnumScript.element.Earth:
+                sprite.color = earth;
+                break;
+            case gunEnumScript.element.Air:
+                sprite.color = air;
+                break;
 
+                break;
         }
-        else if (gun.gunScript.elementIndex == 1)
-            sprite.color = fire;
-        else if (gun.gunScript.elementIndex == 2)
-            sprite.color = water;
-        else if (gun.gunScript.elementIndex == 3)
-            sprite.color = earth;
-        else if (gun.gunScript.elementIndex == 4)
-            sprite.color = air;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

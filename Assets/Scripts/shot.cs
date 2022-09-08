@@ -46,7 +46,7 @@ public class shot : MonoBehaviour
     [Header("Explode")]
     public GameObject explosion;
 
-    public int elementindex;
+    public gunEnumScript.element element;
 
     public float bigBulletTimer;
 
@@ -78,24 +78,45 @@ public class shot : MonoBehaviour
     {
         damage = gun.gunScript.damage;
         mySource = GetComponent<AudioSource>();
-        elementindex = gun.gunScript.elementIndex;
+        element = gun.gunScript.element;
         rb = GetComponent<Rigidbody2D>();
         lookDirection = gun.gunScript.pms.lookDir;
         sprite = GetComponent<SpriteRenderer>();
         shotspeed = gun.gunScript.shotSpeed;
         player = gun.gunScript.GetComponentInParent<playerMove>().gameObject;
-        if (gun.gunScript.elementIndex == 0)
-        {
 
+        switch (gun.gunScript.element)
+        {
+            case gunEnumScript.element.Nothing:
+                //sprite.color = clense;
+                break;
+            case gunEnumScript.element.Fire:
+                sprite.color = fire;
+                break;
+            case gunEnumScript.element.Water:
+                sprite.color = water;
+                break;
+            case gunEnumScript.element.Earth:
+                sprite.color = earth;
+                break;
+            case gunEnumScript.element.Air:
+                sprite.color = air;
+                break;
+
+                break;
         }
-        else if (gun.gunScript.elementIndex == 1)
-            sprite.color = fire;
-        else if(gun.gunScript.elementIndex == 2)
-            sprite.color = water;
-        else if(gun.gunScript.elementIndex == 3)
-            sprite.color = earth;
-        else if(gun.gunScript.elementIndex == 4)
-            sprite.color = air;
+        //if (gun.gunScript.element == 0)
+        //{
+
+        //}
+        //else if (gun.gunScript.element == 1)
+        //    sprite.color = fire;
+        //else if(gun.gunScript.element == 2)
+        //    sprite.color = water;
+        //else if(gun.gunScript.elementIndex == 3)
+        //    sprite.color = earth;
+        //else if(gun.gunScript.elementIndex == 4)
+        //    sprite.color = air;
 
         shotScript = this;
         timer = timerOG;
@@ -124,13 +145,13 @@ public class shot : MonoBehaviour
 
     public void shotEffect()
     {
-        switch(gun.gunScript.effectIndex)
+        switch(gun.gunScript.effect)
         {
-            case 0:
+            case gunEnumScript.effect.Nothing:
                 {
                     break;
                 }
-            case 1: //sciShot
+            case gunEnumScript.effect.SciShot: //sciShot
                 {
                     sciShot();
                     break;
@@ -140,17 +161,17 @@ public class shot : MonoBehaviour
                     split();
                     break;
                 }*/
-            case 2: //explode
+            case gunEnumScript.effect.Explode: //explode
                 {
                     explode();
                     break;
                 }
-            case 3: //comet
+            case gunEnumScript.effect.Comet: //comet
                 {
                     comet();
                     break;
                 }
-            case 4:
+            case gunEnumScript.effect.BigBullets:
                 {
                     bigBullets();
                     break;

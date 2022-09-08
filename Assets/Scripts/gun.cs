@@ -80,11 +80,11 @@ public class gun : MonoBehaviour
         {
             if (betweenShotTimer <= 0)
             {
-                if (gunTypeIndex == 0 || gunTypeIndex == 2)
+                if (gunType == gunEnumScript.gunType.Pistol || gunType == gunEnumScript.gunType.Sniper)
                 {
                     shoot();
                 }
-                else if (gunTypeIndex == 1)
+                else if (gunType == gunEnumScript.gunType.Shotgun)
                 {
                     shotgunShoot();
                 }
@@ -95,7 +95,7 @@ public class gun : MonoBehaviour
         {
             if (betweenShotTimer <= 0)
             {
-                if (gunTypeIndex == 3)
+                if (gunType == gunEnumScript.gunType.SMG)
                 {
                     shoot();
                 }
@@ -106,14 +106,14 @@ public class gun : MonoBehaviour
     }
     public void resetGun()
     {
-        gunType = (gunEnumScript.gunType) 0;
+        gunType = gunEnumScript.gunType.Pistol;
         damage = 10;
         bSTog = 0.25f;
         betweenShotTimer = bSTog;
         reloadTimer = 1f;
         shotSpeed = 0.2f;
-        elementIndex = 0;
-        effectIndex = 0;
+        element = gunEnumScript.element.Nothing;
+        effect = gunEnumScript.effect.Nothing;
     }
     public void spriteUpdate()
     {

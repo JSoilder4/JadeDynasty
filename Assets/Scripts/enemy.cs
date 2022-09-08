@@ -200,13 +200,13 @@ public class enemy : MonoBehaviour
                 hp -= collision.GetComponent<exploding>().damage;
             }
             
-            switch (collision.GetComponent<shot>().elementindex)
+            switch (collision.GetComponent<shot>().element)
             {
-                case 0:
+                case gunEnumScript.element.Nothing:
                     {
                         break;
                     }
-                case 1:
+                case gunEnumScript.element.Fire:
                     {
                         fireSound();
                         //print(fire);
@@ -217,7 +217,7 @@ public class enemy : MonoBehaviour
                         
                         break;
                     }
-                case 2:
+                case gunEnumScript.element.Water:
                     {
                         colorChange.r = 0;
                         colorChange.g = 0;
@@ -225,7 +225,7 @@ public class enemy : MonoBehaviour
                         watered = true;
                         break;
                     }
-                case 3:
+                case gunEnumScript.element.Earth:
                     {
                         colorChange.b = 0;
                         colorChange.r = 0;
@@ -233,7 +233,7 @@ public class enemy : MonoBehaviour
                         earthed = true;
                         break;
                     }
-                case 4:
+                case gunEnumScript.element.Air:
                     {
                         colorChange.b = 0;
                         airedTimer = 0.75f;

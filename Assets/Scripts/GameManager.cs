@@ -70,21 +70,21 @@ public class GameManager : MonoBehaviour
         gunEnumScript.element element = gun.element;
         gunEnumScript.effect effect = gun.effect;
 
-        gun.gunTypeIndex = rGun.gunTypeIndex;
+        gun.gunType = rGun.gunType;
         gun.damage = rGun.damage;
         gun.bSTog = rGun.betweenShotTimer;
         gun.reloadTimer = rGun.reloadTimer;
         gun.shotSpeed = rGun.shotSpeed;
-        gun.elementIndex = rGun.elementIndex;
-        gun.effectIndex = rGun.effectIndex;
+        gun.element = rGun.element;
+        gun.effect = rGun.effect;
 
-        rGun.gunTypeIndex = gT;
+        rGun.gunType = gT;
         rGun.damage = damage;
         rGun.betweenShotTimer = betweenshottimer;
         rGun.reloadTimer = reloadtimer;
         rGun.shotSpeed = shotspeed;
-        rGun.elementIndex = element;
-        rGun.effectIndex = effect;
+        rGun.element = element;
+        rGun.effect = effect;
 
 
     }
