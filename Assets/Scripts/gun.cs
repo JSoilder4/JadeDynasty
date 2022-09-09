@@ -25,7 +25,7 @@ public class gun : MonoBehaviour
     [Header("Gun Modifiers")]
     public int damage;
     public float betweenShotTimer;
-    public float bSTog; //original of ^ (CHANGE THIS WHEN SWITCHING WEAPONS)
+    public float bSTog; //original of ^(betweenShotTimerOG) (CHANGE THIS WHEN SWITCHING WEAPONS)
     public float reloadTimer;
     [Header("Shot")]
     public float shotSpeed;

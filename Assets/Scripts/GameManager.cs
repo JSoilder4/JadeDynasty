@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,18 @@ public class GameManager : MonoBehaviour
     public Text wintext;
     public int score;
 
+    [Header("UI")]
+    public Canvas GunStatUICanvas;
+    public PlayableDirector GunStatUIPlayableDirector;
+    public Animator GunStatUIAnimator;
+    public TextMeshProUGUI damageUItext;
+    public TextMeshProUGUI RoFUItext;
+    public TextMeshProUGUI shotSpeedUItext;
+    public TextMeshProUGUI elementUItext;
+    public TextMeshProUGUI effectUItext;
+    public Image gunUIImage;
+
+
     public float timer;
     public float timerOG;
 
@@ -28,8 +42,6 @@ public class GameManager : MonoBehaviour
     public int maxScore;
 
     public List<GameObject> enemiesToReset = new List<GameObject>();
-    //quick refresher on singleton syntax:
-    //singleton means there's only one.
     private void Awake()
     {
         if (GM == null)
@@ -86,8 +98,34 @@ public class GameManager : MonoBehaviour
         rGun.element = element;
         rGun.effect = effect;
 
-
+        gunSwapUI(rGun);
     }
+
+    public void gunSwapUI(randomGun rGun)
+    {
+        
+       damageUItext.text = "Damage: "+ gun.gunScript.damage;
+       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1-gun.gunScript.bSTog)*100.0f)/100.0f)+"";
+       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.gunScript.shotSpeed) * 100.0f) / 100.0f);
+       elementUItext.text = "Element: " + gun.gunScript.element;
+       effectUItext.text = "effect: " + gun.gunScript.effect;
+        gunUIImage.sprite = rGun.sprite.sprite;
+        gunUIImage.color = rGun.sprite.color;
+        GunStatUIPlayableDirector.Stop();
+        GunStatUIPlayableDirector.time = 0.0;
+        GunStatUIPlayableDirector.Play();
+    }
+    //IEnumerator Fade()
+    //{
+    //    Color c = GunStatUICanvas.color;
+    //    for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
+    //    {
+    //        c.a = alpha;
+    //        .color = c;
+    //        yield return null;
+    //    }
+    //}
+
     public void respawn()
     {
         sceneReset();
