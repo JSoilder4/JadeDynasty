@@ -131,8 +131,6 @@ public class gun : MonoBehaviour
             case gunEnumScript.gunType.SMG:
                 sprite.sprite = smg;
                 break;
-
-                break;
         }
 
         //if (gunTypeIndex == 0)
@@ -171,8 +169,6 @@ public class gun : MonoBehaviour
                 break;
             case gunEnumScript.element.Air:
                 sprite.color = air;
-                break;
-
                 break;
         }
         //if (elementIndex == 0)

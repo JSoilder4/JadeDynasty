@@ -23,8 +23,8 @@ public class gunEnumScript : MonoBehaviour
     public enum effect
     {
         Nothing, 
-        SciShot, 
-        Explode, 
+        Boomerang, 
+        EXPLOSION, 
         Comet, 
         BigBullets
     }

@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         float shotspeed = gun.shotSpeed;
         gunEnumScript.element element = gun.element;
         gunEnumScript.effect effect = gun.effect;
+        int numShots = gun.numShots;
 
         gun.gunType = rGun.gunType;
         gun.damage = rGun.damage;
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
         gun.shotSpeed = rGun.shotSpeed;
         gun.element = rGun.element;
         gun.effect = rGun.effect;
+        gun.numShots = rGun.numShots;
 
         rGun.gunType = gT;
         rGun.damage = damage;
@@ -97,18 +99,26 @@ public class GameManager : MonoBehaviour
         rGun.shotSpeed = shotspeed;
         rGun.element = element;
         rGun.effect = effect;
+        rGun.numShots = numShots;
 
         gunSwapUI(rGun);
     }
 
     public void gunSwapUI(randomGun rGun)
     {
-        
-       damageUItext.text = "Damage: "+ gun.gunScript.damage;
+        if (rGun.gunType != gunEnumScript.gunType.Shotgun)
+        {
+            damageUItext.text = "Damage: " + gun.gunScript.damage + " x " + ((gun.gunScript.numShots*2)+1);
+        }
+        else
+        {
+            damageUItext.text = "Damage: " + gun.gunScript.damage;
+        }
+
        RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1-gun.gunScript.bSTog)*100.0f)/100.0f)+"";
        shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.gunScript.shotSpeed) * 100.0f) / 100.0f);
        elementUItext.text = "Element: " + gun.gunScript.element;
-       effectUItext.text = "effect: " + gun.gunScript.effect;
+       effectUItext.text = "Special: " + gun.gunScript.effect;
         gunUIImage.sprite = rGun.sprite.sprite;
         gunUIImage.color = rGun.sprite.color;
         GunStatUIPlayableDirector.Stop();

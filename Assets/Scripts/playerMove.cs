@@ -54,7 +54,10 @@ public class playerMove : MonoBehaviour
                 gunSprite.flipY = true;
             }
 
-           
+        if (Input.GetKeyDown(KeyCode.Z))// dev key remove later
+        {
+            GameManager.GM.rerollGuns();
+        }
 
 
 

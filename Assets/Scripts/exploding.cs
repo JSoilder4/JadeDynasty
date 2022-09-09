@@ -53,8 +53,6 @@ public class exploding : MonoBehaviour
             case gunEnumScript.element.Air:
                 sprite.color = air;
                 break;
-
-                break;
         }
     }
 

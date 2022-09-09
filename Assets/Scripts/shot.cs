@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shot : MonoBehaviour
 {
-    public static shot shotScript;
+    //public static shot shotScript;
 
     public Rigidbody2D rb;
     public Transform firePoint;
@@ -102,8 +102,6 @@ public class shot : MonoBehaviour
             case gunEnumScript.element.Air:
                 sprite.color = air;
                 break;
-
-                break;
         }
         //if (gun.gunScript.element == 0)
         //{
@@ -118,7 +116,7 @@ public class shot : MonoBehaviour
         //else if(gun.gunScript.elementIndex == 4)
         //    sprite.color = air;
 
-        shotScript = this;
+        //shotScript = this;
         timer = timerOG;
         shotSpeedTimer = 0.0f;
         speedOffset = shotspeed / 64;
@@ -151,7 +149,7 @@ public class shot : MonoBehaviour
                 {
                     break;
                 }
-            case gunEnumScript.effect.SciShot: //sciShot
+            case gunEnumScript.effect.Boomerang: //sciShot
                 {
                     sciShot();
                     break;
@@ -161,7 +159,7 @@ public class shot : MonoBehaviour
                     split();
                     break;
                 }*/
-            case gunEnumScript.effect.Explode: //explode
+            case gunEnumScript.effect.EXPLOSION: //explode
                 {
                     explode();
                     break;

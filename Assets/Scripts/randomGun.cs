@@ -25,6 +25,7 @@ public class randomGun : MonoBehaviour
     //public bool[] elemental =  new bool[5]; //nothing 0, fire 1, water 2, earth 3, air 4
     //public int elementIndex; //swap
     public gunEnumScript.element element;
+    public int numShots = 1;
 
     [Header("Shot Effect")]
     //public bool[] effect = new bool[5]; //nothing 0, sciShot 1, explode 2, comet 3, bigBullets 4,
@@ -74,6 +75,7 @@ public class randomGun : MonoBehaviour
                 betweenShotTimer = Random.Range(0.35f, 0.55f);
                 reloadTimer = Random.Range(0.5f, 1f);
                 shotSpeed = Random.Range(0.1f, 0.3f);
+                numShots = Random.Range(1, 4);
                 break;
             case gunEnumScript.gunType.Sniper:
                 damage = 30;
@@ -86,8 +88,6 @@ public class randomGun : MonoBehaviour
                 betweenShotTimer = Random.Range(0.05f, 0.15f);
                 reloadTimer = Random.Range(0.5f, 1f);
                 shotSpeed = Random.Range(0.1f, 0.4f);
-                break;
-
                 break;
         }
 
@@ -183,8 +183,6 @@ public class randomGun : MonoBehaviour
             case gunEnumScript.gunType.SMG:
                 sprite.sprite = smg;
                 break;
-
-                break;
         }
     }
     private void LateUpdate()
@@ -205,8 +203,6 @@ public class randomGun : MonoBehaviour
                 break;
             case gunEnumScript.element.Air:
                 sprite.color = air;
-                break;
-
                 break;
         }
 
