@@ -25,6 +25,7 @@ public class shot : MonoBehaviour
     public float shotspeed;
 
     public bool bSciShot, bSplit, bExplode, bComet;
+    public gunEnumScript.effect effect;
     [Header("SciShot")]
     public Vector3 startPos;
     public float speedOffset;
@@ -143,7 +144,7 @@ public class shot : MonoBehaviour
 
     public void shotEffect()
     {
-        switch(gun.gunScript.effect)
+        switch(effect)
         {
             case gunEnumScript.effect.Nothing:
                 {

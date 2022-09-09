@@ -194,7 +194,8 @@ public class gun : MonoBehaviour
         playShootSound();
         betweenShotTimer = bSTog;
         GameObject shot = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-       // GameManager.GM.addSpawnedObject(shot);
+        shot.GetComponent<shot>().effect = effect;
+        // GameManager.GM.addSpawnedObject(shot);
         Destroy(shot, 5f);
     }
     public void shotgunShoot()
@@ -214,6 +215,7 @@ public class gun : MonoBehaviour
 
             //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
             bullet.GetComponent<shot>().shotgun = true;
+            bullet.GetComponent<shot>().effect = effect;
             Destroy(bullet, 5f);
         }
     }
