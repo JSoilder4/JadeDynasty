@@ -94,7 +94,7 @@ public class playerMove : MonoBehaviour
         {
             randomGun rGun = collision.GetComponent<randomGun>();
 
-            GameManager.GM.swapGun(gun.gunScript, rGun);
+            GameManager.GM.swapGunAndRGun(gun.gunScript, rGun);
 
         }
         if (collision.transform.CompareTag("Enemy") || collision.CompareTag("arrow"))

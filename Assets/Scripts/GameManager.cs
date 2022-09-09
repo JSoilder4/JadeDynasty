@@ -62,8 +62,17 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    public void swapGun(gun gun, randomGun rGun)
+    public void playPickupSound() //gun switch sound
+    {
+        //mySource.clip = pickupSound;
+        //mySource.Play();
+    }
+    /// <summary>
+    /// Current gun swap with random gun on ground
+    /// </summary>
+    /// <param name="gun"></param>
+    /// <param name="rGun"></param>
+    public void swapGunAndRGun(gun gun, randomGun rGun)
     {
         //guntypeIndex
         //damage
@@ -103,6 +112,44 @@ public class GameManager : MonoBehaviour
 
         gunSwapUI(rGun);
     }
+    /// <summary>
+    /// Current gun swap with secondary gun on player
+    /// </summary>
+    /// <param name="gunOne"></param>
+    /// <param name="gunTwo"></param>
+    public void swapGunOneAndGunTwo(gun gunOne, gun gunTwo)
+    {
+        playPickupSound();
+
+        gunEnumScript.gunType gT = gunOne.gunType;
+        int damage = gunOne.damage;
+        float betweenshottimer = gunOne.bSTog;
+        float reloadtimer = gunOne.reloadTimer;
+        float shotspeed = gunOne.shotSpeed;
+        gunEnumScript.element element = gunOne.element;
+        gunEnumScript.effect effect = gunOne.effect;
+        int numShots = gunOne.numShots;
+
+        gunOne.gunType = gunTwo.gunType;
+        gunOne.damage = gunTwo.damage;
+        gunOne.bSTog = gunTwo.betweenShotTimer;
+        gunOne.reloadTimer = gunTwo.reloadTimer;
+        gunOne.shotSpeed = gunTwo.shotSpeed;
+        gunOne.element = gunTwo.element;
+        gunOne.effect = gunTwo.effect;
+        gunOne.numShots = gunTwo.numShots;
+
+        gunTwo.gunType = gT;
+        gunTwo.damage = damage;
+        gunTwo.betweenShotTimer = betweenshottimer;
+        gunTwo.reloadTimer = reloadtimer;
+        gunTwo.shotSpeed = shotspeed;
+        gunTwo.element = element;
+        gunTwo.effect = effect;
+        gunTwo.numShots = numShots;
+
+        gunSwapUI(gunTwo);
+    }
 
     public void gunSwapUI(randomGun rGun)
     {
@@ -121,6 +168,27 @@ public class GameManager : MonoBehaviour
        effectUItext.text = "Special: " + gun.gunScript.effect;
         gunUIImage.sprite = rGun.sprite.sprite;
         gunUIImage.color = rGun.sprite.color;
+        GunStatUIPlayableDirector.Stop();
+        GunStatUIPlayableDirector.time = 0.0;
+        GunStatUIPlayableDirector.Play();
+    }
+    public void gunSwapUI(gun gun)
+    {
+        if (gun.gunType != gunEnumScript.gunType.Shotgun)
+        {
+            damageUItext.text = "Damage: " + gun.gunScript.damage + " x " + ((gun.gunScript.numShots * 2) + 1);
+        }
+        else
+        {
+            damageUItext.text = "Damage: " + gun.gunScript.damage;
+        }
+
+        RoFUItext.text = "Bullets Per Second: " + (Mathf.Round((1 - gun.gunScript.bSTog) * 100.0f) / 100.0f) + "";
+        shotSpeedUItext.text = "Shot Speed: " + (Mathf.Round((1 - gun.gunScript.shotSpeed) * 100.0f) / 100.0f);
+        elementUItext.text = "Element: " + gun.gunScript.element;
+        effectUItext.text = "Special: " + gun.gunScript.effect;
+        gunUIImage.sprite = gun.sprite.sprite;
+        gunUIImage.color = gun.sprite.color;
         GunStatUIPlayableDirector.Stop();
         GunStatUIPlayableDirector.time = 0.0;
         GunStatUIPlayableDirector.Play();

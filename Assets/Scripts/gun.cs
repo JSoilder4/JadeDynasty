@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class gun : MonoBehaviour
 {
-    //public enum gunType
-    //{
-    //    Pistol,
-    //    Shotgun,
-    //    Sniper,
-    //    SMG
-    //}
-    //public gunType theGunType;
-    
 
     public static gun gunScript;
     public Transform firePoint;
@@ -55,12 +46,7 @@ public class gun : MonoBehaviour
         gunScript = this;
         clense = sprite.color;
 
-        //theGunType = (gunType)3;
-        //print(theGunType);
-
-        
-
-        gunType = (gunEnumScript.gunType) 0;
+        gunType = gunEnumScript.gunType.Pistol;
         damage = 10;
         bSTog = 0.25f;
         betweenShotTimer = bSTog;
@@ -132,27 +118,6 @@ public class gun : MonoBehaviour
                 sprite.sprite = smg;
                 break;
         }
-
-        //if (gunTypeIndex == 0)
-        //{
-        //    sprite.sprite = pistol;
-        //  //  transform.localScale = new Vector3(10, 10, 0);//temp
-        //}
-        //else if (gunTypeIndex == 1)
-        //{
-        //    sprite.sprite = shotgun;
-        //   // transform.localScale = new Vector3(10, 10, 0);//temp
-        //}
-        //else if (gunTypeIndex == 2)
-        //{
-        //    sprite.sprite = sniper;
-        //   // transform.localScale = new Vector3(1, 1, 0);//temp
-        //}
-        //else if (gunTypeIndex == 3)
-        //{
-        //    sprite.sprite = smg;
-        //   // transform.localScale = new Vector3(10, 10, 0);//temp
-        //}
         switch (element)
         {
             case gunEnumScript.element.Nothing:
@@ -171,18 +136,6 @@ public class gun : MonoBehaviour
                 sprite.color = air;
                 break;
         }
-        //if (elementIndex == 0)
-        //{
-        //    sprite.color = clense;
-        //}
-        //else if (elementIndex == 1)
-        //    sprite.color = fire;
-        //else if (elementIndex == 2)
-        //    sprite.color = water;
-        //else if (elementIndex == 3)
-        //    sprite.color = earth;
-        //else if (elementIndex == 4)
-        //    sprite.color = air;
     }
     public void playShootSound()
     {
@@ -191,7 +144,7 @@ public class gun : MonoBehaviour
     }
     public void shoot()
     {
-        playShootSound();
+        mySource.PlayOneShot(shootSound); //sumner stinky
         betweenShotTimer = bSTog;
         GameObject shot = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         shot.GetComponent<shot>().effect = effect;
