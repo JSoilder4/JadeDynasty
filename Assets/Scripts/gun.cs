@@ -52,6 +52,7 @@ public class gun : MonoBehaviour
         betweenShotTimer = bSTog;
         reloadTimer = 1f;
         shotSpeed = 0.2f;
+        numShots = 0;
 
     }
 
@@ -72,7 +73,7 @@ public class gun : MonoBehaviour
                 }
                 else if (gunType == gunEnumScript.gunType.Shotgun)
                 {
-                    shotgunShoot();
+                    shoot(gunType);
                 }
 
             }
@@ -146,10 +147,34 @@ public class gun : MonoBehaviour
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
         betweenShotTimer = bSTog;
-        GameObject shot = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        shot.GetComponent<shot>().effect = effect;
-        // GameManager.GM.addSpawnedObject(shot);
-        Destroy(shot, 5f);
+        for (int i = 0; i <= numShots; i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            bullet.transform.Rotate(bullet.transform.forward, scatterAngle * i);
+
+            bullet.GetComponent<shot>().effect = effect;
+            Destroy(bullet, 5f);
+        }
+    }
+    public void shoot(gunEnumScript.gunType shotgun)
+    {
+        mySource.PlayOneShot(shootSound); //sumner stinky
+        betweenShotTimer = bSTog;
+        for (int i = -numShots; i <= numShots; i++)
+        {
+            //int i2 = i - 1;
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            //GameManager.GM.addSpawnedObject(bullet);
+
+            bullet.transform.Rotate(bullet.transform.forward, scatterAngle * i);
+
+
+            //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
+            bullet.GetComponent<shot>().shotgun = true;
+            bullet.GetComponent<shot>().effect = effect;
+            Destroy(bullet, 5f);
+        }
     }
     public void shotgunShoot()
     {

@@ -65,6 +65,7 @@ public class randomGun : MonoBehaviour
                 betweenShotTimer = Random.Range(0.15f, 0.35f);
                 reloadTimer = Random.Range(0.5f, 1f);
                 shotSpeed = Random.Range(0.1f, 0.4f);
+                numShots = Random.Range(0, 3);
                 break;
             case gunEnumScript.gunType.Shotgun:
                 damage = 5;
@@ -78,12 +79,14 @@ public class randomGun : MonoBehaviour
                 betweenShotTimer = Random.Range(0.55f, 0.75f);
                 reloadTimer = Random.Range(0.5f, 1f);
                 shotSpeed = Random.Range(0.3f, 0.5f);
+                numShots = 0;
                 break;
             case gunEnumScript.gunType.SMG:
                 damage = 2;
                 betweenShotTimer = Random.Range(0.05f, 0.15f);
                 reloadTimer = Random.Range(0.5f, 1f);
                 shotSpeed = Random.Range(0.1f, 0.4f);
+                numShots = Random.Range(0, 2);
                 break;
         }
 
