@@ -184,12 +184,12 @@ public class shot : MonoBehaviour
         shotSpeedTimer -= speedOffset;
         if (shotSpeedTimer <= 0 && !bReturn)
         {
-           shotspeed -= speedOffset;
+           //shotspeed -= speedOffset;
         }
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            if (shotspeed < 0 || bReturn)//transform.position.Equals(startPos))//(transform.position.x < startPos.x && transform.position.y < startPos.y) || (transform.position.x > startPos.x && transform.position.y < startPos.y))
+            if (shotspeed <= 0 || bReturn)//transform.position.Equals(startPos))//(transform.position.x < startPos.x && transform.position.y < startPos.y) || (transform.position.x > startPos.x && transform.position.y < startPos.y))
             {
                 bReturn = true;
                 vectorToPlayer = player.transform.position - transform.position;
@@ -278,6 +278,7 @@ public class shot : MonoBehaviour
            else if (bExplode)
             {
                 GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
+                g.GetComponent<exploding>().shotElement = element;
                 //g.GetComponent<exploding>().damage = gun.gunScript.damage;
                 killTheShot();
             }

@@ -2832,6 +2832,13 @@ MonoBehaviour:
   lookDir: {x: 0, y: 0, z: 0}
   gunSprite: {fileID: 1214309500}
   gunRotato: {fileID: 1635183098}
+  dodging: 0
+  dodgeSpeed: 0
+  dodgeSpeedOG: 1000
+  dodgeSpeedDropMulti: 15
+  minDodgeSpeed: 50
+  dodgeTime: 0
+  dodgeTimeOG: 0.7
 --- !u!212 &1006030929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5989,7 +5996,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

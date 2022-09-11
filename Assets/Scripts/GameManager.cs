@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void gunSwapUI(randomGun rGun)
     {
-        if (rGun.gunType != gunEnumScript.gunType.Shotgun)
+        if (gun.gunScript.gunType == gunEnumScript.gunType.Shotgun)
         {
             damageUItext.text = "Damage: " + gun.gunScript.damage + " x " + ((gun.gunScript.numShots*2)+1);
         }

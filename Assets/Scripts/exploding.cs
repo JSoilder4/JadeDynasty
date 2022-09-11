@@ -17,6 +17,8 @@ public class exploding : MonoBehaviour
     public Color earth = new Color(0, 255, 0);
     public Color air = new Color(255, 255, 0);
     public int damage;
+
+    public gunEnumScript.element shotElement;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class exploding : MonoBehaviour
     void Update()
     {
         transform.localScale += scaleModVector;
-        switch (gun.gunScript.element)
+        switch (shotElement)
         {
             case gunEnumScript.element.Nothing:
                 //sprite.color = clense;

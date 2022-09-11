@@ -23,6 +23,19 @@ public class playerMove : MonoBehaviour
 
     public Transform gunRotato;
 
+    public bool dodging;
+    public float dodgeSpeed;
+    public float dodgeSpeedOG;
+    public float dodgeSpeedDropMulti = 10f;
+    public float minDodgeSpeed = 50f;
+
+    public float dodgeTime;
+    public float dodgeTimeOG; //0.7, 0.5 dodge, 0.2 roll
+
+    //public float dodgeCDTimer;
+    //public float dodgeCDTimerOG;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +45,9 @@ public class playerMove : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         //gunSprite = GetComponentInChildren<SpriteRenderer>();
         //gunRotatoRB = GetComponentInChildren<Rigidbody2D>();
+        dodgeSpeed = dodgeSpeedOG;
+      //  dodgeCDTimer = dodgeCDTimerOG;
+        dodgeTime = dodgeTimeOG;
 
         coords[0] = 0;
         coords[1] = 0;
@@ -40,7 +56,6 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             if (mousePos.x > transform.localPosition.x)
@@ -58,10 +73,18 @@ public class playerMove : MonoBehaviour
         {
             GameManager.GM.rerollGuns();
         }
+        if (!GameManager.GM.playerdead)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && !dodging)
+            {
+                print("fucking kill me");
+                dodging = true;
+               
+            }
+        }
+        
 
-
-
-            lookDir = mousePos - rb.position;
+        lookDir = mousePos - rb.position;
 
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
@@ -71,15 +94,44 @@ public class playerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!GameManager.GM.playerdead)
+        if (!GameManager.GM.playerdead && !dodging)
         {
             velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
             velocity.y = Input.GetAxisRaw("Vertical");// * speed;
 
             velocity = Vector3.Normalize(velocity);
-            velocity *= speed;
+            //print(velocity);
+            //velocity *= speed;
+
         }
-            rb.velocity = velocity * Time.fixedDeltaTime;
+        if (!dodging)
+        {
+            rb.velocity = velocity * speed * Time.fixedDeltaTime;
+        }
+        else if(dodging)
+        {
+            dodgeTime -= Time.fixedDeltaTime;
+
+            if (dodgeTime > 0.2)
+            {
+                rb.velocity = velocity * dodgeSpeed * Time.fixedDeltaTime;
+            }
+            else if (dodgeTime <= 0.2)
+            {
+                rb.velocity = velocity * (dodgeSpeed / 2)*Time.fixedDeltaTime;
+            }
+            
+            //dodgeSpeed -= dodgeSpeed * dodgeSpeedDropMulti * Time.fixedDeltaTime;
+            //rb.velocity = velocity * dodgeSpeed;
+            if (dodgeTime <= 0)
+            {
+                dodging = false;
+                dodgeSpeed = dodgeSpeedOG;
+                //dodgeCDTimer = dodgeCDTimerOG;
+                dodgeTime = dodgeTimeOG;
+            }
+        }
+           
             //rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
     }
     private void LateUpdate()
