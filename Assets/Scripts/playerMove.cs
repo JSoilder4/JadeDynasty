@@ -151,6 +151,7 @@ public class playerMove : MonoBehaviour
         }
         if (collision.transform.CompareTag("Enemy") || collision.CompareTag("arrow"))
         {
+            //collision.GetComponent<enemy>().hp = 1000;
             die();
         }
         if (collision.transform.CompareTag("shot"))
@@ -169,6 +170,7 @@ public class playerMove : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy"))
         {
+            //collision.transform.GetComponent<enemy>().hp = 1000;
             die();
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class exploding : MonoBehaviour
+public class exploding : shot
 {
     public float scaleMod;
     public Vector3 scaleModVector;
@@ -12,11 +12,11 @@ public class exploding : MonoBehaviour
     public AudioClip explosion;
     public AudioSource mySource;
 
-    public Color fire = new Color(255, 0, 0);
-    public Color water = new Color(0, 130, 255);
-    public Color earth = new Color(0, 255, 0);
-    public Color air = new Color(255, 255, 0);
-    public int damage;
+    //public Color fire = new Color(255, 0, 0);
+    //public Color water = new Color(0, 130, 255);
+    //public Color earth = new Color(0, 255, 0);
+    //public Color air = new Color(255, 255, 0);
+    //public int damage;
 
     public gunEnumScript.element shotElement;
     // Start is called before the first frame update

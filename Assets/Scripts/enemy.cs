@@ -193,11 +193,14 @@ public class enemy : MonoBehaviour
             playHitSound();
             if(collision.name != "Explosion")
             {
+                //print(hp -= collision.GetComponent<shot>().damage);
                 hp -= collision.GetComponent<shot>().damage;
+                //print(hp);
+                
             }
             else
             {
-                hp -= collision.GetComponent<exploding>().damage;
+               // hp -= collision.GetComponent<exploding>().damage;
             }
             
             switch (collision.GetComponent<shot>().element)
