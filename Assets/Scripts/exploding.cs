@@ -7,10 +7,10 @@ public class exploding : shot
     public float scaleMod;
     public Vector3 scaleModVector;
 
-    public SpriteRenderer sprite;
+   // public SpriteRenderer sprite;
 
     public AudioClip explosion;
-    public AudioSource mySource;
+   // public AudioSource mySource;
 
     //public Color fire = new Color(255, 0, 0);
     //public Color water = new Color(0, 130, 255);

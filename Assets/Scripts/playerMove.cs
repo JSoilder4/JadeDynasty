@@ -173,6 +173,11 @@ public class playerMove : MonoBehaviour
             //collision.transform.GetComponent<enemy>().hp = 1000;
             die();
         }
+        if (collision.transform.CompareTag("Dummy"))
+        {
+            collision.transform.GetComponent<enemy>().hp = 1000;
+            
+        }
     }
     public void die()
     {

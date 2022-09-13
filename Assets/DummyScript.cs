@@ -40,7 +40,7 @@ public class DummyScript : enemy
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-
+        print(hp);
 
     }
     public override void OnBecameVisible()
@@ -51,6 +51,4 @@ public class DummyScript : enemy
     {
         base.OnBecameInvisible();
     }
-}
-
 }

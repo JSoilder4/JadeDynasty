@@ -249,7 +249,7 @@ public class shot : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-        if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy"))
+        if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Dummy"))
         {
            if (!bSplit && !bExplode && !bSciShot)
            {
