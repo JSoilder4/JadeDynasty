@@ -191,17 +191,20 @@ public class enemy : MonoBehaviour
         if (collision.transform.CompareTag("shot"))
         {
             playHitSound();
-            if(collision.name != "Explosion")
+
+            switch (collision.GetComponent<shot>().effect)
             {
-                //print(hp -= collision.GetComponent<shot>().damage);
-                hp -= collision.GetComponent<shot>().damage;
-                //print(hp);
-                
+                case gunEnumScript.effect.EXPLOSION:
+
+
+                    break;
+
+                default:
+                    hp -= collision.GetComponent<shot>().damage;
+                    break;
             }
-            else
-            {
-               // hp -= collision.GetComponent<exploding>().damage;
-            }
+            
+
             
             switch (collision.GetComponent<shot>().element)
             {
