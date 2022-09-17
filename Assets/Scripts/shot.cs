@@ -81,7 +81,7 @@ public class shot : MonoBehaviour
         mySource = GetComponent<AudioSource>();
         element = gun.gunScript.element;
         rb = GetComponent<Rigidbody2D>();
-        lookDirection = gun.gunScript.pms.lookDir;
+        lookDirection = playerDirScript.playerDirectionScript.lookDir;
         sprite = GetComponent<SpriteRenderer>();
         shotspeed = gun.gunScript.shotSpeed;
         player = gun.gunScript.GetComponentInParent<playerMove>().gameObject;

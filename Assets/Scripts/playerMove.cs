@@ -10,18 +10,14 @@ public class playerMove : MonoBehaviour
     public int[] coords = new int[2];
 
     public Camera cam;
-    public SpriteRenderer sprite;
+   
 
     public float speed;
 
-    public Vector2 mousePos;
+    
 
     public static playerMove pms; 
-    public Vector3 lookDir;
-
-    public SpriteRenderer gunSprite;
-
-    public Transform gunRotato;
+    
 
     public bool dodging;
     public float dodgeSpeed;
@@ -42,7 +38,7 @@ public class playerMove : MonoBehaviour
         coords = new int[2];
         pms = this;
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        
         //gunSprite = GetComponentInChildren<SpriteRenderer>();
         //gunRotatoRB = GetComponentInChildren<Rigidbody2D>();
         dodgeSpeed = dodgeSpeedOG;
@@ -57,17 +53,7 @@ public class playerMove : MonoBehaviour
     void Update()
     {
 
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            if (mousePos.x > transform.localPosition.x)
-            {
-                sprite.flipX = false; //replace later; moving to animation system
-                gunSprite.flipY = false;
-            }
-            else
-            {
-                sprite.flipX = true; //replace later
-                gunSprite.flipY = true;
-            }
+            
 
         if (Input.GetKeyDown(KeyCode.Z))// dev key remove later
         {
@@ -84,11 +70,7 @@ public class playerMove : MonoBehaviour
         }
         
 
-        lookDir = mousePos - rb.position;
-
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-        gunRotato.eulerAngles = new Vector3(0,0,angle);
+        
         
         
     }
@@ -182,7 +164,7 @@ public class playerMove : MonoBehaviour
     public void die()
     {
         GameManager.GM.dead();
-        sprite.enabled = false;
+        //sprite.enabled = false;
         gun.gunScript.sprite.enabled = false;
         gun.gunScript.enabled = false;
         this.enabled = false;
