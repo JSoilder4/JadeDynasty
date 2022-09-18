@@ -4,29 +4,13 @@ using UnityEngine;
 
 public class randomGun : MonoBehaviour
 {
+    //gunType, damage, bST, reload, ammo?, shotspeed, element, effect, numshots, burstfire?, auto?,
+    //enum, int, float, float, int, float, enum, enum, int, bool?, bool?
+
+    public gun theGun = new gun();
+
     [Header("Gun")]
     public SpriteRenderer sprite;
-    //public bool[] gunType = new bool[4];//Pistol 0, Shotgun 1, Sniper 2, SMG 3
-    //public int gunTypeIndex; //swap
-    public gunEnumScript.gunType gunType;
-
-
-    [Header("Gun Modifiers")]
-    public int damage; //swap
-    public float betweenShotTimer; //swap
-    public float reloadTimer; //swap
-
-    [Header("Shot")]
-    public float shotSpeed; //swap
-    //public bool[] elemental =  new bool[5]; //nothing 0, fire 1, water 2, earth 3, air 4
-    //public int elementIndex; //swap
-    public gunEnumScript.element element;
-    public int numShots = 1;
-
-    [Header("Shot Effect")]
-    //public bool[] effect = new bool[5]; //nothing 0, sciShot 1, explode 2, comet 3, bigBullets 4,
-    //public int effectIndex; //swap
-    public gunEnumScript.effect effect;
 
     public Sprite pistol, shotgun, sniper, smg;
 
@@ -36,8 +20,8 @@ public class randomGun : MonoBehaviour
     public Color earth = new Color(0, 255, 0);
     public Color air = new Color(255, 255, 0);
 
-    public AudioClip pickupSound;
     public AudioSource mySource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,54 +32,50 @@ public class randomGun : MonoBehaviour
         clense = sprite.color;
         rollGun();
     }
-    public void playPickupSound()
-    {
-        mySource.clip = pickupSound;
-        mySource.Play();
-    }
+
     public void rollGun()
     {
         //resetRoll();
-        gunType = (gunEnumScript.gunType) Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
+        theGun.gunType = (gunEnumScript.gunType) Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
 
-        switch (gunType)
+        switch (theGun.gunType)
         {
             case gunEnumScript.gunType.Pistol:
-                damage = 10;
-                betweenShotTimer = Random.Range(0.15f, 0.35f);
-                reloadTimer = Random.Range(0.5f, 1f);
-                shotSpeed = Random.Range(0.1f, 0.4f);
-                numShots = Random.Range(0, 3);
+                theGun.damage = 10;
+                theGun.betweenShotTimer = Random.Range(0.15f, 0.35f);
+                theGun.reloadTimer = Random.Range(0.5f, 1f);
+                theGun.shotSpeed = Random.Range(0.1f, 0.4f);
+                theGun.numShots = Random.Range(0, 3);
                 break;
             case gunEnumScript.gunType.Shotgun:
-                damage = 5;
-                betweenShotTimer = Random.Range(0.35f, 0.55f);
-                reloadTimer = Random.Range(0.5f, 1f);
-                shotSpeed = Random.Range(0.1f, 0.3f);
-                numShots = Random.Range(1, 4);
+                theGun.damage = 5;
+                theGun.betweenShotTimer = Random.Range(0.35f, 0.55f);
+                theGun.reloadTimer = Random.Range(0.5f, 1f);
+                theGun.shotSpeed = Random.Range(0.1f, 0.3f);
+                theGun.numShots = Random.Range(1, 4);
                 break;
             case gunEnumScript.gunType.Sniper:
-                damage = 30;
-                betweenShotTimer = Random.Range(0.55f, 0.75f);
-                reloadTimer = Random.Range(0.5f, 1f);
-                shotSpeed = Random.Range(0.3f, 0.5f);
-                numShots = 0;
+                theGun.damage = 30;
+                theGun.betweenShotTimer = Random.Range(0.55f, 0.75f);
+                theGun.reloadTimer = Random.Range(0.5f, 1f);
+                theGun.shotSpeed = Random.Range(0.3f, 0.5f);
+                theGun.numShots = 0;
                 break;
             case gunEnumScript.gunType.SMG:
-                damage = 2;
-                betweenShotTimer = Random.Range(0.05f, 0.15f);
-                reloadTimer = Random.Range(0.5f, 1f);
-                shotSpeed = Random.Range(0.1f, 0.4f);
-                numShots = Random.Range(0, 2);
+                theGun.damage = 2;
+                theGun.betweenShotTimer = Random.Range(0.05f, 0.15f);
+                theGun.reloadTimer = Random.Range(0.5f, 1f);
+                theGun.shotSpeed = Random.Range(0.1f, 0.4f);
+                theGun.numShots = Random.Range(0, 2);
                 break;
         }
 
-        element = (gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
-        effect = (gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        theGun.element = (gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+        theGun.effect = (gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
     }
     private void Update()
     {
-        switch (gunType)
+        switch (theGun.gunType)
         {
             case gunEnumScript.gunType.Pistol:
                 sprite.sprite = pistol;
@@ -113,7 +93,7 @@ public class randomGun : MonoBehaviour
     }
     private void LateUpdate()
     {
-        switch (element)
+        switch (theGun.element)
         {
             case gunEnumScript.element.Nothing:
                 sprite.color = clense;

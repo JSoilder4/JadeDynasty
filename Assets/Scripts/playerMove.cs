@@ -127,8 +127,9 @@ public class playerMove : MonoBehaviour
         if (collision.transform.CompareTag("Gun"))
         {
             randomGun rGun = collision.GetComponent<randomGun>();
-
-            GameManager.GM.swapGunAndRGun(gun.gunScript, rGun);
+            gun rGunG = collision.GetComponent<randomGun>().theGun;
+            GameManager.GM.swapGunAndOtherGun(playergun.gunScript.theGun, rGunG, rGun);
+            //GameManager.GM.swapGunAndRGun(playergun.gunScript, rGun);
 
         }
         if (collision.transform.CompareTag("Enemy") || collision.CompareTag("arrow"))
@@ -165,8 +166,8 @@ public class playerMove : MonoBehaviour
     {
         GameManager.GM.dead();
         //sprite.enabled = false;
-        gun.gunScript.sprite.enabled = false;
-        gun.gunScript.enabled = false;
+        playergun.gunScript.sprite.enabled = false;
+        playergun.gunScript.enabled = false;
         this.enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
     }

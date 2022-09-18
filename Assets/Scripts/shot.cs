@@ -77,16 +77,16 @@ public class shot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = gun.gunScript.damage;
+        damage = playergun.gunScript.theGun.damage;
         mySource = GetComponent<AudioSource>();
-        element = gun.gunScript.element;
+        element = playergun.gunScript.theGun.element;
         rb = GetComponent<Rigidbody2D>();
         lookDirection = playerDirScript.playerDirectionScript.lookDir;
         sprite = GetComponent<SpriteRenderer>();
-        shotspeed = gun.gunScript.shotSpeed;
-        player = gun.gunScript.GetComponentInParent<playerMove>().gameObject;
+        shotspeed = playergun.gunScript.theGun.shotSpeed;
+        player = playergun.gunScript.GetComponentInParent<playerMove>().gameObject;
 
-        switch (gun.gunScript.element)
+        switch (playergun.gunScript.theGun.element)
         {
             case gunEnumScript.element.Nothing:
                 //sprite.color = clense;

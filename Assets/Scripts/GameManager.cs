@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public int maxScore;
 
     public List<GameObject> enemiesToReset = new List<GameObject>();
+
+    public AudioClip pickupSound;
+    public AudioSource pickupSource;
     private void Awake()
     {
         if (GM == null)
@@ -64,15 +67,16 @@ public class GameManager : MonoBehaviour
     }
     public void playPickupSound() //gun switch sound
     {
-        //mySource.clip = pickupSound;
-        //mySource.Play();
+        pickupSource.clip = pickupSound;
+        pickupSource.Play();
     }
-    /// <summary>
-    /// Current gun swap with random gun on ground
-    /// </summary>
-    /// <param name="gun"></param>
-    /// <param name="rGun"></param>
-    public void swapGunAndRGun(gun gun, randomGun rGun)
+/// <summary>
+/// Swap firstparam gun with secondparam gun (pick up Random Gun Implementation)
+/// </summary>
+/// <param name="mainGun"></param>
+/// <param name="otherGun"></param>
+/// <param name="rGun"></param>
+    public void swapGunAndOtherGun(gun mainGun, gun otherGun, randomGun rGun)
     {
         //guntypeIndex
         //damage
@@ -81,112 +85,86 @@ public class GameManager : MonoBehaviour
         //shotspeed
         //element
         //effect
-        rGun.playPickupSound();
-
-        gunEnumScript.gunType gT = gun.gunType;
-        int damage = gun.damage;
-        float betweenshottimer = gun.bSTog;
-        float reloadtimer = gun.reloadTimer;
-        float shotspeed = gun.shotSpeed;
-        gunEnumScript.element element = gun.element;
-        gunEnumScript.effect effect = gun.effect;
-        int numShots = gun.numShots;
-
-        gun.gunType = rGun.gunType;
-        gun.damage = rGun.damage;
-        gun.bSTog = rGun.betweenShotTimer;
-        gun.reloadTimer = rGun.reloadTimer;
-        gun.shotSpeed = rGun.shotSpeed;
-        gun.element = rGun.element;
-        gun.effect = rGun.effect;
-        gun.numShots = rGun.numShots;
-
-        rGun.gunType = gT;
-        rGun.damage = damage;
-        rGun.betweenShotTimer = betweenshottimer;
-        rGun.reloadTimer = reloadtimer;
-        rGun.shotSpeed = shotspeed;
-        rGun.element = element;
-        rGun.effect = effect;
-        rGun.numShots = numShots;
-
-        gunSwapUI(rGun);
-    }
-    /// <summary>
-    /// Current gun swap with secondary gun on player
-    /// </summary>
-    /// <param name="gunOne"></param>
-    /// <param name="gunTwo"></param>
-    public void swapGunOneAndGunTwo(gun gunOne, gun gunTwo)
-    {
         playPickupSound();
 
-        gunEnumScript.gunType gT = gunOne.gunType;
-        int damage = gunOne.damage;
-        float betweenshottimer = gunOne.bSTog;
-        float reloadtimer = gunOne.reloadTimer;
-        float shotspeed = gunOne.shotSpeed;
-        gunEnumScript.element element = gunOne.element;
-        gunEnumScript.effect effect = gunOne.effect;
-        int numShots = gunOne.numShots;
+        gun theGun = new gun();
 
-        gunOne.gunType = gunTwo.gunType;
-        gunOne.damage = gunTwo.damage;
-        gunOne.bSTog = gunTwo.betweenShotTimer;
-        gunOne.reloadTimer = gunTwo.reloadTimer;
-        gunOne.shotSpeed = gunTwo.shotSpeed;
-        gunOne.element = gunTwo.element;
-        gunOne.effect = gunTwo.effect;
-        gunOne.numShots = gunTwo.numShots;
+        theGun = mainGun;
 
-        gunTwo.gunType = gT;
-        gunTwo.damage = damage;
-        gunTwo.betweenShotTimer = betweenshottimer;
-        gunTwo.reloadTimer = reloadtimer;
-        gunTwo.shotSpeed = shotspeed;
-        gunTwo.element = element;
-        gunTwo.effect = effect;
-        gunTwo.numShots = numShots;
+        mainGun = otherGun;
 
-        gunSwapUI(gunTwo);
+        otherGun = theGun;
+
+        playergun.gunScript.theGun = mainGun;
+        rGun.theGun = otherGun;
+
+
+
+       // gunSwapUI(rGun);
+    }
+    public void swapGunAndOtherGun(gun mainGun, gun otherGun)
+    {
+        //guntypeIndex
+        //damage
+        //betweenshottimer(remember BSTOG)
+        //reloadtimer
+        //shotspeed
+        //element
+        //effect
+        playPickupSound();
+
+        gun theGun = new gun();
+
+        theGun = mainGun;
+
+        mainGun = otherGun;
+
+        otherGun = theGun;
+
+        playergun.gunScript.theGun = mainGun;
+        //playergun.gunScript.equippedGuns.add(otherGun);
+
+
+
+        // gunSwapUI(rGun);
     }
 
-    public void gunSwapUI(randomGun rGun)
+    public void gunSwapUI(randomGun rGun) //rescript later
     {
-        if (gun.gunScript.gunType == gunEnumScript.gunType.Shotgun)
+        if (playergun.gunScript.theGun.gunType == gunEnumScript.gunType.Shotgun)
         {
-            damageUItext.text = "Damage: " + gun.gunScript.damage + " x " + ((gun.gunScript.numShots*2)+1);
+            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage + " x " + ((playergun.gunScript.theGun.numShots *2)+1);
         }
         else
         {
-            damageUItext.text = "Damage: " + gun.gunScript.damage;
+            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage;
         }
 
-       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1-gun.gunScript.bSTog)*100.0f)/100.0f)+"";
-       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.gunScript.shotSpeed) * 100.0f) / 100.0f);
-       elementUItext.text = "Element: " + gun.gunScript.element;
-       effectUItext.text = "Special: " + gun.gunScript.effect;
+       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- playergun.gunScript.theGun.bSTog)*100.0f)/100.0f)+"";
+       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - playergun.gunScript.theGun.shotSpeed) * 100.0f) / 100.0f);
+       elementUItext.text = "Element: " + playergun.gunScript.theGun.element;
+       effectUItext.text = "Special: " + playergun.gunScript.theGun.effect;
         gunUIImage.sprite = rGun.sprite.sprite;
         gunUIImage.color = rGun.sprite.color;
         GunStatUIPlayableDirector.Stop();
         GunStatUIPlayableDirector.time = 0.0;
         GunStatUIPlayableDirector.Play();
     }
-    public void gunSwapUI(gun gun)
+    public void gunSwapUI(playergun gun)
     {
-        if (gun.gunType != gunEnumScript.gunType.Shotgun)
+        if (gun.theGun.gunType != gunEnumScript.gunType.Shotgun)
         {
-            damageUItext.text = "Damage: " + gun.gunScript.damage + " x " + ((gun.gunScript.numShots * 2) + 1);
+            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage + " x " + ((playergun.gunScript.theGun.numShots * 2) + 1);
         }
         else
         {
-            damageUItext.text = "Damage: " + gun.gunScript.damage;
+            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage;
         }
 
-        RoFUItext.text = "Bullets Per Second: " + (Mathf.Round((1 - gun.gunScript.bSTog) * 100.0f) / 100.0f) + "";
-        shotSpeedUItext.text = "Shot Speed: " + (Mathf.Round((1 - gun.gunScript.shotSpeed) * 100.0f) / 100.0f);
-        elementUItext.text = "Element: " + gun.gunScript.element;
-        effectUItext.text = "Special: " + gun.gunScript.effect;
+        RoFUItext.text = "Bullets Per Second: " + (Mathf.Round((1 - playergun.gunScript.theGun.bSTog) * 100.0f) / 100.0f) + "";
+        shotSpeedUItext.text = "Shot Speed: " + (Mathf.Round((1 - playergun.gunScript.theGun.shotSpeed) * 100.0f) / 100.0f);
+        elementUItext.text = "Element: " + playergun.gunScript.theGun.element;
+        effectUItext.text = "Special: " + playergun.gunScript.theGun.effect;
         gunUIImage.sprite = gun.sprite.sprite;
         gunUIImage.color = gun.sprite.color;
         GunStatUIPlayableDirector.Stop();
@@ -210,17 +188,17 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(0, 0, 0);
         cam.transform.position = new Vector3(0,0,-10);
         player.GetComponent<playerMove>().enabled = true;
-        gun.gunScript.enabled = true;
+        playergun.gunScript.enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
-        gun.gunScript.sprite.enabled = true;
+        playergun.gunScript.sprite.enabled = true;
         player.GetComponent<CircleCollider2D>().enabled = true;
         rerollGuns();
-        gun.gunScript.resetGun();
+        playergun.gunScript.resetGun();
         spawnEnemies();
     }
     public void rerollGuns()
     {
-        for (int i = 0; i < randomGuns.Length-1; i++)
+        for (int i = 0; i < randomGuns.Length; i++)
         {
             randomGuns[i].rollGun();
         }
