@@ -3824,10 +3824,11 @@ MonoBehaviour:
   pms: {fileID: 0}
   lookDirection: {x: 0, y: 0, z: 0}
   sprite: {fileID: 0}
-  pistol: {fileID: -2174860553078695780, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  shotgun: {fileID: -5210829862711413688, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  sniper: {fileID: -4192210965572164248, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  smg: {fileID: 6780393599720873433, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  gunSprites:
+  - {fileID: -2174860553078695780, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  - {fileID: -5210829862711413688, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  - {fileID: -4192210965572164248, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  - {fileID: 6780393599720873433, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
   clense: {r: 0, g: 0, b: 0, a: 1}
   fire: {r: 255, g: 0, b: 0, a: 1}
   water: {r: 0, g: 173.56018, b: 255, a: 1}
