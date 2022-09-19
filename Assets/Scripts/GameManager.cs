@@ -95,12 +95,12 @@ public class GameManager : MonoBehaviour
 
         otherGun = theGun;
 
-        playergun.gunScript.theGun = mainGun;
+        playergun.gunScript.activeGun = mainGun;
         rGun.theGun = otherGun;
 
 
 
-       // gunSwapUI(rGun);
+        gunSwapUI(mainGun);
     }
     public void swapGunAndOtherGun(gun mainGun, gun otherGun)
     {
@@ -121,56 +121,61 @@ public class GameManager : MonoBehaviour
 
         otherGun = theGun;
 
-        playergun.gunScript.theGun = mainGun;
+        playergun.gunScript.activeGun = mainGun;
         //playergun.gunScript.equippedGuns.add(otherGun);
 
 
 
-        // gunSwapUI(rGun);
+         gunSwapUI(mainGun);
     }
 
-    public void gunSwapUI(randomGun rGun) //rescript later
+    public void gunSwapUI(gun gun) //rescript later
     {
-        if (playergun.gunScript.theGun.gunType == gunEnumScript.gunType.Shotgun)
+        if (gun.gunType == gunEnumScript.gunType.Shotgun)
         {
-            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage + " x " + ((playergun.gunScript.theGun.numShots *2)+1);
+            damageUItext.text = "Damage: " + gun.damage + " x " + ((gun.numShots *2)+1);
+        }
+        else if (gun.numShots > 0)
+        {
+            damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots + 1);
         }
         else
         {
-            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage;
+            damageUItext.text = "Damage: " + gun.damage;
         }
 
-       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- playergun.gunScript.theGun.bSTog)*100.0f)/100.0f)+"";
-       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - playergun.gunScript.theGun.shotSpeed) * 100.0f) / 100.0f);
-       elementUItext.text = "Element: " + playergun.gunScript.theGun.element;
-       effectUItext.text = "Special: " + playergun.gunScript.theGun.effect;
-        gunUIImage.sprite = rGun.sprite.sprite;
-        gunUIImage.color = rGun.sprite.color;
+       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
+       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.shotSpeed) * 100.0f) / 100.0f);
+       elementUItext.text = "Element: " + gun.element;
+       effectUItext.text = "Special: " + gun.effect;
+        gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
+        gunUIImage.color = playergun.gunScript.sprite.color;
+
         GunStatUIPlayableDirector.Stop();
         GunStatUIPlayableDirector.time = 0.0;
         GunStatUIPlayableDirector.Play();
     }
-    public void gunSwapUI(playergun gun)
-    {
-        if (gun.theGun.gunType != gunEnumScript.gunType.Shotgun)
-        {
-            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage + " x " + ((playergun.gunScript.theGun.numShots * 2) + 1);
-        }
-        else
-        {
-            damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage;
-        }
+    //public void gunSwapUI(playergun gun)
+    //{
+    //    if (gun.theGun.gunType != gunEnumScript.gunType.Shotgun)
+    //    {
+    //        damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage + " x " + ((playergun.gunScript.theGun.numShots * 2) + 1);
+    //    }
+    //    else
+    //    {
+    //        damageUItext.text = "Damage: " + playergun.gunScript.theGun.damage;
+    //    }
 
-        RoFUItext.text = "Bullets Per Second: " + (Mathf.Round((1 - playergun.gunScript.theGun.bSTog) * 100.0f) / 100.0f) + "";
-        shotSpeedUItext.text = "Shot Speed: " + (Mathf.Round((1 - playergun.gunScript.theGun.shotSpeed) * 100.0f) / 100.0f);
-        elementUItext.text = "Element: " + playergun.gunScript.theGun.element;
-        effectUItext.text = "Special: " + playergun.gunScript.theGun.effect;
-        gunUIImage.sprite = gun.sprite.sprite;
-        gunUIImage.color = gun.sprite.color;
-        GunStatUIPlayableDirector.Stop();
-        GunStatUIPlayableDirector.time = 0.0;
-        GunStatUIPlayableDirector.Play();
-    }
+    //    RoFUItext.text = "Bullets Per Second: " + (Mathf.Round((1 - playergun.gunScript.theGun.bSTog) * 100.0f) / 100.0f) + "";
+    //    shotSpeedUItext.text = "Shot Speed: " + (Mathf.Round((1 - playergun.gunScript.theGun.shotSpeed) * 100.0f) / 100.0f);
+    //    elementUItext.text = "Element: " + playergun.gunScript.theGun.element;
+    //    effectUItext.text = "Special: " + playergun.gunScript.theGun.effect;
+    //    gunUIImage.sprite = gun.sprite.sprite;
+    //    gunUIImage.color = gun.sprite.color;
+    //    GunStatUIPlayableDirector.Stop();
+    //    GunStatUIPlayableDirector.time = 0.0;
+    //    GunStatUIPlayableDirector.Play();
+    //}
     //IEnumerator Fade()
     //{
     //    Color c = GunStatUICanvas.color;

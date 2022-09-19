@@ -22,7 +22,7 @@ public class exploding : shot
     // Start is called before the first frame update
     void Start()
     {
-        damage = playergun.gunScript.theGun.damage;
+        damage = playergun.gunScript.activeGun.damage;
         sprite = GetComponent<SpriteRenderer>();
         scaleModVector = new Vector3(scaleMod, scaleMod, 0);
         mySource = GetComponent<AudioSource>();

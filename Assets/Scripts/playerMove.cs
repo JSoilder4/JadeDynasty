@@ -128,7 +128,7 @@ public class playerMove : MonoBehaviour
         {
             randomGun rGun = collision.GetComponent<randomGun>();
             gun rGunG = collision.GetComponent<randomGun>().theGun;
-            GameManager.GM.swapGunAndOtherGun(playergun.gunScript.theGun, rGunG, rGun);
+            GameManager.GM.swapGunAndOtherGun(playergun.gunScript.activeGun, rGunG, rGun);
             //GameManager.GM.swapGunAndRGun(playergun.gunScript, rGun);
 
         }

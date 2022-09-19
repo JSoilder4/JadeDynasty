@@ -8,7 +8,8 @@ public class playergun : MonoBehaviour
     //enum, int, float, float, int, float, enum, enum, int, bool?, bool?
 
 
-    public gun theGun;
+    public gun activeGun;
+    public gun[] equippedGuns;
     public static playergun gunScript;
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -28,7 +29,9 @@ public class playergun : MonoBehaviour
     [Header("Shot Effect")]
     //public gunEnumScript.effect effect;//nothing 0, sciShot 1, split 2, explode 3, radiation 4, 
 
-    public Sprite pistol, shotgun, sniper, smg;
+
+    public Sprite[] gunSprites; // pistol 0, shotgun 1, sniper 2, smg 3
+    //public Sprite pistol, shotgun, sniper, smg;
     public Color clense;
     public Color fire = new Color(255, 0, 0);
     public Color water = new Color(0, 130, 255);
@@ -52,8 +55,8 @@ public class playergun : MonoBehaviour
 
 
 
-        theGun = new gun(); //replaces below when done
-
+        activeGun = new gun(); //replaces below when done
+        equippedGuns = new gun[4];
 
         //gunType = gunEnumScript.gunType.Pistol;
         //damage = 10;
@@ -67,30 +70,30 @@ public class playergun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        theGun.betweenShotTimer -= Time.deltaTime;
+        activeGun.betweenShotTimer -= Time.deltaTime;
        // lookDirection = playerMove.pms.lookDir;
 
 
         if (Input.GetButtonDown("Fire1")) //semi-auto
         {
-            if (theGun.betweenShotTimer <= 0)
+            if (activeGun.betweenShotTimer <= 0)
             {
-                if (theGun.gunType == gunEnumScript.gunType.Pistol || theGun.gunType == gunEnumScript.gunType.Sniper)
+                if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
                 {
                     shoot();
                 }
-                else if (theGun.gunType == gunEnumScript.gunType.Shotgun)
+                else if (activeGun.gunType == gunEnumScript.gunType.Shotgun)
                 {
-                    shoot(theGun.gunType);
+                    shoot(activeGun.gunType);
                 }
 
             }
         }
         if (Input.GetMouseButton(0)) //full auto
         {
-            if (theGun.betweenShotTimer <= 0)
+            if (activeGun.betweenShotTimer <= 0)
             {
-                if (theGun.gunType == gunEnumScript.gunType.SMG)
+                if (activeGun.gunType == gunEnumScript.gunType.SMG)
                 {
                     shoot();
                 }
@@ -101,7 +104,7 @@ public class playergun : MonoBehaviour
     }
     public void resetGun()
     {
-        theGun = new gun();
+        activeGun = new gun();
 
         //gunType = gunEnumScript.gunType.Pistol;
         //damage = 10;
@@ -115,22 +118,22 @@ public class playergun : MonoBehaviour
     }
     public void spriteUpdate()
     {
-        switch (theGun.gunType)
+        switch (activeGun.gunType)
         {
             case gunEnumScript.gunType.Pistol:
-                sprite.sprite = pistol;
+                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Pistol];
                 break;
             case gunEnumScript.gunType.Shotgun:
-                sprite.sprite = shotgun;
+                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Shotgun];
                 break;
             case gunEnumScript.gunType.Sniper:
-                sprite.sprite = sniper;
+                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Sniper];
                 break;
             case gunEnumScript.gunType.SMG:
-                sprite.sprite = smg;
+                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.SMG];
                 break;
         }
-        switch (theGun.element)
+        switch (activeGun.element)
         {
             case gunEnumScript.element.Nothing:
                 sprite.color = clense;
@@ -157,22 +160,22 @@ public class playergun : MonoBehaviour
     public void shoot()
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
-        theGun.betweenShotTimer = theGun.bSTog;
-        for (int i = 0; i <= theGun.numShots; i++)
+        activeGun.betweenShotTimer = activeGun.bSTog;
+        for (int i = 0; i <= activeGun.numShots; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
             bullet.transform.Rotate(bullet.transform.forward, scatterAngle * i);
 
-            bullet.GetComponent<shot>().effect = theGun.effect;
+            bullet.GetComponent<shot>().effect = activeGun.effect;
             Destroy(bullet, 5f);
         }
     }
     public void shoot(gunEnumScript.gunType shotgun)
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
-        theGun.betweenShotTimer = theGun.bSTog;
-        for (int i = -theGun.numShots; i <= theGun.numShots; i++)
+        activeGun.betweenShotTimer = activeGun.bSTog;
+        for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
         {
             //int i2 = i - 1;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -183,7 +186,7 @@ public class playergun : MonoBehaviour
 
             //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
             bullet.GetComponent<shot>().shotgun = true;
-            bullet.GetComponent<shot>().effect = theGun.effect;
+            bullet.GetComponent<shot>().effect = activeGun.effect;
             Destroy(bullet, 5f);
         }
     }
@@ -192,8 +195,8 @@ public class playergun : MonoBehaviour
         //numshots
         //scatterAngle
         playShootSound();
-        theGun.betweenShotTimer = theGun.bSTog;
-        for (int i = -theGun.numShots; i <= theGun.numShots; i++)
+        activeGun.betweenShotTimer = activeGun.bSTog;
+        for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
         {
             //int i2 = i - 1;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -204,7 +207,7 @@ public class playergun : MonoBehaviour
 
             //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
             bullet.GetComponent<shot>().shotgun = true;
-            bullet.GetComponent<shot>().effect = theGun.effect;
+            bullet.GetComponent<shot>().effect = activeGun.effect;
             Destroy(bullet, 5f);
         }
     }

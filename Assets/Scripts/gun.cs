@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gun
+public class gun //: MonoBehaviour
 {
+
+
+    
+
     [Header("Gun")]
     public gunEnumScript.gunType gunType;        //Pistol 0, Shotgun 1, Sniper 2, SMG 3
     [Header("Gun Modifiers")]
