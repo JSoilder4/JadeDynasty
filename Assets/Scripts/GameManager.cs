@@ -128,6 +128,17 @@ public class GameManager : MonoBehaviour
 
          gunSwapUI(mainGun);
     }
+    /// <summary>
+    /// used to pickup guns if under max number of guns
+    /// </summary>
+    public void gunPickup(GameObject rGun, gun rGunG)
+    {
+        playPickupSound();
+        playergun.gunScript.equippedGuns.Add(rGunG);
+        playergun.gunScript.gunIndex = playergun.gunScript.equippedGuns.Count;
+        gunSwapUI(rGunG);
+        rGun.SetActive(false);
+    }
 
     public void gunSwapUI(gun gun) //rescript later
     {
@@ -205,6 +216,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < randomGuns.Length; i++)
         {
+            randomGuns[i].gameObject.SetActive(true);
             randomGuns[i].rollGun();
         }
     }

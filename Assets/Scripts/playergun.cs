@@ -9,7 +9,10 @@ public class playergun : MonoBehaviour
 
 
     public gun activeGun;
-    public gun[] equippedGuns;
+    public List<gun> equippedGuns;
+    public int gunIndex;
+
+
     public static playergun gunScript;
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -56,7 +59,7 @@ public class playergun : MonoBehaviour
 
 
         activeGun = new gun(); //replaces below when done
-        equippedGuns = new gun[4];
+        equippedGuns.Add(activeGun);
 
         //gunType = gunEnumScript.gunType.Pistol;
         //damage = 10;
@@ -70,6 +73,8 @@ public class playergun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(equippedGuns.Count);
+       gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
         activeGun.betweenShotTimer -= Time.deltaTime;
        // lookDirection = playerMove.pms.lookDir;
 
@@ -100,11 +105,43 @@ public class playergun : MonoBehaviour
             }
                 
         }
+
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            //++
+            if(equippedGuns.Count > 1)
+            {
+                gunIndex++;
+            }
+            
+            if (gunIndex > equippedGuns.Count)
+            {
+                gunIndex = 0;
+            }
+            GameManager.GM.gunSwapUI(equippedGuns[gunIndex]);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            //--
+            gunIndex--;
+            if (gunIndex < 0)
+            {
+                gunIndex = equippedGuns.Count-1;
+            }
+            GameManager.GM.gunSwapUI(equippedGuns[gunIndex]);
+        }
+        activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
+
+
         spriteUpdate();
     }
     public void resetGun()
     {
+        equippedGuns.Clear();
         activeGun = new gun();
+        equippedGuns.Add(activeGun);
+
 
         //gunType = gunEnumScript.gunType.Pistol;
         //damage = 10;

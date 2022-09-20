@@ -126,9 +126,25 @@ public class playerMove : MonoBehaviour
     {
         if (collision.transform.CompareTag("Gun"))
         {
+
+
             randomGun rGun = collision.GetComponent<randomGun>();
-            gun rGunG = collision.GetComponent<randomGun>().theGun;
-            GameManager.GM.swapGunAndOtherGun(playergun.gunScript.activeGun, rGunG, rGun);
+            gun rGunG = rGun.theGun;
+            if (playergun.gunScript.equippedGuns.Count >= 4)
+            {
+                GameManager.GM.swapGunAndOtherGun(playergun.gunScript.activeGun, rGunG, rGun);
+            }
+            else
+            {
+                GameManager.GM.gunPickup(collision.gameObject, rGunG);
+
+            }
+
+           
+            
+            
+            
+            
             //GameManager.GM.swapGunAndRGun(playergun.gunScript, rGun);
 
         }
