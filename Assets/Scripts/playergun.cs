@@ -102,7 +102,7 @@ public class playergun : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             //++
-            if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count) //ugh
+            if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1) //ugh
             {
                 gunIndex++;
             }
