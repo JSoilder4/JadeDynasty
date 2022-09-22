@@ -58,16 +58,8 @@ public class playergun : MonoBehaviour
 
 
 
-        activeGun = new gun(); //replaces below when done
+        activeGun = new gun();
         equippedGuns.Add(activeGun);
-
-        //gunType = gunEnumScript.gunType.Pistol;
-        //damage = 10;
-        //bSTog = 0.25f;
-        //betweenShotTimer = bSTog;
-        //reloadTimer = 1f;
-        //shotSpeed = 0.2f;
-        //numShots = 0;
     }
 
     // Update is called once per frame
@@ -110,12 +102,12 @@ public class playergun : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             //++
-            if(equippedGuns.Count > 1)
+            if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count) //ugh
             {
                 gunIndex++;
             }
             
-            if (gunIndex > equippedGuns.Count)
+            if (gunIndex >= equippedGuns.Count) //ugh
             {
                 gunIndex = 0;
             }
