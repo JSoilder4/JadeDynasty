@@ -3819,6 +3819,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec62151a090ffde4a98994c6f7c4ef7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeGun:
+    gunType: 0
+    damage: 10
+    betweenShotTimer: 0
+    bSTog: 0.25
+    reloadTimer: 1
+    shotSpeed: 0.2
+    element: 0
+    effect: 0
+    scatterAngle: 0
+    numShots: 0
+  equippedGuns: []
+  gunIndex: 0
   firePoint: {fileID: 0}
   bulletPrefab: {fileID: 1630365180264884895, guid: 0f02d12f5da822143b81d448ba222749, type: 3}
   pms: {fileID: 0}
@@ -30982,7 +30995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
