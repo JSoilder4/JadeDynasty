@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
 
     public AudioClip pickupSound;
     public AudioSource pickupSource;
+
+    public Color clense;
+    public Color fire = new Color(255, 0, 0);
+    public Color water = new Color(0, 130, 255);
+    public Color earth = new Color(0, 255, 0);
+    public Color air = new Color(255, 255, 0);
     private void Awake()
     {
         if (GM == null)
@@ -63,7 +69,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        clense = playergun.gunScript.clense;
     }
     public void playPickupSound() //gun switch sound
     {
@@ -89,45 +95,48 @@ public class GameManager : MonoBehaviour
 
         gun theGun = new gun();
 
-        theGun = mainGun;
+        theGun = mainGun; 
 
-        mainGun = otherGun;
+        mainGun = otherGun; //main = other
 
-        otherGun = theGun;
+        otherGun = theGun; //other = main
 
-        playergun.gunScript.activeGun = mainGun;
+        playergun.gunScript.equippedGuns[playergun.gunScript.gunIndex] = mainGun;
         rGun.theGun = otherGun;
 
 
+        //playergun.gunScript.activeGun = mainGun;
+        
+        //playergun.gunScript.equippedGuns.Add(mainGun);
 
         gunSwapUI(mainGun);
     }
-    public void swapGunAndOtherGun(gun mainGun, gun otherGun)
-    {
-        //guntypeIndex
-        //damage
-        //betweenshottimer(remember BSTOG)
-        //reloadtimer
-        //shotspeed
-        //element
-        //effect
-        playPickupSound();
+    //public void swapGunAndOtherGun(gun mainGun, gun otherGun)
+    //{
+    //    //guntypeIndex
+    //    //damage
+    //    //betweenshottimer(remember BSTOG)
+    //    //reloadtimer
+    //    //shotspeed
+    //    //element
+    //    //effect
+    //    playPickupSound();
 
-        gun theGun = new gun();
+    //    gun theGun = new gun();
 
-        theGun = mainGun;
+    //    theGun = mainGun;
 
-        mainGun = otherGun;
+    //    mainGun = otherGun;
 
-        otherGun = theGun;
+    //    otherGun = theGun;
 
-        playergun.gunScript.activeGun = mainGun;
-        //playergun.gunScript.equippedGuns.add(otherGun);
+    //    playergun.gunScript.activeGun = mainGun;
+    //    //playergun.gunScript.equippedGuns.add(otherGun);
 
 
 
-         gunSwapUI(mainGun);
-    }
+    //     gunSwapUI(mainGun);
+    //}
     /// <summary>
     /// used to pickup guns if under max number of guns
     /// </summary>
@@ -140,7 +149,7 @@ public class GameManager : MonoBehaviour
         rGun.SetActive(false);
     }
 
-    public void gunSwapUI(gun gun) //rescript later
+    public void gunSwapUI(gun gun)
     {
         if (gun.gunType == gunEnumScript.gunType.Shotgun)
         {
@@ -160,7 +169,25 @@ public class GameManager : MonoBehaviour
        elementUItext.text = "Element: " + gun.element;
        effectUItext.text = "Special: " + gun.effect;
         gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
-        gunUIImage.color = playergun.gunScript.sprite.color;
+        switch (gun.element)
+        {
+            case gunEnumScript.element.Nothing:
+                gunUIImage.color = clense;
+                break;
+            case gunEnumScript.element.Fire:
+                gunUIImage.color = fire;
+                break;
+            case gunEnumScript.element.Water:
+                gunUIImage.color = water;
+                break;
+            case gunEnumScript.element.Earth:
+                gunUIImage.color = earth;
+                break;
+            case gunEnumScript.element.Air:
+                gunUIImage.color = air;
+                break;
+        }
+        //gunUIImage.color = playergun.gunScript.sprite.color;
 
         GunStatUIPlayableDirector.Stop();
         GunStatUIPlayableDirector.time = 0.0;

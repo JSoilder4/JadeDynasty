@@ -10,11 +10,8 @@ public class playerMove : MonoBehaviour
     public int[] coords = new int[2];
 
     public Camera cam;
-   
 
     public float speed;
-
-    
 
     public static playerMove pms; 
     
@@ -27,10 +24,6 @@ public class playerMove : MonoBehaviour
 
     public float dodgeTime;
     public float dodgeTimeOG; //0.7, 0.5 dodge, 0.2 roll
-
-    //public float dodgeCDTimer;
-    //public float dodgeCDTimerOG;
-
 
     // Start is called before the first frame update
     void Start()
