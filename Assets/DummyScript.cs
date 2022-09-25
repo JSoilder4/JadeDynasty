@@ -20,9 +20,7 @@ public class DummyScript : enemy
         //facePlayer();
         if (visable)
         {
-            if (!earthed)
-                attackPlayer();
-            //checkHealth();
+        
         }
 
     }
@@ -40,7 +38,7 @@ public class DummyScript : enemy
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        print(hp);
+        print(hp.currentHP);
 
     }
     public override void OnBecameVisible()

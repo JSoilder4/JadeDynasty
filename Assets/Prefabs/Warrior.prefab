@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3752296265374676263}
   - component: {fileID: 3752296265374676262}
   - component: {fileID: 3893855385968315863}
+  - component: {fileID: 4850289721157526187}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -110,17 +111,7 @@ MonoBehaviour:
   OGhp: 0
   coords: 
   visable: 0
-  onfire: 0
-  fireTimer: 0
-  colorChange: {r: 0, g: 0, b: 0, a: 0}
-  earthed: 0
-  earthTimer: 0
-  watered: 0
-  waterTimer: 0
-  aired: 0
-  airedTimer: 0
   hitSound: {fileID: 8300000, guid: 613c261f10507af49b33d5026acce78d, type: 3}
-  fireClip: {fileID: 8300000, guid: b93024bb49cf39d41be3c79f4faf0a94, type: 3}
   mySource: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!61 &3752296265374676259
@@ -286,3 +277,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4850289721157526187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752296265374676256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4173e3d4c1d2174c817952fa8f2940f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currentHP: 0
+  onfire: 0
+  fireTimer: 0
+  colorChange: {r: 0, g: 0, b: 0, a: 0}
+  earthed: 0
+  earthTimer: 0
+  watered: 0
+  waterTimer: 0
+  aired: 0
+  airedTimer: 0
+  sprite: {fileID: 0}
+  fireClip: {fileID: 0}
+  mySource: {fileID: 0}

@@ -32,12 +32,12 @@ public class Skull : enemy
     {
         if (visable)
         {
-            if (!earthed)
+            //if (!earthed)
                 attackPlayer();
-            if (earthed)
-            {
-                rb.AddForce(-rb.velocity);
-            }
+            //if (earthed)
+            //{
+            //    rb.AddForce(-rb.velocity);
+            //}
             //checkHealth();
         }
     }
@@ -55,10 +55,10 @@ public class Skull : enemy
         {
             
         }
-        if (!aired)
-        rb.AddForce(Vector3.Normalize(velocity) * 2);
-        if (aired)
-            rb.AddForce(-Vector3.Normalize(velocity)*2);
+        //if (!aired)
+        //rb.AddForce(Vector3.Normalize(velocity) * 2);
+        //if (aired)
+        //    rb.AddForce(-Vector3.Normalize(velocity)*2);
         /*if (Mathf.Abs(velocity.x) > 10f || Mathf.Abs(velocity.y) > 10f)
         {
             rb.AddForce(velocity * 4);

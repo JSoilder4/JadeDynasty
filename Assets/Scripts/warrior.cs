@@ -21,7 +21,7 @@ public class warrior : enemy
         //facePlayer();
         if (visable)
         {
-            if(!earthed)
+            //if(!earthed)
             attackPlayer();
             //checkHealth();
         }

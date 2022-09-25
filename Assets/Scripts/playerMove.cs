@@ -25,9 +25,17 @@ public class playerMove : MonoBehaviour
     public float dodgeTime;
     public float dodgeTimeOG; //0.7, 0.5 dodge, 0.2 roll
 
+    public hp hp;
+
+    private void Awake()
+    {
+        hp = GetComponent<hp>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        
         coords = new int[2];
         pms = this;
         rb = GetComponent<Rigidbody2D>();
@@ -67,8 +75,16 @@ public class playerMove : MonoBehaviour
         
         
     }
+    public void checkHealth()
+    {
+        if (hp.currentHP <= 0)
+        {
+            die();
+        }
+    }
     private void FixedUpdate()
     {
+        checkHealth();
         if (!GameManager.GM.playerdead && !dodging)
         {
             velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
@@ -144,7 +160,12 @@ public class playerMove : MonoBehaviour
         if (collision.transform.CompareTag("Enemy") || collision.CompareTag("arrow"))
         {
             //collision.GetComponent<enemy>().hp = 1000;
-            die();
+            //die();
+            hp.takeDamage(1);
+            if (collision.CompareTag("arrow"))
+            {
+                Destroy(collision.gameObject);
+            }
         }
         if (collision.transform.CompareTag("shot"))
         {
@@ -163,11 +184,14 @@ public class playerMove : MonoBehaviour
         if (collision.transform.CompareTag("Enemy"))
         {
             //collision.transform.GetComponent<enemy>().hp = 1000;
-            die();
+            //die();
+            hp.takeDamage(1);
+
+
         }
         if (collision.transform.CompareTag("Dummy"))
         {
-            collision.transform.GetComponent<enemy>().hp = 1000;
+            collision.transform.GetComponent<enemy>().hp.currentHP = 1000;
             
         }
     }

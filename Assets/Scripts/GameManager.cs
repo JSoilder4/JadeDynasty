@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public enemySpawn[] enemyspawners;
     public randomGun[] randomGuns;
     public GameObject player; //we're going to spawn the player from GM.
+    public playerMove playerScript;
     public bool playerdead;
     public Camera cam;
     public Text respawnText;
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     public Color water = new Color(0, 130, 255);
     public Color earth = new Color(0, 255, 0);
     public Color air = new Color(255, 255, 0);
+
+    public Text hpText;
+
     private void Awake()
     {
         if (GM == null)
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         clense = playergun.gunScript.clense;
+        playerScript = player.GetComponent<playerMove>();
     }
     public void playPickupSound() //gun switch sound
     {
@@ -228,9 +233,11 @@ public class GameManager : MonoBehaviour
     public void respawn()
     {
         sceneReset();
+       
         player.transform.position = new Vector3(0, 0, 0);
         cam.transform.position = new Vector3(0,0,-10);
-        player.GetComponent<playerMove>().enabled = true;
+        playerScript.enabled = true;
+        playerScript.hp.currentHP = 5;
         playergun.gunScript.enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
         playergun.gunScript.sprite.enabled = true;
@@ -289,6 +296,10 @@ public class GameManager : MonoBehaviour
         {
             start();
         }
+
+        hpText.text = "HP: " + playerScript.hp.currentHP;
+
+
         checkForEnemies();
     }
     public void start()

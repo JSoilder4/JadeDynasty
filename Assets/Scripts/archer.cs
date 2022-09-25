@@ -33,8 +33,7 @@ public class archer : enemy
         //facePlayer();
         if (visable)
         {
-            if (!earthed)
-            {
+
                 timer -= Time.deltaTime;
                 attackPlayer();
                 if (!shooting && distanceFromPlayer() < distanceRadius)
@@ -42,7 +41,6 @@ public class archer : enemy
                     move();
                 }
                    
-            }
             
             //checkHealth();
         }
