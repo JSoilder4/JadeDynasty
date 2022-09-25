@@ -86,16 +86,16 @@ public class playerDirScript : MonoBehaviour
         switch (dir)
         {
             case direction.up:
-                print(dir);
+                //print(dir);
                 break;
             case direction.right:
-                print(dir);
+                //print(dir);
                 break;
             case direction.down:
-                print(dir);
+                //print(dir);
                 break;
             case direction.left:
-                print(dir);
+                //print(dir);
                 break;
         }
     }

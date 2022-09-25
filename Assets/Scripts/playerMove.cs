@@ -64,7 +64,7 @@ public class playerMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && !dodging)
             {
-                print("fucking kill me");
+                //print("fucking kill me");
                 dodging = true;
                
             }

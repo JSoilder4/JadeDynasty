@@ -98,8 +98,12 @@ public class playergun : MonoBehaviour
                 
         }
 
+        print(Input.GetAxis("Mouse ScrollWheel"));
+        if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
+        {
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
         {
             //++
             if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1)
@@ -117,7 +121,7 @@ public class playergun : MonoBehaviour
             }
             GameManager.GM.gunSwapUI(equippedGuns[gunIndex]);
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
         {
             //--
             gunIndex--;
