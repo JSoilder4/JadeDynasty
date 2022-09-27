@@ -186,7 +186,9 @@ public class playerMove : MonoBehaviour
             //collision.transform.GetComponent<enemy>().hp = 1000;
             //die();
             hp.takeDamage(1);
-
+            print("yeah?:");
+            collision.gameObject.GetComponent<Knockback>().knockback(collision.transform.position - transform.position, 1000);
+            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * 5000, ForceMode2D.Impulse);
 
         }
         if (collision.transform.CompareTag("Dummy"))

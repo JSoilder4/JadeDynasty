@@ -68,35 +68,38 @@ public class playergun : MonoBehaviour
         print(equippedGuns.Count);
        gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
         activeGun.betweenShotTimer -= Time.deltaTime;
-       // lookDirection = playerMove.pms.lookDir;
+        // lookDirection = playerMove.pms.lookDir;
 
-
-        if (Input.GetButtonDown("Fire1")) //semi-auto
+        if (!playerMove.pms.dodging)
         {
-            if (activeGun.betweenShotTimer <= 0)
+            if (Input.GetButtonDown("Fire1")) //semi-auto
             {
-                if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
+                if (activeGun.betweenShotTimer <= 0)
                 {
-                    shoot();
+                    if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
+                    {
+                        shoot();
+                    }
+                    else if (activeGun.gunType == gunEnumScript.gunType.Shotgun)
+                    {
+                        shoot(activeGun.gunType);
+                    }
+
                 }
-                else if (activeGun.gunType == gunEnumScript.gunType.Shotgun)
+            }
+            if (Input.GetMouseButton(0)) //full auto
+            {
+                if (activeGun.betweenShotTimer <= 0)
                 {
-                    shoot(activeGun.gunType);
+                    if (activeGun.gunType == gunEnumScript.gunType.SMG)
+                    {
+                        shoot();
+                    }
                 }
 
             }
         }
-        if (Input.GetMouseButton(0)) //full auto
-        {
-            if (activeGun.betweenShotTimer <= 0)
-            {
-                if (activeGun.gunType == gunEnumScript.gunType.SMG)
-                {
-                    shoot();
-                }
-            }
-                
-        }
+        
 
         print(Input.GetAxis("Mouse ScrollWheel"));
         if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)

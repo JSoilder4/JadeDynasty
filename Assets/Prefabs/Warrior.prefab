@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3752296265374676262}
   - component: {fileID: 3893855385968315863}
   - component: {fileID: 4850289721157526187}
+  - component: {fileID: -5165635419506336137}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -107,8 +108,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0.02
   speedOG: 0
-  hp: 100
-  OGhp: 0
+  hp: {fileID: 0}
   coords: 
   visable: 0
   hitSound: {fileID: 8300000, guid: 613c261f10507af49b33d5026acce78d, type: 3}
@@ -179,7 +179,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!82 &3893855385968315863
 AudioSource:
@@ -303,3 +303,72 @@ MonoBehaviour:
   sprite: {fileID: 0}
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
+  player: 0
+--- !u!114 &-5165635419506336137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752296265374676256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6536ece078b15447b5ce4181d1e2e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.15
+  onBegin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3752296265374676258}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3752296265374676258}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rb: {fileID: 0}
