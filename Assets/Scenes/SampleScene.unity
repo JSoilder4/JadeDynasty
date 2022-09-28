@@ -3127,6 +3127,10 @@ MonoBehaviour:
   dodgeTime: 0
   dodgeTimeOG: 0.7
   hp: {fileID: 0}
+  invuln: 0
+  sprite: {fileID: 0}
+  invulnTime: 2
+  invulnFrameRunning: 0
 --- !u!212 &1006030929
 SpriteRenderer:
   m_ObjectHideFlags: 0
