@@ -5736,6 +5736,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 416746690, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
+      propertyPath: timerOG
+      value: 1.1e+11
+      objectReference: {fileID: 0}
     - target: {fileID: 4024440850954988585, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6320,6 +6324,7 @@ GameObject:
   - component: {fileID: 1385765417}
   - component: {fileID: 1385765416}
   - component: {fileID: 1385765421}
+  - component: {fileID: 1385765422}
   m_Layer: 5
   m_Name: Canvas (GameManager)
   m_TagString: Untagged
@@ -6614,6 +6619,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1385765422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385765415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d809ab926a17448556f145352c762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1006030927}
+  bulletBank: {fileID: 11400000, guid: 92ed94bc1b2dd0847b7b44e8d0d6080c, type: 2}
+  useDefaultBulletIfMissing: 1
+  scale: 0.5
+  timeSpeed: 1
+  gameDifficulty: 0.1
+  fpsLimit: 60
 --- !u!4 &1387981259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3682794979410386845, guid: eebb0d98aaad14d499975c2ca5a26897, type: 3}
@@ -45057,6 +45081,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 416746690, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
+      propertyPath: timerOG
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4024440850954988585, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
       propertyPath: m_RootOrder
       value: 28
