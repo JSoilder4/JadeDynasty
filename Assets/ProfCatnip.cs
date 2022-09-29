@@ -30,8 +30,27 @@ public class ProfCatnip : enemy
     {
         velocity = player.transform.position - transform.position;
 
-        rb.MovePosition(transform.position + Vector3.Normalize(velocity) * speed);
+        //print(velocity.magnitude);
+        //if (velocity.magnitude)
+        {
+
+        }
+        if (velocity.magnitude > 5.2f)
+        {
+            rb.MovePosition(transform.position + Vector3.Normalize(velocity) * speed);
+            print("hewwo");
+        }
+        else if (velocity.magnitude < 4.8f)
+        {
+            rb.MovePosition(transform.position - Vector3.Normalize(velocity) * speed);
+            print("gwoodbwye");
+        }
+        else
+        {
+            print("MEOW.");
+        }
     }
+        
 
 
 

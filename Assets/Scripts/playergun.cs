@@ -65,12 +65,12 @@ public class playergun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(equippedGuns.Count);
+        //print(equippedGuns.Count);
        gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
         activeGun.betweenShotTimer -= Time.deltaTime;
         // lookDirection = playerMove.pms.lookDir;
 
-        if (!playerMove.pms.dodging)
+        if (GameManager.GM.started && !playerMove.pms.dodging)
         {
             if (Input.GetButtonDown("Fire1")) //semi-auto
             {
@@ -101,7 +101,7 @@ public class playergun : MonoBehaviour
         }
         
 
-        print(Input.GetAxis("Mouse ScrollWheel"));
+        //print(Input.GetAxis("Mouse ScrollWheel"));
         if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
         {
 
