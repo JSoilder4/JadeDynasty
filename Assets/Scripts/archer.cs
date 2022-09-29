@@ -20,22 +20,35 @@ public class archer : enemy
         base.Start();
         timer = timerOG;
         //sprite = GetComponent<SpriteRenderer>();
-
-
-
-        
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
+
+        Vector3 distToPlayerVect = player.transform.position - transform.position;
+        float distToPlayer = distToPlayerVect.magnitude;
+
+        int layermask = LayerMask.GetMask("Player");
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, distToPlayerVect, distToPlayer, layermask);
+        Debug.DrawRay(transform.position, distToPlayerVect, Color.green);
+
+        //if(raycast)
+        //print(raycast.transform.name);
+        //print(raycast.transform.name);
+
         //facePlayer();
         if (visable)
         {
 
                 timer -= Time.deltaTime;
+            //if (Physics.Raycast(transform.position, player.transform.position - transform.position))
+            if(raycast.transform.CompareTag("Player"))
+            {
                 attackPlayer();
+            }
+                
                 if (!shooting && distanceFromPlayer() < distanceRadius)
                 {
                     move();

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2355205684762236849}
   - component: {fileID: 8938097235047430050}
   - component: {fileID: -9127785058590803684}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: FlyingSkull
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -133,8 +133,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   speedOG: 0
-  hp: 20
-  OGhp: 0
+  hp: {fileID: 0}
   coords: 
   visable: 0
   hitSound: {fileID: 8300000, guid: 613c261f10507af49b33d5026acce78d, type: 3}
@@ -306,3 +305,4 @@ MonoBehaviour:
   sprite: {fileID: 0}
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
+  player: 0
