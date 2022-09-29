@@ -61,7 +61,6 @@ GameObject:
   - component: {fileID: 416746691}
   - component: {fileID: 416746690}
   - component: {fileID: 416746696}
-  - component: {fileID: -4359412998792806895}
   m_Layer: 0
   m_Name: badcat
   m_TagString: Enemy
@@ -125,8 +124,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2ebaa55ddb620a1408a883f6c2013457, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 183ce76659cf66d4bbf2c3e86dd376b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -175,7 +174,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.88, y: 8.09}
+    oldSize: {x: 10.24, y: 10.24}
     newSize: {x: 5.88, y: 8.09}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -327,6 +326,8 @@ MonoBehaviour:
   arrow: {fileID: 7947840349681523247, guid: e0db7ed0e6f4a5042a0be50e97af0561, type: 3}
   shootPoint: {fileID: 0}
   shooting: 0
+  pattern: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
+  bml: {fileID: 0}
 --- !u!114 &416746696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,16 +355,3 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
   player: 0
---- !u!114 &-4359412998792806895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5915338884471120244}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xmlFile: {fileID: 0}
