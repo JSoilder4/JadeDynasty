@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63d18b8a9b3fb54c9500df7af584ac1, type: 3}
+  m_Name: New Pixelnest.BulletML.BulletBank
+  m_EditorClassIdentifier: 
+  bullets:
+  - name: Default
+    prefab: {fileID: 7947840349681523247, guid: b1a145e32b95a7c49b94f14214b9664f, type: 3}
+    sprite: {fileID: 0}
+    TimeToLiveInSeconds: 15
+    DestroyWhenOutOfScreen: 1

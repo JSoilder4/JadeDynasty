@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7947840349681523246}
   - component: {fileID: 7947840349681523242}
   m_Layer: 0
-  m_Name: Just_arrow
+  m_Name: badarrow
   m_TagString: arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 0.15
+  speed: 0
 --- !u!61 &7947840349681523246
 BoxCollider2D:
   m_ObjectHideFlags: 0

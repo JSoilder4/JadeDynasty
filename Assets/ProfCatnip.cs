@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pixelnest.BulletML;
 
 public class ProfCatnip : enemy
 {
@@ -15,13 +16,18 @@ public class ProfCatnip : enemy
 
     public bool shooting;
 
+    public TextAsset pattern;
+
+    public BulletSourceScript bml;
+
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         theLayer = LayerMask.GetMask("Player");
-        shootPoint = GetComponentInChildren<GameObject>();
+        shootPoint = transform.GetChild(0).gameObject;
+        bml = shootPoint.GetComponent<BulletSourceScript>();
         // sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -58,7 +64,7 @@ public class ProfCatnip : enemy
         if (raycast && raycast.transform.CompareTag("Player"))
         {
             print("FIRE!");
-            shoot();
+            shoot(true);
         }
 
 
@@ -78,6 +84,11 @@ public class ProfCatnip : enemy
             shooting = false;
             timer = timerOG;
         }
+    }
+    public void shoot(bool gay)
+    {
+        bml.xmlFile = pattern;
+        bml.Reset();
     }
 
 
