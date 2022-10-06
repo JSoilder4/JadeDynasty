@@ -20,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     public Camera camVar;
 
     public Vector3 mousePos;
+    public GameObject camBetween;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,7 @@ public class CameraFollow : MonoBehaviour
                 }
                 break;
             case CamType.followAndMouse:
-                transform.position = player.transform.position - mousePos;
+                //camBetween.transform.position = player.transform.position;// + mousePos;
                 break;
         }
         
