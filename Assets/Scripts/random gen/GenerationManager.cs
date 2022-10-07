@@ -33,7 +33,7 @@ public class GenerationManager : MonoBehaviour
         { false, false, false, false, false, false, false, false, false, false }};
 
     //Lookup table of the actual in-engine transform positions for each position on the grid above
-    public Vector3[,] roomPositions = new Vector3[10, 10] { 
+    public Vector3[,] roomPositions = new Vector3[10, 10]; /*{ 
         { new Vector3 (-200, 0, 200), new Vector3 (-150, 0, 200), new Vector3 (-100, 0, 200), new Vector3 (-50, 0, 200), new Vector3 (0, 0, 200), new Vector3 (50, 0, 200), new Vector3 (100, 0, 200), new Vector3 (150, 0, 200), new Vector3 (200, 0, 200), new Vector3 (250, 0, 200) },
         { new Vector3 (-200, 0, 150), new Vector3 (-150, 0, 150), new Vector3 (-100, 0, 150), new Vector3 (-50, 0, 150), new Vector3 (0, 0, 150), new Vector3 (50, 0, 150), new Vector3 (100, 0, 150), new Vector3 (150, 0, 150), new Vector3 (200, 0, 150), new Vector3 (250, 0, 150) },
         { new Vector3 (-200, 0, 100), new Vector3 (-150, 0, 100), new Vector3 (-100, 0, 100), new Vector3 (-50, 0, 100), new Vector3 (0, 0, 100), new Vector3 (50, 0, 100), new Vector3 (100, 0, 100), new Vector3 (150, 0, 100), new Vector3 (200, 0, 100), new Vector3 (250, 0, 100) },
@@ -44,7 +44,9 @@ public class GenerationManager : MonoBehaviour
         { new Vector3 (-200, 0, -150), new Vector3 (-150, 0, -150), new Vector3 (-100, 0, -150), new Vector3 (-50, 0, -150), new Vector3 (0, 0, -150), new Vector3 (50, 0, -150), new Vector3 (100, 0, -150), new Vector3 (150, 0, -150), new Vector3 (200, 0, -150), new Vector3 (250, 0, -150) },
         { new Vector3 (-200, 0, -200), new Vector3 (-150, 0, -200), new Vector3 (-100, 0, -200), new Vector3 (-50, 0, -200), new Vector3 (0, 0, -200), new Vector3 (50, 0, -200), new Vector3 (100, 0, -200), new Vector3 (150, 0, -200), new Vector3 (200, 0, -200), new Vector3 (250, 0, -200) },
         { new Vector3 (-200, 0, -250), new Vector3 (-150, 0, -250), new Vector3 (-100, 0, -250), new Vector3 (-50, 0, -250), new Vector3 (0, 0, -250), new Vector3 (50, 0, -250), new Vector3 (100, 0, -250), new Vector3 (150, 0, -250), new Vector3 (200, 0, -250), new Vector3 (250, 0, -250) }};
-
+        */
+    public List<Vector3> roomPositionsToAssign;
+    public GameObject dummyObject;
     //Debug: just translates the 2D array roomGrid into 10 1D arrays that can be viewed in the inspector
     [SerializeField] private bool[] roomGridColumn0 = new bool[10];
     [SerializeField] private bool[] roomGridColumn1 = new bool[10];
@@ -59,6 +61,36 @@ public class GenerationManager : MonoBehaviour
 
     void Start()
     {
+        //for (int x = -60; x <= 75; x += 15)
+        //{
+        //    for (int y = 36; y >= -45; y -= 9)
+        //    {
+        //        roomPositionsToAssign.Add(new Vector3(x, y, 0));
+        //        print("buttwrinkle");
+        //        Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
+
+        //    }
+        //}
+        for (int y = 72; y >= -90; y -= 18)
+        {
+            for (int x = -120; x <= 150; x += 30)
+            {
+                roomPositionsToAssign.Add(new Vector3(x, y, 0));
+                print("buttwrinkle");
+                Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
+
+            }
+        }
+        int i = 0;
+        for (int y2 = 0; y2 < 10; y2++)
+        {
+            for (int x2 = 0; x2 < 10; x2++)
+            {
+                roomPositions[x2, y2] = roomPositionsToAssign[i];
+                i++;
+            }
+        }
+
         //create starting room
         Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
         roomGrid[4, 4] = true;
@@ -68,30 +100,30 @@ public class GenerationManager : MonoBehaviour
     void Update()
     {
         //create corridors, once there are at least 7 rooms
-        if(roomsCreated >= 7 && !corridorsSpawned)
-        {
-            //iterates through the roomGrid and checks for neighbors. If it finds them, instantiate a corridor in the appropriate position
-            for(int x = 0; x < roomGrid.GetLength(0); x++)
-            {
-                for(int y = 0; y < roomGrid.GetLength(1); y++)
-                {
-                    if(roomGrid[x, y])
-                    {
-                        if(roomGrid[x + 1, y])
-                        {
-                            Instantiate(corridor, new Vector3(roomPositions[x, y].x, 2.02f, roomPositions[x, y].z - 25), Quaternion.AngleAxis(90, Vector3.up));
-                        }
+        //if(roomsCreated >= 7 && !corridorsSpawned)
+        //{
+        //    //iterates through the roomGrid and checks for neighbors. If it finds them, instantiate a corridor in the appropriate position
+        //    for(int x = 0; x < roomGrid.GetLength(0); x++)
+        //    {
+        //        for(int y = 0; y < roomGrid.GetLength(1); y++)
+        //        {
+        //            if(roomGrid[x, y])
+        //            {
+        //                if(roomGrid[x + 1, y])
+        //                {
+        //                    Instantiate(corridor, new Vector3(roomPositions[x, y].x, 2.02f, roomPositions[x, y].z - 25), Quaternion.AngleAxis(90, Vector3.up));
+        //                }
 
-                        if (roomGrid[x, y + 1])
-                        {
-                            Instantiate(corridor, new Vector3(roomPositions[x, y].x + 25, 2.02f, roomPositions[x, y].z), Quaternion.identity);
-                        }
-                    }
-                }
-            }
+        //                if (roomGrid[x, y + 1])
+        //                {
+        //                    Instantiate(corridor, new Vector3(roomPositions[x, y].x + 25, 2.02f, roomPositions[x, y].z), Quaternion.identity);
+        //                }
+        //            }
+        //        }
+        //    }
 
-            corridorsSpawned = true;
-        }
+        //    corridorsSpawned = true;
+        //}
 
         //just populates the above debug arrays
         for(int i = 0; i < roomGrid.GetLength(1); i++)
@@ -248,7 +280,7 @@ public class GenerationManager : MonoBehaviour
     {
         //find all the stuff that was generated
         GameObject[] roomsToDestroy = GameObject.FindGameObjectsWithTag("room");
-        GameObject[] corridorsToDestroy = GameObject.FindGameObjectsWithTag("corridor");
+      //  GameObject[] corridorsToDestroy = GameObject.FindGameObjectsWithTag("corridor");
 
         //reset checklist
         genComplete = false;
@@ -261,10 +293,10 @@ public class GenerationManager : MonoBehaviour
             Destroy(roomsToDestroy[i]);
         }
 
-        for (int i = 0; i < corridorsToDestroy.Length; i++)
-        {
-            Destroy(corridorsToDestroy[i]);
-        }
+        //for (int i = 0; i < corridorsToDestroy.Length; i++)
+        //{
+        //    Destroy(corridorsToDestroy[i]);
+        //}
 
         //reset the grid
         for (int x = 0; x < roomGrid.GetLength(0); x++)
