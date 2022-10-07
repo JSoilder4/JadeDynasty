@@ -47,6 +47,7 @@ public class GenerationManager : MonoBehaviour
         */
     public List<Vector3> roomPositionsToAssign;
     public GameObject dummyObject;
+    public int roomWidth, roomHeight;
     //Debug: just translates the 2D array roomGrid into 10 1D arrays that can be viewed in the inspector
     [SerializeField] private bool[] roomGridColumn0 = new bool[10];
     [SerializeField] private bool[] roomGridColumn1 = new bool[10];
@@ -71,9 +72,9 @@ public class GenerationManager : MonoBehaviour
 
         //    }
         //}
-        for (int y = 72; y >= -90; y -= 18)
+        for (int y = roomHeight*4*2; y >= -roomHeight*5*2; y -= roomHeight*2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
         {
-            for (int x = -120; x <= 150; x += 30)
+            for (int x = -roomWidth*4*2; x <= roomWidth*5*2; x += roomWidth*2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
             {
                 roomPositionsToAssign.Add(new Vector3(x, y, 0));
                 print("buttwrinkle");
