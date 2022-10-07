@@ -383,16 +383,18 @@ MonoBehaviour:
   bossRooms: []
   treasureRoom: {fileID: 0}
   doors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}
+  - {fileID: 3107764611136880445, guid: ebb9f215450e7844e86066db0635bb3c, type: 3}
+  - {fileID: 5269228561788988051, guid: b6f1c4fd137e56b4fbcdc3fa521af8a3, type: 3}
+  - {fileID: 9050892910178642009, guid: f6713fc23f23d9949bda48ef3a45c6fe, type: 3}
   floor: 0
   genComplete: 0
   bossRoomAssigned: 0
   tRoomAssigned: 0
   roomPositionsToAssign: []
   dummyObject: {fileID: 278090218949551762, guid: b3d2cae0477104642a5f41099a6bf7b1, type: 3}
+  roomWidth: 15
+  roomHeight: 9
   roomGridColumn0: 00000000000000000000
   roomGridColumn1: 00000000000000000000
   roomGridColumn2: 00000000000000000000
