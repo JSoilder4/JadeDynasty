@@ -17,10 +17,6 @@ public class RoomGenerator : MonoBehaviour
     private GameObject roomRef;                               //debug: for remembering what room begat what other room
     public bool completed = false;
 
-    public GameObject ammo;
-    public GameObject health;
-    public GameObject armor;
-
     void Start()
     {
         //assign variables
@@ -40,375 +36,9 @@ public class RoomGenerator : MonoBehaviour
         {
             if (genManage.roomsCreated < 7 && !done)
             {
-                int room1;
-                int room2;
-                int room3;
-
                 int roomsToCreate = Mathf.FloorToInt(Random.Range(1, 4)); //how many rooms am I going to make
-
-                if (roomsToCreate == 1)
-                {
-                    room1 = Mathf.FloorToInt(Random.Range(0, 4)); //which direction am I going to make this room in?
-
-                    if (doors[room1].gameObject.name == "door1") //interprets the value from 0-3 as a door object in the room, since the doors are always in the same position relative to each other
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1]) //is there already a room there or adjacent?
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity); //instantiate the room
-                            doors[room1].GetComponent<DoorControl>().active = true; //obsolete I think
-                            genManage.roomGrid[posX, posY + 1] = true; //update grid
-                            done = true; //done with generation
-                            genManage.roomsCreated++; //increment how many rooms have been made
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-                }
-                if (roomsToCreate == 2)
-                {
-                    room1 = Mathf.FloorToInt(Random.Range(0, 4));
-                    room2 = Mathf.FloorToInt(Random.Range(0, 4));
-                    while (room2 == room1)
-                    {
-                        room2 = Mathf.FloorToInt(Random.Range(0, 4));
-                    }
-
-                    if (doors[room1].gameObject.name == "door1")
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY + 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door1")
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY + 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-                }
-                if (roomsToCreate == 3)
-                {
-                    room1 = Mathf.FloorToInt(Random.Range(0, 4));
-                    room2 = Mathf.FloorToInt(Random.Range(0, 4));
-                    room3 = Mathf.FloorToInt(Random.Range(0, 4));
-                    while (room2 == room1 || room2 == room3)
-                    {
-                        room2 = Mathf.FloorToInt(Random.Range(0, 4));
-                    }
-                    while (room3 == room1 || room3 == room2)
-                    {
-                        room3 = Mathf.FloorToInt(Random.Range(0, 4));
-                    }
-
-                    if (doors[room1].gameObject.name == "door1")
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY + 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room1].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room1].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door1")
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY + 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room2].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room2].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room3].gameObject.name == "door1")
-                    {
-                        if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity);
-                            doors[room3].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY + 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room3].gameObject.name == "door2")
-                    {
-                        if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
-                            doors[room3].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX - 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room3].gameObject.name == "door1 (1)")
-                    {
-                        if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
-                            doors[room3].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX, posY - 1] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-
-                    if (doors[room3].gameObject.name == "door2 (1)")
-                    {
-                        if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
-                        {
-                            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
-                            doors[room3].GetComponent<DoorControl>().active = true;
-                            genManage.roomGrid[posX + 1, posY] = true;
-                            done = true;
-                            genManage.roomsCreated++;
-
-                            //print(gameObject.name + ": " + roomRef.name);
-                        }
-                    }
-                }
+                genRooms(roomsToCreate);
+                
             }
         }
         catch
@@ -416,36 +46,11 @@ public class RoomGenerator : MonoBehaviour
             //if the generation tries to go out of the grid, give up trying to make it
             done = true;
         }
-
-
         //manually reset level
         if (Input.GetKeyDown(KeyCode.T))
         {
             genManage.RetryLevel();
         }
-
-        //if (enemies.Count <= 0 && !completed)
-        //{
-            /*int roomDrop = Mathf.FloorToInt(Random.Range(0, 11));
-
-            switch (roomDrop)
-            {
-                case 0:
-                    Instantiate(ammo, new Vector3(17, 0.1261767f, -17), Quaternion.identity, transform);
-                    break;
-
-                case 1:
-                    Instantiate(health, new Vector3(17, 0.5f, -17), Quaternion.identity, transform);
-                    break;
-
-                case 2:
-                    Instantiate(armor, new Vector3(17, 1, -17), Quaternion.identity, transform);
-                    break;
-
-                default:
-                    break;
-            }
-            */
 
             completed = true;
 
@@ -453,9 +58,75 @@ public class RoomGenerator : MonoBehaviour
             {
                 doors[i].GetComponent<DoorControl>().locked = false;
             }
-        //}
     }
+    public void genRooms(int numOfRooms)
+    {
+        if (numOfRooms == 0)
+        {
+            return;
+        }
 
+        int room1;
+
+            room1 = Mathf.FloorToInt(Random.Range(0, 4)); //which direction am I going to make this room in?
+
+            if (doors[room1].gameObject.name == "door1") //interprets the value from 0-3 as a door object in the room, since the doors are always in the same position relative to each other
+            {
+                if (!genManage.roomGrid[posX, posY + 1] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX + 1, posY + 1]) //is there already a room there or adjacent?
+                {
+                    roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY + 1], Quaternion.identity); //instantiate the room
+                    doors[room1].GetComponent<DoorControl>().active = true; //obsolete I think
+                    genManage.roomGrid[posX, posY + 1] = true; //update grid
+                    done = true; //done with generation
+                    genManage.roomsCreated++; //increment how many rooms have been made
+
+                    //print(gameObject.name + ": " + roomRef.name);
+                }
+            }
+
+            if (doors[room1].gameObject.name == "door2")
+            {
+                if (!genManage.roomGrid[posX - 1, posY] && !genManage.roomGrid[posX - 1, posY + 1] && !genManage.roomGrid[posX - 1, posY - 1])
+                {
+                    roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX - 1, posY], Quaternion.identity);
+                    doors[room1].GetComponent<DoorControl>().active = true;
+                    genManage.roomGrid[posX - 1, posY] = true;
+                    done = true;
+                    genManage.roomsCreated++;
+
+                    //print(gameObject.name + ": " + roomRef.name);
+                }
+            }
+
+            if (doors[room1].gameObject.name == "door1 (1)")
+            {
+                if (!genManage.roomGrid[posX, posY - 1] && !genManage.roomGrid[posX - 1, posY - 1] && !genManage.roomGrid[posX + 1, posY + 1])
+                {
+                    roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY - 1], Quaternion.identity);
+                    doors[room1].GetComponent<DoorControl>().active = true;
+                    genManage.roomGrid[posX, posY - 1] = true;
+                    done = true;
+                    genManage.roomsCreated++;
+
+                    //print(gameObject.name + ": " + roomRef.name);
+                }
+            }
+
+            if (doors[room1].gameObject.name == "door2 (1)")
+            {
+                if (!genManage.roomGrid[posX + 1, posY] && !genManage.roomGrid[posX + 1, posY + 1] && !genManage.roomGrid[posX + 1, posY - 1])
+                {
+                    roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX + 1, posY], Quaternion.identity);
+                    doors[room1].GetComponent<DoorControl>().active = true;
+                    genManage.roomGrid[posX + 1, posY] = true;
+                    done = true;
+                    genManage.roomsCreated++;
+
+                    //print(gameObject.name + ": " + roomRef.name);
+                }
+            }
+        genRooms(numOfRooms - 1);
+    }
     private int[] GetRoomPosition() //finds room's position on the grid based on its position in the scene and returns it as an array of 2 values; [0] is x and [1] is y
     {
         int[] pos = new int[2]; //array to return

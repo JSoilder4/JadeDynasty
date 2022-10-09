@@ -31,11 +31,9 @@ public class DoorControl : MonoBehaviour
 
     private void Update()
     {
-        ////update material
-        //if (!active)
-        //{
-        //    hatch.GetComponent<MeshRenderer>().material = wallMat;
-        //}
+
+            gameObject.SetActive(active);
+       
 
         //else if (locked)
         //{
