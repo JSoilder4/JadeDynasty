@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
 {
+    [Header("Configurable Generation Variables")]
+    public float timerOG;  //CheckLevel when timer done
+    public int minRooms;
+    public int roomWidth, roomHeight;
+
+    [Header("The Rest")]
     public int roomsCreated = 0;            //how many rooms have been made
     public GameObject[] rooms;              //storage of different room prefabs
     public GameObject[] createdRooms;       //to keep track of the rooms that exist in the level
@@ -18,6 +24,13 @@ public class GenerationManager : MonoBehaviour
     public bool genComplete = false;        //main generation of floor
     public bool bossRoomAssigned = false;   //assign boss room
     public bool tRoomAssigned = false;      //assign treasure room
+
+    public List<DoorControl> doorControlList; // stupid shit for boss room checking
+
+    
+
+    public float timer;  
+    
 
     //Representation of the level as a grid. Each bool value corresponds to whether there is a room in that position on the grid
     public bool[,] roomGrid = new bool[10, 10] { 
@@ -47,7 +60,7 @@ public class GenerationManager : MonoBehaviour
         */
     public List<Vector3> roomPositionsToAssign;
     public GameObject dummyObject;
-    public int roomWidth, roomHeight;
+   
     //Debug: just translates the 2D array roomGrid into 10 1D arrays that can be viewed in the inspector
     [SerializeField] private bool[] roomGridColumn0 = new bool[10];
     [SerializeField] private bool[] roomGridColumn1 = new bool[10];
@@ -62,6 +75,7 @@ public class GenerationManager : MonoBehaviour
 
     void Start()
     {
+        timer = timerOG;
         //for (int x = -60; x <= 75; x += 15)
         //{
         //    for (int y = 36; y >= -45; y -= 9)
@@ -77,7 +91,7 @@ public class GenerationManager : MonoBehaviour
             for (int x = -roomWidth*4*2; x <= roomWidth*5*2; x += roomWidth*2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
             {
                 roomPositionsToAssign.Add(new Vector3(x, y, 0));
-                print("buttwrinkle");
+               // print("buttwrinkle");
                 Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
 
             }
@@ -142,7 +156,7 @@ public class GenerationManager : MonoBehaviour
         }
 
         //populates these arrays every frame, since the floor generation happens across multiple frames
-        //doors = GameObject.FindGameObjectsWithTag("door");
+        doors = GameObject.FindGameObjectsWithTag("door");
         createdRooms = GameObject.FindGameObjectsWithTag("room");
 
         //determines whether doors should be "real" or not
@@ -225,7 +239,7 @@ public class GenerationManager : MonoBehaviour
         }
 
         //checklist update
-        if(roomsCreated >= 7 && !genComplete)
+        if(roomsCreated >= minRooms && !genComplete)
         {
             genComplete = true;
         }
@@ -239,6 +253,31 @@ public class GenerationManager : MonoBehaviour
         {
             AssignTreasureRoom();
         }
+
+        
+    }
+    private void LateUpdate()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            StopCoroutine(CheckLevel());
+            StartCoroutine(CheckLevel());
+        }
+        
+       
+    }
+
+    public IEnumerator CheckLevel()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (!(roomsCreated >= minRooms))
+        {
+            RetryLevel();
+            yield return null;
+            StopCoroutine(CheckLevel());
+        }
+        
     }
 
     public void AssignBossRoom(int floor) //picks the room furthest from the player's starting room and replaces it with the appropriate boss room (based on floor)
@@ -255,10 +294,29 @@ public class GenerationManager : MonoBehaviour
                 roomToReplaceIndex = i;
             }
         }
+        //int numOfDoors = 0;
+
+        // for (int i = 0; i < createdRooms[roomToReplaceIndex].GetComponent<RoomGenerator>().doors.Count; i++)
+        // {
+        //    doorControlList.Add(createdRooms[roomToReplaceIndex].GetComponent<RoomGenerator>().doors[i].GetComponent<DoorControl>());
+        // }
+        //for (int i = 0; i < doorControlList.Count; i++)
+        //{
+        //    if (doorControlList[i].active)
+        //    {
+        //        numOfDoors++;
+        //    }
+        //}
+        //if (numOfDoors >= 2)
+        //{
+        //    AssignBossRoom(floor);
+        //}
 
         //actually replace the room
-        Instantiate(bossRooms[floor], createdRooms[roomToReplaceIndex].transform.position, Quaternion.identity);
+        GameObject g = Instantiate(bossRooms[floor], createdRooms[roomToReplaceIndex].transform.position, Quaternion.identity);
         Destroy(createdRooms[roomToReplaceIndex]);
+
+        g.GetComponent<RoomGenerator>().roomIndexKilled = roomToReplaceIndex;
 
         //update checklist
         bossRoomAssigned = true;
@@ -287,6 +345,7 @@ public class GenerationManager : MonoBehaviour
         genComplete = false;
         bossRoomAssigned = false;
         tRoomAssigned = false;
+        timer = timerOG;
 
         //destroy all the stuff that was generated
         for (int i = 0; i < roomsToDestroy.Length; i++)

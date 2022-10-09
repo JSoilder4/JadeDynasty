@@ -380,7 +380,8 @@ MonoBehaviour:
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
   createdRooms: []
   corridor: {fileID: 0}
-  bossRooms: []
+  bossRooms:
+  - {fileID: 5338347914404725052, guid: f75305030102951458f08be02dec2692, type: 3}
   treasureRoom: {fileID: 0}
   doors:
   - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}
@@ -391,6 +392,10 @@ MonoBehaviour:
   genComplete: 0
   bossRoomAssigned: 0
   tRoomAssigned: 0
+  doorControlList: []
+  minRooms: 7
+  timer: 1
+  timerOG: 1
   roomPositionsToAssign: []
   dummyObject: {fileID: 278090218949551762, guid: b3d2cae0477104642a5f41099a6bf7b1, type: 3}
   roomWidth: 15

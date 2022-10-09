@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
+    public enum roomType
+    {
+        Regular,
+        Boss,
+        Treasure,
+        
+    }
+    public roomType type;
+
+    public int roomIndexKilled; //used for boss/treasue/special rooms
+
     public int posX;          //the x position of this room in the roomGrid array
     public int posY;          //the y position of this room in the roomGrid array
     public int roomIndex = 0; //this room's index in the array of rooms in the scene, used as an identifier
@@ -14,11 +25,18 @@ public class RoomGenerator : MonoBehaviour
     public List<GameObject> doors = new List<GameObject>();   //the doors in this room
     //public List<GameObject> enemies = new List<GameObject>(); //the enemies in this room
     private GenerationManager genManage;                      //reference to the manager
-    private GameObject roomRef;                               //debug: for remembering what room begat what other room
+    public GameObject roomRef;                               //debug: for remembering what room begat what other room
     public bool completed = false;
+
+    public bool start;
+
+    public List<GameObject> roomsMade;
+
+    public int doorsConnected;
 
     void Start()
     {
+        start = true;
         //assign variables
         genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
         rooms = genManage.rooms;
@@ -31,10 +49,39 @@ public class RoomGenerator : MonoBehaviour
 
     void Update()
     {
+        if (start && type == roomType.Regular)
+        {
+            name = name + " " + roomIndex;
+            start = false;
+        }
+        else if (start && type == roomType.Boss)
+        {
+            name = name + " " + roomIndexKilled;
+            start = false;
+        }
+
+
+        if (type == roomType.Boss)
+        {
+            doorsConnected = 0;
+            for (int i = 0; i < doors.Count; i++)
+            {
+                if (doors[i].GetComponent<DoorControl>().active)
+                {
+                    doorsConnected++;
+                }
+            }
+            if (doorsConnected >= 2)
+            {
+                print("hi" + doorsConnected);
+                genManage.RetryLevel();
+            }
+        }
+        
         //main room creation code. It tries to make more rooms every frame until it is finished, or there are enough rooms
         try
         {
-            if (genManage.roomsCreated < 7 && !done)
+            if (genManage.roomsCreated < genManage.minRooms && !done && type != roomType.Boss)
             {
                 int roomsToCreate = Mathf.FloorToInt(Random.Range(1, 4)); //how many rooms am I going to make
                 genRooms(roomsToCreate);
@@ -80,8 +127,9 @@ public class RoomGenerator : MonoBehaviour
                     done = true; //done with generation
                     genManage.roomsCreated++; //increment how many rooms have been made
 
-                    //print(gameObject.name + ": " + roomRef.name);
-                }
+                //print(gameObject.name + ": " + roomRef.name);
+                roomsMade.Add(roomRef);
+            }
             }
 
             if (doors[room1].gameObject.name == "door2")
@@ -94,8 +142,9 @@ public class RoomGenerator : MonoBehaviour
                     done = true;
                     genManage.roomsCreated++;
 
-                    //print(gameObject.name + ": " + roomRef.name);
-                }
+                //print(gameObject.name + ": " + roomRef.name);
+                roomsMade.Add(roomRef);
+            }
             }
 
             if (doors[room1].gameObject.name == "door1 (1)")
@@ -108,8 +157,9 @@ public class RoomGenerator : MonoBehaviour
                     done = true;
                     genManage.roomsCreated++;
 
-                    //print(gameObject.name + ": " + roomRef.name);
-                }
+                //print(gameObject.name + ": " + roomRef.name);
+                roomsMade.Add(roomRef);
+            }
             }
 
             if (doors[room1].gameObject.name == "door2 (1)")
@@ -122,8 +172,9 @@ public class RoomGenerator : MonoBehaviour
                     done = true;
                     genManage.roomsCreated++;
 
-                    //print(gameObject.name + ": " + roomRef.name);
-                }
+                //print(gameObject.name + ": " + roomRef.name);
+                roomsMade.Add(roomRef);
+            }
             }
         genRooms(numOfRooms - 1);
     }

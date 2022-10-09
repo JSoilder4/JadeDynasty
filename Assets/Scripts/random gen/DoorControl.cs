@@ -16,9 +16,12 @@ public class DoorControl : MonoBehaviour
     public int posX;            //the x position of the parent room in the roomGrid array
     public int posY;            //the y position of the parent room in the roomGrid array
 
+    public SpriteRenderer spriteR;
+
     private void Start()
     {
         //assign variables
+        spriteR = GetComponent<SpriteRenderer>();
         room = transform.parent.gameObject;
         posX = room.GetComponent<RoomGenerator>().posX;
         posY = room.GetComponent<RoomGenerator>().posY;
@@ -31,8 +34,8 @@ public class DoorControl : MonoBehaviour
 
     private void Update()
     {
-
-            gameObject.SetActive(active);
+        spriteR.enabled = active;
+           // gameObject.SetActive(active);
        
 
         //else if (locked)
