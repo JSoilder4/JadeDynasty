@@ -170,7 +170,7 @@ public class GenerationManager : MonoBehaviour
         for(int i = 0; i < doors.Length; i++)
         {
             //checks the grid for neighbors to each door. If it finds one, sets the door to be active ("real")
-            if(doors[i].name == "doorSouth" || doors[i].name == "doorSouthWestDown"  || doors[i].name == "doorSouthEastDown")
+            if(doors[i].name == "doorSouth")// || doors[i].name == "doorSouthWestDown"  || doors[i].name == "doorSouthEastDown")
             {
                 try
                 {
@@ -187,7 +187,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "doorWest" || doors[i].name == "doorSouthWestLeft" || doors[i].name == "doorNorthWestLeft")
+            if (doors[i].name == "doorWest")// || doors[i].name == "doorSouthWestLeft" || doors[i].name == "doorNorthWestLeft")
             {
                 try
                 {
@@ -204,7 +204,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "doorNorth" || doors[i].name == "doorNorthWestUp" || doors[i].name == "doorNorthEastUp")
+            if (doors[i].name == "doorNorth")// || doors[i].name == "doorNorthWestUp" || doors[i].name == "doorNorthEastUp")
             {
                 try
                 {
@@ -221,7 +221,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "doorEast" || doors[i].name == "doorNorthEastRight" || doors[i].name == "doorSouthEastRight")
+            if (doors[i].name == "doorEast")// || doors[i].name == "doorNorthEastRight" || doors[i].name == "doorSouthEastRight")
             {
                 try
                 {

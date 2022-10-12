@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d9cb4d0becedb4183a18851d8b984f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerOG: 1.5
+  timerOG: 2.5
   minRooms: 7
   roomWidth: 11
   roomHeight: 6
