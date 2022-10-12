@@ -334,7 +334,7 @@ Transform:
   m_Children:
   - {fileID: 871659761}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602254764
 GameObject:
@@ -365,6 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d9cb4d0becedb4183a18851d8b984f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerOG: 1.5
+  minRooms: 7
+  roomWidth: 11
+  roomHeight: 6
   roomsCreated: 0
   rooms:
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
@@ -378,10 +382,15 @@ MonoBehaviour:
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+  bigRooms:
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
   createdRooms: []
   corridor: {fileID: 0}
   bossRooms:
-  - {fileID: 5338347914404725052, guid: f75305030102951458f08be02dec2692, type: 3}
+  - {fileID: 5338347914404725052, guid: 3e0bdaaac34946c4a9bf663b2494329f, type: 3}
   treasureRoom: {fileID: 0}
   doors:
   - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}
@@ -393,13 +402,9 @@ MonoBehaviour:
   bossRoomAssigned: 0
   tRoomAssigned: 0
   doorControlList: []
-  minRooms: 7
   timer: 1
-  timerOG: 1
   roomPositionsToAssign: []
   dummyObject: {fileID: 278090218949551762, guid: b3d2cae0477104642a5f41099a6bf7b1, type: 3}
-  roomWidth: 15
-  roomHeight: 9
   roomGridColumn0: 00000000000000000000
   roomGridColumn1: 00000000000000000000
   roomGridColumn2: 00000000000000000000
@@ -423,7 +428,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871659760
 GameObject:
@@ -590,7 +595,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836047749
 GameObject:
@@ -631,7 +636,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -750,6 +755,65 @@ PlayableDirector:
     value: {fileID: 1836047754}
   m_ExposedReferences:
     m_References: []
+--- !u!1001 &1929274383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725050, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+      propertyPath: m_Name
+      value: Room(16x26)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
 --- !u!1 &1975244568
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,10 +838,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975244568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

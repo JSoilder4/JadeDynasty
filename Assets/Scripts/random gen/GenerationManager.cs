@@ -7,11 +7,12 @@ public class GenerationManager : MonoBehaviour
     [Header("Configurable Generation Variables")]
     public float timerOG;  //CheckLevel when timer done
     public int minRooms;
-    public int roomWidth, roomHeight;
+    public float roomWidth, roomHeight; // every 3 is about 1 second of travel between rooms (current default(15, 9)) (width/height determined by half of the total room size in tiles)
 
     [Header("The Rest")]
     public int roomsCreated = 0;            //how many rooms have been made
     public GameObject[] rooms;              //storage of different room prefabs
+    public GameObject[] bigRooms;           //storage of big room prefabs
     public GameObject[] createdRooms;       //to keep track of the rooms that exist in the level
     public GameObject corridor;             //storage of the corridor prefab
     public GameObject[] bossRooms;          //storage of the boss room prefabs
@@ -86,15 +87,21 @@ public class GenerationManager : MonoBehaviour
 
         //    }
         //}
-        for (int y = roomHeight*4*2; y >= -roomHeight*5*2; y -= roomHeight*2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
+        int xForDebug = 0;
+        int yForDebug = 0;
+        for (float y = roomHeight*4*2; y >= -roomHeight*5*2; y -= roomHeight*2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
         {
-            for (int x = -roomWidth*4*2; x <= roomWidth*5*2; x += roomWidth*2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
+            for (float x = -roomWidth*4*2; x <= roomWidth*5*2; x += roomWidth*2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
             {
                 roomPositionsToAssign.Add(new Vector3(x, y, 0));
                // print("buttwrinkle");
-                Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
-
+                GameObject g = Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
+                g.GetComponent<debugBoolChecker>().posX = xForDebug;
+                g.GetComponent<debugBoolChecker>().posY = yForDebug;
+                xForDebug++;
             }
+            xForDebug = 0;
+            yForDebug++;
         }
         int i = 0;
         for (int y2 = 0; y2 < 10; y2++)
@@ -163,7 +170,7 @@ public class GenerationManager : MonoBehaviour
         for(int i = 0; i < doors.Length; i++)
         {
             //checks the grid for neighbors to each door. If it finds one, sets the door to be active ("real")
-            if(doors[i].name == "door1")
+            if(doors[i].name == "doorSouth" || doors[i].name == "doorSouthWestDown"  || doors[i].name == "doorSouthEastDown")
             {
                 try
                 {
@@ -180,7 +187,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "door2")
+            if (doors[i].name == "doorWest" || doors[i].name == "doorSouthWestLeft" || doors[i].name == "doorNorthWestLeft")
             {
                 try
                 {
@@ -197,7 +204,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "door1 (1)")
+            if (doors[i].name == "doorNorth" || doors[i].name == "doorNorthWestUp" || doors[i].name == "doorNorthEastUp")
             {
                 try
                 {
@@ -214,7 +221,7 @@ public class GenerationManager : MonoBehaviour
                 }
             }
 
-            if (doors[i].name == "door2 (1)")
+            if (doors[i].name == "doorEast" || doors[i].name == "doorNorthEastRight" || doors[i].name == "doorSouthEastRight")
             {
                 try
                 {
@@ -285,8 +292,15 @@ public class GenerationManager : MonoBehaviour
         int roomToReplaceIndex = 0; //which room gets replaced (identified by its index in the createdRooms array)
         float roomDist = 0f;        //stores the highest distance that has been found, to compare other rooms against
 
+        RoomGenerator rG;
+
         for(int i = 0; i < createdRooms.Length; i++)
         {
+            rG = createdRooms[i].GetComponent<RoomGenerator>();
+            if(rG.type == RoomGenerator.roomType.RegularX2)
+            {
+                continue;
+            }
             //iterate through all the rooms, every time a room is found that is further from the start than the previous furthest update which room to replace
             if(Vector3.Distance(createdRooms[i].transform.position, createdRooms[0].transform.position) > roomDist)
             {

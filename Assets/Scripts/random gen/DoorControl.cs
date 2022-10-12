@@ -18,13 +18,25 @@ public class DoorControl : MonoBehaviour
 
     public SpriteRenderer spriteR;
 
+    public bool bigRoom;
+    public int bigRoomNum; //0 NorthWest, 1 NorthEast, 2 SouthWest, 3 SouthEast
+
     private void Start()
     {
         //assign variables
         spriteR = GetComponent<SpriteRenderer>();
         room = transform.parent.gameObject;
-        posX = room.GetComponent<RoomGenerator>().posX;
-        posY = room.GetComponent<RoomGenerator>().posY;
+        if (bigRoom)
+        {
+            posX = room.GetComponent<RoomGenerator>().posXBig[bigRoomNum];
+            posY = room.GetComponent<RoomGenerator>().posYBig[bigRoomNum];
+        }
+        else
+        {
+            posX = room.GetComponent<RoomGenerator>().posX;
+            posY = room.GetComponent<RoomGenerator>().posY;
+        }
+
 
         //hatch = transform.GetChild(3).gameObject;
         //doorAnim = hatch.GetComponent<Animator>();
