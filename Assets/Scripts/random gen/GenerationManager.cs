@@ -248,13 +248,15 @@ public class GenerationManager : MonoBehaviour
 
     public void doorChecker()
     {
-        print("yee");
         for (int i = 0; i < doors.Length; i++)
         {
             if (!doors[i].GetComponent<DoorControl>().active)
             { 
                 Destroy(doors[i]);
-                //doors.RemoveAt(i);
+            }
+            if (doors[i].GetComponent<DoorControl>().active)
+            {
+                doors[i].GetComponent<DoorControl>().ConnectToDoor();
             }
         }
     }

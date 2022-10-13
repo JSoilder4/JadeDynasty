@@ -10,6 +10,18 @@ public class DoorControl : MonoBehaviour
    // public Material wallMat;    //the material of the surrounding wall
    // public Material lockedMat;  //the material when locked
     //public Animator doorAnim;   //reference to the animator on the door
+
+    public enum doorDir
+    {
+        north,
+        east,
+        south,
+        west
+    }
+    public doorDir direction;
+
+    public GameObject doorConnectedTo;
+
     public bool open = false;   //is this door currently open?
     public bool locked = false; //is this door currently locked?
     public bool active = false; //is this door currently active(real)?
@@ -21,8 +33,28 @@ public class DoorControl : MonoBehaviour
     public bool bigRoom;
     public int bigRoomNum; //0 NorthWest, 1 NorthEast, 2 SouthWest, 3 SouthEast
 
+
+
     private void Start()
     {
+
+        if (name == "doorNorth")
+        {
+            direction = doorDir.north;
+        }
+        else if (name == "doorEast")
+        {
+            direction = doorDir.east;
+        }
+        else if (name == "doorSouth")
+        {
+            direction = doorDir.south;
+        }
+        else if (name == "doorWest")
+        {
+            direction = doorDir.west;
+        }
+
         //assign variables
         spriteR = GetComponent<SpriteRenderer>();
         room = transform.parent.gameObject;
@@ -47,8 +79,8 @@ public class DoorControl : MonoBehaviour
     private void Update()
     {
         spriteR.enabled = active;
-           // gameObject.SetActive(active);
-       
+        // gameObject.SetActive(active);
+
 
         //else if (locked)
         //{
@@ -59,6 +91,71 @@ public class DoorControl : MonoBehaviour
         //{
         //    hatch.GetComponent<MeshRenderer>().material = hatchMat;
         //}
+    }
+
+    public void ConnectToDoor()
+    {
+        switch (direction)
+        {
+            case doorDir.north:
+                //Vector3 distToPlayerVect = player.transform.position - transform.position;
+                // gameObject.layer = LayerMask.GetMask("Ignore Raycast");
+                int layermaskN = LayerMask.GetMask("Default");
+                RaycastHit2D raycastN = Physics2D.Raycast(transform.position, Vector2.up, 3, layermaskN);
+                Debug.DrawRay(transform.position, Vector3.up * 3, Color.green);
+                try
+                {
+                    doorConnectedTo = raycastN.transform.gameObject;
+                }
+                catch
+                {
+                    print("I'm litteraly crying rn");
+                }
+                // gameObject.layer = LayerMask.GetMask("Default");
+
+                break;
+            case doorDir.east:
+                int layermaskE = LayerMask.GetMask("Default");
+                RaycastHit2D raycastE = Physics2D.Raycast(transform.position, Vector2.right, 2, layermaskE);
+                Debug.DrawRay(transform.position, Vector3.right * 2, Color.green);
+                try
+                {
+                    doorConnectedTo = raycastE.transform.gameObject;
+                }
+                catch
+                {
+                    print("I'm litteraly crying rn");
+                }
+                break;
+            case doorDir.south:
+                int layermaskS = LayerMask.GetMask("Default");
+                RaycastHit2D raycastS = Physics2D.Raycast(transform.position, Vector2.down, 3, layermaskS);
+                Debug.DrawRay(transform.position, Vector3.down * 3, Color.green);
+                try
+                {
+                    doorConnectedTo = raycastS.transform.gameObject;
+                }
+                catch
+                {
+                    print("I'm litteraly crying rn");
+                }
+                break;
+            case doorDir.west:
+                int layermaskW = LayerMask.GetMask("Default");
+                RaycastHit2D raycastW = Physics2D.Raycast(transform.position, Vector2.left, 2, layermaskW);
+                Debug.DrawRay(transform.position, Vector3.left * 2, Color.green);
+                try
+                {
+                    doorConnectedTo = raycastW.transform.gameObject;
+                }
+                catch
+                {
+                    print("I'm litteraly crying rn");
+                }
+
+                break;
+
+        }
     }
 
     public void OpenDoor() //plays animation when the door is opened
@@ -76,4 +173,33 @@ public class DoorControl : MonoBehaviour
 
         open = true;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            switch (direction)
+            {
+                case doorDir.north:
+                    collision.transform.position = doorConnectedTo.transform.position + Vector3.up;
+                    break;
+                case doorDir.east:
+                    collision.transform.position = doorConnectedTo.transform.position + Vector3.right;
+                    break;
+                case doorDir.south:
+                    collision.transform.position = doorConnectedTo.transform.position + Vector3.down;
+                    break;
+                case doorDir.west:
+                    collision.transform.position = doorConnectedTo.transform.position + Vector3.left;
+                    break;
+            }
+            
+        }
+    }
+
+
 }

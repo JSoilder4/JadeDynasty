@@ -27,15 +27,15 @@ public class overlapChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bc2D.OverlapCollider(new ContactFilter2D(), col2Ds) > 1)
-        {
+        //if (bc2D.OverlapCollider(new ContactFilter2D(), col2Ds) > 1)
+        //{
 
 
 
-            //print(bc2D.OverlapCollider(new ContactFilter2D(), col2Ds));
+        //    //print(bc2D.OverlapCollider(new ContactFilter2D(), col2Ds));
             
-            //
-        }
+        //    //
+        //}
 
         for (int i = 0; i < col2Ds.Length; i++)
         {
@@ -43,7 +43,7 @@ public class overlapChecker : MonoBehaviour
         }
         if (col2Ds[0].transform.parent.name != col2Ds[1].transform.parent.name)
         {
-            //Debug.Break();
+            Debug.Break();
             print("Overlap Detected, Retrying.");
             genManage.RetryLevel();
         }
