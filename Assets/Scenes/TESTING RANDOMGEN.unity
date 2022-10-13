@@ -391,7 +391,7 @@ MonoBehaviour:
   corridor: {fileID: 0}
   bossRooms:
   - {fileID: 5338347914404725052, guid: 3e0bdaaac34946c4a9bf663b2494329f, type: 3}
-  treasureRoom: {fileID: 0}
+  treasureRoom: {fileID: 5338347914404725052, guid: cd9996a7a8a31aa4981d9b79f1928cf1, type: 3}
   doors:
   - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}
   - {fileID: 3107764611136880445, guid: ebb9f215450e7844e86066db0635bb3c, type: 3}
@@ -405,16 +405,6 @@ MonoBehaviour:
   timer: 1
   roomPositionsToAssign: []
   dummyObject: {fileID: 278090218949551762, guid: b3d2cae0477104642a5f41099a6bf7b1, type: 3}
-  roomGridColumn0: 00000000000000000000
-  roomGridColumn1: 00000000000000000000
-  roomGridColumn2: 00000000000000000000
-  roomGridColumn3: 00000000000000000000
-  roomGridColumn4: 00000000000000000000
-  roomGridColumn5: 00000000000000000000
-  roomGridColumn6: 00000000000000000000
-  roomGridColumn7: 00000000000000000000
-  roomGridColumn8: 00000000000000000000
-  roomGridColumn9: 00000000000000000000
 --- !u!4 &602254766
 Transform:
   m_ObjectHideFlags: 0

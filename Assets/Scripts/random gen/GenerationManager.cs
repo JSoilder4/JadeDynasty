@@ -18,7 +18,8 @@ public class GenerationManager : MonoBehaviour
     public GameObject[] bossRooms;          //storage of the boss room prefabs
     public GameObject treasureRoom;         //storage of the treasure room prefab
     private bool corridorsSpawned = false;  //have the corridors been instantiated yet?
-    public GameObject[] doors;              //to keep track of all the doors in the scene
+    public GameObject[] doors;// Array;//to keep track of all the doors in the scene
+    //public List<GameObject> doors;
     public int floor = 0;                   //what floor the player is on
 
     //checklist for generation
@@ -27,12 +28,8 @@ public class GenerationManager : MonoBehaviour
     public bool tRoomAssigned = false;      //assign treasure room
 
     public List<DoorControl> doorControlList; // stupid shit for boss room checking
-
-    
-
     public float timer;  
     
-
     //Representation of the level as a grid. Each bool value corresponds to whether there is a room in that position on the grid
     public bool[,] roomGrid = new bool[10, 10] { 
         { false, false, false, false, false, false, false, false, false, false },
@@ -47,46 +44,13 @@ public class GenerationManager : MonoBehaviour
         { false, false, false, false, false, false, false, false, false, false }};
 
     //Lookup table of the actual in-engine transform positions for each position on the grid above
-    public Vector3[,] roomPositions = new Vector3[10, 10]; /*{ 
-        { new Vector3 (-200, 0, 200), new Vector3 (-150, 0, 200), new Vector3 (-100, 0, 200), new Vector3 (-50, 0, 200), new Vector3 (0, 0, 200), new Vector3 (50, 0, 200), new Vector3 (100, 0, 200), new Vector3 (150, 0, 200), new Vector3 (200, 0, 200), new Vector3 (250, 0, 200) },
-        { new Vector3 (-200, 0, 150), new Vector3 (-150, 0, 150), new Vector3 (-100, 0, 150), new Vector3 (-50, 0, 150), new Vector3 (0, 0, 150), new Vector3 (50, 0, 150), new Vector3 (100, 0, 150), new Vector3 (150, 0, 150), new Vector3 (200, 0, 150), new Vector3 (250, 0, 150) },
-        { new Vector3 (-200, 0, 100), new Vector3 (-150, 0, 100), new Vector3 (-100, 0, 100), new Vector3 (-50, 0, 100), new Vector3 (0, 0, 100), new Vector3 (50, 0, 100), new Vector3 (100, 0, 100), new Vector3 (150, 0, 100), new Vector3 (200, 0, 100), new Vector3 (250, 0, 100) },
-        { new Vector3 (-200, 0, 50), new Vector3 (-150, 0, 50), new Vector3 (-100, 0, 50), new Vector3 (-50, 0, 50), new Vector3 (0, 0, 50), new Vector3 (50, 0, 50), new Vector3 (100, 0, 50), new Vector3 (150, 0, 50), new Vector3 (200, 0, 50), new Vector3 (250, 0, 50) },
-        { new Vector3 (-200, 0, 0), new Vector3 (-150, 0, 0), new Vector3 (-100, 0, 0), new Vector3 (-50, 0, 0), new Vector3 (0, 0, 0), new Vector3 (50, 0, 0), new Vector3 (100, 0, 0), new Vector3 (150, 0, 0), new Vector3 (200, 0, 0), new Vector3 (250, 0, 0) },
-        { new Vector3 (-200, 0, -50), new Vector3 (-150, 0, -50), new Vector3 (-100, 0, -50), new Vector3 (-50, 0, -50), new Vector3 (0, 0, -50), new Vector3 (50, 0, -50), new Vector3 (100, 0, -50), new Vector3 (150, 0, -50), new Vector3 (200, 0, -50), new Vector3 (250, 0, -50) },
-        { new Vector3 (-200, 0, -100), new Vector3 (-150, 0, -100), new Vector3 (-100, 0, -100), new Vector3 (-50, 0, -100), new Vector3 (0, 0, -100), new Vector3 (50, 0, -100), new Vector3 (100, 0, -100), new Vector3 (150, 0, -100), new Vector3 (200, 0, -100), new Vector3 (250, 0, -100) },
-        { new Vector3 (-200, 0, -150), new Vector3 (-150, 0, -150), new Vector3 (-100, 0, -150), new Vector3 (-50, 0, -150), new Vector3 (0, 0, -150), new Vector3 (50, 0, -150), new Vector3 (100, 0, -150), new Vector3 (150, 0, -150), new Vector3 (200, 0, -150), new Vector3 (250, 0, -150) },
-        { new Vector3 (-200, 0, -200), new Vector3 (-150, 0, -200), new Vector3 (-100, 0, -200), new Vector3 (-50, 0, -200), new Vector3 (0, 0, -200), new Vector3 (50, 0, -200), new Vector3 (100, 0, -200), new Vector3 (150, 0, -200), new Vector3 (200, 0, -200), new Vector3 (250, 0, -200) },
-        { new Vector3 (-200, 0, -250), new Vector3 (-150, 0, -250), new Vector3 (-100, 0, -250), new Vector3 (-50, 0, -250), new Vector3 (0, 0, -250), new Vector3 (50, 0, -250), new Vector3 (100, 0, -250), new Vector3 (150, 0, -250), new Vector3 (200, 0, -250), new Vector3 (250, 0, -250) }};
-        */
+    public Vector3[,] roomPositions = new Vector3[10, 10];
     public List<Vector3> roomPositionsToAssign;
     public GameObject dummyObject;
-   
-    //Debug: just translates the 2D array roomGrid into 10 1D arrays that can be viewed in the inspector
-    [SerializeField] private bool[] roomGridColumn0 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn1 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn2 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn3 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn4 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn5 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn6 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn7 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn8 = new bool[10];
-    [SerializeField] private bool[] roomGridColumn9 = new bool[10];
 
     void Start()
     {
         timer = timerOG;
-        //for (int x = -60; x <= 75; x += 15)
-        //{
-        //    for (int y = 36; y >= -45; y -= 9)
-        //    {
-        //        roomPositionsToAssign.Add(new Vector3(x, y, 0));
-        //        print("buttwrinkle");
-        //        Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
-
-        //    }
-        //}
         int xForDebug = 0;
         int yForDebug = 0;
         for (float y = roomHeight*4*2; y >= -roomHeight*5*2; y -= roomHeight*2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
@@ -103,13 +67,13 @@ public class GenerationManager : MonoBehaviour
             xForDebug = 0;
             yForDebug++;
         }
-        int i = 0;
+        int iRoomPos = 0;
         for (int y2 = 0; y2 < 10; y2++)
         {
             for (int x2 = 0; x2 < 10; x2++)
             {
-                roomPositions[x2, y2] = roomPositionsToAssign[i];
-                i++;
+                roomPositions[x2, y2] = roomPositionsToAssign[iRoomPos];
+                iRoomPos++;
             }
         }
 
@@ -117,6 +81,12 @@ public class GenerationManager : MonoBehaviour
         Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
         roomGrid[4, 4] = true;
         roomsCreated = 1;
+
+       
+        //for (int i = 0; i < doorsArray.Length; i++)
+        //{
+        //    doors.Add(doorsArray[i]);
+        //}
     }
 
     void Update()
@@ -146,21 +116,6 @@ public class GenerationManager : MonoBehaviour
 
         //    corridorsSpawned = true;
         //}
-
-        //just populates the above debug arrays
-        for(int i = 0; i < roomGrid.GetLength(1); i++)
-        {
-            roomGridColumn0[i] = roomGrid[0, i];
-            roomGridColumn1[i] = roomGrid[1, i];
-            roomGridColumn2[i] = roomGrid[2, i];
-            roomGridColumn3[i] = roomGrid[3, i];
-            roomGridColumn4[i] = roomGrid[4, i];
-            roomGridColumn5[i] = roomGrid[5, i];
-            roomGridColumn6[i] = roomGrid[6, i];
-            roomGridColumn7[i] = roomGrid[7, i];
-            roomGridColumn8[i] = roomGrid[8, i];
-            roomGridColumn9[i] = roomGrid[9, i];
-        }
 
         //populates these arrays every frame, since the floor generation happens across multiple frames
         doors = GameObject.FindGameObjectsWithTag("door");
@@ -261,7 +216,11 @@ public class GenerationManager : MonoBehaviour
             AssignTreasureRoom();
         }
 
-        
+        if (genComplete && bossRoomAssigned)
+        {
+            doorChecker();
+        }
+
     }
     private void LateUpdate()
     {
@@ -285,6 +244,19 @@ public class GenerationManager : MonoBehaviour
             StopCoroutine(CheckLevel());
         }
         
+    }
+
+    public void doorChecker()
+    {
+        print("yee");
+        for (int i = 0; i < doors.Length; i++)
+        {
+            if (!doors[i].GetComponent<DoorControl>().active)
+            { 
+                Destroy(doors[i]);
+                //doors.RemoveAt(i);
+            }
+        }
     }
 
     public void AssignBossRoom(int floor) //picks the room furthest from the player's starting room and replaces it with the appropriate boss room (based on floor)
@@ -340,7 +312,13 @@ public class GenerationManager : MonoBehaviour
     {
         //because the boss room was just assigned, we know it is the last room in the array, and the starting room is always 0, so we just exclude the ends of the array
         int roomToReplaceIndex = Random.Range(1, createdRooms.Length - 1);
-
+        RoomGenerator rG;
+        rG = createdRooms[roomToReplaceIndex].GetComponent<RoomGenerator>();
+        if (rG.type == RoomGenerator.roomType.RegularX2)
+        {
+            AssignTreasureRoom();
+            return;
+        }
         //replace room
         Instantiate(treasureRoom, createdRooms[roomToReplaceIndex].transform.position, Quaternion.identity);
         Destroy(createdRooms[roomToReplaceIndex]);

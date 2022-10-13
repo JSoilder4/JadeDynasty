@@ -123,10 +123,13 @@ public class RoomGenerator : MonoBehaviour
 
             completed = true;
 
-            for(int i = 0; i < doors.Count; i++)
-            {
-                doors[i].GetComponent<DoorControl>().locked = false;
-            }
+
+        //COMEBACK TO THIS LATER????
+
+            //for(int i = 0; i < doors.Count; i++)
+            //{
+            //    doors[i].GetComponent<DoorControl>().locked = false;
+            //}
     }
     public void genRooms(int numOfRooms)
     {
