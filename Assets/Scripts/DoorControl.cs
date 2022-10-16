@@ -21,6 +21,7 @@ public class DoorControl : MonoBehaviour
     public doorDir direction;
 
     public GameObject doorConnectedTo;
+    public DoorControl doorConnectedToControl;
 
     public bool open = false;   //is this door currently open?
     public bool locked = false; //is this door currently locked?
@@ -33,7 +34,7 @@ public class DoorControl : MonoBehaviour
     public bool bigRoom;
     public int bigRoomNum; //0 NorthWest, 1 NorthEast, 2 SouthWest, 3 SouthEast
 
-
+public CameraFollow camFollow;
 
     private void Start()
     {
@@ -55,9 +56,33 @@ public class DoorControl : MonoBehaviour
             direction = doorDir.west;
         }
 
+
+
         //assign variables
         spriteR = GetComponent<SpriteRenderer>();
         room = transform.parent.gameObject;
+        //parentRoomGen = room.GetComponent<RoomGenerator>();
+        if(bigRoom)
+        {
+            if((transform.position.x > room.transform.position.x) && (transform.position.y > room.transform.position.y)) //top right
+            {
+                bigRoomNum = 1;
+            }
+            if((transform.position.x < room.transform.position.x) && (transform.position.y > room.transform.position.y)) //top left
+            {
+                bigRoomNum = 0;
+            }
+            if((transform.position.x > room.transform.position.x) && (transform.position.y < room.transform.position.y)) //bottom right
+            {
+                bigRoomNum = 3;
+            }
+            if((transform.position.x < room.transform.position.x) && (transform.position.y < room.transform.position.y)) //bottom left
+            {
+                bigRoomNum = 2;
+            }
+        }
+        
+
         if (bigRoom)
         {
             posX = room.GetComponent<RoomGenerator>().posXBig[bigRoomNum];
@@ -72,6 +97,7 @@ public class DoorControl : MonoBehaviour
 
         //hatch = transform.GetChild(3).gameObject;
         //doorAnim = hatch.GetComponent<Animator>();
+        camFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         locked = false;
     }
@@ -106,6 +132,7 @@ public class DoorControl : MonoBehaviour
                 try
                 {
                     doorConnectedTo = raycastN.transform.gameObject;
+                    doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
                 }
                 catch
                 {
@@ -121,6 +148,7 @@ public class DoorControl : MonoBehaviour
                 try
                 {
                     doorConnectedTo = raycastE.transform.gameObject;
+                    doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
                 }
                 catch
                 {
@@ -134,6 +162,7 @@ public class DoorControl : MonoBehaviour
                 try
                 {
                     doorConnectedTo = raycastS.transform.gameObject;
+                    doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
                 }
                 catch
                 {
@@ -147,6 +176,7 @@ public class DoorControl : MonoBehaviour
                 try
                 {
                     doorConnectedTo = raycastW.transform.gameObject;
+                    doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
                 }
                 catch
                 {
@@ -186,15 +216,60 @@ public class DoorControl : MonoBehaviour
             {
                 case doorDir.north:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.up;
+                    if(doorConnectedToControl.bigRoom)
+                    {
+                        camFollow.cam = CameraFollow.CamType.followAndMouse;
+                        camFollow.y--;
+                    }
+                    else
+                    {
+                        camFollow.cam = CameraFollow.CamType.gridBased;
+                        camFollow.y = posY-1;
+                        camFollow.x = posX;
+                    }
+                    
                     break;
                 case doorDir.east:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.right;
+                    if(doorConnectedToControl.bigRoom)
+                    {
+                        camFollow.cam = CameraFollow.CamType.followAndMouse;
+                        camFollow.x++;
+                    }
+                    else
+                    {
+                        camFollow.cam = CameraFollow.CamType.gridBased;
+                        camFollow.x = posX+1;
+                        camFollow.y = posY;
+                    }
                     break;
                 case doorDir.south:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.down;
+                    if(doorConnectedToControl.bigRoom)
+                    {
+                        camFollow.cam = CameraFollow.CamType.followAndMouse;
+                        camFollow.y++;
+                    }
+                    else
+                    {
+                        camFollow.cam = CameraFollow.CamType.gridBased;
+                        camFollow.y = posY+1;
+                        camFollow.x = posX;
+                    }
                     break;
                 case doorDir.west:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.left;
+                    if(doorConnectedToControl.bigRoom)
+                    {
+                        camFollow.cam = CameraFollow.CamType.followAndMouse;
+                        camFollow.x--;
+                    }
+                    else
+                    {
+                        camFollow.cam = CameraFollow.CamType.gridBased;
+                        camFollow.x = posX-1;
+                        camFollow.y = posY;
+                    }
                     break;
             }
             

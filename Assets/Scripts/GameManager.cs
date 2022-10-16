@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         clense = playergun.gunScript.clense;
         playerScript = player.GetComponent<playerMove>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
     public void playPickupSound() //gun switch sound
     {
@@ -244,7 +245,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         rerollGuns();
         playergun.gunScript.resetGun();
-        spawnEnemies();
+        //spawnEnemies();
     }
     public void rerollGuns()
     {
@@ -300,7 +301,7 @@ public class GameManager : MonoBehaviour
         hpText.text = "HP: " + playerScript.hp.currentHP;
 
 
-        checkForEnemies();
+        //checkForEnemies();
     }
     public void start()
     {

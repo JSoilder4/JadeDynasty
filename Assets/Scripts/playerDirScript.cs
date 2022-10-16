@@ -33,6 +33,7 @@ public class playerDirScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         playerDirectionScript = this;
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
