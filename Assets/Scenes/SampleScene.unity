@@ -3787,7 +3787,7 @@ GameObject:
   - component: {fileID: 403375769}
   m_Layer: 0
   m_Name: CM vcam1
-  m_TagString: Untagged
+  m_TagString: virtualCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38116,12 +38116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64e1aa7eeab5bd498b393b69179d9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: 1
+  cam: 0
+  virtualCam: {fileID: 0}
   player: {fileID: 0}
   leftrightNum: 0
   camVar: {fileID: 0}
   mousePos: {x: 0, y: 0, z: 0}
   camBetween: {fileID: 0}
+  genManage: {fileID: 0}
+  currentRoom: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!114 &1836047754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51036,7 +51041,7 @@ PrefabInstance:
     - target: {fileID: 4760173122625586475, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1836047751}
     - target: {fileID: 4760173122625586477, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
