@@ -227,6 +227,7 @@ public CameraFollow camFollow;
                         camFollow.y = posY-1;
                         camFollow.x = posX;
                     }
+                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     
                     break;
                 case doorDir.east:
@@ -242,6 +243,7 @@ public CameraFollow camFollow;
                         camFollow.x = posX+1;
                         camFollow.y = posY;
                     }
+                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.south:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.down;
@@ -256,6 +258,7 @@ public CameraFollow camFollow;
                         camFollow.y = posY+1;
                         camFollow.x = posX;
                     }
+                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.west:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.left;
@@ -270,6 +273,7 @@ public CameraFollow camFollow;
                         camFollow.x = posX-1;
                         camFollow.y = posY;
                     }
+                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
             }
             

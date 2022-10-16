@@ -24,6 +24,8 @@ public class CameraFollow : MonoBehaviour
     public GameObject camBetween;
     public GenerationManager genManage;
 
+    public RoomGenerator currentRoom;
+
     public int x, y;
 
     // Start is called before the first frame update
@@ -72,7 +74,8 @@ public class CameraFollow : MonoBehaviour
                 virtualCam.transform.position = new Vector3(genManage.roomPositions[x,y].x, genManage.roomPositions[x,y].y, -10);
                 break;
             case CamType.followAndMouse:
-                virtualCam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);//player.transform.position;// + mousePos;
+            // Mathf.Clamp(player.transform.position.y, 0.y, 2.y)
+                virtualCam.transform.position = new Vector3(Mathf.Clamp(player.transform.position.x, genManage.roomPositions[currentRoom.posXBig[0], currentRoom.posYBig[0]].x, genManage.roomPositions[currentRoom.posXBig[1], currentRoom.posYBig[1]].x), Mathf.Clamp(player.transform.position.y,genManage.roomPositions[currentRoom.posXBig[2], currentRoom.posYBig[2]].y, genManage.roomPositions[currentRoom.posXBig[0], currentRoom.posYBig[0]].y), -10);//player.transform.position;// + mousePos;
                 break;
         }
         
