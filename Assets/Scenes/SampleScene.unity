@@ -5111,27 +5111,20 @@ MonoBehaviour:
   roomHeight: 6
   roomsCreated: 0
   rooms:
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
+  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
+  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
+  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
+  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
   bigRooms:
-  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
-  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
-  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
-  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
+  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
+  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
+  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
   createdRooms: []
   corridor: {fileID: 0}
   bossRooms:
-  - {fileID: 5338347914404725052, guid: 3e0bdaaac34946c4a9bf663b2494329f, type: 3}
-  treasureRoom: {fileID: 5338347914404725052, guid: cd9996a7a8a31aa4981d9b79f1928cf1, type: 3}
+  - {fileID: 5338347914404725052, guid: 4c1ce20d52c9f4043be163b59580f3a0, type: 3}
+  treasureRoom: {fileID: 5338347914404725052, guid: 01d16aea20b080846a6997ddcbdbea3e, type: 3}
   doors:
   - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}
   - {fileID: 3107764611136880445, guid: ebb9f215450e7844e86066db0635bb3c, type: 3}
