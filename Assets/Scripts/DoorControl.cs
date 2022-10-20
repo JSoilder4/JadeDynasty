@@ -127,7 +127,7 @@ public CameraFollow camFollow;
                 //Vector3 distToPlayerVect = player.transform.position - transform.position;
                 // gameObject.layer = LayerMask.GetMask("Ignore Raycast");
                 int layermaskN = LayerMask.GetMask("Default");
-                RaycastHit2D raycastN = Physics2D.Raycast(transform.position, Vector2.up, 3, layermaskN);
+                RaycastHit2D raycastN = Physics2D.Raycast(transform.position, Vector2.up, 5, layermaskN);
                 Debug.DrawRay(transform.position, Vector3.up * 3, Color.green);
                 try
                 {
@@ -157,7 +157,7 @@ public CameraFollow camFollow;
                 break;
             case doorDir.south:
                 int layermaskS = LayerMask.GetMask("Default");
-                RaycastHit2D raycastS = Physics2D.Raycast(transform.position, Vector2.down, 3, layermaskS);
+                RaycastHit2D raycastS = Physics2D.Raycast(transform.position, Vector2.down, 5, layermaskS);
                 Debug.DrawRay(transform.position, Vector3.down * 3, Color.green);
                 try
                 {
