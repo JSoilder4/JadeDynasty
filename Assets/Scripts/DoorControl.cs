@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorControl : MonoBehaviour
 {
     private GameObject room;    //the parent room
+    public RoomGenerator roomScript;
   //  private GameObject hatch;   //the actual "door" that moves
    // public Material hatchMat;   //the material of the door part
    // public Material wallMat;    //the material of the surrounding wall
@@ -23,6 +24,8 @@ public class DoorControl : MonoBehaviour
     public GameObject doorConnectedTo;
     public DoorControl doorConnectedToControl;
 
+    public bool connected = false;
+
     public bool open = false;   //is this door currently open?
     public bool locked = false; //is this door currently locked?
     public bool active = false; //is this door currently active(real)?
@@ -39,28 +42,34 @@ public CameraFollow camFollow;
     private void Start()
     {
 
+        room = transform.parent.gameObject;
+        roomScript = room.GetComponent<RoomGenerator>();
         if (name == "doorNorth")
         {
             direction = doorDir.north;
+            
         }
         else if (name == "doorEast")
         {
             direction = doorDir.east;
+            
         }
         else if (name == "doorSouth")
         {
             direction = doorDir.south;
+            
         }
         else if (name == "doorWest")
         {
             direction = doorDir.west;
+            
         }
 
 
 
         //assign variables
         spriteR = GetComponent<SpriteRenderer>();
-        room = transform.parent.gameObject;
+
         //parentRoomGen = room.GetComponent<RoomGenerator>();
         if(bigRoom)
         {
@@ -105,6 +114,41 @@ public CameraFollow camFollow;
     private void Update()
     {
         spriteR.enabled = active;
+        if(connected)
+        {
+            switch(direction)
+            {
+                case doorDir.north:
+                    if(!roomScript.north || !roomScript.north0 || !roomScript.north1)
+                    {
+                        Debug.Break();
+                        roomScript.RegenMe(bigRoom);
+                    }
+                break;
+                case doorDir.east:
+                    if(!roomScript.east || !roomScript.east1 || !roomScript.east3)
+                    {
+                        Debug.Break();
+                        roomScript.RegenMe(bigRoom);
+                    }
+                break;
+                case doorDir.south:
+                    if(!roomScript.south || !roomScript.south2 || !roomScript.south3)
+                    {
+                        Debug.Break();
+                        roomScript.RegenMe(bigRoom);
+                    }
+                break;
+                case doorDir.west:
+                    if(!roomScript.west || !roomScript.west0 || !roomScript.west2)
+                    {
+                        Debug.Break();
+                        roomScript.RegenMe(bigRoom);
+                    }
+                break;
+            }
+        }
+        
         // gameObject.SetActive(active);
 
 
@@ -133,6 +177,8 @@ public CameraFollow camFollow;
                 {
                     doorConnectedTo = raycastN.transform.gameObject;
                     doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
+                    connected = true;
+
                 }
                 catch
                 {
@@ -149,6 +195,7 @@ public CameraFollow camFollow;
                 {
                     doorConnectedTo = raycastE.transform.gameObject;
                     doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
+                    connected = true;
                 }
                 catch
                 {
@@ -163,6 +210,7 @@ public CameraFollow camFollow;
                 {
                     doorConnectedTo = raycastS.transform.gameObject;
                     doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
+                    connected = true;
                 }
                 catch
                 {
@@ -177,6 +225,7 @@ public CameraFollow camFollow;
                 {
                     doorConnectedTo = raycastW.transform.gameObject;
                     doorConnectedToControl = doorConnectedTo.GetComponent<DoorControl>();
+                    connected = true;
                 }
                 catch
                 {

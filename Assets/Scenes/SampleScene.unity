@@ -5113,8 +5113,8 @@ MonoBehaviour:
   rooms:
   - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
   - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
-  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
-  - {fileID: 5338347914404725052, guid: 4feedbdec0daad0469576ebab4f16dd9, type: 3}
+  - {fileID: 5338347914404725052, guid: 3c0266991114ec7448971ad12b7bcce7, type: 3}
+  - {fileID: 5338347914404725052, guid: a97455b38abc7874ea1995bff8876d1d, type: 3}
   bigRooms:
   - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
   - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}

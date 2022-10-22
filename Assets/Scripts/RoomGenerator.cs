@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
+    [Header("Which doors exist (Regular)")]
+    public bool south = true; 
+    public bool west = true;
+    public bool north = true; 
+    public bool east = true;
+    [Header("Which doors exist (BigRoom)")] //directionSubRoomNum
+    public bool south3 = true; 
+    public bool south2 = true; 
+    public bool west2 = true; 
+    public bool west0 = true; 
+    public bool north0 = true; 
+    public bool north1 = true; 
+    public bool east1 = true; 
+    public bool east3 = true; 
+
     public enum roomType
     {
         Regular,
@@ -11,6 +26,7 @@ public class RoomGenerator : MonoBehaviour
         Treasure,
         RegularX2,
     }
+    [Header("The rest (ask before touching)")]
     public roomType type;
 
     public int roomIndexKilled; //used for boss/treasue/special rooms
@@ -146,6 +162,28 @@ public class RoomGenerator : MonoBehaviour
 
             roomDir = Mathf.FloorToInt(Random.Range(0, 4)); //which direction am I going to make this room in?
             typeOfRoom = Mathf.FloorToInt(Random.Range(1, 101)); //which type of room am I generating? (BIG? L?) (0 = big  for now)
+
+            if((!south && roomDir == 0) || (!west && roomDir == 1) || (!north && roomDir == 2) || (!east && roomDir == 3))
+            {
+                genRooms(numOfRooms);
+            }
+
+            // while(!south && roomDir == 0)
+            // {
+            //     roomDir = Mathf.FloorToInt(Random.Range(0, 4));
+            // }
+            // while(!west && roomDir == 1)
+            // {
+            //     roomDir = Mathf.FloorToInt(Random.Range(0, 4));
+            // }
+            // while(!north && roomDir == 2)
+            // {
+            //     roomDir = Mathf.FloorToInt(Random.Range(0, 4));
+            // }
+            // while(!east && roomDir == 3)
+            // {
+            //     roomDir = Mathf.FloorToInt(Random.Range(0, 4));
+            // }
 
         if (typeOfRoom <= 13)
         {
@@ -645,6 +683,27 @@ public class RoomGenerator : MonoBehaviour
     //Done:
         //return pos;
     }
+
+    public void RegenMe(bool bigRoom)
+    {
+        print("I NEED HEALING");
+        roomsMade.Remove(gameObject);
+
+        if(bigRoom)
+        {
+            roomRef = Instantiate(bigRooms[Mathf.FloorToInt(Random.Range(1, bigRooms.Length))], genManage.roomPositions[posX, posY], Quaternion.identity);
+        }
+        else
+        {
+            roomRef = Instantiate(rooms[Mathf.FloorToInt(Random.Range(1, rooms.Length))], genManage.roomPositions[posX, posY], Quaternion.identity); //instantiate the room
+        }
+        
+
+        roomsMade.Add(roomRef);
+
+        Destroy(gameObject);
+    }
+
 
     public List<GameObject> FindChildrenWithTag(Transform parent, string tag) //simple function to find all children of a game object "parent" with tag "tag" (why is this not built in???)
     {
