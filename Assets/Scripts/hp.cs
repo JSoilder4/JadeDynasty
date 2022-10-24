@@ -181,8 +181,8 @@ public class hp : MonoBehaviour
         if (currentHP <= 0 && !player)
         {
             print("die" + currentHP);
-            GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
-            GameManager.GM.enemiesToReset.Remove(gameObject);
+           // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
+           // GameManager.GM.enemiesToReset.Remove(gameObject);
             Destroy(gameObject);
         }
     }

@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour
 
     public void respawn()
     {
-        sceneReset();
+        //sceneReset();
        
         player.transform.position = new Vector3(0, 0, 0);
         cam.transform.position = new Vector3(0,0,-10);

@@ -135,6 +135,7 @@ public class RoomGenerator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             genManage.RetryLevel();
+            GameManager.GM.sceneReset();
         }
 
             completed = true;

@@ -121,28 +121,28 @@ public CameraFollow camFollow;
                 case doorDir.north:
                     if(!roomScript.north || !roomScript.north0 || !roomScript.north1)
                     {
-                        Debug.Break();
+                        //Debug.Break();
                         roomScript.RegenMe(bigRoom);
                     }
                 break;
                 case doorDir.east:
                     if(!roomScript.east || !roomScript.east1 || !roomScript.east3)
                     {
-                        Debug.Break();
+                        //Debug.Break();
                         roomScript.RegenMe(bigRoom);
                     }
                 break;
                 case doorDir.south:
                     if(!roomScript.south || !roomScript.south2 || !roomScript.south3)
                     {
-                        Debug.Break();
+                        //Debug.Break();
                         roomScript.RegenMe(bigRoom);
                     }
                 break;
                 case doorDir.west:
                     if(!roomScript.west || !roomScript.west0 || !roomScript.west2)
                     {
-                        Debug.Break();
+                        //Debug.Break();
                         roomScript.RegenMe(bigRoom);
                     }
                 break;
