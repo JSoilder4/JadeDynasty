@@ -5112,14 +5112,14 @@ MonoBehaviour:
   roomsCreated: 0
   rooms:
   - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 6805955163700689163, guid: 0e42ce06ecef3ee44a2e5f348e9c296c, type: 3}
-  - {fileID: 5338347914404725052, guid: bb10a5d481dd3cf40b04e6d6a3fbf97a, type: 3}
-  - {fileID: 6805955163700689163, guid: 0e42ce06ecef3ee44a2e5f348e9c296c, type: 3}
+  - {fileID: 6343888165596577072, guid: aff78f8b281ec4b4abd5bfa9fdb907e3, type: 3}
+  - {fileID: 6343888165596577072, guid: 6c7db69b37d1be545a7b5e8cfee4aca7, type: 3}
+  - {fileID: 6343888165596577072, guid: d3b1a70dcb2fad449bb31c342a3f56bc, type: 3}
   bigRooms:
-  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
-  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
-  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
-  - {fileID: 5338347914404725052, guid: a8ea4e0eb66df3643b73626389ea39af, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
+  - {fileID: 5338347914404725052, guid: eb027fb6acf00d042a4f4aaa36693ee0, type: 3}
   createdRooms: []
   corridor: {fileID: 0}
   bossRooms:
