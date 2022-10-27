@@ -53,11 +53,25 @@ public class RoomGenerator : MonoBehaviour
 
     public int doorsConnected;
 
+    public bool cleared;
+
     [Header("Big Room :(")]
     public int[] posXBig = new int[4], posYBig = new int[4]; //0 = NorthWest, 1 = NorthEast, 2 = SouthWest, 3 = SouthEast
 
 
 
+    public void enemiesDebug(){
+        for(int i = 0; i < enemies.Count; i++){
+            print(enemies[i] + " "+i);
+        }
+    }
+    public void enemiesNullRemover(){
+        for(int i = 0; i < enemies.Count; i++){
+            if(enemies[i] == null){
+                enemies.RemoveAt(i);
+            }
+        }
+    }
 
     void Start()
     {
@@ -74,10 +88,7 @@ public class RoomGenerator : MonoBehaviour
         {
             enemySpawnerScripts.Add(g.GetComponent<enemySpawn>());
         }
-        foreach (enemySpawn eS in enemySpawnerScripts)
-        {
-            enemies.Add(eS.spawnedReference);
-        }
+        
 
         if (type != roomType.RegularX2)
         {
@@ -161,8 +172,23 @@ public class RoomGenerator : MonoBehaviour
         //{
 
         //}
+        if(GameManager.GM.currentRoom == this){
+            //enemiesDebug();
+            //enemiesNullRemover();
+            
+            genManage.nullRemover(enemies);
+            
+            if(enemies.Count <= 0){
+                cleared = true;
+            }
+        }
 
-
+        if(cleared)
+        {
+            foreach(GameObject g in doors){
+                g.GetComponent<DoorControl>().locked = false;
+            }
+        }
 
         //COMEBACK TO THIS LATER????
 
@@ -730,10 +756,23 @@ public class RoomGenerator : MonoBehaviour
 
     public void spawnEnemies()
     {
-        foreach (enemySpawn eS in enemySpawnerScripts) 
+        //genManage.nullRemover(doors);
+        if(!cleared && enemySpawns.Count > 0)
         {
-            eS.spawnenemy();
+            foreach (enemySpawn eS in enemySpawnerScripts) 
+            {
+                eS.spawnenemy();
+            }
+            foreach (enemySpawn eS in enemySpawnerScripts)
+            {
+                enemies.Add(eS.spawnedReference);
+            }
+            foreach (GameObject g in doors)
+            {
+                g.GetComponent<DoorControl>().locked = true;
+            }
         }
+
     }
 
     public List<GameObject> FindChildrenWithTag(Transform parent, string tag) //simple function to find all children of a game object "parent" with tag "tag" (why is this not built in???)

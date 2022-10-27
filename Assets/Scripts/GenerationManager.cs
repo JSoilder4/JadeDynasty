@@ -219,9 +219,30 @@ public class GenerationManager : MonoBehaviour
         if (genComplete && bossRoomAssigned)
         {
             doorChecker();
+            //nullRemover(doors);
+            foreach(GameObject g in createdRooms){
+                nullRemover(g.GetComponent<RoomGenerator>().doors);
+            }
+            
         }
 
     }
+    public void nullRemover(List<GameObject> l)
+    {
+        for(int i = 0; i < l.Count; i++){
+            if(l[i] == null){
+                l.RemoveAt(i);
+            }
+        }
+    }
+    //     public void nullRemover(GameObject[] a)
+    // {
+    //     for(int i = 0; i < a.Length; i++){
+    //         if(a[i] == null){
+    //             a.;
+    //         }
+    //     }
+    // }
     private void LateUpdate()
     {
         timer -= Time.deltaTime;

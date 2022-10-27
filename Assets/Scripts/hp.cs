@@ -19,6 +19,7 @@ public class hp : MonoBehaviour
     public float airedTimer;
 
     public SpriteRenderer sprite;
+    
     public AudioClip fireClip;
 
     public AudioSource mySource;

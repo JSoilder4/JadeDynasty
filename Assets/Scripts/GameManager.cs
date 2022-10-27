@@ -406,11 +406,11 @@ public class GameManager : MonoBehaviour
         end = true;
         wintext.text = "All Enemies Defeated! Final Score: " + score; 
     }
-    public void spawnEnemies()
-    {
-        for (int i = 0; i < enemyspawners.Length-1; i++)
-        {
-            enemyspawners[i].spawnenemy();
-        }
-    }
+    // public void spawnEnemies()
+    // {
+    //     for (int i = 0; i < enemyspawners.Length-1; i++)
+    //     {
+    //         enemyspawners[i].spawnenemy();
+    //     }
+    // }
 }
