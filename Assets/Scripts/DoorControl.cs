@@ -272,15 +272,17 @@ public CameraFollow camFollow;
                     if(doorConnectedToControl.bigRoom)
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
-                        camFollow.y--;
+                        //camFollow.y--;
+                        GameManager.GM.renderMinimap(0, -1);
                     }
                     else
                     {
                         camFollow.cam = CameraFollow.CamType.gridBased;
-                        camFollow.y = posY-1;
-                        camFollow.x = posX;
+                        GameManager.GM.renderMinimap(0, -1, posX, posY);
+                        //camFollow.y = posY-1;
+                        //camFollow.x = posX;
                     }
-                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     
                     break;
                 case doorDir.east:
@@ -288,45 +290,51 @@ public CameraFollow camFollow;
                     if(doorConnectedToControl.bigRoom)
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
-                        camFollow.x++;
+                        //camFollow.x++;
+                        GameManager.GM.renderMinimap(1, 0);
                     }
                     else
                     {
                         camFollow.cam = CameraFollow.CamType.gridBased;
-                        camFollow.x = posX+1;
-                        camFollow.y = posY;
+                        //camFollow.x = posX+1;
+                        //camFollow.y = posY;
+                        GameManager.GM.renderMinimap(1, 0, posX, posY);
                     }
-                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.south:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.down;
                     if(doorConnectedToControl.bigRoom)
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
-                        camFollow.y++;
+                        //camFollow.y++;
+                        GameManager.GM.renderMinimap(0, 1);
                     }
                     else
                     {
                         camFollow.cam = CameraFollow.CamType.gridBased;
-                        camFollow.y = posY+1;
-                        camFollow.x = posX;
+                        //camFollow.y = posY+1;
+                        //camFollow.x = posX;
+                        GameManager.GM.renderMinimap(0, 1, posX, posY);
                     }
-                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.west:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.left;
                     if(doorConnectedToControl.bigRoom)
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
-                        camFollow.x--;
+                        //camFollow.x--;
+                        GameManager.GM.renderMinimap(-1, 0);
                     }
                     else
                     {
                         camFollow.cam = CameraFollow.CamType.gridBased;
-                        camFollow.x = posX-1;
-                        camFollow.y = posY;
+                        //camFollow.x = posX-1;
+                        //camFollow.y = posY;
+                        GameManager.GM.renderMinimap(-1, 0, posX, posY);
                     }
-                    camFollow.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
             }
             

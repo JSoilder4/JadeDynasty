@@ -55,6 +55,26 @@ public class GameManager : MonoBehaviour
 
     public Text hpText;
 
+    public int playerX, playerY;
+
+    public RoomGenerator currentRoom;
+    /// <summary>
+    /// Representation of the player on the room grid. (CAN SWITCH TO ENUMS)
+    /// </summary>
+    public string[,] playerRoomGrid = new string[10, 10] {
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" },
+        { "null", "null", "null", "null", "null", "null", "null", "null", "null", "null" }};
+
+    public GenerationManager genManage;
+
     private void Awake()
     {
         if (GM == null)
@@ -67,7 +87,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         timer = timerOG;
-        maxScore = 5000;
+        //maxScore = 5000;
     }
 
     // Start is called before the first frame update
@@ -76,6 +96,41 @@ public class GameManager : MonoBehaviour
         clense = playergun.gunScript.clense;
         playerScript = player.GetComponent<playerMove>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
+
+
+        playerX = 4;
+        playerY = 4;
+        playerRoomGrid[playerX, playerY] = "true";
+
+    }
+    /// <summary>
+    /// Currently used for moving the reference of where the player is. Eventually can also be used to implement minimap.
+    /// </summary>
+    /// <param name="xDifference"></param>
+    /// <param name="yDifference"></param>
+    public void renderMinimap(int xDifference, int yDifference) //should be called by moving between doors.
+    {
+        playerRoomGrid[playerX, playerY] = "false";
+        playerX += xDifference;
+        playerY += yDifference;
+        playerRoomGrid[playerX, playerY] = "true";
+        //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
+    }
+    /// <summary>
+    /// Used for switching between bigrooms. Will need to adjust minimap to account for big rooms later.
+    /// </summary>
+    /// <param name="xDifference"></param>
+    /// <param name="yDifference"></param>
+    /// <param name="setX"></param>
+    /// <param name="setY"></param>
+    public void renderMinimap(int xDifference, int yDifference, int setX, int setY) //should be called by moving between doors.
+    {
+        playerRoomGrid[playerX, playerY] = "false";
+        playerX = setX + xDifference;
+        playerY = setY + yDifference;
+        playerRoomGrid[playerX, playerY] = "true";
+        //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     public void playPickupSound() //gun switch sound
     {

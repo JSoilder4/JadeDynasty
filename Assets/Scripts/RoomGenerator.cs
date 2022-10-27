@@ -40,7 +40,9 @@ public class RoomGenerator : MonoBehaviour
     public GameObject[] rooms;                                //storage of the different room prefabs
     public GameObject[] bigRooms;
     public List<GameObject> doors = new List<GameObject>();   //the doors in this room
-    //public List<GameObject> enemies = new List<GameObject>(); //the enemies in this room
+    public List<GameObject> enemySpawns = new List<GameObject>(); //the enemyspawners in this room
+    public List<enemySpawn> enemySpawnerScripts = new List<enemySpawn>();
+    public List<GameObject> enemies = new List<GameObject>();
     private GenerationManager genManage;                      //reference to the manager
     public GameObject roomRef;                               //debug: for remembering what room begat what other room
     public bool completed = false;
@@ -54,6 +56,9 @@ public class RoomGenerator : MonoBehaviour
     [Header("Big Room :(")]
     public int[] posXBig = new int[4], posYBig = new int[4]; //0 = NorthWest, 1 = NorthEast, 2 = SouthWest, 3 = SouthEast
 
+
+
+
     void Start()
     {
         start = true;
@@ -63,6 +68,16 @@ public class RoomGenerator : MonoBehaviour
         bigRooms = genManage.bigRooms;
 
         doors = FindChildrenWithTag(gameObject.transform, "door");
+        enemySpawns = FindChildrenWithTag(gameObject.transform, "enemyspawn");
+
+        foreach(GameObject g in enemySpawns)
+        {
+            enemySpawnerScripts.Add(g.GetComponent<enemySpawn>());
+        }
+        foreach (enemySpawn eS in enemySpawnerScripts)
+        {
+            enemies.Add(eS.spawnedReference);
+        }
 
         if (type != roomType.RegularX2)
         {
@@ -139,6 +154,14 @@ public class RoomGenerator : MonoBehaviour
         }
 
             completed = true;
+
+
+        //print(enemies);
+        //if (transform.position == genManage.roomPositions[GameManager.GM.playerX,GameManager.GM.playerY])// && enemies.)
+        //{
+
+        //}
+
 
 
         //COMEBACK TO THIS LATER????
@@ -705,6 +728,13 @@ public class RoomGenerator : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void spawnEnemies()
+    {
+        foreach (enemySpawn eS in enemySpawnerScripts) 
+        {
+            eS.spawnenemy();
+        }
+    }
 
     public List<GameObject> FindChildrenWithTag(Transform parent, string tag) //simple function to find all children of a game object "parent" with tag "tag" (why is this not built in???)
     {

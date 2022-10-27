@@ -326,7 +326,7 @@ MonoBehaviour:
   arrow: {fileID: 7947840349681523247, guid: e0db7ed0e6f4a5042a0be50e97af0561, type: 3}
   shootPoint: {fileID: 0}
   shooting: 0
-  pattern: {fileID: 4900000, guid: a4126f9a2d182ff47952740fd5833348, type: 3}
+  pattern: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
   bml: {fileID: 0}
 --- !u!114 &416746696
 MonoBehaviour:

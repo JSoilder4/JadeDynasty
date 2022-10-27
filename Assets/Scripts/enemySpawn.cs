@@ -9,6 +9,9 @@ public class enemySpawn : MonoBehaviour
 
     public enemySpawn eSpawnScript;
 
+    public GameObject spawnedReference;
+
+
     //public bool warrior;
     //public bool archer;
     //public bool skull;
@@ -19,8 +22,8 @@ public class enemySpawn : MonoBehaviour
     void Start()
     {
         eSpawnScript = this;
-        GameObject g = Instantiate(enemiestospawn[Random.Range(0, enemiestospawn.Count)], transform.position, Quaternion.identity);
-        GameManager.GM.addSpawnedObject(g);
+        //GameObject g = Instantiate(enemiestospawn[Random.Range(0, enemiestospawn.Count)], transform.position, Quaternion.identity);
+        //GameManager.GM.addSpawnedObject(g);
 
     }
 
@@ -36,8 +39,8 @@ public class enemySpawn : MonoBehaviour
 
     public void spawnenemy()
     {
-        GameObject g = Instantiate(enemiestospawn[Random.Range(0, enemiestospawn.Count)], transform.position, Quaternion.identity);
-        GameManager.GM.addSpawnedObject(g);
+        spawnedReference = Instantiate(enemiestospawn[Random.Range(0, enemiestospawn.Count)], transform.position, Quaternion.identity);
+        GameManager.GM.addSpawnedObject(spawnedReference);
     }
 
 

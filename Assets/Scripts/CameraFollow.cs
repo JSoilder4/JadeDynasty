@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 
     public RoomGenerator currentRoom;
 
-    public int x, y;
+    //public int x, y;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +35,16 @@ public class CameraFollow : MonoBehaviour
         genManage = GameObject.FindGameObjectWithTag("GameController").GetComponent<GenerationManager>();
         virtualCam = GameObject.FindGameObjectWithTag("virtualCam");
         player = GameObject.FindGameObjectWithTag("Player");
-        x = 4;
-        y = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentRoom = GameManager.GM.currentRoom;
         if(Input.GetKeyDown(KeyCode.T))
         {
-            x = 4;
-            y = 4;
+            GameManager.GM.playerX = 4;
+            GameManager.GM.playerY = 4;
         }
         mousePos = camVar.ScreenToWorldPoint(Input.mousePosition);
         switch (cam)
@@ -71,7 +70,7 @@ public class CameraFollow : MonoBehaviour
                 //     transform.position = new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z);
                 //     playerMove.pms.coords[1] -= 1;
                 // }
-                virtualCam.transform.position = new Vector3(genManage.roomPositions[x,y].x, genManage.roomPositions[x,y].y, -10);
+                virtualCam.transform.position = new Vector3(genManage.roomPositions[GameManager.GM.playerX, GameManager.GM.playerY].x, genManage.roomPositions[GameManager.GM.playerX, GameManager.GM.playerY].y, -10);
                 break;
             case CamType.followAndMouse:
             // Mathf.Clamp(player.transform.position.y, 0.y, 2.y)
