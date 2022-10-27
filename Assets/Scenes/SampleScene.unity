@@ -11085,10 +11085,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 416746690, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
-      propertyPath: pattern
-      value: 
-      objectReference: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
     - target: {fileID: 4024440850954988585, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11347,6 +11343,8 @@ MonoBehaviour:
   hpText: {fileID: 467462202}
   playerX: 0
   playerY: 0
+  currentRoom: {fileID: 0}
+  genManage: {fileID: 0}
 --- !u!114 &1385765417
 MonoBehaviour:
   m_ObjectHideFlags: 0
