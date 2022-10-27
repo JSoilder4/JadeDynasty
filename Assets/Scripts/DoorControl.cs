@@ -10,7 +10,7 @@ public class DoorControl : MonoBehaviour
    // public Material hatchMat;   //the material of the door part
    // public Material wallMat;    //the material of the surrounding wall
    // public Material lockedMat;  //the material when locked
-    //public Animator doorAnim;   //reference to the animator on the door
+    public Animator doorAnim;   //reference to the animator on the door
 
     public enum doorDir
     {
@@ -105,7 +105,7 @@ public CameraFollow camFollow;
 
 
         //hatch = transform.GetChild(3).gameObject;
-        //doorAnim = hatch.GetComponent<Animator>();
+        doorAnim = GetComponent<Animator>();
         camFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         locked = false;
@@ -148,7 +148,11 @@ public CameraFollow camFollow;
                 break;
             }
         }
-        
+
+        doorAnim.SetBool("locked", locked);
+
+
+
         // gameObject.SetActive(active);
 
 
@@ -259,7 +263,7 @@ public CameraFollow camFollow;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !locked)
         {
             switch (direction)
             {
