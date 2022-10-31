@@ -25,6 +25,7 @@ public class ProfCatnip : enemy
     public override void Start()
     {
         base.Start();
+        timer = timerOG;
         theLayer = LayerMask.GetMask("Player");
         shootPoint = transform.GetChild(0).gameObject;
         bml = shootPoint.GetComponent<BulletSourceScript>();
@@ -63,8 +64,14 @@ public class ProfCatnip : enemy
         Debug.DrawRay(shootPoint.transform.position, player.transform.position - shootPoint.transform.position, Color.red);
         if (raycast && raycast.transform.CompareTag("Player"))
         {
-            print("FIRE!");
-            shoot(true);
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                print("FIRE!");
+                shoot(true);
+                timer = timerOG;
+            }
+            
         }
 
 

@@ -3,11 +3,11 @@
 <bulletml type="vertical" xmlns="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml%22%3E">
   <action label="top">
     <repeat>
-      <times>999</times>
+      <times>10</times>
       <action>
         <fire>
           <direction type="aim">0</direction>
-          <speed type="absolute">1</speed>
+          <speed type="absolute">0.5</speed>
           <bulletRef label="Default" />
         </fire>
         <wait>10</wait>
