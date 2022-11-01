@@ -13,6 +13,7 @@ public class ProfCatnip : enemy
     public float timerOG;
     public GameObject arrow;
     public GameObject shootPoint;
+    public float shootpointX;
 
     public bool shooting;
 
@@ -29,14 +30,25 @@ public class ProfCatnip : enemy
         theLayer = LayerMask.GetMask("Player");
         shootPoint = transform.GetChild(0).gameObject;
         bml = shootPoint.GetComponent<BulletSourceScript>();
-        // sprite = GetComponent<SpriteRenderer>();
+        shootpointX = shootPoint.transform.localPosition.x;
+        //sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        //facePlayer();
+        if(sprite.flipX)
+        {
+            shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
+        }
+        else
+        {
+            shootPoint.transform.localPosition = new Vector3(-shootpointX, shootPoint.transform.localPosition.y, 0);
+        }
+        
+
+
         if (visable)
         {
             //if(!earthed)

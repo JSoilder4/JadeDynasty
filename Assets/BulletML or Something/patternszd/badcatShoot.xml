@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml type="vertical" xmlns="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml%22%3E">
+    <action label="top">
+        <repeat>
+          <action>
+            <actionRef label = "shoot">
+            <param>0</param>
+            </actionRef>
+            <wait>10</wait>
+          </action>  
+        </repeat>
+    
+
+      <action label = "shoot">
+      <fire>
+        <direction type="aim">0</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="badcatBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      
+      </action>
+    </action>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+</bulletml>

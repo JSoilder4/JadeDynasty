@@ -171,40 +171,6 @@ public class playerMove : MonoBehaviour
                 GameManager.GM.gunPickup(collision.gameObject, rGunG);
 
             }
-
-           
-            
-            
-            
-            
-            //GameManager.GM.swapGunAndRGun(playergun.gunScript, rGun);
-
-        }
-        if (collision.transform.CompareTag("Enemy") || collision.CompareTag("arrow"))
-        {
-            //collision.GetComponent<enemy>().hp = 1000;
-            //die();
-            if (!invuln)
-            {
-                hp.takeDamage(1);
-                StartCoroutine(invulnFrame());
-            }
-            
-            if (collision.CompareTag("arrow") && !invuln)
-            {
-                Destroy(collision.gameObject);
-            }
-        }
-        if (collision.transform.CompareTag("shot"))
-        {
-            if(collision.name != "Explosion")
-            {
-                if (collision.GetComponent<shot>().bReturn)
-                {
-                    Destroy(collision.gameObject);
-                }
-            }
-            
         }
     }
     
@@ -237,34 +203,7 @@ public class playerMove : MonoBehaviour
 
         yield return null;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Enemy") && !invuln)
-        {
-            //collision.transform.GetComponent<enemy>().hp = 1000;
-            //die();
-            hp.takeDamage(1);
-            StartCoroutine(invulnFrame());
-            //print("yeah?:");
-            //collision.gameObject.GetComponent<Knockback>().knockback(collision.transform.position - transform.position, 1000);
-            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * 5000, ForceMode2D.Impulse);
-
-        }
-        if (collision.transform.CompareTag("Dummy"))
-        {
-            collision.transform.GetComponent<enemy>().hp.currentHP = 1000;
-            
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Enemy") && !invuln)
-        {
-            hp.takeDamage(1);
-            StartCoroutine(invulnFrame());
-
-        }
-    }
+    
     public void die()
     {
         GameManager.GM.dead();
