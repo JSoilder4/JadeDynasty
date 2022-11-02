@@ -51195,6 +51195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586482, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173124535795508, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_Name
       value: shotCollider

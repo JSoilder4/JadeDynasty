@@ -263,7 +263,7 @@ public CameraFollow camFollow;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !locked)
+        if (collision.CompareTag("Player") && !locked && collision.gameObject.name != "shotCollider")
         {
             switch (direction)
             {

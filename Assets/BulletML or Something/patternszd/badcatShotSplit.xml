@@ -4,11 +4,11 @@
   <action label="top">
     <repeat>
     
-      <times>2</times>
+      <times>1</times>
       
       <action>
           <actionRef label = "split">
-          <param>15</param>
+          <param>10</param><param>0.25</param>
           </actionRef>
         <wait>10</wait>
       </action>
@@ -19,20 +19,7 @@
 
 
 
-    <action label = "split">
-        <fire>
-          <direction type="aim">-$1</direction>
-          <speed type="absolute">0.25</speed>
-          <bullet label="Default" />
-        </fire>
-        <fire>
-          <direction type="aim">$1</direction>
-          <speed type="absolute">0.25</speed>
-          <bullet label="Default" />
-        </fire>
-
-
-    </action>
+    
 
 
 
@@ -43,7 +30,20 @@
 
 
   </action>
+<action label = "split">
+        <fire>
+          <direction type="aim">-$1</direction>
+          <speed type="absolute">$2</speed>
+          <bullet label="badcatBulletSplit" />
+        </fire>
+        <fire>
+          <direction type="aim">$1</direction>
+          <speed type="absolute">$2</speed>
+          <bullet label="badcatBulletSplit" />
+        </fire>
 
+
+    </action>
 
 
 

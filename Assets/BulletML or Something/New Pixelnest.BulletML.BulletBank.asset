@@ -23,3 +23,8 @@ MonoBehaviour:
     sprite: {fileID: 0}
     TimeToLiveInSeconds: 15
     DestroyWhenOutOfScreen: 1
+  - name: badcatBulletSplit
+    prefab: {fileID: 5140017104500582241, guid: 1609f2686b071a041835e882b291282d, type: 3}
+    sprite: {fileID: 0}
+    TimeToLiveInSeconds: 15
+    DestroyWhenOutOfScreen: 1

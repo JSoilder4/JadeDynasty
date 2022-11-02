@@ -172,8 +172,18 @@ public class playerMove : MonoBehaviour
 
             }
         }
+                if (collision.transform.CompareTag("shot"))
+        {
+            if(collision.name != "Explosion")
+            {
+                if (collision.GetComponent<shot>().bReturn)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            
+        }
     }
-    
     public IEnumerator invulnFrame()
     {
         // StopAllCoroutines();
