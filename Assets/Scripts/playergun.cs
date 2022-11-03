@@ -12,6 +12,8 @@ public class playergun : MonoBehaviour
     public List<gun> equippedGuns;
     public int gunIndex;
 
+    public const int pistolAmmoMax = 120, sniperAmmoMax = 100, smgAmmoMax = 320, shotgunAmmoMax = 160;
+    public int pistolAmmo, sniperAmmo, smgAmmo, shotgunAmmo;
 
     public static playergun gunScript;
     public Transform firePoint;
