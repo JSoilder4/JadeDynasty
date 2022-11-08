@@ -12,8 +12,9 @@ public class playergun : MonoBehaviour
     public List<gun> equippedGuns;
     public int gunIndex;
 
-    public const int pistolAmmoMax = 120, sniperAmmoMax = 100, smgAmmoMax = 320, shotgunAmmoMax = 160;
+    public const int pistolAmmoMax = 144, sniperAmmoMax = 48, smgAmmoMax = 360, shotgunAmmoMax = 72; //mag size: 6-12, 1-4, 30?, 2-6
     public int pistolAmmo, sniperAmmo, smgAmmo, shotgunAmmo;
+    public bool reloading;
 
     public static playergun gunScript;
     public Transform firePoint;
@@ -62,6 +63,11 @@ public class playergun : MonoBehaviour
 
         activeGun = new gun();
         equippedGuns.Add(activeGun);
+
+        pistolAmmo = pistolAmmoMax;
+        shotgunAmmo = shotgunAmmoMax;
+        sniperAmmo = sniperAmmoMax;
+        smgAmmo = smgAmmoMax;
     }
 
     // Update is called once per frame
@@ -72,11 +78,11 @@ public class playergun : MonoBehaviour
         activeGun.betweenShotTimer -= Time.deltaTime;
         // lookDirection = playerMove.pms.lookDir;
 
-        if (GameManager.GM.started && !playerMove.pms.dodging)
+        if (GameManager.GM.started && !playerMove.pms.dodging && !reloading)
         {
             if (Input.GetButtonDown("Fire1")) //semi-auto
             {
-                if (activeGun.betweenShotTimer <= 0)
+                if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
                 {
                     if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
                     {
@@ -88,28 +94,36 @@ public class playergun : MonoBehaviour
                     }
 
                 }
+                else if(activeGun.magAmmo <= 0)
+                {
+                    StartCoroutine(reload());
+                }
             }
             if (Input.GetMouseButton(0)) //full auto
             {
-                if (activeGun.betweenShotTimer <= 0)
+                if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
                 {
                     if (activeGun.gunType == gunEnumScript.gunType.SMG)
                     {
                         shoot();
                     }
                 }
+                else if(activeGun.magAmmo <= 0)
+                {
+                    StartCoroutine(reload());
+                }
 
             }
         }
         
-
-        //print(Input.GetAxis("Mouse ScrollWheel"));
-        if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
+        if(!reloading)
         {
+            if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
+            {
 
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
-        {
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
+            {
             //++
             if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1)
             {
@@ -125,9 +139,9 @@ public class playergun : MonoBehaviour
                 gunIndex = 0;
             }
             GameManager.GM.gunSwapUI(equippedGuns[gunIndex]);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
-        {
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
+            {
             //--
             gunIndex--;
             if (gunIndex < 0)
@@ -135,12 +149,110 @@ public class playergun : MonoBehaviour
                 gunIndex = equippedGuns.Count-1;
             }
             GameManager.GM.gunSwapUI(equippedGuns[gunIndex]);
+            }
+            activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
         }
-        activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
+        //print(Input.GetAxis("Mouse ScrollWheel"));
+        
 
-
+        print(activeGun.magAmmo+"/"+activeGun.magazine);
         spriteUpdate();
     }
+
+    public void ammoPickup()
+    {
+
+    }
+    IEnumerator reload()
+    {
+        reloading = true;
+        print("reload timer:"+activeGun.reloadTimer);
+        yield return new WaitForSeconds(activeGun.reloadTimer);
+        reload(activeGun.gunType);
+        yield return null;
+    }
+    public void reload(gunEnumScript.gunType type) //use with animator later? or IEnumerator coroutine
+    {
+        print("reloading");
+        switch(type)
+        {
+            case gunEnumScript.gunType.Pistol:
+            if(pistolAmmo <= 0)
+            {
+                print("Reload Fail: No ammo");
+                break;
+            } 
+            else if(pistolAmmo < (activeGun.magazine - activeGun.magAmmo))
+            {
+                print("Reload Partial Fail: Not enough ammo");
+                activeGun.magAmmo = pistolAmmo;
+                pistolAmmo -= activeGun.magAmmo;
+                break;
+            }
+            else
+                pistolAmmo -= (activeGun.magazine - activeGun.magAmmo);
+                activeGun.magAmmo = activeGun.magazine;
+            break;
+
+            case gunEnumScript.gunType.Sniper:
+            if(sniperAmmo <= 0)
+            {
+                print("Reload Fail: No ammo");
+                break;
+            } 
+            else if(sniperAmmo < (activeGun.magazine - activeGun.magAmmo))
+            {
+                print("Reload Partial Fail: Not enough ammo");
+                activeGun.magAmmo = sniperAmmo;
+                sniperAmmo -= activeGun.magAmmo;
+                break;
+            }
+            else
+                sniperAmmo -= (activeGun.magazine - activeGun.magAmmo);
+                activeGun.magAmmo = activeGun.magazine;
+            break;
+
+            case gunEnumScript.gunType.SMG:
+            if(smgAmmo <= 0)
+            {
+                print("Reload Fail: No ammo");
+                break;
+            } 
+            else if(smgAmmo < (activeGun.magazine - activeGun.magAmmo))
+            {
+                print("Reload Partial Fail: Not enough ammo");
+                activeGun.magAmmo = smgAmmo;
+                smgAmmo -= activeGun.magAmmo;
+                break;
+            }
+            else
+                smgAmmo -= (activeGun.magazine - activeGun.magAmmo);
+                activeGun.magAmmo = activeGun.magazine;
+            break;
+
+            case gunEnumScript.gunType.Shotgun:
+            if(shotgunAmmo <= 0)
+            {
+                print("Reload Fail: No ammo");
+                break;
+            } 
+            else if(shotgunAmmo < (activeGun.magazine - activeGun.magAmmo))
+            {
+                print("Reload Partial Fail: Not enough ammo");
+                activeGun.magAmmo = shotgunAmmo;
+                shotgunAmmo -= activeGun.magAmmo;
+                break;
+            }
+            else
+                shotgunAmmo -= (activeGun.magazine - activeGun.magAmmo);
+                activeGun.magAmmo = activeGun.magazine;
+            break;
+
+        }
+        reloading = false;
+        
+    }
+
     public void resetGun()
     {
         equippedGuns.Clear();
@@ -203,6 +315,7 @@ public class playergun : MonoBehaviour
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
+        activeGun.magAmmo--;
         for (int i = 0; i <= activeGun.numShots; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -217,6 +330,7 @@ public class playergun : MonoBehaviour
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
+        activeGun.magAmmo--;
         for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
         {
             //int i2 = i - 1;

@@ -30,7 +30,8 @@ public class randomGun : MonoBehaviour
         //effect = new bool[5]; //nothing 0, sciShot 1, split 2, explode 3, radiation 4
         sprite = GetComponent<SpriteRenderer>();
         clense = sprite.color;
-        rollGun();
+        theGun.roll();
+        //rollGun();
     }
 
     public void rollGun()
