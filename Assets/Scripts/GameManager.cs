@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         //shotspeed
         //element
         //effect
+        //rGun.col.enabled = false;
         playPickupSound();
 
         gun theGun = new gun();

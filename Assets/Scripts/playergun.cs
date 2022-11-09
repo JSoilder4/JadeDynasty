@@ -114,6 +114,12 @@ public class playergun : MonoBehaviour
                 }
 
             }
+
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(reload());
+            }
+
         }
         
         if(!reloading)
@@ -156,6 +162,7 @@ public class playergun : MonoBehaviour
         
 
         print(activeGun.magAmmo+"/"+activeGun.magazine);
+        print("Pistol Ammo:"+pistolAmmo+"\nSniper Ammo:"+sniperAmmo+"\nSMG Ammo: "+smgAmmo+"\nShotgun Ammo: "+shotgunAmmo);
         spriteUpdate();
     }
 

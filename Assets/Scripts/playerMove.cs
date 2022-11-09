@@ -184,6 +184,11 @@ public class playerMove : MonoBehaviour
             
         }
     }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Gun")){
+            other.GetComponent<Collider2D>().enabled = true;
+        }
+    }
     public IEnumerator invulnFrame()
     {
         // StopAllCoroutines();

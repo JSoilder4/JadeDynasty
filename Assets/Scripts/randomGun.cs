@@ -22,6 +22,8 @@ public class randomGun : MonoBehaviour
 
     public AudioSource mySource;
 
+    public Collider2D col;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,9 @@ public class randomGun : MonoBehaviour
         //effect = new bool[5]; //nothing 0, sciShot 1, split 2, explode 3, radiation 4
         sprite = GetComponent<SpriteRenderer>();
         clense = sprite.color;
+
+        col = GetComponent<Collider2D>();
+
         theGun.roll();
         //rollGun();
     }
