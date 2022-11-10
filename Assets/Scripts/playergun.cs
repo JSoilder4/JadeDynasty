@@ -44,7 +44,7 @@ public class playergun : MonoBehaviour
     public Color earth = new Color(0, 255, 0);
     public Color air = new Color(255, 255, 0);
 
-    public float scatterAngle;
+    //public float scatterAngle;
     //public int numShots;
 
     public AudioClip shootSound;
@@ -86,11 +86,11 @@ public class playergun : MonoBehaviour
                 {
                     if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
                     {
-                        shoot();
+                        shoot(false);
                     }
                     else if (activeGun.gunType == gunEnumScript.gunType.Shotgun)
                     {
-                        shoot(activeGun.gunType);
+                        shoot(true);
                     }
 
                 }
@@ -105,7 +105,7 @@ public class playergun : MonoBehaviour
                 {
                     if (activeGun.gunType == gunEnumScript.gunType.SMG)
                     {
-                        shoot();
+                        shoot(false);
                     }
                 }
                 else if(activeGun.magAmmo <= 0)
@@ -318,61 +318,86 @@ public class playergun : MonoBehaviour
         mySource.clip = shootSound;
         mySource.Play();
     }
-    public void shoot()
+    public void shoot(bool shotgun)
     {
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
         activeGun.magAmmo--;
-        for (int i = 0; i <= activeGun.numShots; i++)
+
+        if (activeGun.numShots >= 2 && !shotgun) 
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-            bullet.transform.Rotate(bullet.transform.forward, scatterAngle * i);
-
-            bullet.GetComponent<shot>().effect = activeGun.effect;
-            Destroy(bullet, 5f);
+            shotgun = true;
+            activeGun.numShots -= 1;
         }
-    }
-    public void shoot(gunEnumScript.gunType shotgun)
-    {
-        mySource.PlayOneShot(shootSound); //sumner stinky
-        activeGun.betweenShotTimer = activeGun.bSTog;
-        activeGun.magAmmo--;
-        for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+        
+        if (shotgun)
         {
-            //int i2 = i - 1;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            //GameManager.GM.addSpawnedObject(bullet);
+            for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-            bullet.transform.Rotate(bullet.transform.forward, scatterAngle * i);
+                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i);
 
-
-            //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
-            bullet.GetComponent<shot>().shotgun = true;
-            bullet.GetComponent<shot>().effect = activeGun.effect;
-            Destroy(bullet, 5f);
+                bullet.GetComponent<shot>().effect = activeGun.effect;
+                Destroy(bullet, 5f);
+            }
         }
-    }
-    public void shotgunShoot()
-    {
-        //numshots
-        //scatterAngle
-        playShootSound();
-        activeGun.betweenShotTimer = activeGun.bSTog;
-        for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+        else
         {
-            //int i2 = i - 1;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            //GameManager.GM.addSpawnedObject(bullet);
+            for (int i = 0; i <= activeGun.numShots; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-            bullet.transform.Rotate(bullet.transform.forward, scatterAngle*i);
+                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * (i*Random.Range(1, 6)*(Random.Range(0, 2)*2-1)));
 
-
-            //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
-            bullet.GetComponent<shot>().shotgun = true;
-            bullet.GetComponent<shot>().effect = activeGun.effect;
-            Destroy(bullet, 5f);
+                bullet.GetComponent<shot>().effect = activeGun.effect;
+                Destroy(bullet, 10f);
+            }
         }
+
+
+       
     }
+    //public void shoot(gunEnumScript.gunType shotgun)
+    //{
+    //    mySource.PlayOneShot(shootSound); //sumner stinky
+    //    activeGun.betweenShotTimer = activeGun.bSTog;
+    //    activeGun.magAmmo--;
+    //    for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+    //    {
+    //        //int i2 = i - 1;
+    //        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    //        //GameManager.GM.addSpawnedObject(bullet);
+
+    //        bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i);
+
+
+    //        //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
+            
+    //        bullet.GetComponent<shot>().effect = activeGun.effect;
+    //        Destroy(bullet, 5f);
+    //    }
+    //}
+    //public void shotgunShoot()
+    //{
+    //    //numshots
+    //    //scatterAngle
+    //    playShootSound();
+    //    activeGun.betweenShotTimer = activeGun.bSTog;
+    //    for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+    //    {
+    //        //int i2 = i - 1;
+    //        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    //        //GameManager.GM.addSpawnedObject(bullet);
+
+    //        bullet.transform.Rotate(bullet.transform.forward, scatterAngle*i);
+
+
+    //        //bullet.GetComponent<shot>().overrideDirection = new Vector3(lookDirection.x + Mathf.Cos(scatterAngle)*i, lookDirection.y + Mathf.Sin(scatterAngle)*i, lookDirection.z);
+    //        bullet.GetComponent<shot>().shotgun = true;
+    //        bullet.GetComponent<shot>().effect = activeGun.effect;
+    //        Destroy(bullet, 5f);
+    //    }
+    //}
 
 }

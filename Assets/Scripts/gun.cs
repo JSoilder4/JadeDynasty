@@ -65,7 +65,8 @@ public class gun //: MonoBehaviour
                magazine = UnityEngine.Random.Range(6,13);
                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
                numShots = UnityEngine.Random.Range(0, 3);
-               break;
+                scatterAngle = 1;
+                break;
            case gunEnumScript.gunType.Shotgun:
                damage = 5;
                betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
@@ -73,6 +74,7 @@ public class gun //: MonoBehaviour
                magazine = UnityEngine.Random.Range(2,7);
                shotSpeed = UnityEngine.Random.Range(0.1f, 0.3f);
                numShots = UnityEngine.Random.Range(1, 4);
+               scatterAngle = 5;
                break;
            case gunEnumScript.gunType.Sniper:
                damage = 30;
@@ -81,7 +83,8 @@ public class gun //: MonoBehaviour
                magazine = UnityEngine.Random.Range(1,5);
                shotSpeed = UnityEngine.Random.Range(0.3f, 0.5f);
                numShots = 0;
-               break;
+                scatterAngle = 1;
+                break;
            case gunEnumScript.gunType.SMG:
                damage = 2;
                betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
@@ -89,7 +92,8 @@ public class gun //: MonoBehaviour
                magazine = 30;//UnityEngine.Random.Range(6,13);
                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
                numShots = UnityEngine.Random.Range(0, 2);
-               break;
+                scatterAngle = 1;
+                break;
        }
        magAmmo = magazine;
 
