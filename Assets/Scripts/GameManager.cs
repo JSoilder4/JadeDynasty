@@ -204,6 +204,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void gunPickup(GameObject rGun, gun rGunG)
     {
+        print("trouble is doubled");
         playPickupSound();
         playergun.gunScript.equippedGuns.Add(rGunG);
         playergun.gunScript.gunIndex = playergun.gunScript.equippedGuns.Count;

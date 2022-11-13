@@ -74,7 +74,7 @@ public class playergun : MonoBehaviour
     void Update()
     {
         //print(equippedGuns.Count);
-       gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
+        gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
         activeGun.betweenShotTimer -= Time.deltaTime;
         // lookDirection = playerMove.pms.lookDir;
 
@@ -115,7 +115,7 @@ public class playergun : MonoBehaviour
 
             }
 
-            if(Input.GetKeyDown(KeyCode.R))
+            if(Input.GetKeyDown(KeyCode.R) && activeGun.magAmmo != activeGun.magazine)
             {
                 StartCoroutine(reload());
             }
@@ -336,10 +336,10 @@ public class playergun : MonoBehaviour
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i);
+                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i + Random.Range(-activeGun.spread, activeGun.spread+1));
 
                 bullet.GetComponent<shot>().effect = activeGun.effect;
-                Destroy(bullet, 5f);
+                Destroy(bullet, 10f);
             }
         }
         else
@@ -348,7 +348,7 @@ public class playergun : MonoBehaviour
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * (i*Random.Range(1, 6)*(Random.Range(0, 2)*2-1)));
+                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * (i*Random.Range(1, 6)*(Random.Range(0, 2)*2-1)) + Random.Range(-activeGun.spread, activeGun.spread+1));
 
                 bullet.GetComponent<shot>().effect = activeGun.effect;
                 Destroy(bullet, 10f);
@@ -356,7 +356,7 @@ public class playergun : MonoBehaviour
         }
 
 
-       
+    
     }
     //public void shoot(gunEnumScript.gunType shotgun)
     //{

@@ -32,6 +32,9 @@ public class playerMove : MonoBehaviour
     public float invulnTime = 0.5f;
     public bool invulnFrameRunning;
 
+    public bool gunColliding = false;
+    public GameObject playerGun;
+    public playergun pGunScript;
     private void Awake()
     {
         hp = GetComponent<hp>();
@@ -44,6 +47,8 @@ public class playerMove : MonoBehaviour
         coords = new int[2];
         pms = this;
         rb = GetComponent<Rigidbody2D>();
+        playerGun = GameObject.Find("playerGun");
+        pGunScript = playerGun.GetComponent<playergun>();
         
         //gunSprite = GetComponentInChildren<SpriteRenderer>();
         //gunRotatoRB = GetComponentInChildren<Rigidbody2D>();
@@ -71,7 +76,7 @@ public class playerMove : MonoBehaviour
             {
                 //print("fucking kill me");
                 dodging = true;
-               
+
             }
         }
 
@@ -140,12 +145,12 @@ public class playerMove : MonoBehaviour
             //dodgeSpeed -= dodgeSpeed * dodgeSpeedDropMulti * Time.fixedDeltaTime;
             //rb.velocity = velocity * dodgeSpeed;
         if (dodgeTime <= 0)
-         {
+        {
             dodging = false;
             dodgeSpeed = dodgeSpeedOG;
             //dodgeCDTimer = dodgeCDTimerOG;
             dodgeTime = dodgeTimeOG;
-         }
+        }
         
     }
     private void LateUpdate()
@@ -154,24 +159,42 @@ public class playerMove : MonoBehaviour
         //rb.velocity = velocity * Time.fixedDeltaTime;
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.transform.CompareTag("Gun") && !pGunScript.reloading)
+        {
+            if(gunColliding){
+                return;
+            }
+            gunColliding = true;
+            //print("in range honeycakes");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                randomGun rGun = other.GetComponent<randomGun>();
+                gun rGunG = rGun.theGun;
+                if (playergun.gunScript.equippedGuns.Count >= 4)
+                {
+                    print(GetComponent<Collider2D>());
+                    GameManager.GM.swapGunAndOtherGun(playergun.gunScript.activeGun, rGunG, rGun);
+                }
+                else
+                {
+                    print("Double trouble? ");
+                    GameManager.GM.gunPickup(other.gameObject, rGunG);
+                }
+                
+            }
+            StartCoroutine(annoying());
+        }
+    }
+    IEnumerator annoying()
+    {
+        yield return new WaitForEndOfFrame();
+        gunColliding = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Gun"))
-        {
-
-
-            randomGun rGun = collision.GetComponent<randomGun>();
-            gun rGunG = rGun.theGun;
-            if (playergun.gunScript.equippedGuns.Count >= 4)
-            {
-                GameManager.GM.swapGunAndOtherGun(playergun.gunScript.activeGun, rGunG, rGun);
-            }
-            else
-            {
-                GameManager.GM.gunPickup(collision.gameObject, rGunG);
-
-            }
-        }
+        
                 if (collision.transform.CompareTag("shot"))
         {
             if(collision.name != "Explosion")
@@ -185,9 +208,9 @@ public class playerMove : MonoBehaviour
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("Gun")){
-            other.GetComponent<Collider2D>().enabled = true;
-        }
+        // if(other.CompareTag("Gun")){
+        //     other.GetComponent<Collider2D>().enabled = true;
+        // }
     }
     public IEnumerator invulnFrame()
     {

@@ -24,6 +24,7 @@ public class gun //: MonoBehaviour
     public float scatterAngle;
     public int numShots;
 
+    public int spread;
     public gun()
     {
         gunType = gunEnumScript.gunType.Pistol;
@@ -54,51 +55,55 @@ public class gun //: MonoBehaviour
     public void roll()
     {
        //resetRoll();
-       gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
+        gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
 
-       switch (gunType)
-       {
-           case gunEnumScript.gunType.Pistol:
-               damage = 10;
-               betweenShotTimer = UnityEngine.Random.Range(0.15f, 0.35f);
-               reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-               magazine = UnityEngine.Random.Range(6,13);
-               shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
-               numShots = UnityEngine.Random.Range(0, 3);
+        switch (gunType)
+        {
+            case gunEnumScript.gunType.Pistol:
+                damage = 10;
+                betweenShotTimer = UnityEngine.Random.Range(0.15f, 0.35f);
+                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
+                magazine = UnityEngine.Random.Range(6,13);
+                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
+                numShots = UnityEngine.Random.Range(0, 3);
                 scatterAngle = 1;
+                spread = UnityEngine.Random.Range(0, 5);
                 break;
-           case gunEnumScript.gunType.Shotgun:
-               damage = 5;
-               betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
-               reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-               magazine = UnityEngine.Random.Range(2,7);
-               shotSpeed = UnityEngine.Random.Range(0.1f, 0.3f);
-               numShots = UnityEngine.Random.Range(1, 4);
-               scatterAngle = 5;
-               break;
-           case gunEnumScript.gunType.Sniper:
-               damage = 30;
-               betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
-               reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-               magazine = UnityEngine.Random.Range(1,5);
-               shotSpeed = UnityEngine.Random.Range(0.3f, 0.5f);
-               numShots = 0;
+            case gunEnumScript.gunType.Shotgun:
+                damage = 5;
+                betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
+                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
+                magazine = UnityEngine.Random.Range(2,7);
+                shotSpeed = UnityEngine.Random.Range(0.1f, 0.3f);
+                numShots = UnityEngine.Random.Range(1, 4);
+                scatterAngle = 5;
+                spread = UnityEngine.Random.Range(0, 5);
+                break;
+            case gunEnumScript.gunType.Sniper:
+                damage = 30;
+                betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
+                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
+                magazine = UnityEngine.Random.Range(1,5);
+                shotSpeed = UnityEngine.Random.Range(0.3f, 0.5f);
+                numShots = 0;
                 scatterAngle = 1;
+                spread = UnityEngine.Random.Range(0, 2);
                 break;
-           case gunEnumScript.gunType.SMG:
-               damage = 2;
-               betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
-               reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-               magazine = 30;//UnityEngine.Random.Range(6,13);
-               shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
-               numShots = UnityEngine.Random.Range(0, 2);
+            case gunEnumScript.gunType.SMG:
+                damage = 2;
+                betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
+                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
+                magazine = 30;//UnityEngine.Random.Range(6,13);
+                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
+                numShots = UnityEngine.Random.Range(0, 2);
                 scatterAngle = 1;
+                spread = UnityEngine.Random.Range(0, 5);
                 break;
-       }
-       magAmmo = magazine;
+        }
+        magAmmo = magazine;
 
-       element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
-       effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+        effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
     }
 
 }
