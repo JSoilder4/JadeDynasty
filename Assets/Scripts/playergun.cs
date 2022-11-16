@@ -52,6 +52,7 @@ public class playergun : MonoBehaviour
     public AudioSource mySource;
 
     public TextMeshProUGUI reloadText;
+    public TextMeshProUGUI AmmoCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -167,8 +168,27 @@ public class playergun : MonoBehaviour
         print(activeGun.magAmmo+"/"+activeGun.magazine);
         print("Pistol Ammo:"+pistolAmmo+"\nSniper Ammo:"+sniperAmmo+"\nSMG Ammo: "+smgAmmo+"\nShotgun Ammo: "+shotgunAmmo);
         spriteUpdate();
+        updateAmmoUI();
     }
 
+
+    public void updateAmmoUI(){
+        switch(activeGun.gunType){
+            case gunEnumScript.gunType.Pistol:
+            AmmoCount.text = activeGun.magAmmo+"/"+pistolAmmo;
+            break;
+            case gunEnumScript.gunType.Sniper:
+            AmmoCount.text = activeGun.magAmmo+"/"+sniperAmmo;
+            break;
+            case gunEnumScript.gunType.SMG:
+            AmmoCount.text = activeGun.magAmmo+"/"+smgAmmo;
+            break;
+            case gunEnumScript.gunType.Shotgun:
+            AmmoCount.text = activeGun.magAmmo+"/"+shotgunAmmo;
+            break;
+        }
+        AmmoCount.color = sprite.color;
+    }
     public void ammoPickup()
     {
 
@@ -271,7 +291,7 @@ public class playergun : MonoBehaviour
 
         }
         reloading = false;
-        
+        //updateAmmoUI();
     }
 
     public void resetGun()
@@ -337,6 +357,7 @@ public class playergun : MonoBehaviour
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
         activeGun.magAmmo--;
+        //updateAmmoUI();
 
         if (activeGun.numShots >= 2 && !shotgun) 
         {

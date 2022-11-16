@@ -56,7 +56,10 @@ public class gun //: MonoBehaviour
     {
        //resetRoll();
         gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
+        element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+        effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
 
+        
         switch (gunType)
         {
             case gunEnumScript.gunType.Pistol:
@@ -102,8 +105,7 @@ public class gun //: MonoBehaviour
         }
         magAmmo = magazine;
 
-        element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
-        effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+
     }
 
 }

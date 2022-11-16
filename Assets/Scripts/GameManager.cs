@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI effectUItext;
     public TextMeshProUGUI spreadUItext;
     public Image gunUIImage;
+    
 
 
     public float timer;
