@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class randomGun : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class randomGun : MonoBehaviour
 
     public Collider2D col;
 
+    public TextMeshProUGUI tutText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,7 @@ public class randomGun : MonoBehaviour
         clense = sprite.color;
 
         col = GetComponent<Collider2D>();
+        tutText = GetComponentInChildren<TextMeshProUGUI>();
 
         theGun.roll();
         //rollGun();
@@ -116,6 +120,19 @@ public class randomGun : MonoBehaviour
             case gunEnumScript.element.Air:
                 sprite.color = air;
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Player")){
+            print("bitch");
+            tutText.enabled = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Player")){
+            print("n-word pass");
+            tutText.enabled = false;
         }
     }
 }

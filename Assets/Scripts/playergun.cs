@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playergun : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class playergun : MonoBehaviour
 
     public AudioClip shootSound;
     public AudioSource mySource;
+
+    public TextMeshProUGUI reloadText;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +61,7 @@ public class playergun : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         gunScript = this;
         clense = sprite.color;
-
+        reloadText = pms.gameObject.GetComponentInChildren<TextMeshProUGUI>();
 
 
         activeGun = new gun();
@@ -173,9 +176,20 @@ public class playergun : MonoBehaviour
     IEnumerator reload()
     {
         reloading = true;
+        reloadText.enabled = true;
         print("reload timer:"+activeGun.reloadTimer);
-        yield return new WaitForSeconds(activeGun.reloadTimer);
+        reloadText.text = "Reloading";
+        yield return new WaitForSeconds(activeGun.reloadTimer/4);
+        reloadText.text = "Reloading.";
+        yield return new WaitForSeconds(activeGun.reloadTimer/4);
+        reloadText.text = "Reloading..";
+        yield return new WaitForSeconds(activeGun.reloadTimer/4);
+        reloadText.text = "Reloading...";
+        yield return new WaitForSeconds(activeGun.reloadTimer/4);
+
         reload(activeGun.gunType);
+        reloadText.enabled = false;
+        reloadText.text = "Reloading";
         yield return null;
     }
     public void reload(gunEnumScript.gunType type) //use with animator later? or IEnumerator coroutine

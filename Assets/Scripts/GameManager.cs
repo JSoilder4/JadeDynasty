@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI shotSpeedUItext;
     public TextMeshProUGUI elementUItext;
     public TextMeshProUGUI effectUItext;
+    public TextMeshProUGUI spreadUItext;
     public Image gunUIImage;
 
 
@@ -227,10 +228,11 @@ public class GameManager : MonoBehaviour
             damageUItext.text = "Damage: " + gun.damage;
         }
 
-       RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
-       shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.shotSpeed) * 100.0f) / 100.0f);
-       elementUItext.text = "Element: " + gun.element;
-       effectUItext.text = "Special: " + gun.effect;
+        RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
+        shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.shotSpeed) * 100.0f) / 100.0f);
+        elementUItext.text = "Element: " + gun.element;
+        effectUItext.text = "Special: " + gun.effect;
+        spreadUItext.text = "Spread: " + gun.spread;
         gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
         switch (gun.element)
         {

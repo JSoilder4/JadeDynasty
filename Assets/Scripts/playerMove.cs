@@ -167,7 +167,9 @@ public class playerMove : MonoBehaviour
                 return;
             }
             gunColliding = true;
-            //print("in range honeycakes");
+            
+            
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 randomGun rGun = other.GetComponent<randomGun>();
@@ -195,7 +197,7 @@ public class playerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-                if (collision.transform.CompareTag("shot"))
+        if (collision.transform.CompareTag("shot"))
         {
             if(collision.name != "Explosion")
             {
