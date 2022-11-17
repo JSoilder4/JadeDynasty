@@ -127,7 +127,7 @@ public class hp : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         elementEffect();
         if (!player)
@@ -208,7 +208,7 @@ public class hp : MonoBehaviour
                         //print(fire);
                         colorChange.b = 0;
                         colorChange.g = 0;
-                        fireTimer = 0.25f;
+                        fireTimer = 0.25f;//0.24/0.25 = 13 damage
                         onfire = true;
 
                         break;
