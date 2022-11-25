@@ -15,16 +15,21 @@ public class gun //: MonoBehaviour
     public float reloadTimer;
     public int magazine;
     public int magAmmo;
+    public int spread;
+    public gunEnumScript.trigger triggerType; // 0 Semi, 1 Auto, 2 Burst
+    
     [Header("Shot")]
     public float shotSpeed;
+    public int numShots;
+    public float scatterAngle;
     public gunEnumScript.element element;        //nothing 0, fire 1, water 2, earth 3, air 4
     [Header("Shot Effect")]
     public gunEnumScript.effect effect;         //nothing 0, sciShot 1, split 2, explode 3, radiation 4, 
 
-    public float scatterAngle;
-    public int numShots;
+    
+    
 
-    public int spread;
+    
     public gun()
     {
         gunType = gunEnumScript.gunType.Pistol;
@@ -52,59 +57,89 @@ public class gun //: MonoBehaviour
         magAmmo = magazine;
     }
 
+
+    public gunEnumScript.trigger FlipATrigger(gunEnumScript.trigger trigger0, gunEnumScript.trigger trigger1) //god john your such a fucking dumbass
+    {
+        int r = UnityEngine.Random.Range(0,2);
+        if(r == 0)
+        {
+            return trigger0;
+        }
+        
+
+        return trigger1;
+    }
     public void roll()
     {
        //resetRoll();
         gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
         element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+
+
         effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
 
         
         switch (gunType)
         {
             case gunEnumScript.gunType.Pistol:
+                numShots = UnityEngine.Random.Range(0, 3);
+
+
                 damage = 10;
                 betweenShotTimer = UnityEngine.Random.Range(0.15f, 0.35f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(6,13);
                 shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
-                numShots = UnityEngine.Random.Range(0, 3);
+                
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(0, 5);
+                triggerType = (gunEnumScript.trigger)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.trigger)).Length);
                 break;
             case gunEnumScript.gunType.Shotgun:
+                numShots = UnityEngine.Random.Range(1, 4);
+
+
                 damage = 5;
                 betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(2,7);
                 shotSpeed = UnityEngine.Random.Range(0.1f, 0.3f);
-                numShots = UnityEngine.Random.Range(1, 4);
+                
                 scatterAngle = 5;
                 spread = UnityEngine.Random.Range(0, 5);
+                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
                 break;
             case gunEnumScript.gunType.Sniper:
+                numShots = 0;
+
+
                 damage = 30;
                 betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(1,5);
                 shotSpeed = UnityEngine.Random.Range(0.3f, 0.5f);
-                numShots = 0;
+                
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(0, 2);
+                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
                 break;
             case gunEnumScript.gunType.SMG:
+                numShots = UnityEngine.Random.Range(0, 2);
+
+
                 damage = 2;
                 betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = 30;//UnityEngine.Random.Range(6,13);
                 shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
-                numShots = UnityEngine.Random.Range(0, 2);
+                
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(0, 5);
+                triggerType = gunEnumScript.trigger.Auto;//find a way to make burst balanced on smg?     //FlipATrigger(gunEnumScript.trigger.Auto, gunEnumScript.trigger.Burst);
                 break;
         }
         magAmmo = magazine;
-
+        bSTog = betweenShotTimer;
 
     }
 

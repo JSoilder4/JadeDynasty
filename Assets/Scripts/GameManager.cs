@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
         playerY = 4;
         playerRoomGrid[playerX, playerY] = "true";
 
+
+        //randomGuns = GameObject.FindGameObjectsWithTag("Gun");
     }
     /// <summary>
     /// Currently used for moving the reference of where the player is. Eventually can also be used to implement minimap.
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
         
         //playergun.gunScript.equippedGuns.Add(mainGun);
 
-        gunSwapUI(mainGun);
+        gunSwapUI(mainGun, true);
     }
     //public void swapGunAndOtherGun(gun mainGun, gun otherGun)
     //{
@@ -210,11 +212,11 @@ public class GameManager : MonoBehaviour
         playPickupSound();
         playergun.gunScript.equippedGuns.Add(rGunG);
         playergun.gunScript.gunIndex = playergun.gunScript.equippedGuns.Count;
-        gunSwapUI(rGunG);
+        gunSwapUI(rGunG, true);
         rGun.SetActive(false);
     }
 
-    public void gunSwapUI(gun gun)
+    public void gunSwapUI(gun gun, bool temp)
     {
         if (gun.gunType == gunEnumScript.gunType.Shotgun)
         {
@@ -230,7 +232,7 @@ public class GameManager : MonoBehaviour
         }
 
         RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
-        shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((1 - gun.shotSpeed) * 100.0f) / 100.0f);
+        shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((/*1 - */gun.shotSpeed) * 100.0f) / 100.0f);
         elementUItext.text = "Element: " + gun.element;
         effectUItext.text = "Special: " + gun.effect;
         spreadUItext.text = "Spread: " + gun.spread;
@@ -254,10 +256,22 @@ public class GameManager : MonoBehaviour
                 break;
         }
         //gunUIImage.color = playergun.gunScript.sprite.color;
+        if(temp){
+            GunStatUIPlayableDirector.Stop();
+            GunStatUIPlayableDirector.time = 0.0;
+            GunStatUIPlayableDirector.Play();
+        }
+        if(!temp)
+        {   
+            print("crying in the club rn: "+GunStatUIPlayableDirector.duration);
+            GunStatUIPlayableDirector.Stop();
+            GunStatUIPlayableDirector.time = GunStatUIPlayableDirector.duration/2;
+            //GunStatUIPlayableDirector.RebuildGraph();
+            //GunStatUIPlayableDirector.Pause();
+            GunStatUIPlayableDirector.Play();
+            GunStatUIPlayableDirector.Pause();
+        }
 
-        GunStatUIPlayableDirector.Stop();
-        GunStatUIPlayableDirector.time = 0.0;
-        GunStatUIPlayableDirector.Play();
     }
     //public void gunSwapUI(playergun gun)
     //{

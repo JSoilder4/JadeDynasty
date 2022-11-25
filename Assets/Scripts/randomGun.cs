@@ -125,14 +125,15 @@ public class randomGun : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){
-            print("bitch");
             tutText.enabled = true;
+            GameManager.GM.gunSwapUI(theGun, false);
+            print("crying in the club rn: ");
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player")){
-            print("n-word pass");
             tutText.enabled = false;
+            GameManager.GM.gunSwapUI(theGun, true);
         }
     }
 }

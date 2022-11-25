@@ -28,6 +28,12 @@ public class gunEnumScript : MonoBehaviour
         Comet, 
         BigBullets
     }
+    public enum trigger
+    {
+        Semi,
+        Auto,
+        Burst
+    }
 
 
     // Start is called before the first frame update
