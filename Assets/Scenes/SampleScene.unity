@@ -11571,6 +11571,7 @@ GameObject:
   - component: {fileID: 1385765416}
   - component: {fileID: 1385765421}
   - component: {fileID: 1385765422}
+  - component: {fileID: 1385765423}
   m_Layer: 5
   m_Name: Canvas (GameManager)
   m_TagString: Untagged
@@ -11886,6 +11887,18 @@ MonoBehaviour:
   timeSpeed: 1
   gameDifficulty: 0.1
   fpsLimit: 60
+--- !u!114 &1385765423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385765415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3760c88cfa0c84342ac73da38f6fa498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1404183802 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2665430448773843162, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}

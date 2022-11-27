@@ -43,46 +43,46 @@ public class randomGun : MonoBehaviour
         //rollGun();
     }
 
-    public void rollGun()
-    {
-        //resetRoll();
-        theGun.gunType = (gunEnumScript.gunType) Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
+    // public void rollGun()
+    // {
+    //     //resetRoll();
+    //     theGun.gunType = (gunEnumScript.gunType) Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
 
-        switch (theGun.gunType)
-        {
-            case gunEnumScript.gunType.Pistol:
-                theGun.damage = 10;
-                theGun.betweenShotTimer = Random.Range(0.15f, 0.35f);
-                theGun.reloadTimer = Random.Range(0.5f, 1f);
-                theGun.shotSpeed = Random.Range(0.1f, 0.4f);
-                theGun.numShots = Random.Range(0, 3);
-                break;
-            case gunEnumScript.gunType.Shotgun:
-                theGun.damage = 5;
-                theGun.betweenShotTimer = Random.Range(0.35f, 0.55f);
-                theGun.reloadTimer = Random.Range(0.5f, 1f);
-                theGun.shotSpeed = Random.Range(0.1f, 0.3f);
-                theGun.numShots = Random.Range(1, 4);
-                break;
-            case gunEnumScript.gunType.Sniper:
-                theGun.damage = 30;
-                theGun.betweenShotTimer = Random.Range(0.55f, 0.75f);
-                theGun.reloadTimer = Random.Range(0.5f, 1f);
-                theGun.shotSpeed = Random.Range(0.3f, 0.5f);
-                theGun.numShots = 0;
-                break;
-            case gunEnumScript.gunType.SMG:
-                theGun.damage = 2;
-                theGun.betweenShotTimer = Random.Range(0.05f, 0.15f);
-                theGun.reloadTimer = Random.Range(0.5f, 1f);
-                theGun.shotSpeed = Random.Range(0.1f, 0.4f);
-                theGun.numShots = Random.Range(0, 2);
-                break;
-        }
+    //     switch (theGun.gunType)
+    //     {
+    //         case gunEnumScript.gunType.Pistol:
+    //             theGun.damage = 10;
+    //             theGun.betweenShotTimer = Random.Range(0.15f, 0.35f);
+    //             theGun.reloadTimer = Random.Range(0.5f, 1f);
+    //             theGun.shotSpeed = Random.Range(0.1f, 0.4f);
+    //             theGun.numShots = Random.Range(0, 3);
+    //             break;
+    //         case gunEnumScript.gunType.Shotgun:
+    //             theGun.damage = 5;
+    //             theGun.betweenShotTimer = Random.Range(0.35f, 0.55f);
+    //             theGun.reloadTimer = Random.Range(0.5f, 1f);
+    //             theGun.shotSpeed = Random.Range(0.1f, 0.3f);
+    //             theGun.numShots = Random.Range(1, 4);
+    //             break;
+    //         case gunEnumScript.gunType.Sniper:
+    //             theGun.damage = 30;
+    //             theGun.betweenShotTimer = Random.Range(0.55f, 0.75f);
+    //             theGun.reloadTimer = Random.Range(0.5f, 1f);
+    //             theGun.shotSpeed = Random.Range(0.3f, 0.5f);
+    //             theGun.numShots = 0;
+    //             break;
+    //         case gunEnumScript.gunType.SMG:
+    //             theGun.damage = 2;
+    //             theGun.betweenShotTimer = Random.Range(0.05f, 0.15f);
+    //             theGun.reloadTimer = Random.Range(0.5f, 1f);
+    //             theGun.shotSpeed = Random.Range(0.1f, 0.4f);
+    //             theGun.numShots = Random.Range(0, 2);
+    //             break;
+    //     }
 
-        theGun.element = (gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
-        theGun.effect = (gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
-    }
+    //     theGun.element = (gunEnumScript.element)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
+    //     theGun.effect = (gunEnumScript.effect)Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+    // }
     private void Update()
     {
         switch (theGun.gunType)

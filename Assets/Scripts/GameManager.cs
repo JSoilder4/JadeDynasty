@@ -326,7 +326,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < randomGuns.Length; i++)
         {
             randomGuns[i].gameObject.SetActive(true);
-            randomGuns[i].rollGun();
+            randomGuns[i].theGun.roll();//rollGun();
         }
     }
     public void dead()

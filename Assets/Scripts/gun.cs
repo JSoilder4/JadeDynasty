@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
 public class gun //: MonoBehaviour
 {
+    // damage eventually = (base type damage + (multi * floornumber)) / (Number of Shots/2) ????????
+
+
     [Header("Gun")]
     public gunEnumScript.gunType gunType;        //Pistol 0, Shotgun 1, Sniper 2, SMG 3
     [Header("Gun Modifiers")]
@@ -37,7 +41,7 @@ public class gun //: MonoBehaviour
         bSTog = 0.25f;
         reloadTimer = 1f;
         magazine = 6;
-        shotSpeed = 0.2f;
+        shotSpeed = 0.22f;
         numShots = 0;
         element = gunEnumScript.element.Nothing;
         effect = gunEnumScript.effect.Nothing;
@@ -76,7 +80,8 @@ public class gun //: MonoBehaviour
         element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
 
 
-        effect = (gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        effect = rollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        
 
         
         switch (gunType)
@@ -89,7 +94,7 @@ public class gun //: MonoBehaviour
                 betweenShotTimer = UnityEngine.Random.Range(0.15f, 0.35f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(6,13);
-                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
+                shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(0, 5);
@@ -103,7 +108,7 @@ public class gun //: MonoBehaviour
                 betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(2,7);
-                shotSpeed = UnityEngine.Random.Range(0.1f, 0.3f);
+                shotSpeed = UnityEngine.Random.Range(0.22f, 0.3f);
                 
                 scatterAngle = 5;
                 spread = UnityEngine.Random.Range(0, 5);
@@ -131,7 +136,7 @@ public class gun //: MonoBehaviour
                 betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = 30;//UnityEngine.Random.Range(6,13);
-                shotSpeed = UnityEngine.Random.Range(0.1f, 0.4f);
+                shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(0, 5);
@@ -142,5 +147,32 @@ public class gun //: MonoBehaviour
         bSTog = betweenShotTimer;
 
     }
+
+    public static gunEnumScript.effect rollEffect()
+    {
+        int[] weights = gunEnumScript.effectWeightTable.Values.ToArray();
+
+        int randomWeight = UnityEngine.Random.Range(0, weights.Sum());
+
+
+        for(int i = 0; i < weights.Length; i++)
+        {
+           // Debug.Log(weights[i] + " "+i);
+            randomWeight -= weights[i];
+            if (randomWeight < 0)
+            {
+                return (gunEnumScript.effect) i;
+            }
+        }
+        
+
+
+
+
+
+        return gunEnumScript.effect.Nothing;
+    }
+
+
 
 }
