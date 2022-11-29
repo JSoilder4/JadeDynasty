@@ -8,13 +8,16 @@ using System.Linq;
 public class gun //: MonoBehaviour
 {
     // damage eventually = (base type damage + (multi * floornumber)) / (Number of Shots/2) ????????
+    // damage = within a range???????
 
 
     [Header("Gun")]
     public gunEnumScript.gunType gunType;        //Pistol 0, Shotgun 1, Sniper 2, SMG 3
     [Header("Gun Modifiers")]
-    public int damage;
+    public float damage;
     public float betweenShotTimer;
+
+    public float dps;
     public float bSTog;               //original of ^(betweenShotTimerOG) (CHANGE THIS WHEN SWITCHING WEAPONS)
     public float reloadTimer;
     public int magazine;
@@ -42,7 +45,7 @@ public class gun //: MonoBehaviour
         reloadTimer = 1f;
         magazine = 6;
         shotSpeed = 0.22f;
-        numShots = 0;
+        numShots = 1;
         element = gunEnumScript.element.Nothing;
         effect = gunEnumScript.effect.Nothing;
         magAmmo = magazine;
@@ -62,7 +65,7 @@ public class gun //: MonoBehaviour
     }
 
 
-    public gunEnumScript.trigger FlipATrigger(gunEnumScript.trigger trigger0, gunEnumScript.trigger trigger1) //god john your such a fucking dumbass
+    public gunEnumScript.trigger FlipATrigger(gunEnumScript.trigger trigger0, gunEnumScript.trigger trigger1) //god john you're such a fucking dumbass
     {
         int r = UnityEngine.Random.Range(0,2);
         if(r == 0)
@@ -80,67 +83,104 @@ public class gun //: MonoBehaviour
         element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
 
 
-        effect = rollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        effect = RollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
         
 
         
         switch (gunType)
         {
             case gunEnumScript.gunType.Pistol:
-                numShots = UnityEngine.Random.Range(0, 3);
-
+                //dps = UnityEngine.Random.Range(28.0f, 66.0f);
+                numShots = UnityEngine.Random.Range(1, 4); // 1 - 3 shots
+                triggerType = (gunEnumScript.trigger)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.trigger)).Length);
 
                 damage = 10;
+
+                //betweenShotTimer = (float)1/(dps/damage);
+
+                if(numShots != 1)
+                {
+                    float numShotMulti = (1+(numShots/10.0f));
+                    damage = (damage*numShotMulti)/numShots;
+                }
+                
+                
                 betweenShotTimer = UnityEngine.Random.Range(0.15f, 0.35f);
+
+                dps = (damage*(numShots))*(1/betweenShotTimer);
+
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(6,13);
-                shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
+                shotSpeed = UnityEngine.Random.Range(0.22f, 0.65f);
                 
                 scatterAngle = 1;
-                spread = UnityEngine.Random.Range(0, 5);
-                triggerType = (gunEnumScript.trigger)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.trigger)).Length);
+                spread = UnityEngine.Random.Range(1, 6);
+                
                 break;
             case gunEnumScript.gunType.Shotgun:
-                numShots = UnityEngine.Random.Range(1, 4);
+                numShots = UnityEngine.Random.Range(3, 10);//3 - 9 shots
+                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
 
-
-                damage = 5;
+                damage = 10;
+                if(numShots != 1)
+                {
+                    float numShotMulti = (1+(numShots/10.0f)) * 2;
+                    damage = (damage*numShotMulti)/numShots;
+                }
+                dps = (damage*(numShots))*(1/betweenShotTimer);
+                
                 betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(2,7);
-                shotSpeed = UnityEngine.Random.Range(0.22f, 0.3f);
+                shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
-                scatterAngle = 5;
-                spread = UnityEngine.Random.Range(0, 5);
-                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
+                scatterAngle = 1;//used to be 5
+                spread = UnityEngine.Random.Range(1, 6);
+                
                 break;
             case gunEnumScript.gunType.Sniper:
-                numShots = 0;
-
+                numShots = 1;
+                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
 
                 damage = 30;
+                
+                if(numShots != 1)
+                {
+                    float numShotMulti = (1+(numShots/10.0f));
+                    damage = (damage*numShotMulti)/numShots;
+                }
+                dps = (damage*(numShots))*(1/betweenShotTimer);
+
                 betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(1,5);
-                shotSpeed = UnityEngine.Random.Range(0.3f, 0.5f);
+                shotSpeed = UnityEngine.Random.Range(0.3f, 1f);
                 
                 scatterAngle = 1;
-                spread = UnityEngine.Random.Range(0, 2);
-                triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
+                spread = UnityEngine.Random.Range(1, 3);
+                
                 break;
             case gunEnumScript.gunType.SMG:
-                numShots = UnityEngine.Random.Range(0, 2);
+                numShots = UnityEngine.Random.Range(1, 3);//1 - 2 shots
+                triggerType = gunEnumScript.trigger.Auto;//find a way to make burst balanced on smg?     //FlipATrigger(gunEnumScript.trigger.Auto, gunEnumScript.trigger.Burst);
 
+                damage = 5;
+                
+                if(numShots != 1)
+                {
+                    float numShotMulti = (1+(numShots/10.0f));
+                    damage = (damage*numShotMulti)/numShots;
+                }
+                dps = (damage*(numShots))*(1/betweenShotTimer);
 
-                damage = 2;
                 betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
                 reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = 30;//UnityEngine.Random.Range(6,13);
                 shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
                 scatterAngle = 1;
-                spread = UnityEngine.Random.Range(0, 5);
-                triggerType = gunEnumScript.trigger.Auto;//find a way to make burst balanced on smg?     //FlipATrigger(gunEnumScript.trigger.Auto, gunEnumScript.trigger.Burst);
+                spread = UnityEngine.Random.Range(1, 6);
+                
                 break;
         }
         magAmmo = magazine;
@@ -148,7 +188,7 @@ public class gun //: MonoBehaviour
 
     }
 
-    public static gunEnumScript.effect rollEffect()
+    public static gunEnumScript.effect RollEffect()
     {
         int[] weights = gunEnumScript.effectWeightTable.Values.ToArray();
 
@@ -164,15 +204,41 @@ public class gun //: MonoBehaviour
                 return (gunEnumScript.effect) i;
             }
         }
-        
-
-
-
-
-
         return gunEnumScript.effect.Nothing;
     }
 
+
+    public static int RollNumShots()
+    {
+        int[] weights = numShotWeightTable.Values.ToArray();
+
+        int randomWeight = UnityEngine.Random.Range(0, weights.Sum());
+
+
+        for(int i = 1; i <= weights.Length; i++)
+        {
+           // Debug.Log(weights[i] + " "+i);
+            randomWeight -= weights[i];
+            if (randomWeight < 0)
+            {
+                return i;//(gunEnumScript.effect) i;
+            }
+        }
+        return 1;
+    }
+    public static Dictionary<int, int> numShotWeightTable = new Dictionary<int, int>()
+    {
+        {1, 50},
+        {2, 30},
+        {3, 30},
+        {4, 30},
+        {5, 30},
+        //{effect.Nothing, 30},
+        //{effect.Nothing, 30},
+
+
+
+    };
 
 
 }

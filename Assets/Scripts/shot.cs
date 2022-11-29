@@ -51,7 +51,7 @@ public class shot : MonoBehaviour
 
     public float bigBulletTimer;
 
-    public int damage;
+    public float damage;
 
 
     /*

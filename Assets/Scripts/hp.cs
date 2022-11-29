@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class hp : MonoBehaviour
 {
-
-    public int maxHP;
-    public int currentHP;
+    public float maxHP;
+    public float currentHP;
 
     public bool onfire;
     public float fireTimer;
@@ -138,11 +137,11 @@ public class hp : MonoBehaviour
         checkHealth();
 
     }
-    public void takeDamage(int dmg)
+    public void takeDamage(float dmg)
     {
         currentHP -= dmg;
     }
-    public void healDamage(int heal)
+    public void healDamage(float heal)
     {
         if ((currentHP + heal) > maxHP)
         {

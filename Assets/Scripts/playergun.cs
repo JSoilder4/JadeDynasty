@@ -131,7 +131,7 @@ private void FixedUpdate() {
                         if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
                         {
 
-                            shoot(activeGun.gunType);
+                            StartCoroutine(shoot(activeGun.gunType));
 
                         }
                         else if(activeGun.magAmmo <= 0)
@@ -146,7 +146,7 @@ private void FixedUpdate() {
                         if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
                         {
 
-                            shoot(activeGun.gunType);
+                            StartCoroutine(shoot(activeGun.gunType));
 
                         }
                         else if(activeGun.magAmmo <= 0)
@@ -228,7 +228,7 @@ private void FixedUpdate() {
         print(Mathf.Round(1/activeGun.bSTog));
         for(int i = 0; i < Mathf.Round(1/activeGun.bSTog); i++)
         {
-            shoot(activeGun.gunType);
+            StartCoroutine(shoot(activeGun.gunType));
             if(activeGun.magAmmo <= 0)
             {
                 StartCoroutine(reload());
@@ -421,50 +421,112 @@ private void FixedUpdate() {
         mySource.clip = shootSound;
         mySource.Play();
     }
-    public void shoot(gunEnumScript.gunType gunType)
+    public IEnumerator shoot(gunEnumScript.gunType gunType)
     {
-        bool shotgun = false;
-        if(gunType == gunEnumScript.gunType.Shotgun)
-        {
-            shotgun = true;
-        }
+        // bool shotgun = false;
+        // if(gunType == gunEnumScript.gunType.Shotgun)
+        // {
+        //     shotgun = true;
+        // }
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
         activeGun.magAmmo--;
+        if(activeGun.magAmmo <= 0)
+        {
+            StartCoroutine(reload());
+        }
         //updateAmmoUI();
 
-        if (activeGun.numShots >= 2 && !shotgun) 
-        {
-            shotgun = true;
-            activeGun.numShots -= 1;
-        }
-        
-        if (shotgun)
-        {
-            for (int i = -activeGun.numShots; i <= activeGun.numShots; i++)
+        // if (activeGun.numShots >= 2 && !shotgun) 
+        // {
+        //     shotgun = true;
+        //     activeGun.numShots -= 1;
+        // }
+        for (int i = 0; i < activeGun.numShots; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i + Random.Range(-activeGun.spread, activeGun.spread+1));
+                if(i > 0)
+                {
+                    //look at later, might not be the best final solution
+                    bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * activeGun.spread*((Random.Range(0,2)*2)-1) + Random.Range(-activeGun.spread, activeGun.spread+1)); //* (Random.Range(-activeGun.spread, activeGun.spread)) + Random.Range(-activeGun.spread, activeGun.spread+1));
+                }
+                else
+                {
+                    bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle + Random.Range(-activeGun.spread, activeGun.spread+1));
+                }
+                
 
                 bullet.GetComponent<shot>().effect = activeGun.effect;
                 Destroy(bullet, 10f);
+                if(Random.Range(0, 4) > 0){
+                    yield return new WaitForSeconds(Random.Range(0.0001f, 0.001f));
+                }
+                
             }
-        }
-        else
-        {
-            for (int i = 0; i <= activeGun.numShots; i++)
-            {
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // if (activeGun.numShots >= 3)
+        // {
+        //     if(activeGun.numShots % 2 == 0)
+        //     {
+        //         int g;
+        //         int badMath = 0;
+        //         for(int i = 1; i <= activeGun.numShots; i++)
+        //         {
+        //             if(i >= 4)
+        //             {
+        //                 if(i % 2 == 0)
+        //                 {
+        //                     badMath++;
+        //                 }
+        //             }
+        //         }
+        //         for (int i = 0; i < activeGun.numShots; i++)
+        //         {
+        //             if(i < activeGun.numShots/2)
+        //             {
+        //                 g = i-(activeGun.numShots/2);
+        //             }
+        //             else
+        //             {
+        //                 g = i-badMath;
+        //             }
+                    
+        //             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-                bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * (i*Random.Range(1, 6)*(Random.Range(0, 2)*2-1)) + Random.Range(-activeGun.spread, activeGun.spread+1));
+        //             bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * g + Random.Range(-activeGun.spread, activeGun.spread+1));
 
-                bullet.GetComponent<shot>().effect = activeGun.effect;
-                Destroy(bullet, 10f);
-            }
-        }
+        //             bullet.GetComponent<shot>().effect = activeGun.effect;
+        //             Destroy(bullet, 10f);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         int numShotgun = activeGun.numShots-2;
+        //         for (int i = -numShotgun; i < numShotgun; i++)
+        //         {
+        //             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+        //             bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * i + Random.Range(-activeGun.spread, activeGun.spread+1));
 
+        //             bullet.GetComponent<shot>().effect = activeGun.effect;
+        //             Destroy(bullet, 10f);
+        //         }
+        //     }
+            
+        // }
+        // else if (activeGun.numShots <= 2)
+        // {
+        //     for (int i = 0; i < activeGun.numShots; i++)
+        //     {
+        //         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        //         bullet.transform.Rotate(bullet.transform.forward, activeGun.scatterAngle * (i*Random.Range(1, 6)*(Random.Range(0, 2)*2-1)) + Random.Range(-activeGun.spread, activeGun.spread+1));
+
+        //         bullet.GetComponent<shot>().effect = activeGun.effect;
+        //         Destroy(bullet, 10f);
+        //     }
+        // }
+
+        yield return null;
     
     }
     //public void shoot(gunEnumScript.gunType shotgun)

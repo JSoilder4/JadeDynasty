@@ -218,13 +218,13 @@ public class GameManager : MonoBehaviour
 
     public void gunSwapUI(gun gun, bool temp)
     {
-        if (gun.gunType == gunEnumScript.gunType.Shotgun)
+        // if (gun.gunType == gunEnumScript.gunType.Shotgun)
+        // {
+        //     damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots);
+        // }
+        if (gun.numShots > 1)
         {
-            damageUItext.text = "Damage: " + gun.damage + " x " + ((gun.numShots *2)+1);
-        }
-        else if (gun.numShots > 0)
-        {
-            damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots + 1);
+            damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots);
         }
         else
         {
