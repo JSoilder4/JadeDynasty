@@ -109,8 +109,8 @@ public class gun //: MonoBehaviour
 
                 dps = (damage*(numShots))*(1/betweenShotTimer);
 
-                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(6,13);
+                reloadTimer = 0.25f*magazine;//UnityEngine.Random.Range(0.25f*magazine, 0.5f*magazine);
                 shotSpeed = UnityEngine.Random.Range(0.22f, 0.65f);
                 
                 scatterAngle = 1;
@@ -130,12 +130,12 @@ public class gun //: MonoBehaviour
                 dps = (damage*(numShots))*(1/betweenShotTimer);
                 
                 betweenShotTimer = UnityEngine.Random.Range(0.35f, 0.55f);
-                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
                 magazine = UnityEngine.Random.Range(2,7);
+                reloadTimer = 0.5f*magazine;//UnityEngine.Random.Range(0.25f*magazine, 0.5f*magazine);
                 shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
                 scatterAngle = 1;//used to be 5
-                spread = UnityEngine.Random.Range(1, 6);
+                spread = UnityEngine.Random.Range(3, 7); //3 - 6
                 
                 break;
             case gunEnumScript.gunType.Sniper:
@@ -152,8 +152,9 @@ public class gun //: MonoBehaviour
                 dps = (damage*(numShots))*(1/betweenShotTimer);
 
                 betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
-                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-                magazine = UnityEngine.Random.Range(1,5);
+                
+                magazine = UnityEngine.Random.Range(1,5); // 1 - 4
+                reloadTimer = 0.75f*magazine;//UnityEngine.Random.Range(0.5f*magazine, 1f*magazine);
                 shotSpeed = UnityEngine.Random.Range(0.3f, 1f);
                 
                 scatterAngle = 1;
@@ -174,8 +175,9 @@ public class gun //: MonoBehaviour
                 dps = (damage*(numShots))*(1/betweenShotTimer);
 
                 betweenShotTimer = UnityEngine.Random.Range(0.05f, 0.15f);
-                reloadTimer = UnityEngine.Random.Range(0.5f, 1f);
-                magazine = 30;//UnityEngine.Random.Range(6,13);
+                
+                magazine = UnityEngine.Random.Range(30,46); // 30 - 45
+                reloadTimer = 0.03f*magazine;//UnityEngine.Random.Range(0.03f*magazine, 0.05f*magazine);
                 shotSpeed = UnityEngine.Random.Range(0.22f, 0.4f);
                 
                 scatterAngle = 1;

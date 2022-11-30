@@ -231,7 +231,7 @@ private void FixedUpdate() {
             StartCoroutine(shoot(activeGun.gunType));
             if(activeGun.magAmmo <= 0)
             {
-                StartCoroutine(reload());
+                //StartCoroutine(reload());
                 break;
             }
             yield return new WaitForSeconds(activeGun.bSTog/Mathf.Round(1/activeGun.bSTog));
@@ -433,7 +433,7 @@ private void FixedUpdate() {
         activeGun.magAmmo--;
         if(activeGun.magAmmo <= 0)
         {
-            StartCoroutine(reload());
+            //StartCoroutine(reload());
         }
         //updateAmmoUI();
 
