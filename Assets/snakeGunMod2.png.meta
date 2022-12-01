@@ -124,8 +124,8 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 96
-        width: 32
-        height: 16
+        width: 25
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
         serializedVersion: 2
         x: 34
         y: 96
-        width: 32
-        height: 16
+        width: 25
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,6 +156,258 @@ TextureImporter:
       bones: []
       spriteID: 7e194a67629b83b4dab7da46c472ebf4
       internalID: -1405467640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4b5e7fe2411544eaaa3b01ffe57aae
+      internalID: 1294978759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdca13a383d24d0448f75c19eaa997fa
+      internalID: -1800949411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3dc05c9e83e2c47b3447cd6e08888b
+      internalID: 304919126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9f3942bd64e5b469bd60d5022607f2
+      internalID: -173858373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64648d80049ec84986ad5b505d0c7a3
+      internalID: -142028037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69dc317d8804df41950afaa6db4ca8b
+      internalID: -1273598998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91da65d65cb9c75449d262e09e7df77b
+      internalID: -1587032723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_9
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847411468e81afe49a0d6a4ea79e612f
+      internalID: 298158895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e30400f1bfa626e439f249cee92b11ab
+      internalID: 1455603388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8107749ef75d18d43895ad0ea1bd9411
+      internalID: -1666126430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5709746493c94b9479bb3855cddcaf16
+      internalID: 2081712495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_13
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 64
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cacf1255c9910b24796fc911a293f35c
+      internalID: 1153242721
       vertices: []
       indices: 
       edges: []
@@ -171,8 +423,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      snakeGunMod2_10: 1455603388
       snakeGunMod2_1: -1405467640
+      snakeGunMod2_13: 1153242721
+      snakeGunMod2_4: 304919126
+      snakeGunMod2_7: -1273598998
+      snakeGunMod2_8: -1587032723
+      snakeGunMod2_9: 298158895
+      snakeGunMod2_3: -1800949411
+      snakeGunMod2_6: -142028037
+      snakeGunMod2_2: 1294978759
+      snakeGunMod2_12: 2081712495
       snakeGunMod2_0: -265072306
+      snakeGunMod2_5: -173858373
+      snakeGunMod2_11: -1666126430
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
