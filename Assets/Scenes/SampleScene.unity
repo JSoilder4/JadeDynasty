@@ -4955,6 +4955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570084941}
+  - component: {fileID: 570084942}
   m_Layer: 0
   m_Name: shootpointSlamR
   m_TagString: Untagged
@@ -4977,6 +4978,19 @@ Transform:
   m_Father: {fileID: 1961402876}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &570084942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570084940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: bfb1637b8353d7d43b09a5872b5cf16e, type: 3}
 --- !u!114 &594273717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9016,6 +9030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180641534}
+  - component: {fileID: 1180641535}
   m_Layer: 0
   m_Name: shootpointSlamL
   m_TagString: Untagged
@@ -9038,6 +9053,19 @@ Transform:
   m_Father: {fileID: 1961402876}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180641535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180641533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: bfb1637b8353d7d43b09a5872b5cf16e, type: 3}
 --- !u!4 &1181621910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6014387520162531158, guid: 7adef7b85c69e6645879a64199cae0f9, type: 3}
@@ -9604,6 +9632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1233258814}
+  - component: {fileID: 1233258815}
   m_Layer: 0
   m_Name: shootpointL
   m_TagString: Untagged
@@ -9626,6 +9655,19 @@ Transform:
   m_Father: {fileID: 1961402876}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1233258815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233258813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: bfb1637b8353d7d43b09a5872b5cf16e, type: 3}
 --- !u!1001 &1261131118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13537,6 +13579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1572892252}
+  - component: {fileID: 1572892253}
   m_Layer: 0
   m_Name: shootpointR
   m_TagString: Untagged
@@ -13559,6 +13602,19 @@ Transform:
   m_Father: {fileID: 1961402876}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572892253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572892251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: bfb1637b8353d7d43b09a5872b5cf16e, type: 3}
 --- !u!114 &1585334574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39458,28 +39514,35 @@ MonoBehaviour:
   player: {fileID: 0}
   sprite: {fileID: 0}
   rb: {fileID: 0}
-  speed: 0
-  speedOG: 0
+  speed: 0.1
+  speedOG: 0.1
   hp: {fileID: 0}
   coords: 
   visable: 0
   hitSound: {fileID: 0}
   mySource: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
+  velX: 0
+  velY: 0
+  playerDirection: {x: 0, y: 0, z: 0}
   theLayer:
     serializedVersion: 2
     m_Bits: 0
   timer: 0
   timerOG: 0
+  walkTimer: 0.75
+  walkTimerOG: 0
   arrow: {fileID: 0}
   shootPointL: {fileID: 0}
   shootPointR: {fileID: 0}
   shootPointSlamL: {fileID: 0}
   shootPointSlamR: {fileID: 0}
-  shootpointX: 0
   shooting: 0
-  pattern: {fileID: 0}
-  bml: {fileID: 0}
+  L: {fileID: 0}
+  R: {fileID: 0}
+  SlamL: {fileID: 0}
+  SlamR: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!50 &1961402878
 Rigidbody2D:
   serializedVersion: 4
@@ -39500,7 +39563,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1961402879
 BoxCollider2D:
   m_ObjectHideFlags: 0
