@@ -325,6 +325,7 @@ MonoBehaviour:
   timerOG: 5
   arrow: {fileID: 7947840349681523247, guid: e0db7ed0e6f4a5042a0be50e97af0561, type: 3}
   shootPoint: {fileID: 0}
+  shootpointX: 0
   shooting: 0
   pattern: {fileID: 4900000, guid: a4126f9a2d182ff47952740fd5833348, type: 3}
   bml: {fileID: 0}

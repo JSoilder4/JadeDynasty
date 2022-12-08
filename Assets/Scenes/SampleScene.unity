@@ -6507,6 +6507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 845812926}
+  - component: {fileID: 845812927}
   m_Layer: 0
   m_Name: walkpointObjectPlsIgnore
   m_TagString: Untagged
@@ -6529,6 +6530,27 @@ Transform:
   m_Father: {fileID: 1961402876}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &845812927
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845812925}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &849592053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39566,7 +39588,7 @@ MonoBehaviour:
   timer: 0
   timerOG: 0
   attackTimer: 0
-  attackTimerOG: 0.5
+  attackTimerOG: 0.25
   firstAttackShot: 0
   attacking: 0
   slamDur: 1
@@ -39594,11 +39616,11 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 200
+  m_AngularDrag: 200
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4

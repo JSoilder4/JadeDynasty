@@ -479,8 +479,8 @@ TextureImporter:
       name: crabGunmod2_17
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 16
         width: 32
         height: 16
       alignment: 0
@@ -500,8 +500,8 @@ TextureImporter:
       name: crabGunmod2_18
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 64
+        y: 16
         width: 32
         height: 16
       alignment: 0
@@ -521,8 +521,8 @@ TextureImporter:
       name: crabGunmod2_19
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 96
+        y: 16
         width: 32
         height: 16
       alignment: 0
@@ -542,7 +542,7 @@ TextureImporter:
       name: crabGunmod2_20
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 0
         width: 32
         height: 16
@@ -555,6 +555,27 @@ TextureImporter:
       bones: []
       spriteID: 43903fe2dfd4b284389b380d8810ca46
       internalID: -542236858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crabGunmod2_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af494ab5512129841bfdc21bcc55e806
+      internalID: 424024846
       vertices: []
       indices: 
       edges: []
@@ -580,6 +601,7 @@ TextureImporter:
       crabGunmod2_10: 1512448878
       crabGunmod2_8: 524447356
       crabGunmod2_7: 172845631
+      crabGunmod2_21: 424024846
       crabGunmod2_4: 1947497263
       crabGunmod2_12: 1513720002
       crabGunmod2_15: -1108257356

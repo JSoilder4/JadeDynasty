@@ -141,7 +141,7 @@ public class CrabEnemy : enemy
         velocity = new Vector3(velX,velY,0);
         //walkpointObjectPlsIgnore.transform.position = transform.position + velocity * speed;
         //print(velocity);
-        print(attackTimer);
+        //print(attackTimer);
         if(myState == state.walk)
         {
             //walkTimer -= Time.deltaTime;
@@ -159,6 +159,7 @@ public class CrabEnemy : enemy
         }
         if (player.transform.position.y >= transform.position.y-0.35f && player.transform.position.y <= transform.position.y+0.35f && myState != state.slam)
         {
+            print("IM IN RANGE");
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
@@ -301,25 +302,32 @@ public class CrabEnemy : enemy
         //yield return new WaitForSeconds(slamDur / 3);
         //rb.MovePosition(transform.position + Vector3.up * speed * 5);
         //yield return new WaitForSeconds(slamDur / 2);
+
+        rb.angularDrag = 0.05f;
+        rb.drag = 0f;
+
         SlamL.Reset();
         SlamR.Reset();
         rb.velocity = Vector3.up * 4;
         yield return new WaitForSeconds(slamDur/3);
         rb.velocity = Vector3.up * 2;
         yield return new WaitForSeconds(slamDur/3);
-        rb.velocity = Vector3.up;
+        rb.velocity = Vector3.up * 1;
         yield return new WaitForSeconds(slamDur/3);
 
 
         //rb.MovePosition(transform.position + Vector3.up * speed * 5);
-
+        
         setReload();
-
+        rb.angularDrag = 200f;
+        rb.drag = 200f;
         yield return null;
     }
 
     public void reload() //anim
     {
+        
+
         firstAttackShot = false;
         attacking = false;
         setIdle();
