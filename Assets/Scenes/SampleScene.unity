@@ -6498,6 +6498,37 @@ Transform:
   m_Father: {fileID: 654932134}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &845812925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845812926}
+  m_Layer: 0
+  m_Name: walkpointObjectPlsIgnore
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &845812926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845812925}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1961402876}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &849592053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39496,6 +39527,7 @@ Transform:
   - {fileID: 1572892252}
   - {fileID: 1180641534}
   - {fileID: 570084941}
+  - {fileID: 845812926}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39521,17 +39553,23 @@ MonoBehaviour:
   visable: 0
   hitSound: {fileID: 0}
   mySource: {fileID: 0}
+  myState: 0
   velocity: {x: 0, y: 0, z: 0}
   velX: 0
   velY: 0
+  walkCounter: 0
+  walkCounterGoal: 0
   playerDirection: {x: 0, y: 0, z: 0}
   theLayer:
     serializedVersion: 2
     m_Bits: 0
   timer: 0
   timerOG: 0
-  walkTimer: 0.75
-  walkTimerOG: 0
+  attackTimer: 0
+  attackTimerOG: 0.5
+  firstAttackShot: 0
+  attacking: 0
+  slamDur: 1
   arrow: {fileID: 0}
   shootPointL: {fileID: 0}
   shootPointR: {fileID: 0}
