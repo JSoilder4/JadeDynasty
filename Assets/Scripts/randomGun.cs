@@ -127,7 +127,7 @@ public class randomGun : MonoBehaviour
         if(other.CompareTag("Player")){
             tutText.enabled = true;
             GameManager.GM.gunSwapUI(theGun, false);
-            print("crying in the club rn: ");
+            //print("crying in the club rn: ");
         }
     }
     private void OnTriggerExit2D(Collider2D other) {

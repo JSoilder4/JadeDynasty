@@ -39568,8 +39568,8 @@ MonoBehaviour:
   player: {fileID: 0}
   sprite: {fileID: 0}
   rb: {fileID: 0}
-  speed: 0.1
-  speedOG: 0.1
+  speed: 0.2
+  speedOG: 0.2
   hp: {fileID: 0}
   coords: 
   visable: 0
@@ -52244,6 +52244,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1836047751}
+    - target: {fileID: 4760173122625586476, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2045516588, guid: f691ee88320e882469c219860039150f, type: 3}
     - target: {fileID: 4760173122625586477, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
@@ -52255,6 +52259,14 @@ PrefabInstance:
     - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52308,6 +52320,14 @@ PrefabInstance:
       propertyPath: AmmoCount
       value: 
       objectReference: {fileID: 1595257636}
+    - target: {fileID: 4760173124461523207, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173124461523207, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173124535795508, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_Name
       value: shotCollider
