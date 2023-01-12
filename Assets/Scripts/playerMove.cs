@@ -35,6 +35,9 @@ public class playerMove : MonoBehaviour
     public bool gunColliding = false;
     public GameObject playerGun;
     public playergun pGunScript;
+
+    public Animator playerAnim;
+
     private void Awake()
     {
         hp = GetComponent<hp>();
@@ -49,6 +52,7 @@ public class playerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerGun = GameObject.Find("playerGun");
         pGunScript = playerGun.GetComponent<playergun>();
+        playerAnim = GetComponent<Animator>();
         
         //gunSprite = GetComponentInChildren<SpriteRenderer>();
         //gunRotatoRB = GetComponentInChildren<Rigidbody2D>();
@@ -74,7 +78,6 @@ public class playerMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && !dodging)
             {
-                //print("fucking kill me");
                 dodging = true;
 
             }
@@ -100,6 +103,15 @@ public class playerMove : MonoBehaviour
         {
             velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
             velocity.y = Input.GetAxisRaw("Vertical");// * speed;
+
+            if (velocity.x != 0 || velocity.y != 0)
+            {
+                playerAnim.SetInteger("New Int", 1);
+            }
+            else
+            {
+                playerAnim.SetInteger("New Int", 0);
+            }
 
             velocity = Vector3.Normalize(velocity);
             //print(velocity);
@@ -127,6 +139,8 @@ public class playerMove : MonoBehaviour
     {
         dodgeTime -= Time.fixedDeltaTime;
 
+
+        playerAnim.SetTrigger("dodge");
         if (dodgeTime > 0.2)
         {
             rb.velocity = velocity * dodgeSpeed * Time.fixedDeltaTime;
