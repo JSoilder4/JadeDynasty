@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml type="vertical" xmlns="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml%22%3E">
+  <action label="top">
+        <repeat>
+        <times>1</times>
+          <action>
+            <actionRef label = "shoot">
+            <param>0</param>
+            </actionRef>
+            <wait>1</wait>
+          </action>  
+        </repeat>
+    
+
+      <action label = "shoot">
+      <fire>
+        <direction type="absolute">0</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="crabBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      <fire>
+        <direction type="absolute">-18</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="crabBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      <fire>
+        <direction type="absolute">-36</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="crabBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      <fire>
+        <direction type="absolute">-54</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="crabBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      <fire>
+        <direction type="absolute">-72</direction>
+        <speed type="absolute">0.25</speed>
+        <bullet label="crabBullet" />
+        <!--<bulletRef label="badcatBullet" />-->
+      </fire>
+      
+      </action>
+    </action>
+    
+</bulletml>
