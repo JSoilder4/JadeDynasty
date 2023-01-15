@@ -76,8 +76,9 @@ public class playerMove : MonoBehaviour
         }
         if (!GameManager.GM.playerdead)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !dodging)
+            if ((velocity.x != 0 || velocity.y != 0) && Input.GetKeyDown(KeyCode.Space) && !dodging)
             {
+                playerAnim.SetTrigger("dodge");
                 dodging = true;
 
             }
@@ -106,11 +107,11 @@ public class playerMove : MonoBehaviour
 
             if (velocity.x != 0 || velocity.y != 0)
             {
-                playerAnim.SetInteger("New Int", 1);
+                playerAnim.SetInteger("walkState", 1);
             }
             else
             {
-                playerAnim.SetInteger("New Int", 0);
+                playerAnim.SetInteger("walkState", 0);
             }
 
             velocity = Vector3.Normalize(velocity);
@@ -140,7 +141,7 @@ public class playerMove : MonoBehaviour
         dodgeTime -= Time.fixedDeltaTime;
 
 
-        playerAnim.SetTrigger("dodge");
+        
         if (dodgeTime > 0.2)
         {
             rb.velocity = velocity * dodgeSpeed * Time.fixedDeltaTime;
