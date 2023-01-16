@@ -6514,7 +6514,7 @@ GameObject:
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &845812926
 Transform:
   m_ObjectHideFlags: 0
@@ -6523,12 +6523,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845812925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.2, y: -2.34, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1961402876}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &845812927
 Rigidbody2D:
@@ -39569,7 +39569,6 @@ Transform:
   - {fileID: 1572892252}
   - {fileID: 1180641534}
   - {fileID: 570084941}
-  - {fileID: 845812926}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39617,6 +39616,7 @@ MonoBehaviour:
   shootPointR: {fileID: 0}
   shootPointSlamL: {fileID: 0}
   shootPointSlamR: {fileID: 0}
+  walkpointObjectPlsIgnore: {fileID: 845812925}
   shooting: 0
   L: {fileID: 0}
   R: {fileID: 0}

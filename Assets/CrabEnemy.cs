@@ -46,7 +46,7 @@ public class CrabEnemy : enemy
     public GameObject shootPointSlamL;
     public GameObject shootPointSlamR;
 
-    //public GameObject walkpointObjectPlsIgnore;
+    public GameObject walkpointObjectPlsIgnore;
     //public float shootpointX;
 
     public bool shooting;
@@ -139,7 +139,7 @@ public class CrabEnemy : enemy
         // }
 
         velocity = new Vector3(velX,velY,0);
-        //walkpointObjectPlsIgnore.transform.position = transform.position + velocity * speed;
+        
         //print(velocity);
         //print(attackTimer);
         if(myState == state.walk)
@@ -149,19 +149,32 @@ public class CrabEnemy : enemy
             //print(posMoveTo.magnitude);
             if(posMoveTo.magnitude >= 0.75f)
             {
+                walkpointObjectPlsIgnore.transform.position = transform.position + velocity;// * speed;
                 rb.MovePosition(transform.position + velocity * speed);
+
             }
             else
             {
                 setIdle();
             }
             
+            
         }
-        if (player.transform.position.y >= transform.position.y-0.35f && player.transform.position.y <= transform.position.y+0.35f && myState != state.slam)
+        Debug.DrawLine(new Vector3(transform.position.x - 5f, transform.position.y+50f, 1), new Vector3(transform.position.x - 5f, transform.position.y-50f, 1), Color.red);
+        Debug.DrawLine(new Vector3(transform.position.x + 5f, transform.position.y+50f, 1), new Vector3(transform.position.x + 5f, transform.position.y-50f, 1), Color.red);
+
+        Debug.DrawLine(new Vector3(playerDirection.x - 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 0.5f, playerDirection.y-50f, 1), Color.blue);
+        Debug.DrawLine(new Vector3(playerDirection.x + 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 0.5f, playerDirection.y-50f, 1), Color.blue);
+        Debug.DrawLine(new Vector3(playerDirection.x - 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 1f, playerDirection.y-50f, 1), Color.blue);
+        Debug.DrawLine(new Vector3(playerDirection.x + 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 1f, playerDirection.y-50f, 1), Color.blue);
+
+        Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.25f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.25f, 1), Color.blue);
+        Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.5f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.5f, 1), Color.blue);
+        if ((player.transform.position.x >= transform.position.x - 5f && player.transform.position.x <= transform.position.x + 5f) && player.transform.position.y <= transform.position.y+0.35f && myState != state.slam)
         {
             print("IM IN RANGE");
             attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0)
+            if (attackTimer <= 0 && myState == state.idle)
             {
                 setShoot();
                 attackTimer = attackTimerOG;
@@ -242,8 +255,8 @@ public class CrabEnemy : enemy
         {
             velX = Random.Range(playerDirection.x - 1f, playerDirection.x-0.5f);
         }
-        
-        velY = Random.Range(playerDirection.y - 0.35f, playerDirection.y + 0.35f);
+        //velX = Random.Range(playerDirection.x - 2.5f, playerDirection.x + 2.5f);
+        velY = Random.Range(playerDirection.y + 0.25f, playerDirection.y + 0.5f);
     }
 
     public void shootL()

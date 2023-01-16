@@ -15,7 +15,7 @@
       <action label = "shoot">
       <fire>
         <direction type="aim">0</direction>
-        <speed type="absolute">0.25</speed>
+        <speed type="absolute">0.35</speed>
         <bullet label="crabBullet" />
         <!--<bulletRef label="badcatBullet" />-->
       </fire>
