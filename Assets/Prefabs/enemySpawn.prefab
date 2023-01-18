@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiestospawn:
   - {fileID: 5915338884471120244, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
-  - {fileID: 38631049282389747, guid: 2f8464e3564b5fe4f88c9892c4b3c999, type: 3}
+  - {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
   - {fileID: 5915338884471120244, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
   eSpawnScript: {fileID: 0}
+  spawnedReference: {fileID: 0}

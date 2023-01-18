@@ -46,7 +46,7 @@ public class CrabEnemy : enemy
     public GameObject shootPointSlamL;
     public GameObject shootPointSlamR;
 
-    public GameObject walkpointObjectPlsIgnore;
+   // public GameObject walkpointObjectPlsIgnore;
     //public float shootpointX;
 
     public bool shooting;
@@ -149,12 +149,14 @@ public class CrabEnemy : enemy
             //print(posMoveTo.magnitude);
             if(posMoveTo.magnitude >= 0.75f)
             {
-                walkpointObjectPlsIgnore.transform.position = transform.position + velocity;// * speed;
+                print("Yes: "+name);
+//                walkpointObjectPlsIgnore.transform.position = transform.position + velocity;// * speed;
                 rb.MovePosition(transform.position + velocity * speed);
 
             }
             else
             {
+                print("No: "+name);
                 setIdle();
             }
             
