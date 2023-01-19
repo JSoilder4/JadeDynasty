@@ -12,7 +12,8 @@ public class gun //: MonoBehaviour
 
 
     [Header("Gun")]
-    public gunEnumScript.gunType gunType;        //Pistol 0, Shotgun 1, Sniper 2, SMG 3
+    public gunEnumScript.gunType gunType;//Pistol 0, Shotgun 1, Sniper 2, SMG 3
+    public gunType2 name = gunType2.Pistol;
     [Header("Gun Modifiers")]
     public float damage;
     public float betweenShotTimer;

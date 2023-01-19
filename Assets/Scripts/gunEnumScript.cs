@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum gunType2
+{
+    Pistol,
+    Shotgun,
+    Sniper,
+    SMG
+}
+
+
 public class gunEnumScript : MonoBehaviour
 {
     //public static gunEnumScript gunEnums;

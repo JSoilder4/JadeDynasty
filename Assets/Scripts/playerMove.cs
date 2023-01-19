@@ -78,16 +78,22 @@ public class playerMove : MonoBehaviour
         {
             if ((velocity.x != 0 || velocity.y != 0) && Input.GetKeyDown(KeyCode.Space) && !dodging)
             {
-                playerAnim.SetTrigger("dodge");
+                if (sprite.flipX)
+                {
+                    playerAnim.SetTrigger("dodgebackwards");
+                }
+                else
+                {
+                    playerAnim.SetTrigger("dodge");
+                    
+                }
+
                 dodging = true;
 
             }
         }
 
-
-
-        
-        
+     
         
     }
     public void checkHealth()
@@ -187,7 +193,7 @@ public class playerMove : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                randomGun rGun = other.GetComponent<randomGun>();
+                RandomGun rGun = other.GetComponent<RandomGun>();
                 gun rGunG = rGun.theGun;
                 if (playergun.gunScript.equippedGuns.Count >= 4)
                 {
