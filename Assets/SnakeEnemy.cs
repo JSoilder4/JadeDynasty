@@ -168,8 +168,8 @@ private enum state
         // {
         //     velX = Random.Range(playerDirection.x - 1f, playerDirection.x-0.5f);
         // }
-        velX = Random.Range(playerDirection.x - 2.5f, playerDirection.x + 2.5f);
-        velY = Random.Range(playerDirection.y - 2.5f, playerDirection.y + 2.5f);
+        velX = Random.Range(playerDirection.x - 1f, playerDirection.x + 1f);
+        velY = Random.Range(playerDirection.y - 1f, playerDirection.y + 1f);
     }
 
     public void shoot() //anim

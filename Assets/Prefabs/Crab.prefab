@@ -340,7 +340,6 @@ MonoBehaviour:
   shootPointR: {fileID: 0}
   shootPointSlamL: {fileID: 0}
   shootPointSlamR: {fileID: 0}
-  walkpointObjectPlsIgnore: {fileID: 0}
   shooting: 0
   L: {fileID: 0}
   R: {fileID: 0}
@@ -359,8 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4173e3d4c1d2174c817952fa8f2940f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 125
-  currentHP: 125
+  maxHP: 150
+  currentHP: 150
   onfire: 0
   fireTimer: 0
   colorChange: {r: 0, g: 0, b: 0, a: 0}
