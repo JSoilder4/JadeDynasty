@@ -33,3 +33,8 @@ MonoBehaviour:
     sprite: {fileID: 0}
     TimeToLiveInSeconds: 15
     DestroyWhenOutOfScreen: 1
+  - name: snakeBullet
+    prefab: {fileID: 3277150646269290628, guid: 863926904b2eb2c4dbf642328148d833, type: 3}
+    sprite: {fileID: 0}
+    TimeToLiveInSeconds: 15
+    DestroyWhenOutOfScreen: 1

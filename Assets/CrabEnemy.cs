@@ -151,15 +151,15 @@ public class CrabEnemy : enemy
             {
                 print("Yes: "+name);
 //                walkpointObjectPlsIgnore.transform.position = transform.position + velocity;// * speed;
-                rb.MovePosition(transform.position + velocity * speed);
+                //rb.MovePosition(transform.position + velocity * speed);
 
             }
             else
             {
                 print("No: "+name);
-                setIdle();
+                //setIdle();
             }
-            
+            rb.MovePosition(transform.position + velocity * speed);
             
         }
         Debug.DrawLine(new Vector3(transform.position.x - 5f, transform.position.y+50f, 1), new Vector3(transform.position.x - 5f, transform.position.y-50f, 1), Color.red);
