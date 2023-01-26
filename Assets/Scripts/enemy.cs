@@ -95,9 +95,18 @@ public class enemy : MonoBehaviour
     {
         visable = false;
     }
-    public void die()
-    {
-        GameManager.GM.enemiesToReset.Remove(gameObject);
-        Destroy(gameObject);
-    }
+
+    //IEnumerator Die()
+    //{
+
+
+
+    //    yield return null;
+    //}
+    //public virtual void die2222()
+    //{
+    //    //GameManager.GM.enemiesToReset.Remove(gameObject);
+    //    //Destroy(gameObject);
+    //}
+    //public abstract void Die();
 }
