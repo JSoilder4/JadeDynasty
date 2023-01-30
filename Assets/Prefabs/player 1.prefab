@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4760173122625586472}
   - component: {fileID: 4760173122625586475}
   - component: {fileID: 4760173122625586474}
+  - component: {fileID: 1006030936}
   m_Layer: 3
   m_Name: player 1
   m_TagString: Player
@@ -32,14 +33,14 @@ Transform:
   m_GameObject: {fileID: 4760173122625586482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4760173124535795511}
   - {fileID: 4760173123808394375}
   - {fileID: 4439565469565338478}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4760173122625586476
 SpriteRenderer:
@@ -81,8 +82,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 415c17421a665bb4c886f3098d5bc436, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 2045516588, guid: f691ee88320e882469c219860039150f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +111,7 @@ MonoBehaviour:
   speed: 1000
   dodging: 0
   dodgeSpeed: 0
-  dodgeSpeedOG: 1000
+  dodgeSpeedOG: 1150
   dodgeSpeedDropMulti: 15
   minDodgeSpeed: 50
   dodgeTime: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   gunColliding: 0
   playerGun: {fileID: 0}
   pGunScript: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!50 &4760173122625586478
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +163,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19, y: 0.28}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.45, y: 0.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -183,9 +185,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0046587945}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.036215622
+  m_Radius: 0.04
 --- !u!114 &4760173122625586475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +234,29 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
   player: 1
+  myEnemyScript: {fileID: 0}
+  knockbackDir: {x: 0, y: 0, z: 0}
+  dead: 0
+--- !u!95 &1006030936
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760173122625586482}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54f86d448fc20a24f851bfbd4391dcae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4760173123808394372
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 4760173124461523204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.060000002, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4760173123808394375}
@@ -364,18 +389,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeGun:
     gunType: 0
+    name: 0
     damage: 10
     betweenShotTimer: 0
+    dps: 0
     bSTog: 0.25
     reloadTimer: 1
     magazine: 6
     magAmmo: 6
+    spread: 0
+    triggerType: 0
     shotSpeed: 0.2
+    numShots: 0
+    scatterAngle: 0
     element: 0
     effect: 0
-    scatterAngle: 0
-    numShots: 0
-    spread: 0
   equippedGuns: []
   gunIndex: 0
   pistolAmmo: 0
@@ -400,6 +428,8 @@ MonoBehaviour:
   air: {r: 255, g: 255, b: 0, a: 1}
   shootSound: {fileID: 8300000, guid: a09046112efec4444a9b2cf26e5f8c87, type: 3}
   mySource: {fileID: 0}
+  reloadText: {fileID: 0}
+  AmmoCount: {fileID: 0}
 --- !u!82 &4760173124461523200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -506,13 +536,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4760173124535795511}
   - component: {fileID: 4760173124535795510}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
+  - component: {fileID: 1115017261}
+  - component: {fileID: 1115017260}
+  m_Layer: 3
+  m_Name: shotCollider
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4760173124535795511
 Transform:
   m_ObjectHideFlags: 0
@@ -535,7 +567,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4760173124535795508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -554,6 +586,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.09}
   m_EdgeRadius: 0
+--- !u!58 &1115017261
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760173124535795508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.04
+--- !u!114 &1115017260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760173124535795508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11a6a49b1761e747be409783833c6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: {fileID: 0}
+  playerMove: {fileID: 0}
 --- !u!1 &5153912556279376830
 GameObject:
   m_ObjectHideFlags: 0

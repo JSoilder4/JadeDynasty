@@ -45,7 +45,7 @@ public class shot : MonoBehaviour
     public Vector3 mousePos;
 
     [Header("Explode")]
-    public GameObject explosion;
+    public GameObject explosionGO;
 
     public gunEnumScript.element element;
 
@@ -55,7 +55,7 @@ public class shot : MonoBehaviour
 
 
     /*
-     shotSpeedTimer -= speedOffset;
+    shotSpeedTimer -= speedOffset;
         if (shotSpeedTimer <= 0)
         {
             UIManager.UIM.science(true);
@@ -251,11 +251,11 @@ public class shot : MonoBehaviour
         }
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Dummy"))
         {
-           if (!bSplit && !bExplode && !bSciShot)
-           {
+        if (!bSplit && !bExplode && !bSciShot)
+        {
                 playHitSound();
                 killTheShot();
-           }
+        }
             else if (bSciShot)
             {
                 shotspeed = 0;
@@ -265,7 +265,7 @@ public class shot : MonoBehaviour
                     killTheShot();
                 }
             }
-           else if (bSplit)
+        else if (bSplit)
             {
                 if(copy)
                 {
@@ -275,9 +275,9 @@ public class shot : MonoBehaviour
                 playHitSound();
                 killTheShot();
             }
-           else if (bExplode)
+        else if (bExplode)
             {
-                GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
+                GameObject g = Instantiate(explosionGO, transform.position, Quaternion.identity);
                 g.GetComponent<exploding>().shotElement = element;
                 //g.GetComponent<exploding>().damage = gun.gunScript.damage;
                 killTheShot();

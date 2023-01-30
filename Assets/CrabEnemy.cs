@@ -12,6 +12,8 @@ public class CrabEnemy : enemy
         shoot,
         slam,
         reload,
+
+        dead
     }
     [SerializeField]
     private state myState = state.idle;
@@ -58,6 +60,8 @@ public class CrabEnemy : enemy
     public Animator anim;
 
 
+
+    public Collider2D col;
     //Start is called before the first frame update
     public override void Start()
     {
@@ -75,6 +79,8 @@ public class CrabEnemy : enemy
         anim = GetComponent<Animator>();
 
         attackTimer = attackTimerOG;
+
+        col = GetComponent<Collider2D>();
         //walkpointObjectPlsIgnore = transform.GetChild(4).gameObject;
 
         //walkTimerOG = walkTimer;
@@ -85,7 +91,7 @@ public class CrabEnemy : enemy
     // Update is called once per frame
     public override void Update()
     {
-        if (!attacking)
+        if (!attacking && myState != state.dead)
         {
             base.Update();
         }
@@ -118,7 +124,11 @@ public class CrabEnemy : enemy
             break;
         }
             //if(!earthed)
-            attackPlayer();
+            if(myState != state.dead)
+            {
+                attackPlayer();
+            }
+            
             //checkHealth();
 
     }
@@ -162,16 +172,16 @@ public class CrabEnemy : enemy
             rb.MovePosition(transform.position + velocity * speed);
             
         }
-        Debug.DrawLine(new Vector3(transform.position.x - 5f, transform.position.y+50f, 1), new Vector3(transform.position.x - 5f, transform.position.y-50f, 1), Color.red);
-        Debug.DrawLine(new Vector3(transform.position.x + 5f, transform.position.y+50f, 1), new Vector3(transform.position.x + 5f, transform.position.y-50f, 1), Color.red);
+        // Debug.DrawLine(new Vector3(transform.position.x - 5f, transform.position.y+50f, 1), new Vector3(transform.position.x - 5f, transform.position.y-50f, 1), Color.red);
+        // Debug.DrawLine(new Vector3(transform.position.x + 5f, transform.position.y+50f, 1), new Vector3(transform.position.x + 5f, transform.position.y-50f, 1), Color.red);
 
-        Debug.DrawLine(new Vector3(playerDirection.x - 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 0.5f, playerDirection.y-50f, 1), Color.blue);
-        Debug.DrawLine(new Vector3(playerDirection.x + 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 0.5f, playerDirection.y-50f, 1), Color.blue);
-        Debug.DrawLine(new Vector3(playerDirection.x - 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 1f, playerDirection.y-50f, 1), Color.blue);
-        Debug.DrawLine(new Vector3(playerDirection.x + 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 1f, playerDirection.y-50f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x - 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 0.5f, playerDirection.y-50f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x + 0.5f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 0.5f, playerDirection.y-50f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x - 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x - 1f, playerDirection.y-50f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x + 1f, playerDirection.y+50f, 1), new Vector3(playerDirection.x + 1f, playerDirection.y-50f, 1), Color.blue);
 
-        Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.25f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.25f, 1), Color.blue);
-        Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.5f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.5f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.25f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.25f, 1), Color.blue);
+        // Debug.DrawLine(new Vector3(playerDirection.x + 50f, playerDirection.y + 0.5f, 1), new Vector3(playerDirection.x - 50f, playerDirection.y + 0.5f, 1), Color.blue);
         if ((player.transform.position.x >= transform.position.x - 5f && player.transform.position.x <= transform.position.x + 5f) && player.transform.position.y <= transform.position.y+0.35f && myState != state.slam)
         {
             print("IM IN RANGE");
@@ -222,9 +232,12 @@ public class CrabEnemy : enemy
     public void setWalk() //anim
     {
         //walkTimer = walkTimerOG;
+        if(myState != state.dead)
+        {
         myState = state.walk;
         randomizeWalkpoint();
         anim.SetInteger("state", (int)myState);
+        }
     }
     public void setShoot(){
         myState = state.shoot;
@@ -237,15 +250,18 @@ public class CrabEnemy : enemy
 
     public void walkFinished() //anim
     {
+        if(myState != state.dead){
         walkCounter++;
         randomizeWalkpoint();
-        if (walkCounter >= walkCounterGoal)
+        if ((walkCounter >= walkCounterGoal))
         {
             //walkTimer = walkTimerOG;
             setIdle();
             walkCounter = 0;
             walkCounterGoal = Random.Range(1, 4);
         }
+        }
+        
     }
     public void randomizeWalkpoint()
     {
@@ -363,5 +379,53 @@ public class CrabEnemy : enemy
     public override void OnBecameInvisible()
     {
         base.OnBecameInvisible();
+    }
+
+
+
+    public override void die()
+    {
+        //Debug.Break();
+        myState = state.dead;
+        anim.SetInteger("state", (int)myState);
+        StopAllCoroutines();
+        anim.SetTrigger("die");
+        StartCoroutine(dieKnockback());
+        
+    }
+    public void death() //anim
+    {
+        //drop stuff
+        //coroutine
+    }
+    public IEnumerator dieKnockback()
+    {
+        rb.angularDrag = 0.05f;
+        rb.drag = 0f;
+
+        rb.velocity = hp.knockbackDir * 4;
+        
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+        rb.velocity = hp.knockbackDir * 2;
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+        rb.velocity = hp.knockbackDir * 1;
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+
+
+        rb.angularDrag = 200f;
+        rb.drag = 200f;
+        col.enabled = false;
+        yield return null;
+    }
+    public IEnumerator deathCoroutine()
+    {
+        
+
+
+
+        yield return null;
     }
 }

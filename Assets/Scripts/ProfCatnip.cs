@@ -128,4 +128,11 @@ public class ProfCatnip : enemy
     {
         base.OnBecameInvisible();
     }
+
+
+    public override void die()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

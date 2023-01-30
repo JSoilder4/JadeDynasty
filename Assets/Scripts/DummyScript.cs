@@ -49,4 +49,9 @@ public class DummyScript : enemy
     {
         base.OnBecameInvisible();
     }
+
+    public override void die()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -8539,6 +8539,9 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
   player: 0
+  myEnemyScript: {fileID: 0}
+  knockbackDir: {x: 0, y: 0, z: 0}
+  dead: 0
 --- !u!213 &1113583560
 Sprite:
   m_ObjectHideFlags: 0
@@ -51704,7 +51707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899486, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_RootOrder
@@ -51982,6 +51985,10 @@ PrefabInstance:
     - target: {fileID: 4760173122625586482, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173124461523201, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: AmmoCount

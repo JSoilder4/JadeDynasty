@@ -24,6 +24,12 @@ public class hp : MonoBehaviour
     public AudioSource mySource;
 
     public bool player;
+
+    public enemy myEnemyScript;
+
+    public Vector3 knockbackDir;
+
+    public bool dead;
     public void elementEffect()
     {
         if (earthed)
@@ -123,6 +129,10 @@ public class hp : MonoBehaviour
         currentHP = maxHP;
         sprite = GetComponent<SpriteRenderer>();
         mySource = GetComponent<AudioSource>();
+        if(!player)
+        {
+            myEnemyScript = GetComponent<enemy>();
+        }
     }
 
     // Update is called once per frame
@@ -140,6 +150,15 @@ public class hp : MonoBehaviour
     public void takeDamage(float dmg)
     {
         currentHP -= dmg;
+    }
+    public void takeDamage(float dmg, Vector3 shotDir)
+    {
+        currentHP -= dmg;
+        if(currentHP <= 0)
+        {
+            knockbackDir = shotDir.normalized;//new Vector3(shotDir.x, shotDir.y, 0);
+            print(knockbackDir);
+        }
     }
     public void healDamage(float heal)
     {
@@ -178,12 +197,14 @@ public class hp : MonoBehaviour
                 onfire = false;
             }
         }
-        if (currentHP <= 0 && !player)
+        if (!dead &&currentHP <= 0 && !player)
         {
             print("die" + currentHP);
-           // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
-           // GameManager.GM.enemiesToReset.Remove(gameObject);
-            Destroy(gameObject);
+            // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
+            // GameManager.GM.enemiesToReset.Remove(gameObject);
+            myEnemyScript.die();
+            dead = true;
+            //Destroy(gameObject);
         }
     }
     public void fireSound()
@@ -242,6 +263,26 @@ public class hp : MonoBehaviour
                         break;
                     }
             }
+            
+        }
+        if (!player && collision.transform.CompareTag("shot"))
+        {
+            switch (collision.GetComponent<shot>().effect)
+            {
+                case gunEnumScript.effect.EXPLOSION:
+
+
+                    break;
+
+                default:
+                    takeDamage(collision.GetComponent<shot>().damage, transform.position - collision.transform.position);
+                    break;
+            }
+            
+
+            
+            
+            //Destroy(collision.gameObject);
         }
         
     }

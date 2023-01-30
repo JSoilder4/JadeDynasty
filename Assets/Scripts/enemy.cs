@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public abstract class enemy : MonoBehaviour
 {
     public GameObject player;
     public SpriteRenderer sprite;
@@ -77,7 +77,7 @@ public class enemy : MonoBehaviour
                     break;
 
                 default:
-                    hp.takeDamage(collision.GetComponent<shot>().damage);// -= collision.GetComponent<shot>().damage;
+                    //hp.takeDamage(collision.GetComponent<shot>().damage);// -= collision.GetComponent<shot>().damage;
                     break;
             }
             
@@ -99,7 +99,7 @@ public class enemy : MonoBehaviour
     //IEnumerator Die()
     //{
 
-
+    public abstract void die();
 
     //    yield return null;
     //}

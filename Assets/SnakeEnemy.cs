@@ -199,4 +199,23 @@ private enum state
     {
         base.OnBecameInvisible();
     }
+
+    public override void die()
+    {
+        anim.SetTrigger("die");
+    }
+
+    public void death() //anim
+    {
+        //drop stuff
+        //coroutine
+    }
+    IEnumerator deathCoroutine()
+    {
+        
+
+
+
+        yield return null;
+    }
 }

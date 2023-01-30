@@ -52,4 +52,10 @@ public class warrior : enemy
     {
         base.OnBecameInvisible();
     }
+
+    public override void die()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }
