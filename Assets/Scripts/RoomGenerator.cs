@@ -72,6 +72,14 @@ public class RoomGenerator : MonoBehaviour
             }
         }
     }
+    public void deadRemover(List<GameObject> l)
+    {
+        for(int i = 0; i < l.Count; i++){
+            if(l[i].GetComponent<enemy>().dead){
+                l.RemoveAt(i);
+            }
+        }
+    }
 
     void Start()
     {
@@ -177,6 +185,7 @@ public class RoomGenerator : MonoBehaviour
             //enemiesNullRemover();
             
             genManage.nullRemover(enemies);
+            deadRemover(enemies);
             
             if(enemies.Count <= 0){
                 cleared = true;

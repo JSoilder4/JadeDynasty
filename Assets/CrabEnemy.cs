@@ -61,7 +61,7 @@ public class CrabEnemy : enemy
 
 
 
-    public Collider2D col;
+
     //Start is called before the first frame update
     public override void Start()
     {
@@ -80,7 +80,7 @@ public class CrabEnemy : enemy
 
         attackTimer = attackTimerOG;
 
-        col = GetComponent<Collider2D>();
+        
         //walkpointObjectPlsIgnore = transform.GetChild(4).gameObject;
 
         //walkTimerOG = walkTimer;
@@ -387,45 +387,14 @@ public class CrabEnemy : enemy
     {
         //Debug.Break();
         myState = state.dead;
+        dead = true;
         anim.SetInteger("state", (int)myState);
         StopAllCoroutines();
         anim.SetTrigger("die");
         StartCoroutine(dieKnockback());
+        StartCoroutine(deathCoroutine(2f));
         
     }
-    public void death() //anim
-    {
-        //drop stuff
-        //coroutine
-    }
-    public IEnumerator dieKnockback()
-    {
-        rb.angularDrag = 0.05f;
-        rb.drag = 0f;
-
-        rb.velocity = hp.knockbackDir * 4;
-        
-        yield return new WaitForSeconds(1.5f/3);
-        //Debug.Break();
-        rb.velocity = hp.knockbackDir * 2;
-        yield return new WaitForSeconds(1.5f/3);
-        //Debug.Break();
-        rb.velocity = hp.knockbackDir * 1;
-        yield return new WaitForSeconds(1.5f/3);
-        //Debug.Break();
-
-
-        rb.angularDrag = 200f;
-        rb.drag = 200f;
-        col.enabled = false;
-        yield return null;
-    }
-    public IEnumerator deathCoroutine()
-    {
-        
-
-
-
-        yield return null;
-    }
+    
+    
 }

@@ -122,12 +122,12 @@ TextureImporter:
       name: snakeGunMod2_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -143,12 +143,12 @@ TextureImporter:
       name: snakeGunMod2_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,12 +164,12 @@ TextureImporter:
       name: snakeGunMod2_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 64
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,12 +185,12 @@ TextureImporter:
       name: snakeGunMod2_3
       rect:
         serializedVersion: 2
-        x: 98
+        x: 96
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -206,12 +206,12 @@ TextureImporter:
       name: snakeGunMod2_4
       rect:
         serializedVersion: 2
-        x: 129
+        x: 128
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,10 +229,10 @@ TextureImporter:
         serializedVersion: 2
         x: 160
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -248,12 +248,12 @@ TextureImporter:
       name: snakeGunMod2_6
       rect:
         serializedVersion: 2
-        x: 191
+        x: 192
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,10 +271,10 @@ TextureImporter:
         serializedVersion: 2
         x: 224
         y: 96
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -290,12 +290,12 @@ TextureImporter:
       name: snakeGunMod2_8
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -311,12 +311,12 @@ TextureImporter:
       name: snakeGunMod2_9
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -332,12 +332,12 @@ TextureImporter:
       name: snakeGunMod2_10
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -355,10 +355,10 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -376,10 +376,10 @@ TextureImporter:
         serializedVersion: 2
         x: 128
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -395,12 +395,12 @@ TextureImporter:
       name: snakeGunMod2_13
       rect:
         serializedVersion: 2
-        x: 161
+        x: 160
         y: 64
-        width: 31
+        width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -408,6 +408,132 @@ TextureImporter:
       bones: []
       spriteID: cacf1255c9910b24796fc911a293f35c
       internalID: 1153242721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817b40b1d139a70478679551f4401c51
+      internalID: 601073377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e16d05215ebe047b20a2a9e4fa1bb4
+      internalID: 21851856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee889cc696ef4d84994098dc3bd04547
+      internalID: 495431377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1492bf26b127940abb0a8bd955db9b
+      internalID: 1212521562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4631db176fc0b9a4e81372248586c200
+      internalID: 1300996924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snakeGunMod2_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f074be2e8c9a3da4ba8f3c1183637e2f
+      internalID: -239821844
       vertices: []
       indices: 
       edges: []
@@ -423,20 +549,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      snakeGunMod2_17: 1212521562
       snakeGunMod2_10: 1455603388
       snakeGunMod2_1: -1405467640
       snakeGunMod2_13: 1153242721
+      snakeGunMod2_15: 21851856
       snakeGunMod2_4: 304919126
       snakeGunMod2_7: -1273598998
       snakeGunMod2_8: -1587032723
       snakeGunMod2_9: 298158895
+      snakeGunMod2_14: 601073377
       snakeGunMod2_3: -1800949411
       snakeGunMod2_6: -142028037
+      snakeGunMod2_16: 495431377
       snakeGunMod2_2: 1294978759
+      snakeGunMod2_18: 1300996924
       snakeGunMod2_12: 2081712495
       snakeGunMod2_0: -265072306
       snakeGunMod2_5: -173858373
       snakeGunMod2_11: -1666126430
+      snakeGunMod2_19: -239821844
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

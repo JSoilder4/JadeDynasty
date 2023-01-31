@@ -23,6 +23,10 @@ public abstract class enemy : MonoBehaviour
     
     public AudioSource mySource;
 
+    public bool dead;
+
+    public Collider2D col;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -36,6 +40,7 @@ public abstract class enemy : MonoBehaviour
         player = GameObject.Find("player");
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -100,6 +105,47 @@ public abstract class enemy : MonoBehaviour
     //{
 
     public abstract void die();
+    public IEnumerator dieKnockback()
+    {
+        rb.angularDrag = 0.05f;
+        rb.drag = 0f;
+
+        rb.velocity = hp.knockbackDir * 4;
+        
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+        rb.velocity = hp.knockbackDir * 2;
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+        rb.velocity = hp.knockbackDir * 1;
+        yield return new WaitForSeconds(1.5f/3);
+        //Debug.Break();
+
+
+        rb.angularDrag = 200f;
+        rb.drag = 200f;
+        col.enabled = false;
+        yield return null;
+    }
+    public void death() //anim
+    {
+        //drop stuff
+    }
+
+    public IEnumerator deathCoroutine(float colorDuration)//(float aTime, float dur)
+    {
+        float t = 0;    
+        while (t < colorDuration)
+        {
+            t += Time.deltaTime;
+            sprite.color = Color.Lerp(sprite.color, new Color(150/255f,150/255f,150/255f), t / colorDuration);
+            yield return null;
+        }
+        yield return null;
+    }
+
+
+
 
     //    yield return null;
     //}

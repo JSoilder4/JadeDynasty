@@ -8301,6 +8301,8 @@ MonoBehaviour:
   visable: 0
   hitSound: {fileID: 0}
   mySource: {fileID: 0}
+  dead: 0
+  col: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!212 &1109076784
 SpriteRenderer:
@@ -51577,7 +51579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392077466934847667, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1392077466934847822, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
       propertyPath: m_RootOrder
@@ -51701,13 +51703,25 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3399736762396899481, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399736762396899481, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399736762396899481, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_Name
       value: Crab
       objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899486, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_RootOrder

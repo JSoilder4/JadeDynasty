@@ -30,6 +30,7 @@ public class hp : MonoBehaviour
     public Vector3 knockbackDir;
 
     public bool dead;
+    int ha = 0;
     public void elementEffect()
     {
         if (earthed)
@@ -139,10 +140,20 @@ public class hp : MonoBehaviour
     void FixedUpdate()
     {
         elementEffect();
-        if (!player)
+        if (!player && !dead)
         {
             sprite.color = colorChange;
             colorNormalize();
+        }
+        if(dead)
+        {
+            
+            while(ha == 0)
+            { 
+                sprite.color = new Color(255,255,255,255);
+                ha++;
+            }
+            
         }
         checkHealth();
 
@@ -204,6 +215,7 @@ public class hp : MonoBehaviour
             // GameManager.GM.enemiesToReset.Remove(gameObject);
             myEnemyScript.die();
             dead = true;
+            this.enabled = false;
             //Destroy(gameObject);
         }
     }

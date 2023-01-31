@@ -10,6 +10,8 @@ private enum state
        // idle,
         walk,
         shoot,
+
+        dead
     }
     [SerializeField]
     private state myState = state.walk;
@@ -65,7 +67,7 @@ private enum state
     // Update is called once per frame
     public override void Update()
     {
-        if (!attacking)
+        if (!attacking && !dead)
         {
             base.Update();
         }
@@ -202,20 +204,12 @@ private enum state
 
     public override void die()
     {
+        myState = state.dead;
+        dead = true;
+        anim.SetInteger("state", (int)myState);
+        StopAllCoroutines();
         anim.SetTrigger("die");
-    }
-
-    public void death() //anim
-    {
-        //drop stuff
-        //coroutine
-    }
-    IEnumerator deathCoroutine()
-    {
-        
-
-
-
-        yield return null;
+        StartCoroutine(dieKnockback());
+        StartCoroutine(deathCoroutine(2f));
     }
 }

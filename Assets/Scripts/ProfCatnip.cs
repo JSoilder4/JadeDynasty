@@ -132,6 +132,8 @@ public class ProfCatnip : enemy
 
     public override void die()
     {
+        dead = true;
+        this.enabled = false; //temp
         throw new System.NotImplementedException();
     }
 
