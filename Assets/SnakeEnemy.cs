@@ -92,7 +92,11 @@ private enum state
             case state.shoot:
             break;
         }
+        if(!dead)
+        {
             attackPlayer();
+        }
+            
 
     }
     public void attackPlayer()
