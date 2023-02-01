@@ -81,8 +81,6 @@ public class GenerationManager : MonoBehaviour
         Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
         roomGrid[4, 4] = true;
         roomsCreated = 1;
-
-       
         //for (int i = 0; i < doorsArray.Length; i++)
         //{
         //    doors.Add(doorsArray[i]);

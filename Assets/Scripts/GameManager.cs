@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
     public int playerX, playerY;
 
     public RoomGenerator currentRoom;
+    public GameObject playButton;
+    public GameObject backgroundImage;
     /// <summary>
     /// Representation of the player on the room grid. (CAN SWITCH TO ENUMS)
     /// </summary>
@@ -308,16 +310,21 @@ public class GameManager : MonoBehaviour
     public void respawn()
     {
         //sceneReset();
-        player.transform.position = new Vector3(0, 0, 0);
-        cam.transform.position = new Vector3(0,0,-10);
+        player.transform.position = genManage.roomPositions[4,4];
+        cam.transform.position = genManage.roomPositions[4,4];
+        playerX = 4;
+        playerY = 4;
         playerScript.enabled = true;
         playerScript.hp.currentHP = 5;
         playergun.gunScript.enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
         playergun.gunScript.sprite.enabled = true;
         player.GetComponent<CircleCollider2D>().enabled = true;
-        rerollGuns();
-        playergun.gunScript.resetGun();
+        //rerollGuns();
+        playergun.gunScript.resetGun(); //check
+        genManage.RetryLevel();
+
+
         //spawnEnemies();
     }
     public void rerollGuns()
@@ -366,22 +373,26 @@ public class GameManager : MonoBehaviour
                 alive();
             }
         }
-        if (!started && Input.GetButtonDown("Jump"))
-        {
-            start();
-        }
+        // if (!started && Input.GetButtonDown("Jump"))
+        // {
+        //     start();
+        // }
 
         hpText.text = "HP: " + playerScript.hp.currentHP;
 
 
         //checkForEnemies();
     }
+
+
     public void start()
     {
         started = true;
         scoreText.enabled = true;
         titleHeader.enabled = false;
         titleFooter.enabled = false;
+        playButton.SetActive(false);// = false;
+        backgroundImage.SetActive(false);// = false;
         respawn();
 
     }

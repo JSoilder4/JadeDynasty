@@ -156,7 +156,7 @@ private enum state
     {
         walkCounter++;
         randomizeWalkpoint();
-        if (walkCounter >= walkCounterGoal)
+        if (!dead && walkCounter >= walkCounterGoal)
         {
             //walkTimer = walkTimerOG;
             setShoot();
