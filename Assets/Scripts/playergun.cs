@@ -258,8 +258,38 @@ private void FixedUpdate() {
         }
         AmmoCount.color = sprite.color;
     }
-    public void ammoPickup()
+    public void ammoPickup()//GameObject ammoObject)
     {
+        int ammoBefore;
+        print("expected gain: "+ activeGun.magazine);
+        switch(activeGun.gunType)
+        {
+            case gunEnumScript.gunType.Pistol:
+            ammoBefore = pistolAmmo;
+            pistolAmmo += activeGun.magazine;
+            print("actual gain: "+(pistolAmmo - ammoBefore));
+            break;
+
+            case gunEnumScript.gunType.Shotgun:
+            ammoBefore = shotgunAmmo;
+            shotgunAmmo += activeGun.magazine;
+            print("actual gain: "+(shotgunAmmo - ammoBefore));
+            break;
+
+            case gunEnumScript.gunType.Sniper:
+            ammoBefore = sniperAmmo;
+            sniperAmmo += activeGun.magazine;
+            print("actual gain: "+(sniperAmmo - ammoBefore));
+            break;
+
+            case gunEnumScript.gunType.SMG:
+            ammoBefore = smgAmmo;
+            smgAmmo += activeGun.magazine;
+            print("actual gain: "+(smgAmmo - ammoBefore));
+            break;
+        }
+        //Destroy(ammoObject);
+
 
     }
     IEnumerator reload()
@@ -367,6 +397,7 @@ private void FixedUpdate() {
     {
         equippedGuns.Clear();
         activeGun = new gun();
+        activeGun.roll();
         equippedGuns.Add(activeGun);
 
 

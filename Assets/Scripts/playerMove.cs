@@ -229,6 +229,11 @@ public class playerMove : MonoBehaviour
             }
             
         }
+        if(collision.transform.CompareTag("Ammo"))
+        {
+            pGunScript.ammoPickup();//collision.gameObject);
+            Destroy(collision.gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D other) {
         // if(other.CompareTag("Gun")){

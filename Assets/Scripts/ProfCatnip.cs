@@ -136,6 +136,7 @@ public class ProfCatnip : enemy
         this.enabled = false; //temp
         col.enabled = false; 
         sprite.enabled = false;
+        death(); //temp
         Destroy(gameObject); //temp
         throw new System.NotImplementedException();
     }

@@ -121,8 +121,8 @@ public class GameManager : MonoBehaviour
         playerY = 4;
         playerRoomGrid[playerX, playerY] = "true";
 
-        randomGunToDrop = GameObject.Find("randomGun");
-        ammoToDrop = GameObject.Find("Ammo");
+        //randomGunToDrop = GameObject.Find("randomGun");
+        //ammoToDrop = GameObject.Find("Ammo");
 
         //drops.Add(randomGunToDrop);
         //drops.Add(ammoToDrop);
@@ -459,8 +459,8 @@ public class GameManager : MonoBehaviour
 
     public static Dictionary<dropsEmum, int> enemyDropTable = new Dictionary<dropsEmum, int>()
     {
-        {dropsEmum.gun, 30},
-        {dropsEmum.ammo, 70},
+        {dropsEmum.gun, 40},
+        {dropsEmum.ammo, 60},
         //{null, 30}
     };
     public static dropsEmum RollDrops()

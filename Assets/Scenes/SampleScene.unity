@@ -2573,6 +2573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: randomGun
       objectReference: {fileID: 0}
+    - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
@@ -5102,7 +5106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &538056021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12203,6 +12207,8 @@ MonoBehaviour:
   playButton: {fileID: 1244489919}
   backgroundImage: {fileID: 538056020}
   genManage: {fileID: 602254765}
+  randomGunToDrop: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
+  ammoToDrop: {fileID: 2220907072256966216, guid: 0f730dd27098bc046852b834a27e1011, type: 3}
 --- !u!114 &1385765417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51976,7 +51982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2220907072256966216, guid: 0f730dd27098bc046852b834a27e1011, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8841338891466276132, guid: 0f730dd27098bc046852b834a27e1011, type: 3}
       propertyPath: m_RootOrder

@@ -132,11 +132,11 @@ public abstract class enemy : MonoBehaviour
     public void death() //anim
     {
         //drop stuff
-       
+    
 
         int random = Random.Range(0, 101);
 
-        if (random >= 50)
+        if (random >= 60)
         {
             GameManager.dropsEmum thingToDrop = GameManager.RollDrops();
             if (thingToDrop == GameManager.dropsEmum.gun)
