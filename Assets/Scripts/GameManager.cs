@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -79,6 +80,19 @@ public class GameManager : MonoBehaviour
 
     public GenerationManager genManage;
 
+
+    public GameObject randomGunToDrop;
+    public GameObject ammoToDrop;
+    //public static GameObject null;
+
+    public enum dropsEmum
+    {
+        gun,
+        ammo
+    }
+
+    public static List<GameObject> drops;
+
     private void Awake()
     {
         if (GM == null)
@@ -107,7 +121,12 @@ public class GameManager : MonoBehaviour
         playerY = 4;
         playerRoomGrid[playerX, playerY] = "true";
 
+        randomGunToDrop = GameObject.Find("randomGun");
+        ammoToDrop = GameObject.Find("Ammo");
 
+        //drops.Add(randomGunToDrop);
+        //drops.Add(ammoToDrop);
+        //drops.Add(null);
         //randomGuns = GameObject.FindGameObjectsWithTag("Gun");
     }
     /// <summary>
@@ -310,13 +329,13 @@ public class GameManager : MonoBehaviour
     public void respawn()
     {
         //sceneReset();
-        player.transform.position = genManage.roomPositions[4,4];
-        cam.transform.position = genManage.roomPositions[4,4];
+        player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
+        cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
         playerX = 4;
         playerY = 4;
-        playerScript.enabled = true;
+        //playerScript.enabled = true;
         playerScript.hp.currentHP = 5;
-        playergun.gunScript.enabled = true;
+        //playergun.gunScript.enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
         playergun.gunScript.sprite.enabled = true;
         player.GetComponent<CircleCollider2D>().enabled = true;
@@ -434,6 +453,33 @@ public class GameManager : MonoBehaviour
         wintext.enabled = true;
         end = true;
         wintext.text = "All Enemies Defeated! Final Score: " + score; 
+    }
+
+
+
+    public static Dictionary<dropsEmum, int> enemyDropTable = new Dictionary<dropsEmum, int>()
+    {
+        {dropsEmum.gun, 30},
+        {dropsEmum.ammo, 70},
+        //{null, 30}
+    };
+    public static dropsEmum RollDrops()
+    {
+        int[] weights = enemyDropTable.Values.ToArray();
+
+        int randomWeight = Random.Range(0, weights.Sum());
+
+
+        for (int i = 0; i < weights.Length; i++)
+        {
+            // Debug.Log(weights[i] + " "+i);
+            randomWeight -= weights[i];
+            if (randomWeight < 0)
+            {
+                return (dropsEmum) i;//the drop
+            }
+        }
+        return dropsEmum.ammo;
     }
     // public void spawnEnemies()
     // {

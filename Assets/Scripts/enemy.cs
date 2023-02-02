@@ -27,6 +27,8 @@ public abstract class enemy : MonoBehaviour
 
     public Collider2D col;
 
+    //GameManager.dropsEmum thingToDrop;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -130,7 +132,28 @@ public abstract class enemy : MonoBehaviour
     public void death() //anim
     {
         //drop stuff
+       
+
+        int random = Random.Range(0, 101);
+
+        if (random >= 50)
+        {
+            GameManager.dropsEmum thingToDrop = GameManager.RollDrops();
+            if (thingToDrop == GameManager.dropsEmum.gun)
+            {
+                Instantiate(GameManager.GM.randomGunToDrop, transform.position, Quaternion.identity);
+            }
+            else if (thingToDrop == GameManager.dropsEmum.ammo)
+            {
+                Instantiate(GameManager.GM.ammoToDrop, transform.position, Quaternion.identity);
+            }
+        }
+
+
+
+        
     }
+
 
     public IEnumerator deathCoroutine(float colorDuration)//(float aTime, float dur)
     {

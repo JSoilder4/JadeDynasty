@@ -11,6 +11,8 @@ public class WeightedRNGDEBUG : MonoBehaviour
     //public gunEnumScript.effect effect;
 
     private gunEnumScript.effect effect2;
+
+    private GameManager.dropsEmum fun;
     //public float percentChance;
     
     private float testWeight;
@@ -43,7 +45,28 @@ public class WeightedRNGDEBUG : MonoBehaviour
             Debug.Log("Total :"+percentSum+"%"); //technicaly useless but also fun in a self serving way
 
 
-        //percentChance = gunEnumScript.effectWeightTable[effect];
+
+        testDropChance();
+
+    }
+
+    public void testDropChance()
+    {
+        percentSum = 0;
+        testSum = GameManager.enemyDropTable.Values.Sum();
+        for (int i = 0; i < GameManager.enemyDropTable.Count; i++)
+        {
+            fun = (GameManager.dropsEmum)i;
+            testWeight = GameManager.enemyDropTable[fun];
+
+            float percent = (Mathf.Round(((testWeight / testSum) * 100) * 100.0f) / 100.0f);
+            Debug.Log(fun + ": " + percent + "%");
+            percentSum += percent;
+        }
+
+
+
+        Debug.Log("Total :" + percentSum + "%");
     }
 
     // Update is called once per frame

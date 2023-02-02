@@ -270,8 +270,8 @@ public class playerMove : MonoBehaviour
         GameManager.GM.dead();
         //sprite.enabled = false;
         playergun.gunScript.sprite.enabled = false;
-        playergun.gunScript.enabled = false;
-        this.enabled = false;
+        //playergun.gunScript.enabled = false;
+        //this.enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
     }
     public void repsawn()
