@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI elementUItext;
     public TextMeshProUGUI effectUItext;
     public TextMeshProUGUI spreadUItext;
+    public TextMeshProUGUI triggerUItext;
     public Image gunUIImage;
     
 
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
         playerScript = player.GetComponent<playerMove>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
+        GunStatUIAnimator = GunStatUICanvas.transform.GetChild(0).gameObject.GetComponent<Animator>();//GetComponentInChildren<Animator>();
 
 
         playerX = 4;
@@ -245,6 +247,9 @@ public class GameManager : MonoBehaviour
         // {
         //     damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots);
         // }
+
+        GunStatUIAnimator.SetTrigger("UIEnabled");
+
         if (gun.numShots > 1)
         {
             damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots);
@@ -254,11 +259,14 @@ public class GameManager : MonoBehaviour
             damageUItext.text = "Damage: " + gun.damage;
         }
 
-        RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
-        shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((/*1 - */gun.shotSpeed) * 100.0f) / 100.0f);
+        //RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
+        //shotSpeedUItext.text = "Shot Speed: "+ (Mathf.Round((/*1 - */gun.shotSpeed) * 100.0f) / 100.0f);
+        triggerUItext.text = "Trigger: " + gun.triggerType;
+        spreadUItext.text = "Spread: " + gun.spread;
         elementUItext.text = "Element: " + gun.element;
         effectUItext.text = "Special: " + gun.effect;
-        spreadUItext.text = "Spread: " + gun.spread;
+        
+        
         gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
         switch (gun.element)
         {
