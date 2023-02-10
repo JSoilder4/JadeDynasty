@@ -234,6 +234,11 @@ public class playerMove : MonoBehaviour
             pGunScript.ammoPickup();//collision.gameObject);
             Destroy(collision.gameObject);
         }
+        if (collision.transform.CompareTag("nextFloor"))
+        {
+            GameManager.GM.nextFloor();
+
+        }
     }
     private void OnTriggerExit2D(Collider2D other) {
         // if(other.CompareTag("Gun")){

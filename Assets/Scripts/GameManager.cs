@@ -352,6 +352,23 @@ public class GameManager : MonoBehaviour
         //rerollGuns();
         playergun.gunScript.resetGun(); //check
         genManage.RetryLevel();
+        genManage.floor = 0;
+        sceneReset();
+
+
+        //spawnEnemies();
+    }
+    public void nextFloor()
+    {
+        player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
+        cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
+        playerX = 4;
+        playerY = 4;
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        playergun.gunScript.sprite.enabled = true;
+        player.GetComponent<CircleCollider2D>().enabled = true;
+        genManage.floor += 1;
+        genManage.RetryLevel();
         sceneReset();
 
 

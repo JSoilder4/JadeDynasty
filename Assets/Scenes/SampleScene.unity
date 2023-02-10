@@ -5471,6 +5471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerOG: 2.5
   minRooms: 7
+  startingMinRooms: 0
   roomWidth: 11
   roomHeight: 6
   roomsCreated: 0
@@ -5487,7 +5488,7 @@ MonoBehaviour:
   createdRooms: []
   corridor: {fileID: 0}
   bossRooms:
-  - {fileID: 5338347914404725052, guid: 4c1ce20d52c9f4043be163b59580f3a0, type: 3}
+  - {fileID: 4299903615441214141, guid: 5fb0bc4fae3f4384c992a8b66e71b689, type: 3}
   treasureRoom: {fileID: 1588169039684451388, guid: 89d85ebe0e8b88a4799032d5b31a98be, type: 3}
   doors:
   - {fileID: 4387743995223904082, guid: a0e372cde94c92449a85ff37f75fde43, type: 3}

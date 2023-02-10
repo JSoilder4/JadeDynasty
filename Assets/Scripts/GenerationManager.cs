@@ -7,6 +7,7 @@ public class GenerationManager : MonoBehaviour
     [Header("Configurable Generation Variables")]
     public float timerOG;  //CheckLevel when timer done
     public int minRooms;
+    public int startingMinRooms;
     public float roomWidth, roomHeight; // every 3 is about 1 second of travel between rooms (current default(15, 9)) (width/height determined by half of the total room size in tiles)
 
     [Header("The Rest")]
@@ -81,6 +82,7 @@ public class GenerationManager : MonoBehaviour
         Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
         roomGrid[4, 4] = true;
         roomsCreated = 1;
+        startingMinRooms = minRooms;
         //for (int i = 0; i < doorsArray.Length; i++)
         //{
         //    doors.Add(doorsArray[i]);
@@ -118,6 +120,7 @@ public class GenerationManager : MonoBehaviour
         //populates these arrays every frame, since the floor generation happens across multiple frames
         doors = GameObject.FindGameObjectsWithTag("door");
         createdRooms = GameObject.FindGameObjectsWithTag("room");
+        minRooms = startingMinRooms + (2 * floor);
 
         //determines whether doors should be "real" or not
         for(int i = 0; i < doors.Length; i++)
@@ -320,7 +323,7 @@ public class GenerationManager : MonoBehaviour
         //}
 
         //actually replace the room
-        GameObject g = Instantiate(bossRooms[floor], createdRooms[roomToReplaceIndex].transform.position, Quaternion.identity);
+        GameObject g = Instantiate(bossRooms[0], createdRooms[roomToReplaceIndex].transform.position, Quaternion.identity); //HI, JOHN HERE. LOOK BACK AT THIS. BOSS ROOMS USED TO BE INSTANIATED BASED ON FLOOR BUT NOW EVERY FLOOR HAS SAME BOSSROOM
         Destroy(createdRooms[roomToReplaceIndex]);
 
         g.GetComponent<RoomGenerator>().roomIndexKilled = roomToReplaceIndex;
