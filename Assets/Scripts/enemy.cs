@@ -141,11 +141,13 @@ public abstract class enemy : MonoBehaviour
             GameManager.dropsEmum thingToDrop = GameManager.RollDrops();
             if (thingToDrop == GameManager.dropsEmum.gun)
             {
-                Instantiate(GameManager.GM.randomGunToDrop, transform.position, Quaternion.identity);
+                GameObject omega = Instantiate(GameManager.GM.randomGunToDrop, transform.position, Quaternion.identity);
+                GameManager.GM.rGunsToReset.Add(omega);
             }
             else if (thingToDrop == GameManager.dropsEmum.ammo)
             {
-                Instantiate(GameManager.GM.ammoToDrop, transform.position, Quaternion.identity);
+                GameObject delta = Instantiate(GameManager.GM.ammoToDrop, transform.position, Quaternion.identity);
+                GameManager.GM.droppedAmmoToReset.Add(delta);
             }
         }
 

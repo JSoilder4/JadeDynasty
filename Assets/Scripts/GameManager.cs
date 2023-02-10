@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public int maxScore;
 
     public List<GameObject> enemiesToReset = new List<GameObject>();
+    public List<GameObject> rGunsToReset = new List<GameObject>();
+    public List<GameObject> droppedAmmoToReset = new List<GameObject>();
 
     public AudioClip pickupSound;
     public AudioSource pickupSource;
@@ -229,7 +231,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void gunPickup(GameObject rGun, gun rGunG)
     {
-        print("trouble is doubled");
+        //print("trouble is doubled");
         playPickupSound();
         playergun.gunScript.equippedGuns.Add(rGunG);
         playergun.gunScript.gunIndex = playergun.gunScript.equippedGuns.Count;
@@ -342,6 +344,7 @@ public class GameManager : MonoBehaviour
         //rerollGuns();
         playergun.gunScript.resetGun(); //check
         genManage.RetryLevel();
+        sceneReset();
 
 
         //spawnEnemies();
@@ -373,7 +376,23 @@ public class GameManager : MonoBehaviour
             Destroy(enemiesToReset[i]);
             
         }
+        for (int i = rGunsToReset.Count - 1; i >= 0; i--)
+        {
+            //enemiesToReset.Remove(enemiesToReset[i]);
+            // print("die");
+            Destroy(rGunsToReset[i]);
+
+        }
+        for (int i = droppedAmmoToReset.Count - 1; i >= 0; i--)
+        {
+            //enemiesToReset.Remove(enemiesToReset[i]);
+            // print("die");
+            Destroy(droppedAmmoToReset[i]);
+
+        }
         enemiesToReset.Clear();
+        rGunsToReset.Clear();
+        droppedAmmoToReset.Clear();
         resetScore();
     }
     public void addSpawnedObject(GameObject g)
