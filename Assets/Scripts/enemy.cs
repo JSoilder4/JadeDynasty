@@ -27,6 +27,8 @@ public abstract class enemy : MonoBehaviour
 
     public Collider2D col;
 
+    public GenerationManager genManage;
+
     //GameManager.dropsEmum thingToDrop;
 
     // Start is called before the first frame update
@@ -43,6 +45,11 @@ public abstract class enemy : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
+
+        hp.maxHP += (10 * genManage.floor);
+        hp.currentHP += (10 * genManage.floor);
     }
 
     // Update is called once per frame
@@ -142,6 +149,7 @@ public abstract class enemy : MonoBehaviour
             if (thingToDrop == GameManager.dropsEmum.gun)
             {
                 GameObject omega = Instantiate(GameManager.GM.randomGunToDrop, transform.position, Quaternion.identity);
+                omega.GetComponent<RandomGun>().theGun.floor = genManage.floor;
                 GameManager.GM.rGunsToReset.Add(omega);
             }
             else if (thingToDrop == GameManager.dropsEmum.ammo)

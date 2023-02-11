@@ -32,7 +32,10 @@ public class gun //: MonoBehaviour
     public float scatterAngle;
     public gunEnumScript.element element;        //nothing 0, fire 1, water 2, earth 3, air 4
     [Header("Shot Effect")]
-    public gunEnumScript.effect effect;         //nothing 0, sciShot 1, split 2, explode 3, radiation 4, 
+    public gunEnumScript.effect effect;         //nothing 0, sciShot 1, split 2, explode 3, radiation 4,
+                                                //
+
+    public int floor;
 
     
     
@@ -95,7 +98,7 @@ public class gun //: MonoBehaviour
                 numShots = UnityEngine.Random.Range(1, 4); // 1 - 3 shots
                 triggerType = (gunEnumScript.trigger)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.trigger)).Length);
 
-                damage = 10;
+                damage = 10 + (2*floor);
 
                 //betweenShotTimer = (float)1/(dps/damage);
 
@@ -122,7 +125,7 @@ public class gun //: MonoBehaviour
                 numShots = UnityEngine.Random.Range(3, 10);//3 - 9 shots
                 triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
 
-                damage = 10;
+                damage = 10 + (2 * floor);
                 if(numShots != 1)
                 {
                     float numShotMulti = (1+(numShots/10.0f)) * 2;
@@ -143,7 +146,7 @@ public class gun //: MonoBehaviour
                 numShots = 1;
                 triggerType = FlipATrigger(gunEnumScript.trigger.Semi, gunEnumScript.trigger.Burst);
 
-                damage = 30;
+                damage = 30 + (2 * floor);
                 
                 if(numShots != 1)
                 {
@@ -166,7 +169,7 @@ public class gun //: MonoBehaviour
                 numShots = UnityEngine.Random.Range(1, 3);//1 - 2 shots
                 triggerType = gunEnumScript.trigger.Auto;//find a way to make burst balanced on smg?     //FlipATrigger(gunEnumScript.trigger.Auto, gunEnumScript.trigger.Burst);
 
-                damage = 5;
+                damage = 5 + (2 * floor);
                 
                 if(numShots != 1)
                 {
