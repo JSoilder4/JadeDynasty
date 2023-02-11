@@ -155,7 +155,7 @@ public class gun //: MonoBehaviour
                 betweenShotTimer = UnityEngine.Random.Range(0.55f, 0.75f);
                 
                 magazine = UnityEngine.Random.Range(1,5); // 1 - 4
-                reloadTimer = 0.75f*magazine;//UnityEngine.Random.Range(0.5f*magazine, 1f*magazine);
+                reloadTimer = 0.5f*magazine;//UnityEngine.Random.Range(0.5f*magazine, 1f*magazine);
                 shotSpeed = UnityEngine.Random.Range(0.3f, 1f);
                 
                 scatterAngle = 1;

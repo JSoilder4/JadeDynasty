@@ -351,6 +351,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         //rerollGuns();
         playergun.gunScript.resetGun(); //check
+        playergun.gunScript.resetAmmo();
         genManage.RetryLevel();
         genManage.floor = 0;
         sceneReset();

@@ -411,6 +411,13 @@ private void FixedUpdate() {
         //element = gunEnumScript.element.Nothing;
         //effect = gunEnumScript.effect.Nothing;
     }
+    public void resetAmmo()
+    {
+        pistolAmmo = pistolAmmoMax;
+        shotgunAmmo = shotgunAmmoMax;
+        sniperAmmo = sniperAmmoMax;
+        smgAmmo = smgAmmoMax;
+    }
     public void spriteUpdate()
     {
         switch (activeGun.gunType)
