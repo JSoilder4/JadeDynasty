@@ -29,11 +29,14 @@ public abstract class enemy : MonoBehaviour
 
     public GenerationManager genManage;
 
+    public bool elite;
+
     //GameManager.dropsEmum thingToDrop;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        elite = false;
         hp = GetComponent<hp>();
     mySource = GetComponent<AudioSource>();
 
@@ -47,6 +50,15 @@ public abstract class enemy : MonoBehaviour
         col = GetComponent<Collider2D>();
 
         genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
+
+        if(genManage.floor > 0)
+        {
+            int randomGoal = Random.Range(0, 101);
+            if(randomGoal - 5*genManage.floor < 0)
+            {
+                elite = true;
+            }
+        }
 
         hp.maxHP += (10 * genManage.floor);
         hp.currentHP += (10 * genManage.floor);

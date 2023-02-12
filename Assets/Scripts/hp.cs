@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class hp : MonoBehaviour
 {
@@ -30,6 +31,23 @@ public class hp : MonoBehaviour
     public Vector3 knockbackDir;
 
     public bool dead;
+
+    public GameObject HPCanvas;
+    public Image HPBar;
+    public Image elemHPBar;
+
+    enum element
+    {
+        Nothing,
+        Fire,
+        Cold,
+        Lightning
+    }
+    element myElement;
+
+    public float elemHPMax;
+    public float elemHPCurrent;
+
     int ha = 0;
     public void elementEffect()
     {
@@ -133,6 +151,32 @@ public class hp : MonoBehaviour
         if(!player)
         {
             myEnemyScript = GetComponent<enemy>();
+            HPCanvas = transform.Find("Canvas").gameObject;
+            HPBar = HPCanvas.transform.Find("HPBar").GetComponent<Image>();
+            elemHPBar = HPCanvas.transform.Find("elemHPBar").GetComponent<Image>();
+            myElement = element.Nothing;
+            if (myEnemyScript.elite)
+            {
+                myElement = (element)Random.Range(1, System.Enum.GetNames(typeof(element)).Length);
+                elemHPMax = maxHP / 3;
+                elemHPCurrent = elemHPMax;
+            }
+        }
+        switch (myElement)
+        {
+            case element.Fire:
+                elemHPBar.color = Color.red;
+                break;
+            case element.Cold:
+                elemHPBar.color = Color.blue;
+                break;
+            case element.Lightning:
+                elemHPBar.color = Color.yellow;
+                break;
+
+            default:
+                Destroy(elemHPBar);
+                break;
         }
     }
 
@@ -168,7 +212,7 @@ public class hp : MonoBehaviour
         if(currentHP <= 0)
         {
             knockbackDir = shotDir.normalized;//new Vector3(shotDir.x, shotDir.y, 0);
-            print(knockbackDir);
+            //print(knockbackDir);
         }
     }
     public void healDamage(float heal)
@@ -183,20 +227,9 @@ public class hp : MonoBehaviour
         }
         
     }
-
-
-    public void fireTick()//fire dot method 
-    { 
-
-    }
-
-    //ice freeze method
-
-    //poison method
-
-    //bleed method
     public void checkHealth()
     {
+        HPBar.fillAmount = currentHP / maxHP;
         if (onfire)
         {
 
@@ -213,6 +246,7 @@ public class hp : MonoBehaviour
             print("die" + currentHP);
             // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
             // GameManager.GM.enemiesToReset.Remove(gameObject);
+            Destroy(HPBar);
             myEnemyScript.die();
             dead = true;
             this.enabled = false;

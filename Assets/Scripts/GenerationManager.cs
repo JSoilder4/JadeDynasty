@@ -52,21 +52,21 @@ public class GenerationManager : MonoBehaviour
     void Start()
     {
         timer = timerOG;
-        int xForDebug = 0;
-        int yForDebug = 0;
+        //int xForDebug = 0;
+        //int yForDebug = 0;
         for (float y = roomHeight*4*2; y >= -roomHeight*5*2; y -= roomHeight*2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
         {
             for (float x = -roomWidth*4*2; x <= roomWidth*5*2; x += roomWidth*2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
             {
                 roomPositionsToAssign.Add(new Vector3(x, y, 0));
                // print("buttwrinkle");
-                GameObject g = Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
-                g.GetComponent<debugBoolChecker>().posX = xForDebug;
-                g.GetComponent<debugBoolChecker>().posY = yForDebug;
-                xForDebug++;
+                //GameObject g = Instantiate(dummyObject, new Vector3(x, y, 0), Quaternion.identity);
+                //g.GetComponent<debugBoolChecker>().posX = xForDebug;
+                //g.GetComponent<debugBoolChecker>().posY = yForDebug;
+                //xForDebug++;
             }
-            xForDebug = 0;
-            yForDebug++;
+            //xForDebug = 0;
+            //yForDebug++;
         }
         int iRoomPos = 0;
         for (int y2 = 0; y2 < 10; y2++)

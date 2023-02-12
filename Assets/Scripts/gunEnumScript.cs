@@ -25,9 +25,9 @@ public class gunEnumScript : MonoBehaviour
     {
         Nothing,
         Fire,
-        Water,
-        Earth,
-        Air
+        Cold,
+        Lightning,
+        Void
     }
     public enum effect
     {
