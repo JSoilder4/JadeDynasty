@@ -8,16 +8,6 @@ public class hp : MonoBehaviour
     public float maxHP;
     public float currentHP;
 
-    public bool onfire;
-    public float fireTimer;
-    public Color colorChange;
-    public bool earthed;
-    public float earthTimer;
-    public bool watered;
-    public float waterTimer;
-    public bool aired;
-    public float airedTimer;
-
     public SpriteRenderer sprite;
     
     public AudioClip fireClip;
@@ -40,7 +30,7 @@ public class hp : MonoBehaviour
     {
         Nothing,
         Fire,
-        Cold,
+        Water,
         Lightning
     }
     element myElement;
@@ -51,107 +41,23 @@ public class hp : MonoBehaviour
     int ha = 0;
     public void elementEffect()
     {
-        if (earthed)
-        {
-            earthTimer -= Time.deltaTime;
-        }
-        else
-        {
-            //facePlayer();
-        }
-        if (earthTimer <= 0)
-        {
-            earthed = false;
-        }
-        if (watered)
-        {
-            waterTimer -= Time.deltaTime;
-            //speed = speedOG / 2;
-        }
-        else
-        {
-            //speed = speedOG;
-        }
-        if (waterTimer <= 0)
-        {
-            watered = false;
-        }
-        if (aired)
-        {
-            //speed = -speedOG;
-            airedTimer -= Time.deltaTime;
-        }
-        else
-        {
-          //  speed = speedOG;
-        }
-        if (airedTimer <= 0)
-        {
-            aired = false;
-        }
+
     }
     public void colorNormalize()
     {
-        if (!onfire)
-        {
-            if (colorChange.g < 240 && colorChange.b < 240)
-            {
-                colorChange.g += Time.deltaTime;
-                colorChange.b += Time.deltaTime;
-            }
-            else if (colorChange.g >= 240 && colorChange.b >= 240)
-            {
-
-            }
-        }
-        if (!watered)
-        {
-            if (colorChange.g < 240 && colorChange.r < 240)
-            {
-                colorChange.g += Time.deltaTime;
-                colorChange.r += Time.deltaTime;
-            }
-            else if (colorChange.g >= 240 && colorChange.r >= 240)
-            {
-
-            }
-        }
-        if (!earthed)
-        {
-            if (colorChange.b < 240 && colorChange.r < 240)
-            {
-                colorChange.b += Time.deltaTime;
-                colorChange.r += Time.deltaTime;
-            }
-            else if (colorChange.b >= 240 && colorChange.r >= 240)
-            {
-
-            }
-        }
-        if (!aired)
-        {
-            if (colorChange.b < 240)
-            {
-                colorChange.b += Time.deltaTime;
-            }
-            else if (colorChange.b >= 240)
-            {
-
-            }
-        }
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        colorChange = new Color(255, 255, 255);
         currentHP = maxHP;
         sprite = GetComponent<SpriteRenderer>();
         mySource = GetComponent<AudioSource>();
         if(!player)
         {
             myEnemyScript = GetComponent<enemy>();
-            HPCanvas = transform.Find("Canvas").gameObject;
+            HPCanvas = transform.Find("HPBarCanvas").gameObject;
             HPBar = HPCanvas.transform.Find("HPBar").GetComponent<Image>();
             elemHPBar = HPCanvas.transform.Find("elemHPBar").GetComponent<Image>();
             myElement = element.Nothing;
@@ -167,7 +73,7 @@ public class hp : MonoBehaviour
             case element.Fire:
                 elemHPBar.color = Color.red;
                 break;
-            case element.Cold:
+            case element.Water:
                 elemHPBar.color = Color.blue;
                 break;
             case element.Lightning:
@@ -184,11 +90,6 @@ public class hp : MonoBehaviour
     void FixedUpdate()
     {
         elementEffect();
-        if (!player && !dead)
-        {
-            sprite.color = colorChange;
-            colorNormalize();
-        }
         if(dead)
         {
             
@@ -202,13 +103,70 @@ public class hp : MonoBehaviour
         checkHealth();
 
     }
-    public void takeDamage(float dmg)
+    public void takeDamage(float dmg) //player damage
     {
         currentHP -= dmg;
     }
-    public void takeDamage(float dmg, Vector3 shotDir)
+    public void takeDamage(gunEnumScript.element elem, float dmg, Vector3 shotDir) //enemy damage
     {
-        currentHP -= dmg;
+        if(myEnemyScript.elite)
+        {
+            if(elemHPCurrent > 0)
+            {
+                switch(elem)
+                {
+                    case gunEnumScript.element.Nothing:
+                        elemHPCurrent -= dmg*0.75f;
+                    break;
+                    case gunEnumScript.element.Fire:
+                        if(myElement == element.Fire)
+                        {
+                            elemHPCurrent -= dmg*2f;
+                        }
+                        else
+                        {
+                            elemHPCurrent -= dmg*0.5f;
+                        }
+                    break;
+                    case gunEnumScript.element.Water:
+                        if(myElement == element.Water)
+                        {
+                            elemHPCurrent -= dmg*2f;
+                        }
+                        else
+                        {
+                            elemHPCurrent -= dmg*0.5f;
+                        }
+                    break;
+                    case gunEnumScript.element.Lightning:
+                        if(myElement == element.Lightning)
+                        {
+                            elemHPCurrent -= dmg*2f;
+                        }
+                        else
+                        {
+                            elemHPCurrent -= dmg*0.5f;
+                        }
+                    break;
+                    case gunEnumScript.element.Stasis:
+                    
+                    break;
+                }
+            }
+            else
+            {
+                currentHP -= dmg;
+            }
+            
+        }
+        else
+        {
+            currentHP -= dmg;
+        }
+
+
+
+        
         if(currentHP <= 0)
         {
             knockbackDir = shotDir.normalized;//new Vector3(shotDir.x, shotDir.y, 0);
@@ -230,17 +188,17 @@ public class hp : MonoBehaviour
     public void checkHealth()
     {
         HPBar.fillAmount = currentHP / maxHP;
-        if (onfire)
-        {
+        // if (onfire)
+        // {
 
-            sprite.color = colorChange;
-            currentHP -= 1;
-            fireTimer -= Time.deltaTime;
-            if (fireTimer <= 0)
-            {
-                onfire = false;
-            }
-        }
+        //     sprite.color = colorChange;
+        //     currentHP -= 1;
+        //     fireTimer -= Time.deltaTime;
+        //     if (fireTimer <= 0)
+        //     {
+        //         onfire = false;
+        //     }
+        // }
         if (!dead &&currentHP <= 0 && !player)
         {
             print("die" + currentHP);
@@ -258,57 +216,53 @@ public class hp : MonoBehaviour
         mySource.clip = fireClip;
         mySource.Play();
     }
+    public IEnumerator ColorFade(float colorDuration, Color desiredColor)//(float aTime, float dur)
+    {
+        float t = 0;    
+        while (t < colorDuration)
+        {
+            t += Time.deltaTime;
+            sprite.color = Color.Lerp(desiredColor, new Color(1,1,1), t / colorDuration);
+            yield return null;
+        }
+        yield return null;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<shot>() != null)
         {
-            switch (collision.GetComponent<shot>().element)
-            {
-                case gunEnumScript.element.Nothing:
-                    {
-                        break;
-                    }
-                case gunEnumScript.element.Fire:
-                    {
-                        fireSound();
-                        //print(fire);
-                        colorChange.b = 0;
-                        colorChange.g = 0;
-                        fireTimer = 0.25f;//0.24/0.25 = 13 damage
-                        onfire = true;
-
-                        break;
-                    }
-                case gunEnumScript.element.Water:
-                    {
-                        colorChange.r = 0;
-                        colorChange.g = 0;
-                        waterTimer = 0.25f;
-                        watered = true;
-                        break;
-                    }
-                case gunEnumScript.element.Earth:
-                    {
-                        colorChange.b = 0;
-                        colorChange.r = 0;
-                        earthTimer = 0.25f;
-                        earthed = true;
-                        break;
-                    }
-                case gunEnumScript.element.Air:
-                    {
-                        colorChange.b = 0;
-                        airedTimer = 0.75f;
-                        aired = true;
-                        //print(hp);
-                        //print(gun.gunScript.damage + "Damage");
-                        //print(collision.GetComponent<shot>().lookDirection * knockback);
-                        //rb.AddForce(collision.GetComponent<shot>().lookDirection.normalized * knockback);
-                        //aired = false;
-                        //rb.AddForce(-collision.GetComponent<shot>().lookDirection.normalized * knockback);
-                        break;
-                    }
+            if(!player){
+                StopAllCoroutines();
+                StartCoroutine(ColorFade(0.75f, collision.GetComponent<shot>().sprite.color));
             }
+            
+            // switch (collision.GetComponent<shot>().element)
+            // {
+            //     case gunEnumScript.element.Nothing:
+            //         {
+            //             break;
+            //         }
+            //     case gunEnumScript.element.Fire:
+            //         {
+                        
+            //             break;
+            //         }
+            //     case gunEnumScript.element.Water:
+            //         {
+
+            //             break;
+            //         }
+            //     case gunEnumScript.element.Lightning:
+            //         {
+
+            //             break;
+            //         }
+            //     case gunEnumScript.element.Stasis:
+            //         {
+
+            //             break;
+            //         }
+            // }
             
         }
         if (!player && collision.transform.CompareTag("shot"))
@@ -321,7 +275,7 @@ public class hp : MonoBehaviour
                     break;
 
                 default:
-                    takeDamage(collision.GetComponent<shot>().damage, transform.position - collision.transform.position);
+                    takeDamage(collision.GetComponent<shot>().element, collision.GetComponent<shot>().damage, transform.position - collision.transform.position);
                     break;
             }
             

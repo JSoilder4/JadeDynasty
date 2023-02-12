@@ -16,11 +16,6 @@ public class shot : MonoBehaviour
     public AudioSource mySource;
 
     [Header("Shot Modifiers")]
-    public bool shotgun, sniper, smg;
-    public Color fire = new Color(255, 0, 0);
-    public Color water = new Color(0, 130, 255);
-    public Color earth = new Color(0, 255, 0);
-    public Color air = new Color(255, 255, 0);
 
     public float shotspeed;
 
@@ -85,39 +80,8 @@ public class shot : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         shotspeed = playergun.gunScript.activeGun.shotSpeed;
         player = playergun.gunScript.GetComponentInParent<playerMove>().gameObject;
-
-        switch (playergun.gunScript.activeGun.element)
-        {
-            case gunEnumScript.element.Nothing:
-                //sprite.color = clense;
-                break;
-            case gunEnumScript.element.Fire:
-                sprite.color = fire;
-                break;
-            case gunEnumScript.element.Water:
-                sprite.color = water;
-                break;
-            case gunEnumScript.element.Earth:
-                sprite.color = earth;
-                break;
-            case gunEnumScript.element.Air:
-                sprite.color = air;
-                break;
-        }
-        //if (gun.gunScript.element == 0)
-        //{
-
-        //}
-        //else if (gun.gunScript.element == 1)
-        //    sprite.color = fire;
-        //else if(gun.gunScript.element == 2)
-        //    sprite.color = water;
-        //else if(gun.gunScript.elementIndex == 3)
-        //    sprite.color = earth;
-        //else if(gun.gunScript.elementIndex == 4)
-        //    sprite.color = air;
-
-        //shotScript = this;
+        sprite.color = playergun.elementalColors[(int)element];
+        
         timer = timerOG;
         shotSpeedTimer = 0.0f;
         speedOffset = shotspeed / 64;
@@ -278,7 +242,7 @@ public class shot : MonoBehaviour
         else if (bExplode)
             {
                 GameObject g = Instantiate(explosionGO, transform.position, Quaternion.identity);
-                g.GetComponent<exploding>().shotElement = element;
+                g.GetComponent<exploding>().element = element;
                 //g.GetComponent<exploding>().damage = gun.gunScript.damage;
                 killTheShot();
             }

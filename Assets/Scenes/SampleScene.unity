@@ -950,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2575,7 +2575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -8905,15 +8905,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1000
   currentHP: 0
-  onfire: 0
-  fireTimer: 0
-  colorChange: {r: 0, g: 0, b: 0, a: 0}
-  earthed: 0
-  earthTimer: 0
-  watered: 0
-  waterTimer: 0
-  aired: 0
-  airedTimer: 0
   sprite: {fileID: 0}
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
@@ -9928,7 +9919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -10197,7 +10188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -12342,11 +12333,6 @@ MonoBehaviour:
   droppedAmmoToReset: []
   pickupSound: {fileID: 8300000, guid: 1a6846c6659cf4e4a8f5b227415899dc, type: 3}
   pickupSource: {fileID: 1385765421}
-  clense: {r: 0, g: 0, b: 0, a: 1}
-  fire: {r: 255, g: 0, b: 0, a: 1}
-  water: {r: 0, g: 130, b: 255, a: 1}
-  earth: {r: 0, g: 255, b: 0, a: 1}
-  air: {r: 255, g: 255, b: 0, a: 1}
   hpText: {fileID: 467462202}
   playerX: 0
   playerY: 0
@@ -13139,7 +13125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

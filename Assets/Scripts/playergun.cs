@@ -39,11 +39,13 @@ public class playergun : MonoBehaviour
 
     public Sprite[] gunSprites; // pistol 0, shotgun 1, sniper 2, smg 3
     //public Sprite pistol, shotgun, sniper, smg;
-    public Color clense;
-    public Color fire = new Color(255, 0, 0);
-    public Color water = new Color(0, 130, 255);
-    public Color earth = new Color(0, 255, 0);
-    public Color air = new Color(255, 255, 0);
+    public Color clense = new Color(1, 1, 1);
+    public Color fire = new Color(1, 0, 0);
+    public Color water = new Color(0, 0, 1);
+    public Color lightning = new Color(1, 1, 0);
+    public Color stasis = new Color(1, 0, 1);
+
+    public static Color[] elementalColors = new Color[5];
 
     //public float scatterAngle;
     //public int numShots;
@@ -72,6 +74,12 @@ public class playergun : MonoBehaviour
         shotgunAmmo = shotgunAmmoMax;
         sniperAmmo = sniperAmmoMax;
         smgAmmo = smgAmmoMax;
+
+        elementalColors[(int)gunEnumScript.element.Nothing] = clense;
+        elementalColors[(int)gunEnumScript.element.Fire] = fire;
+        elementalColors[(int)gunEnumScript.element.Water] = water;
+        elementalColors[(int)gunEnumScript.element.Lightning] = lightning;
+        elementalColors[(int)gunEnumScript.element.Stasis] = stasis;
     }
 
 private void FixedUpdate() {
@@ -446,11 +454,11 @@ private void FixedUpdate() {
             case gunEnumScript.element.Water:
                 sprite.color = water;
                 break;
-            case gunEnumScript.element.Earth:
-                sprite.color = earth;
+            case gunEnumScript.element.Lightning:
+                sprite.color = lightning;
                 break;
-            case gunEnumScript.element.Air:
-                sprite.color = air;
+            case gunEnumScript.element.Stasis:
+                sprite.color = stasis;
                 break;
         }
     }
@@ -495,6 +503,7 @@ private void FixedUpdate() {
                 
 
                 bullet.GetComponent<shot>().effect = activeGun.effect;
+                //bullet.GetComponent<shot>().sprite.color = elementalColors[(int)activeGun.element];
                 Destroy(bullet, 10f);
                 if(Random.Range(0, 4) > 0){
                     yield return new WaitForSeconds(Random.Range(0.0001f, 0.001f));

@@ -16,10 +16,10 @@ public class RandomGun : MonoBehaviour
     public Sprite pistol, shotgun, sniper, smg;
 
     public Color clense;
-    public Color fire = new Color(255, 0, 0);
-    public Color water = new Color(0, 130, 255);
-    public Color earth = new Color(0, 255, 0);
-    public Color air = new Color(255, 255, 0);
+    public Color fire = new Color(1, 0, 0);
+    public Color water = new Color(0, 0, 1);
+    public Color lightning = new Color(1, 1, 0);
+    public Color stasis = new Color(1, 0, 1);
 
     public AudioSource mySource;
 
@@ -114,11 +114,11 @@ public class RandomGun : MonoBehaviour
             case gunEnumScript.element.Water:
                 sprite.color = water;
                 break;
-            case gunEnumScript.element.Earth:
-                sprite.color = earth;
+            case gunEnumScript.element.Lightning:
+                sprite.color = lightning;
                 break;
-            case gunEnumScript.element.Air:
-                sprite.color = air;
+            case gunEnumScript.element.Stasis:
+                sprite.color = stasis;
                 break;
         }
     }

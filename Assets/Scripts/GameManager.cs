@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
     public enemySpawn[] enemyspawners;
     public RandomGun[] randomGuns;
-    public GameObject player; //we're going to spawn the player from GM.
+    public GameObject player; //we're going to spawn the player from GM. //no we arent keklord
     public playerMove playerScript;
     public bool playerdead;
     public Camera cam;
@@ -52,12 +52,6 @@ public class GameManager : MonoBehaviour
 
     public AudioClip pickupSound;
     public AudioSource pickupSource;
-
-    public Color clense;
-    public Color fire = new Color(255, 0, 0);
-    public Color water = new Color(0, 130, 255);
-    public Color earth = new Color(0, 255, 0);
-    public Color air = new Color(255, 255, 0);
 
     public Text hpText;
 
@@ -114,7 +108,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        clense = playergun.gunScript.clense;
+        //clense = playergun.gunScript.clense;
         playerScript = player.GetComponent<playerMove>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
@@ -268,25 +262,7 @@ public class GameManager : MonoBehaviour
         
         
         gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
-        switch (gun.element)
-        {
-            case gunEnumScript.element.Nothing:
-                gunUIImage.color = clense;
-                break;
-            case gunEnumScript.element.Fire:
-                gunUIImage.color = fire;
-                break;
-            case gunEnumScript.element.Water:
-                gunUIImage.color = water;
-                break;
-            case gunEnumScript.element.Earth:
-                gunUIImage.color = earth;
-                break;
-            case gunEnumScript.element.Air:
-                gunUIImage.color = air;
-                break;
-        }
-        //gunUIImage.color = playergun.gunScript.sprite.color;
+        gunUIImage.color = playergun.elementalColors[(int)gun.element];
         if(temp){
             GunStatUIPlayableDirector.Stop();
             GunStatUIPlayableDirector.time = 0.0;
