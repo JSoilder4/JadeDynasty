@@ -31,6 +31,7 @@ public class ProfCatnip : enemy
         shootPoint = transform.GetChild(0).gameObject;
         bml = shootPoint.GetComponent<BulletSourceScript>();
         shootpointX = shootPoint.transform.localPosition.x;
+        anim = GetComponent<Animator>();
         //sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -38,23 +39,24 @@ public class ProfCatnip : enemy
     public override void Update()
     {
         base.Update();
-        if(sprite.flipX)
+        if(!stasisFrozen)
         {
-            shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
-        }
-        else
-        {
-            shootPoint.transform.localPosition = new Vector3(-shootpointX, shootPoint.transform.localPosition.y, 0);
+            if(sprite.flipX)
+            {
+                shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
+            }
+            else
+            {
+                shootPoint.transform.localPosition = new Vector3(-shootpointX, shootPoint.transform.localPosition.y, 0);
+            }
+            if (visable)
+            {
+                //if(!earthed)
+                attackPlayer();
+                //checkHealth();
+            }
         }
         
-
-
-        if (visable)
-        {
-            //if(!earthed)
-            attackPlayer();
-            //checkHealth();
-        }
 
     }
     public void attackPlayer()

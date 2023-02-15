@@ -57,7 +57,7 @@ public class CrabEnemy : enemy
 
     public BulletSourceScript L, R, SlamL, SlamR;
 
-    public Animator anim;
+    //public Animator anim;
 
 
 
@@ -95,7 +95,17 @@ public class CrabEnemy : enemy
         {
             base.Update();
         }
-        
+        if(!stasisFrozen)
+        {
+            if(myState != state.dead)
+            {
+                attackPlayer();
+            }
+        }
+        else
+        {
+            
+        }
         // if(sprite.flipX)
         // {
         //     shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
@@ -124,10 +134,7 @@ public class CrabEnemy : enemy
             break;
         }
             //if(!earthed)
-            if(myState != state.dead)
-            {
-                attackPlayer();
-            }
+
             
             //checkHealth();
 

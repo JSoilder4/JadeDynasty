@@ -8680,6 +8680,8 @@ MonoBehaviour:
   col: {fileID: 0}
   genManage: {fileID: 0}
   elite: 0
+  stasisFrozen: 0
+  anim: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!212 &1109076784
 SpriteRenderer:
@@ -8915,6 +8917,9 @@ MonoBehaviour:
   HPCanvas: {fileID: 0}
   HPBar: {fileID: 0}
   elemHPBar: {fileID: 0}
+  stasisDamageBuildup: 0
+  stasisTimer: 0
+  stasisTimerOG: 0
   elemHPMax: 0
   elemHPCurrent: 0
 --- !u!213 &1113583560

@@ -31,12 +31,17 @@ public abstract class enemy : MonoBehaviour
 
     public bool elite;
 
+    public bool stasisFrozen;
+
+    public Animator anim;
+
     //GameManager.dropsEmum thingToDrop;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         elite = false;
+        stasisFrozen = false;
         hp = GetComponent<hp>();
     mySource = GetComponent<AudioSource>();
 
@@ -66,8 +71,12 @@ public abstract class enemy : MonoBehaviour
 
     // Update is called once per frame
     public virtual void Update()
-    {
-        facePlayer();
+    {  
+        if(!stasisFrozen)
+        {
+            facePlayer();
+        }
+        
     }
     
     public void playHitSound()

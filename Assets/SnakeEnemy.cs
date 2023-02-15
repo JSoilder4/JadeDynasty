@@ -42,7 +42,7 @@ private enum state
 
     public BulletSourceScript fangScript;
 
-    public Animator anim;
+    //public Animator anim;
 
 
     //Start is called before the first frame update
@@ -71,7 +71,13 @@ private enum state
         {
             base.Update();
         }
-        
+        if(!stasisFrozen)
+        {
+            if(!dead)
+            {
+                attackPlayer();
+            }
+        }
         // if(sprite.flipX)
         // {
         //     shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
@@ -92,10 +98,7 @@ private enum state
             case state.shoot:
             break;
         }
-        if(!dead)
-        {
-            attackPlayer();
-        }
+        
             
 
     }

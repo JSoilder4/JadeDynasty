@@ -26,6 +26,19 @@ public class hp : MonoBehaviour
     public Image HPBar;
     public Image elemHPBar;
 
+    public float stasisDamageBuildup;
+    public float stasisTimer;
+    public float stasisTimerOG;
+
+    enum stasisStage
+    {
+        NoStasis,
+        Stasis1,
+        Stasis2,
+        StasisFrozen
+    }
+    stasisStage StasisStage;
+
     enum element
     {
         Nothing,
@@ -39,10 +52,7 @@ public class hp : MonoBehaviour
     public float elemHPCurrent;
 
     int ha = 0;
-    public void elementEffect()
-    {
-
-    }
+    
     public void colorNormalize()
     {
         
@@ -51,6 +61,7 @@ public class hp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stasisTimerOG = 6f;
         currentHP = maxHP;
         sprite = GetComponent<SpriteRenderer>();
         mySource = GetComponent<AudioSource>();
@@ -89,7 +100,7 @@ public class hp : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        elementEffect();
+        //elementEffect();
         if(dead)
         {
             
@@ -100,6 +111,7 @@ public class hp : MonoBehaviour
             }
             
         }
+        stasisStageChecker();
         checkHealth();
 
     }
@@ -107,66 +119,193 @@ public class hp : MonoBehaviour
     {
         currentHP -= dmg;
     }
+    public void stasisStageChecker()
+    {
+        stasisTimer -= Time.deltaTime;
+        float hpTotals = maxHP + elemHPMax;
+        float hpCurrents = currentHP + elemHPCurrent;
+        if(stasisDamageBuildup > 0)
+        {
+            StasisStage = stasisStage.Stasis1;
+        }
+        if(stasisDamageBuildup > hpCurrents/2)
+        {
+            StasisStage = stasisStage.Stasis2;
+        }
+        if(stasisDamageBuildup >= hpCurrents)
+        {
+            StasisStage = stasisStage.StasisFrozen;
+        }
+        if(stasisTimer < 0)
+        {
+            StasisStage -= 1;//(StasisStage)-1;
+            switch(StasisStage)
+            {
+                case stasisStage.Stasis2:
+                    stasisDamageBuildup = hpCurrents-1;
+                break;
+                case stasisStage.Stasis1:
+                    stasisDamageBuildup = hpCurrents/2;
+                break;
+                case stasisStage.NoStasis:
+                    stasisDamageBuildup = 0;
+                break;
+
+                default:
+                    print("I was triggered liberal");
+                    StasisStage = 0;
+                break;
+
+            }
+            stasisTimer = stasisTimerOG/3;
+            
+        }
+        stasisSlow();
+    }
+    public void stasisBuildup(float dmgSaved)
+    {
+        stasisDamageBuildup += dmgSaved;
+    }
+    public void stasisSlow()
+    {
+        switch(StasisStage)
+        {
+                case stasisStage.StasisFrozen:
+                    myEnemyScript.speed = 0;
+                    myEnemyScript.anim.speed = 0f;
+                    myEnemyScript.stasisFrozen = true;
+                    sprite.color = playergun.elementalColors[4];
+                    print("I'm FROZEN: "+"\nBuildup: "+stasisDamageBuildup + "\nCurrentHP: "+currentHP);
+                break;
+                case stasisStage.Stasis2:
+                    myEnemyScript.speed = myEnemyScript.speedOG/2;
+                    myEnemyScript.anim.speed = 1f/2f;
+                    sprite.color = playergun.elementalColors[0];
+                    myEnemyScript.stasisFrozen = false;
+                break;
+                case stasisStage.Stasis1:
+                    myEnemyScript.speed = myEnemyScript.speedOG/4;
+                    myEnemyScript.anim.speed = 1f/4f;
+                    sprite.color = playergun.elementalColors[0];
+                    myEnemyScript.stasisFrozen = false;
+                break;
+                case stasisStage.NoStasis:
+                    myEnemyScript.speed = myEnemyScript.speedOG;
+                    myEnemyScript.anim.speed = 1f;
+                    sprite.color = playergun.elementalColors[0];
+                    myEnemyScript.stasisFrozen = false;
+                break;
+        }
+    }
+    public void StasisTrigger()
+    {
+        if(elemHPCurrent > 0 && ((elemHPCurrent - stasisDamageBuildup) > 0 ))
+        {
+            elemHPCurrent -= stasisDamageBuildup;
+        }
+        if(elemHPCurrent > 0 && ((elemHPCurrent - stasisDamageBuildup) < 0 ))
+        {
+            stasisDamageBuildup -= elemHPCurrent;
+            elemHPCurrent = 0;
+            currentHP -= stasisDamageBuildup;
+        }
+        else
+        {
+            currentHP -= stasisDamageBuildup;
+        }
+        myEnemyScript.speed = myEnemyScript.speedOG;
+        myEnemyScript.anim.speed = 1f;
+        sprite.color = playergun.elementalColors[0];
+        myEnemyScript.stasisFrozen = false;
+
+    }
     public void takeDamage(gunEnumScript.element elem, float dmg, Vector3 shotDir) //enemy damage
     {
-        if(myEnemyScript.elite)
+        if (elem == gunEnumScript.element.Stasis)
         {
-            if(elemHPCurrent > 0)
+            if(!myEnemyScript.stasisFrozen)
             {
-                switch(elem)
+                if(myEnemyScript.elite && elemHPCurrent > 0)
                 {
-                    case gunEnumScript.element.Nothing:
-                        elemHPCurrent -= dmg*0.75f;
-                    break;
-                    case gunEnumScript.element.Fire:
-                        if(myElement == element.Fire)
-                        {
-                            elemHPCurrent -= dmg*2f;
-                        }
-                        else
-                        {
-                            elemHPCurrent -= dmg*0.5f;
-                        }
-                    break;
-                    case gunEnumScript.element.Water:
-                        if(myElement == element.Water)
-                        {
-                            elemHPCurrent -= dmg*2f;
-                        }
-                        else
-                        {
-                            elemHPCurrent -= dmg*0.5f;
-                        }
-                    break;
-                    case gunEnumScript.element.Lightning:
-                        if(myElement == element.Lightning)
-                        {
-                            elemHPCurrent -= dmg*2f;
-                        }
-                        else
-                        {
-                            elemHPCurrent -= dmg*0.5f;
-                        }
-                    break;
-                    case gunEnumScript.element.Stasis:
-                    
-                    break;
+                    elemHPCurrent -= dmg*0.1f;
+                    stasisBuildup(dmg*0.4f);
                 }
+                else
+                {
+                    currentHP -= dmg*0.1f;
+                    stasisBuildup(dmg*0.4f);
+                }   
+            }
+            stasisTimer = stasisTimerOG;
+        }
+        else
+        {
+            if(myEnemyScript.stasisFrozen)
+            {
+                StasisTrigger();
+            }
+            
+            if(myEnemyScript.elite)
+            {
+                if(elemHPCurrent > 0)
+                {
+                    switch(elem)
+                    {
+                        case gunEnumScript.element.Nothing:
+                            elemHPCurrent -= dmg*0.75f;
+                        break;
+                        case gunEnumScript.element.Fire:
+                            if(myElement == element.Fire)
+                            {
+                                elemHPCurrent -= dmg*2f;
+                            }
+                            else
+                            {
+                                elemHPCurrent -= dmg*0.5f;
+                            }
+                        break;
+                        case gunEnumScript.element.Water:
+                            if(myElement == element.Water)
+                            {
+                                elemHPCurrent -= dmg*2f;
+                            }
+                            else
+                            {
+                                elemHPCurrent -= dmg*0.5f;
+                            }
+                        break;
+                        case gunEnumScript.element.Lightning:
+                            if(myElement == element.Lightning)
+                            {
+                                elemHPCurrent -= dmg*2f;
+                            }
+                            else
+                            {
+                                elemHPCurrent -= dmg*0.5f;
+                            }
+                        break;
+                    }
+                }
+                else
+                {
+                    currentHP -= dmg;
+                }
+                
             }
             else
             {
                 currentHP -= dmg;
             }
-            
         }
-        else
-        {
-            currentHP -= dmg;
-        }
-
-
 
         
+
+
+
+        if(elemHPCurrent < 0)
+        {
+            elemHPCurrent = 0;
+        }
         if(currentHP <= 0)
         {
             knockbackDir = shotDir.normalized;//new Vector3(shotDir.x, shotDir.y, 0);
