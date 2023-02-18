@@ -274,25 +274,25 @@ private void FixedUpdate() {
         {
             case gunEnumScript.gunType.Pistol:
             ammoBefore = pistolAmmo;
-            pistolAmmo += activeGun.magazine;
+            pistolAmmo += activeGun.magazine*4;
             print("actual gain: "+(pistolAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.Shotgun:
             ammoBefore = shotgunAmmo;
-            shotgunAmmo += activeGun.magazine;
+            shotgunAmmo += activeGun.magazine*4;
             print("actual gain: "+(shotgunAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.Sniper:
             ammoBefore = sniperAmmo;
-            sniperAmmo += activeGun.magazine;
+            sniperAmmo += activeGun.magazine*4;
             print("actual gain: "+(sniperAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.SMG:
             ammoBefore = smgAmmo;
-            smgAmmo += activeGun.magazine;
+            smgAmmo += activeGun.magazine*4;
             print("actual gain: "+(smgAmmo - ammoBefore));
             break;
         }
@@ -406,6 +406,10 @@ private void FixedUpdate() {
         equippedGuns.Clear();
         activeGun = new gun();
         activeGun.roll();
+        while(activeGun.element == gunEnumScript.element.Stasis) //maybe temp? crude way to prevent spawning with stasis
+        {
+            activeGun.roll();
+        }
         equippedGuns.Add(activeGun);
 
 

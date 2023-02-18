@@ -111,7 +111,10 @@ public class hp : MonoBehaviour
             }
             
         }
-        stasisStageChecker();
+        if(!dead){
+            stasisStageChecker();
+        }
+        
         checkHealth();
 
     }
@@ -346,7 +349,7 @@ public class hp : MonoBehaviour
             Destroy(HPBar);
             myEnemyScript.die();
             dead = true;
-            this.enabled = false;
+            //this.enabled = false;
             //Destroy(gameObject);
         }
     }
