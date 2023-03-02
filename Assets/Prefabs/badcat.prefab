@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: a4126f9a2d182ff47952740fd5833348, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1 &5915338884471120244
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ Transform:
   - {fileID: 6501331907764036616}
   - {fileID: 5490272303429731283}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4777577687192693732
 SpriteRenderer:

@@ -38,7 +38,7 @@ Transform:
   - {fileID: 1392077467763769424}
   - {fileID: 9069641253209503053}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1392077466934847665
 SpriteRenderer:
@@ -138,6 +138,8 @@ MonoBehaviour:
   col: {fileID: 0}
   genManage: {fileID: 0}
   elite: 0
+  stasisFrozen: 0
+  anim: {fileID: 0}
   myState: 0
   velocity: {x: 0, y: 0, z: 0}
   velX: 0
@@ -154,9 +156,9 @@ MonoBehaviour:
   attackTimerOG: 0
   attacking: 0
   fangs: {fileID: 0}
+  fangXML: {fileID: 4900000, guid: 8849a80395dfbc84ca758f5109227f24, type: 3}
   shooting: 0
   fangScript: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!50 &1392077466934847823
 Rigidbody2D:
   serializedVersion: 4
@@ -314,15 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 100
-  onfire: 0
-  fireTimer: 0
-  colorChange: {r: 0, g: 0, b: 0, a: 0}
-  earthed: 0
-  earthTimer: 0
-  watered: 0
-  waterTimer: 0
-  aired: 0
-  airedTimer: 0
   sprite: {fileID: 0}
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
@@ -333,6 +326,9 @@ MonoBehaviour:
   HPCanvas: {fileID: 0}
   HPBar: {fileID: 0}
   elemHPBar: {fileID: 0}
+  stasisDamageBuildup: 0
+  stasisTimer: 0
+  stasisTimerOG: 0
   elemHPMax: 0
   elemHPCurrent: 0
 --- !u!1 &1392077467763769427
@@ -379,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: 8849a80395dfbc84ca758f5109227f24, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1001 &8150747573656856467
 PrefabInstance:
   m_ObjectHideFlags: 0
