@@ -32,6 +32,7 @@ private enum state
     public float attackTimerOG;
     public bool attacking;
     public GameObject fangs;
+    public TextAsset fangXML;
 
    // public GameObject walkpointObjectPlsIgnore;
     //public float shootpointX;
@@ -185,6 +186,7 @@ private enum state
     {
         attacking = true;
         walkCounter--;
+        fangScript.xmlFile = fangXML;
         fangScript.Reset();
         if(walkCounter <= 0)
         {

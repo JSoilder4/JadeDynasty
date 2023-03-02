@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: 1daf0c8d6e1988d498295c2e0ee39e33, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1 &3399736762157199775
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: 262654d744bb959498f5e4daef805513, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1 &3399736762219253855
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: 1daf0c8d6e1988d498295c2e0ee39e33, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1 &3399736762396899483
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ Transform:
   - {fileID: 3399736763689899823}
   - {fileID: 2919218690230288803}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3399736762396899481
 SpriteRenderer:
@@ -323,6 +323,8 @@ MonoBehaviour:
   col: {fileID: 0}
   genManage: {fileID: 0}
   elite: 0
+  stasisFrozen: 0
+  anim: {fileID: 0}
   myState: 0
   velocity: {x: 0, y: 0, z: 0}
   velX: 0
@@ -350,7 +352,10 @@ MonoBehaviour:
   R: {fileID: 0}
   SlamL: {fileID: 0}
   SlamR: {fileID: 0}
-  anim: {fileID: 0}
+  xmlL: {fileID: 4900000, guid: 1daf0c8d6e1988d498295c2e0ee39e33, type: 3}
+  xmlR: {fileID: 4900000, guid: 1daf0c8d6e1988d498295c2e0ee39e33, type: 3}
+  xmlSlamL: {fileID: 4900000, guid: 262654d744bb959498f5e4daef805513, type: 3}
+  xmlSlamR: {fileID: 4900000, guid: 477fc365ff6634d408eb454d7d1af4f7, type: 3}
 --- !u!114 &69732536865810387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,15 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 150
   currentHP: 150
-  onfire: 0
-  fireTimer: 0
-  colorChange: {r: 0, g: 0, b: 0, a: 0}
-  earthed: 0
-  earthTimer: 0
-  watered: 0
-  waterTimer: 0
-  aired: 0
-  airedTimer: 0
   sprite: {fileID: 0}
   fireClip: {fileID: 0}
   mySource: {fileID: 0}
@@ -384,6 +380,9 @@ MonoBehaviour:
   HPCanvas: {fileID: 0}
   HPBar: {fileID: 0}
   elemHPBar: {fileID: 0}
+  stasisDamageBuildup: 0
+  stasisTimer: 0
+  stasisTimerOG: 0
   elemHPMax: 0
   elemHPCurrent: 0
 --- !u!82 &3180270069196884280
@@ -526,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlFile: {fileID: 4900000, guid: 477fc365ff6634d408eb454d7d1af4f7, type: 3}
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1001 &2613133419310076797
 PrefabInstance:
   m_ObjectHideFlags: 0

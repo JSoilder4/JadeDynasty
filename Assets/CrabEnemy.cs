@@ -57,6 +57,9 @@ public class CrabEnemy : enemy
 
     public BulletSourceScript L, R, SlamL, SlamR;
 
+
+    public TextAsset xmlL, xmlR, xmlSlamL, xmlSlamR;
+
     //public Animator anim;
 
 
@@ -81,6 +84,8 @@ public class CrabEnemy : enemy
         attackTimer = attackTimerOG;
 
         
+
+
         //walkpointObjectPlsIgnore = transform.GetChild(4).gameObject;
 
         //walkTimerOG = walkTimer;
@@ -287,11 +292,13 @@ public class CrabEnemy : enemy
     public void shootL()
     {
         firstAttackShot = true;
+        L.xmlFile = xmlL;
         L.Reset();
     }
     public void shootR()
     {
         firstAttackShot = true;
+        R.xmlFile = xmlR;
         R.Reset();
     }
 
@@ -343,7 +350,8 @@ public class CrabEnemy : enemy
 
         rb.angularDrag = 0.05f;
         rb.drag = 0f;
-
+        SlamL.xmlFile = xmlSlamL;
+        SlamR.xmlFile = xmlSlamR;
         SlamL.Reset();
         SlamR.Reset();
         rb.velocity = Vector3.up * 4;

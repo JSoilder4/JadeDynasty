@@ -21,7 +21,6 @@ public class ProfCatnip : enemy
 
     public BulletSourceScript bml;
 
-
     // Start is called before the first frame update
     public override void Start()
     {
