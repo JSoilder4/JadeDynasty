@@ -75,7 +75,7 @@ public class hp : MonoBehaviour
             if (myEnemyScript.elite)
             {
                 myElement = (element)Random.Range(1, System.Enum.GetNames(typeof(element)).Length);
-                elemHPMax = maxHP / 3;
+                elemHPMax = maxHP;// / 3;
                 elemHPCurrent = elemHPMax;
             }
         }
@@ -111,7 +111,7 @@ public class hp : MonoBehaviour
             }
             
         }
-        if(!dead){
+        if(!dead && !player){
             stasisStageChecker();
         }
         
@@ -329,8 +329,12 @@ public class hp : MonoBehaviour
     }
     public void checkHealth()
     {
-        HPBar.fillAmount = currentHP / maxHP;
-        elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
+        if (!player)
+        {
+            HPBar.fillAmount = currentHP / maxHP;
+            elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
+        }
+
         // if (onfire)
         // {
 

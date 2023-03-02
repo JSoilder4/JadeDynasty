@@ -6780,6 +6780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: badcat
       objectReference: {fileID: 0}
+    - target: {fileID: 5915338884471120244, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
@@ -52177,6 +52181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: snakeGunMod2_0
       objectReference: {fileID: 0}
+    - target: {fileID: 1392077466934847667, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1392077466934847822, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -52302,6 +52310,10 @@ PrefabInstance:
     - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_Name
       value: Crab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899486, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_RootOrder
