@@ -330,6 +330,7 @@ public class hp : MonoBehaviour
     public void checkHealth()
     {
         HPBar.fillAmount = currentHP / maxHP;
+        elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
         // if (onfire)
         // {
 
@@ -347,6 +348,7 @@ public class hp : MonoBehaviour
             // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
             // GameManager.GM.enemiesToReset.Remove(gameObject);
             Destroy(HPBar);
+            Destroy(elemHPBar);
             myEnemyScript.die();
             dead = true;
             //this.enabled = false;
