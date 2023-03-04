@@ -156,6 +156,7 @@ public class hp : MonoBehaviour
 
                 default:
                     print("I was triggered liberal");
+                    print(gameObject.name);
                     StasisStage = 0;
                 break;
 
