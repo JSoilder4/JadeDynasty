@@ -153,7 +153,7 @@ private void FixedUpdate() {
                     {
                         if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
                         {
-
+                            StartCoroutine(CameraFollow.CF.Shaking(0.10f,CameraFollow.ShakeCurveType.shootGun));
                             StartCoroutine(shoot(activeGun.gunType));
 
                         }
@@ -236,6 +236,7 @@ private void FixedUpdate() {
         print(Mathf.Round(1/activeGun.bSTog));
         for(int i = 0; i < Mathf.Round(1/activeGun.bSTog); i++)
         {
+            StartCoroutine(CameraFollow.CF.Shaking(0.10f,CameraFollow.ShakeCurveType.shootGun));
             StartCoroutine(shoot(activeGun.gunType));
             if(activeGun.magAmmo <= 0)
             {
@@ -478,6 +479,7 @@ private void FixedUpdate() {
         // {
         //     shotgun = true;
         // }
+        
         mySource.PlayOneShot(shootSound); //sumner stinky
         activeGun.betweenShotTimer = activeGun.bSTog;
         activeGun.magAmmo--;

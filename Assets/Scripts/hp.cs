@@ -121,6 +121,7 @@ public class hp : MonoBehaviour
     public void takeDamage(float dmg) //player damage
     {
         currentHP -= dmg;
+        StartCoroutine(CameraFollow.CF.Shaking(0.5f, CameraFollow.ShakeCurveType.takeDamage));
     }
     public void stasisStageChecker()
     {

@@ -4076,13 +4076,14 @@ GameObject:
   m_Component:
   - component: {fileID: 403375770}
   - component: {fileID: 403375769}
+  - component: {fileID: 403375771}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: virtualCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &403375769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4137,6 +4138,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403375771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403375768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50512e2832699b14fb5c8a6dcb92493f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &409556279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39243,6 +39262,7 @@ GameObject:
   - component: {fileID: 1836047753}
   - component: {fileID: 1836047754}
   - component: {fileID: 1836047755}
+  - component: {fileID: 1836047756}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -39337,6 +39357,96 @@ MonoBehaviour:
   camBetween: {fileID: 0}
   genManage: {fileID: 0}
   currentRoom: {fileID: 0}
+  takeDamageCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4.9849997
+      outSlope: 4.9849997
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1003009
+      value: 0.49999997
+      inSlope: -1.2018341
+      outSlope: -1.2018341
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39
+      outWeight: 0.11278567
+    - serializedVersion: 3
+      time: 0.5004883
+      value: 0
+      inSlope: -1.2494147
+      outSlope: -1.2494147
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shootGunCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.005093474
+      value: -0.0012708539
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15164179
+      value: 0.25098097
+      inSlope: -0.576125
+      outSlope: -0.576125
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1890451
+    - serializedVersion: 3
+      time: 0.9996338
+      value: 0.00015258789
+      inSlope: -0.29579097
+      outSlope: -0.29579097
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  explosionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: -2.001955
+      outSlope: -2.001955
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.24975586
+      value: 0
+      inSlope: -2.001955
+      outSlope: -2.001955
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1836047754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39344,7 +39454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836047749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -39378,7 +39488,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836047749}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 011115fee33274b44983eb8ae1b76eb7, type: 2}
   m_InitialState: 1
@@ -39390,6 +39500,51 @@ PlayableDirector:
     value: {fileID: 1836047754}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &1836047756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836047749}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50512e2832699b14fb5c8a6dcb92493f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0000038146973
+      value: -0.0023651123
+      inSlope: 2.0646284
+      outSlope: 2.0646284
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0411672
+    - serializedVersion: 3
+      time: 0.1517534
+      value: 0.31453124
+      inSlope: -0.34348544
+      outSlope: -0.34348544
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.043447964
+    - serializedVersion: 3
+      time: 1.0000367
+      value: -0.004725402
+      inSlope: -0.4617279
+      outSlope: -0.4617279
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0667318
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!213 &1908361592
 Sprite:
   m_ObjectHideFlags: 0

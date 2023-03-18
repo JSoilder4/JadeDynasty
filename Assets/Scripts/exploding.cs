@@ -23,6 +23,7 @@ public class exploding : shot
         mySource = GetComponent<AudioSource>();
         playExplosionSound();
         sprite.color = playergun.elementalColors[(int)element];
+        StartCoroutine(CameraFollow.CF.Shaking(0.25f, CameraFollow.ShakeCurveType.explosion));
         Destroy(gameObject, 0.25f);
     }
     public void playExplosionSound()

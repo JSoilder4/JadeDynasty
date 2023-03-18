@@ -93,7 +93,7 @@ public class playerMove : MonoBehaviour
             }
         }
 
-     
+    
         
     }
     public void checkHealth()
