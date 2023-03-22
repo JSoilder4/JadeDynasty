@@ -50,8 +50,12 @@ public class playergun : MonoBehaviour
     //public float scatterAngle;
     //public int numShots;
 
+    [Header("Audio")]
     public AudioClip shootSound;
+    public AudioClip shotgunShootSound;
+    public AudioClip shotgunPumpSound;
     public AudioSource mySource;
+
 
     public TextMeshProUGUI reloadText;
     public TextMeshProUGUI AmmoCount;
@@ -131,6 +135,11 @@ private void FixedUpdate() {
 
             // }
 
+            if(activeGun.gunType == gunEnumScript.gunType.Shotgun && activeGun.betweenShotTimer == activeGun.bSTog)
+            {
+                StartCoroutine(shotgunPump());
+            }
+
             switch(activeGun.triggerType)
             {
                 case gunEnumScript.trigger.Semi:
@@ -140,6 +149,7 @@ private void FixedUpdate() {
                         {
 
                             StartCoroutine(shoot(activeGun.gunType));
+                            StartCoroutine(shotgunPump());
 
                         }
                         else if(activeGun.magAmmo <= 0)
@@ -246,7 +256,7 @@ private void FixedUpdate() {
             yield return new WaitForSeconds(activeGun.bSTog/Mathf.Round(1/activeGun.bSTog));
         }
 
-
+        StartCoroutine(shotgunPump());
         yield return null;
     }
 
@@ -467,25 +477,62 @@ private void FixedUpdate() {
                 break;
         }
     }
-    public void playShootSound()
+    // public void playShootSound()
+    // {
+    //     mySource.clip = shootSound;
+    //     mySource.Play();
+    // }
+    public int shotgunShots;
+    public IEnumerator shotgunPump()
     {
-        mySource.clip = shootSound;
-        mySource.Play();
+        if(shotgunShots == 0)
+        {
+            StopCoroutine(shotgunPump());
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.20f);
+            StartCoroutine(shotgunPumpForReal(shotgunShots));
+        }
+        
+        //mySource.PlayOneShot(shotgunPumpSound);
+    }
+    public IEnumerator shotgunPumpForReal(int shotgunShooties)
+    {
+        for(int i = 0; i < shotgunShots; i++)
+        {
+            yield return new WaitForSeconds(activeGun.bSTog/shotgunShooties);
+            shotgunShots--;
+            print("ShotgunShots: " + shotgunShots);
+            mySource.PlayOneShot(shotgunPumpSound);
+        }
+        //shotgunShots = 0;
     }
     public IEnumerator shoot(gunEnumScript.gunType gunType)
     {
-        // bool shotgun = false;
-        // if(gunType == gunEnumScript.gunType.Shotgun)
-        // {
-        //     shotgun = true;
-        // }
-        
-        mySource.PlayOneShot(shootSound); //sumner stinky
+
+        switch(gunType)
+        {
+            default:
+                mySource.PlayOneShot(shootSound);//sumner stinky
+            break;
+            case gunEnumScript.gunType.Pistol:
+            break;
+            case gunEnumScript.gunType.Shotgun:
+                mySource.PlayOneShot(shotgunShootSound);
+                shotgunShots++;
+                
+            break;
+            case gunEnumScript.gunType.Sniper:
+            break;
+            case gunEnumScript.gunType.SMG:
+            break;
+        }
         activeGun.betweenShotTimer = activeGun.bSTog;
         activeGun.magAmmo--;
         if(activeGun.magAmmo <= 0)
         {
-            //StartCoroutine(reload());
+            StartCoroutine(reload());
         }
         //updateAmmoUI();
 

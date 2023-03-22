@@ -52585,10 +52585,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1836047751}
-    - target: {fileID: 4760173122625586476, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586477, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
@@ -52645,6 +52641,14 @@ PrefabInstance:
       propertyPath: AmmoCount
       value: 
       objectReference: {fileID: 1595257636}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: shotgunPumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 561ccdcf30404ed46892eed7ad143fa7, type: 3}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: shotgunShootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: aab54482ec438d440a2112e670eb41f4, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}

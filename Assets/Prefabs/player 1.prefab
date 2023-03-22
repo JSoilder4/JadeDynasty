@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 2045516588, guid: f691ee88320e882469c219860039150f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -426,6 +426,8 @@ MonoBehaviour:
   lightning: {r: 1, g: 1, b: 0, a: 1}
   stasis: {r: 1, g: 0, b: 1, a: 1}
   shootSound: {fileID: 8300000, guid: a09046112efec4444a9b2cf26e5f8c87, type: 3}
+  shotgunShoot: {fileID: 8300000, guid: aab54482ec438d440a2112e670eb41f4, type: 3}
+  shotgunPump: {fileID: 8300000, guid: 561ccdcf30404ed46892eed7ad143fa7, type: 3}
   mySource: {fileID: 0}
   reloadText: {fileID: 0}
   AmmoCount: {fileID: 0}
