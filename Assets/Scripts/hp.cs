@@ -25,6 +25,7 @@ public class hp : MonoBehaviour
     public GameObject HPCanvas;
     public Image HPBar;
     public Image elemHPBar;
+    public Image StasisBar;
 
     public float stasisDamageBuildup;
     public float stasisTimer;
@@ -71,6 +72,7 @@ public class hp : MonoBehaviour
             HPCanvas = transform.Find("HPBarCanvas").gameObject;
             HPBar = HPCanvas.transform.Find("HPBar").GetComponent<Image>();
             elemHPBar = HPCanvas.transform.Find("elemHPBar").GetComponent<Image>();
+            StasisBar = HPCanvas.transform.Find("StasisBar").GetComponent<Image>();
             myElement = element.Nothing;
             if (myEnemyScript.elite)
             {
@@ -132,11 +134,11 @@ public class hp : MonoBehaviour
         {
             StasisStage = stasisStage.Stasis1;
         }
-        if(stasisDamageBuildup > hpCurrents/2)
+        if(hpCurrents > 0 && stasisDamageBuildup > hpCurrents/2)
         {
             StasisStage = stasisStage.Stasis2;
         }
-        if(stasisDamageBuildup >= hpCurrents)
+        if(hpCurrents > 0 && stasisDamageBuildup >= hpCurrents)
         {
             StasisStage = stasisStage.StasisFrozen;
         }
@@ -245,11 +247,13 @@ public class hp : MonoBehaviour
         }
         else
         {
-            if(myEnemyScript.stasisFrozen)
-            {
-                StasisTrigger();
-            }
-            
+            //if(myEnemyScript.stasisFrozen) //uncomment if stasis only triggers when frozen
+            //{
+            //    StasisTrigger();
+            //}
+
+            StasisTrigger(); //comment out if stasis only triggers when frozen
+
             if(myEnemyScript.elite)
             {
                 if(elemHPCurrent > 0)
@@ -335,6 +339,7 @@ public class hp : MonoBehaviour
         {
             HPBar.fillAmount = currentHP / maxHP;
             elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
+            StasisBar.fillAmount = stasisDamageBuildup / (maxHP + elemHPMax);//(currentHP + elemHPCurrent);
         }
 
         // if (onfire)
@@ -355,6 +360,7 @@ public class hp : MonoBehaviour
             // GameManager.GM.enemiesToReset.Remove(gameObject);
             Destroy(HPBar);
             Destroy(elemHPBar);
+            Destroy(StasisBar);
             myEnemyScript.die();
             dead = true;
             //this.enabled = false;
