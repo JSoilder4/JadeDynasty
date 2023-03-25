@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI effectUItext;
     public TextMeshProUGUI spreadUItext;
     public TextMeshProUGUI triggerUItext;
-    public Image gunUIImage;
-    
+    public Image gunUIImage; //gun swap
 
+
+    public Image[] gunUI = new Image[4]; //gun showcase
+    public Image gunUISelect;
 
     public float timer;
     public float timerOG;
@@ -155,6 +157,38 @@ public class GameManager : MonoBehaviour
         playerRoomGrid[playerX, playerY] = "true";
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
+
+
+    public void updateGunUI(List<gun> guns, int gunIndex)
+    {
+        for (int i = 0; i < gunUI.Length; i++)
+        {
+            try
+            {
+                if (guns[i] == null)
+                {
+                    break;
+                }
+            }
+            catch
+            {
+                break;
+            }
+            
+
+            gunUI[i].sprite = playergun.gunScript.gunSprites[(int)guns[i].gunType];
+            gunUI[i].color = playergun.elementalColors[(int)guns[i].element];
+        }
+
+        gunUISelect.transform.position = gunUI[gunIndex].transform.position;
+
+    }
+
+
+
+
+
+
     public void playPickupSound() //gun switch sound
     {
         pickupSource.clip = pickupSound;
@@ -246,11 +280,11 @@ public class GameManager : MonoBehaviour
 
         if (gun.numShots > 1)
         {
-            damageUItext.text = "Damage: " + gun.damage + " x " + (gun.numShots);
+            damageUItext.text = "Damage: " + (Mathf.Round(gun.damage * 100.0f) / 100.0f) + " x " + (gun.numShots);
         }
         else
         {
-            damageUItext.text = "Damage: " + gun.damage;
+            damageUItext.text = "Damage: " + (Mathf.Round(gun.damage * 100.0f) / 100.0f);//gun.damage.ToString("F2");
         }
 
         //RoFUItext.text = "Bullets Per Second: "+(Mathf.Round((1- gun.bSTog)*100.0f)/100.0f)+"";
@@ -345,6 +379,7 @@ public class GameManager : MonoBehaviour
         playergun.gunScript.sprite.enabled = true;
         player.GetComponent<CircleCollider2D>().enabled = true;
         genManage.floor += 1;
+        print("current floor: "+genManage.floor);
         genManage.RetryLevel();
         sceneReset();
 

@@ -91,6 +91,8 @@ public class playergun : MonoBehaviour
 
 private void FixedUpdate() {
     gunIndex = Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1);
+
+    GameManager.GM.updateGunUI(equippedGuns, gunIndex);    //im lazy?
     activeGun.betweenShotTimer -= Time.deltaTime;
 }
     // Update is called once per frame
@@ -205,7 +207,7 @@ private void FixedUpdate() {
             {
 
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
+            else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
             {
             //++
             if (reloading)
@@ -230,7 +232,7 @@ private void FixedUpdate() {
             }
             GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
+            else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
             {
             //--
             if (reloading)
