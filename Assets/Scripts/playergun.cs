@@ -59,6 +59,9 @@ public class playergun : MonoBehaviour
 
     public TextMeshProUGUI reloadText;
     public TextMeshProUGUI AmmoCount;
+
+    public Coroutine reloadIEnum;
+    public Coroutine shotgunPumpIEnum;
     // Start is called before the first frame update
     void Start()
     {
@@ -191,13 +194,13 @@ private void FixedUpdate() {
 
             if(Input.GetKeyDown(KeyCode.R) && activeGun.magAmmo != activeGun.magazine)
             {
-                StartCoroutine(reload());
+                reloadIEnum = StartCoroutine(reload());
             }
 
         }
         
-        if(!reloading)
-        {
+        //if(!reloading)
+        //{
             if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
             {
 
@@ -205,6 +208,13 @@ private void FixedUpdate() {
             else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
             {
             //++
+            if (reloading)
+            {
+                StopCoroutine(reloadIEnum);
+                reloadText.enabled = false;
+                reloadText.text = "Reloading";
+                reloading = false;
+            }
             if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1)
             {
                 gunIndex++;
@@ -223,6 +233,13 @@ private void FixedUpdate() {
             else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
             {
             //--
+            if (reloading)
+            {
+                StopCoroutine(reloadIEnum);
+                reloadText.enabled = false;
+                reloadText.text = "Reloading";
+                reloading = false;
+            }
             gunIndex--;
             if (gunIndex < 0)
             {
@@ -231,7 +248,7 @@ private void FixedUpdate() {
             GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
             }
             activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
-        }
+        //}
         //print(Input.GetAxis("Mouse ScrollWheel"));
         
 
@@ -250,7 +267,7 @@ private void FixedUpdate() {
             StartCoroutine(shoot(activeGun.gunType));
             if(activeGun.magAmmo <= 0)
             {
-                //StartCoroutine(reload());
+                //reloadIEnum = StartCoroutine(reload());
                 break;
             }
             yield return new WaitForSeconds(activeGun.bSTog/Mathf.Round(1/activeGun.bSTog));
@@ -532,7 +549,7 @@ private void FixedUpdate() {
         activeGun.magAmmo--;
         if(activeGun.magAmmo <= 0)
         {
-            StartCoroutine(reload());
+            reloadIEnum = StartCoroutine(reload());
         }
         //updateAmmoUI();
 
