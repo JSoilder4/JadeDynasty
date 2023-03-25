@@ -217,6 +217,7 @@ public class shot : MonoBehaviour
         {
         if (!bSplit && !bExplode && !bSciShot)
         {
+                //Debug.Break();
                 playHitSound();
                 killTheShot();
         }
