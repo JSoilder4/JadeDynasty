@@ -10,6 +10,7 @@ private enum state
        // idle,
         walk,
         shoot,
+        idle,
 
         dead
     }
@@ -58,6 +59,11 @@ private enum state
 
         attackTimer = attackTimerOG;
         setWalk();
+
+
+
+        speedOG = speedOG * 0.80f; //temp (CHANGE 0.15 -> 0.12)
+        speed = speed * 0.80f;
         //walkpointObjectPlsIgnore = transform.GetChild(4).gameObject;
 
         //walkTimerOG = walkTimer;
@@ -139,10 +145,11 @@ private enum state
 
 
     }
-    // public void setIdle(){
-    //     myState = state.idle;
-    //     anim.SetInteger("state", (int)myState);
-    // }
+    public void setIdle()
+    {
+        myState = state.idle;
+        anim.SetInteger("state", (int)myState);
+    }
     public void setWalk() //anim
     {
         //walkTimer = walkTimerOG;
@@ -190,7 +197,7 @@ private enum state
         fangScript.Reset();
         if(walkCounter <= 0)
         {
-            setWalk();
+            setIdle();
         }
 
     }
