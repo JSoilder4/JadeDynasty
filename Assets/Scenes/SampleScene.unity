@@ -5125,7 +5125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &538056021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8905,6 +8905,7 @@ MonoBehaviour:
   HPCanvas: {fileID: 0}
   HPBar: {fileID: 0}
   elemHPBar: {fileID: 0}
+  StasisBar: {fileID: 0}
   stasisDamageBuildup: 0
   stasisTimer: 0
   stasisTimerOG: 0
@@ -52272,7 +52273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392077466934847667, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1392077466934847822, guid: d81f0e2fa028a9f40a5de75540bc9c82, type: 3}
       propertyPath: m_RootOrder
