@@ -59,7 +59,7 @@ public abstract class enemy : MonoBehaviour
         if(genManage.floor > -1)//0)
         {
             int randomGoal = Random.Range(0, 101);
-            if(randomGoal - 100 < 0)//5*genManage.floor < 0)
+            if(randomGoal - (40 + (5*genManage.floor)) < 0)//5*genManage.floor < 0)
             {
                 elite = true;
             }
