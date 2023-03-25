@@ -232,13 +232,13 @@ public class hp : MonoBehaviour
             {
                 if(myEnemyScript.elite && elemHPCurrent > 0)
                 {
-                    elemHPCurrent -= dmg*0.1f;
-                    stasisBuildup(dmg*0.4f);
+                    elemHPCurrent -= dmg*0.5f;
+                    stasisBuildup(dmg*0.5f);
                 }
                 else
                 {
-                    currentHP -= dmg*0.1f;
-                    stasisBuildup(dmg*0.4f);
+                    currentHP -= dmg*0.5f;
+                    stasisBuildup(dmg*0.5f);
                 }   
             }
             stasisTimer = stasisTimerOG;
