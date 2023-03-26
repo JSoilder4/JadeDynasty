@@ -441,6 +441,8 @@ private void FixedUpdate() {
             activeGun.roll();
         }
         equippedGuns.Add(activeGun);
+        GameManager.GM.updateGunUI(equippedGuns, gunIndex);
+        GameManager.GM.resetGunUI();
 
 
         //gunType = gunEnumScript.gunType.Pistol;

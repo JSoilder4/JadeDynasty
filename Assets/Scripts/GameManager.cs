@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour
             {
                 if (guns[i] == null)
                 {
+                    //gunUI[i].color = new Color(1,1,1,0);
                     break;
                 }
             }
@@ -183,7 +184,13 @@ public class GameManager : MonoBehaviour
         gunUISelect.transform.position = gunUI[gunIndex].transform.position;
 
     }
-
+    public void resetGunUI()
+    {
+        for (int i = 1; i < 4; i++)
+        {
+            gunUI[i].color = new Color(1, 1, 1, 0);
+        }
+    }
 
 
 
@@ -351,6 +358,7 @@ public class GameManager : MonoBehaviour
         //sceneReset();
         player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
         cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
+        cam.GetComponent<CameraFollow>().cam = CameraFollow.CamType.gridBased;
         playerX = 4;
         playerY = 4;
         //playerScript.enabled = true;
