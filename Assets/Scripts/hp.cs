@@ -339,7 +339,7 @@ public class hp : MonoBehaviour
         {
             HPBar.fillAmount = currentHP / maxHP;
             elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
-            StasisBar.fillAmount = stasisDamageBuildup / (maxHP + elemHPMax);//(currentHP + elemHPCurrent);
+            StasisBar.fillAmount = stasisDamageBuildup / (maxHP);// + elemHPMax);//(currentHP + elemHPCurrent);
         }
 
         // if (onfire)
