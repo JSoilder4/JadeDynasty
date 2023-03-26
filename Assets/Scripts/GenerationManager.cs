@@ -79,7 +79,8 @@ public class GenerationManager : MonoBehaviour
         }
 
         //create starting room
-        Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
+        GameObject g = Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
+        GameManager.GM.currentRoom = g.GetComponent<RoomGenerator>();
         roomGrid[4, 4] = true;
         roomsCreated = 1;
         startingMinRooms = minRooms;
@@ -273,8 +274,12 @@ public class GenerationManager : MonoBehaviour
         for (int i = 0; i < doors.Length; i++)
         {
             if (!doors[i].GetComponent<DoorControl>().active)
-            { 
-                Destroy(doors[i]);
+            {
+                doors[i].GetComponent<SpriteRenderer>().enabled = false;
+                doors[i].GetComponent<Collider2D>().enabled = false;
+                doors[i].GetComponent<Animator>().enabled = false;
+
+                //Destroy(doors[i]);
             }
             if (doors[i].GetComponent<DoorControl>().active)
             {

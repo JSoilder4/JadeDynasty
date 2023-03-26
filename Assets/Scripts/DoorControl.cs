@@ -265,11 +265,14 @@ public CameraFollow camFollow;
     {
         if (collision.CompareTag("Player") && !locked && collision.gameObject.name != "shotCollider")
         {
+            GameManager.GM.derenderBigRoom();
+            GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
             switch (direction)
             {
                 case doorDir.north:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.up;
-                    if(doorConnectedToControl.bigRoom)
+                    
+                    if (doorConnectedToControl.bigRoom)
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
                         //camFollow.y--;
@@ -282,7 +285,7 @@ public CameraFollow camFollow;
                         //camFollow.y = posY-1;
                         //camFollow.x = posX;
                     }
-                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    
                     
                     break;
                 case doorDir.east:
@@ -300,7 +303,7 @@ public CameraFollow camFollow;
                         //camFollow.y = posY;
                         GameManager.GM.renderMinimap(1, 0, posX, posY);
                     }
-                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    //GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.south:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.down;
@@ -317,7 +320,7 @@ public CameraFollow camFollow;
                         //camFollow.x = posX;
                         GameManager.GM.renderMinimap(0, 1, posX, posY);
                     }
-                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    //GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
                 case doorDir.west:
                     collision.transform.position = doorConnectedTo.transform.position + Vector3.left;
@@ -334,7 +337,7 @@ public CameraFollow camFollow;
                         //camFollow.y = posY;
                         GameManager.GM.renderMinimap(-1, 0, posX, posY);
                     }
-                    GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
+                    //GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
             }
             GameManager.GM.currentRoom.spawnEnemies();

@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
     public RoomGenerator currentRoom;
     public GameObject playButton;
     public GameObject backgroundImage;
+
+    public GameObject dummyObject;
+    public GameObject minimapBackground;
     /// <summary>
     /// Representation of the player on the room grid. (CAN SWITCH TO ENUMS)
     /// </summary>
@@ -121,6 +124,8 @@ public class GameManager : MonoBehaviour
         playerY = 4;
         playerRoomGrid[playerX, playerY] = "true";
 
+        makeMinimap();
+
         //randomGunToDrop = GameObject.Find("randomGun");
         //ammoToDrop = GameObject.Find("Ammo");
 
@@ -129,6 +134,29 @@ public class GameManager : MonoBehaviour
         //drops.Add(null);
         //randomGuns = GameObject.FindGameObjectsWithTag("Gun");
     }
+
+    public void makeMinimap()
+    {
+        float height = 5;
+        float width = 5;
+        int xForDebug = 0;
+        int yForDebug = 0;
+
+        for (float y = height * 4 * 2; y >= -height * 5 * 2; y -= height * 2) //(start y(baseNum * 4) * 2, y >= end y(-baseNum * 5) * 2, base height num * 2)
+        {
+            for (float x = -width * 4 * 2; x <= width * 5 * 2; x += width * 2) //(start x(-baseNum*4) * 2, y >= end x(baseNum*5) * 2, base width num * 2)
+            {
+                GameObject g = Instantiate(dummyObject, new Vector3(minimapBackground.transform.position.x + x-5, minimapBackground.transform.position.y + y+5, 0), Quaternion.identity, minimapBackground.transform);
+                g.GetComponent<minimapObject>().x = xForDebug;
+                g.GetComponent<minimapObject>().y = yForDebug;
+                xForDebug++;
+            }
+            xForDebug = 0;
+            yForDebug++;
+        }
+    }
+
+
     /// <summary>
     /// Currently used for moving the reference of where the player is. Eventually can also be used to implement minimap.
     /// </summary>
@@ -136,6 +164,17 @@ public class GameManager : MonoBehaviour
     /// <param name="yDifference"></param>
     public void renderMinimap(int xDifference, int yDifference) //should be called by moving between doors.
     {
+        if (currentRoom.type == RoomGenerator.roomType.RegularX2)
+        {
+            foreach(GameObject g in currentRoom.doors)
+            {
+                DoorControl dC = g.GetComponent<DoorControl>();
+                playerRoomGrid[dC.posX, dC.posY] = "true";
+            }
+        }
+
+
+
         playerRoomGrid[playerX, playerY] = "false";
         playerX += xDifference;
         playerY += yDifference;
@@ -151,13 +190,24 @@ public class GameManager : MonoBehaviour
     /// <param name="setY"></param>
     public void renderMinimap(int xDifference, int yDifference, int setX, int setY) //should be called by moving between doors.
     {
+        
         playerRoomGrid[playerX, playerY] = "false";
         playerX = setX + xDifference;
         playerY = setY + yDifference;
         playerRoomGrid[playerX, playerY] = "true";
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
-
+    public void derenderBigRoom()
+    {
+        if (currentRoom.type == RoomGenerator.roomType.RegularX2)
+        {
+            foreach (GameObject g in currentRoom.doors)
+            {
+                DoorControl dC = g.GetComponent<DoorControl>();
+                playerRoomGrid[dC.posX, dC.posY] = "false";
+            }
+        }
+    }
 
     public void updateGunUI(List<gun> guns, int gunIndex)
     {
@@ -373,6 +423,7 @@ public class GameManager : MonoBehaviour
         genManage.RetryLevel();
         genManage.floor = 0;
         sceneReset();
+        resetMinimap();
 
 
         //spawnEnemies();
@@ -390,9 +441,21 @@ public class GameManager : MonoBehaviour
         print("current floor: "+genManage.floor);
         genManage.RetryLevel();
         sceneReset();
+        resetMinimap();
 
 
         //spawnEnemies();
+    }
+    public void resetMinimap()
+    {
+        for (int y = 0; y < 10; y++)
+        {
+            for (int x = 0; x < 10; x++)
+            {
+                playerRoomGrid[x, y] = "null";
+            }
+        }
+        playerRoomGrid[4, 4] = "true";
     }
     public void rerollGuns()
     {
