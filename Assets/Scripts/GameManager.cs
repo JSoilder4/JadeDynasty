@@ -137,8 +137,8 @@ public class GameManager : MonoBehaviour
 
     public void makeMinimap()
     {
-        float height = 5;
-        float width = 5;
+        float height = 4.15f;
+        float width = 4.15f;
         int xForDebug = 0;
         int yForDebug = 0;
 
