@@ -5,6 +5,17 @@ using Pixelnest.BulletML;
 
 public class ProfCatnip : enemy
 {
+
+    public enum state
+    {
+        idle,
+        shooting,
+        dead
+    }
+    public state myState = state.shooting;
+
+
+
     public Vector3 velocity;
     public LayerMask theLayer;// = LayerMask.GetMask("Player");
 
@@ -20,6 +31,8 @@ public class ProfCatnip : enemy
     public TextAsset pattern;
 
     public BulletSourceScript bml;
+
+    
 
     // Start is called before the first frame update
     public override void Start()
@@ -38,7 +51,7 @@ public class ProfCatnip : enemy
     public override void Update()
     {
         base.Update();
-        if(!stasisFrozen)
+        if(!stasisFrozen || myState != state.dead)
         {
             if(sprite.flipX)
             {
@@ -48,7 +61,7 @@ public class ProfCatnip : enemy
             {
                 shootPoint.transform.localPosition = new Vector3(-shootpointX, shootPoint.transform.localPosition.y, 0);
             }
-            if (visable)
+            if (visable && !dead &&  myState != state.dead)
             {
                 //if(!earthed)
                 attackPlayer();
@@ -77,35 +90,50 @@ public class ProfCatnip : enemy
         Debug.DrawRay(shootPoint.transform.position, player.transform.position - shootPoint.transform.position, Color.red);
         if (raycast && raycast.transform.CompareTag("Player"))
         {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
-            {
-                print("FIRE!");
-                shoot(true);
-                timer = timerOG;
-            }
+
+            setShooting();
+            // timer -= Time.deltaTime;
+            // if(timer <= 0)
+            // {
+            //     print("FIRE!");
+            //     shoot();
+            //     timer = timerOG;
+            // }
             
         }
+        else
+        {
+            setIdle();
+        }
 
 
     }
+
+    public void setIdle(){
+        myState = state.idle;
+        anim.SetInteger("state", (int)myState);
+    }
+    public void setShooting(){
+        myState = state.shooting;
+        anim.SetInteger("state", (int)myState);
+    }
+    // public void shoot()
+    // {
+    //     Vector3 lookDir = player.transform.position - shootPoint.transform.position;
+    //     float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+    //     if (timer <= timerOG / 4)
+    //     {
+    //         shooting = true;
+    //     }
+    //     if (timer <= 0)
+    //     {
+    //         GameObject g = Instantiate(arrow, shootPoint.transform.position, Quaternion.Euler(0, 0, angle));
+    //         // GameManager.GM.addSpawnedObject(g);
+    //         shooting = false;
+    //         timer = timerOG;
+    //     }
+    // }
     public void shoot()
-    {
-        Vector3 lookDir = player.transform.position - shootPoint.transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        if (timer <= timerOG / 4)
-        {
-            shooting = true;
-        }
-        if (timer <= 0)
-        {
-            GameObject g = Instantiate(arrow, shootPoint.transform.position, Quaternion.Euler(0, 0, angle));
-            // GameManager.GM.addSpawnedObject(g);
-            shooting = false;
-            timer = timerOG;
-        }
-    }
-    public void shoot(bool gay)
     {
         bml.xmlFile = pattern;
         bml.Reset();
@@ -131,15 +159,33 @@ public class ProfCatnip : enemy
     }
 
 
+    // public override void die()
+    // {
+    //     dead = true;
+    //     this.enabled = false; //temp
+    //     col.enabled = false; 
+    //     sprite.enabled = false;
+    //     death(); //temp
+    //     Destroy(gameObject); //temp
+    //     throw new System.NotImplementedException();
+    // }
     public override void die()
     {
+        myState = state.dead;
         dead = true;
-        this.enabled = false; //temp
-        col.enabled = false; 
-        sprite.enabled = false;
-        death(); //temp
-        Destroy(gameObject); //temp
-        throw new System.NotImplementedException();
+        anim.SetInteger("state", (int)myState);
+        StopAllCoroutines();
+        anim.SetTrigger("die");
+        StartCoroutine(dieKnockback());
+        //StartCoroutine(deathCoroutine(2f));
+    }
+    public void spawnCatSurprise() //anim
+    {
+
+    }
+    public void dieForReal() //anim
+    {
+        Destroy(gameObject);
     }
 
 }
