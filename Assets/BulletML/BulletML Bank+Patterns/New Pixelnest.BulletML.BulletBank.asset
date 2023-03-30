@@ -42,4 +42,9 @@ MonoBehaviour:
     prefab: {fileID: 5464818757772632612, guid: 7a38d9a0722255943b695873a4e63d80, type: 3}
     sprite: {fileID: 0}
     TimeToLiveInSeconds: 1e+13
-    DestroyWhenOutOfScreen: 1
+    DestroyWhenOutOfScreen: 0
+  - name: BADCATSURPRISE2
+    prefab: {fileID: 1767506450178488557, guid: 07b16ded9dbbea3409b2bd9674a69a88, type: 3}
+    sprite: {fileID: 0}
+    TimeToLiveInSeconds: 1e+13
+    DestroyWhenOutOfScreen: 0

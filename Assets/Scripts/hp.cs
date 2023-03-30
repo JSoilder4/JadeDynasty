@@ -158,8 +158,8 @@ public class hp : MonoBehaviour
                 break;
 
                 default:
-                    print("I was triggered liberal");
-                    print(gameObject.name);
+                    //print("I was triggered liberal");
+                    //print(gameObject.name);
                     StasisStage = 0;
                 break;
 
