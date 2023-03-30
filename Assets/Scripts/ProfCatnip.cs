@@ -14,7 +14,7 @@ public class ProfCatnip : enemy
     }
     public state myState = state.shooting;
 
-
+    public TextAsset badcatSurpriseXML;
 
     public Vector3 velocity;
     public LayerMask theLayer;// = LayerMask.GetMask("Player");
@@ -31,6 +31,7 @@ public class ProfCatnip : enemy
     public TextAsset pattern;
 
     public BulletSourceScript bml;
+    public BulletSourceScript surpriseBml;
 
     
 
@@ -44,6 +45,7 @@ public class ProfCatnip : enemy
         bml = shootPoint.GetComponent<BulletSourceScript>();
         shootpointX = shootPoint.transform.localPosition.x;
         anim = GetComponent<Animator>();
+        surpriseBml = GetComponent<BulletSourceScript>();
         //sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -181,7 +183,10 @@ public class ProfCatnip : enemy
     }
     public void spawnCatSurprise() //anim
     {
+        surpriseBml.xmlFile = badcatSurpriseXML;
+        surpriseBml.Reset();
 
+        Debug.Break();
     }
     public void dieForReal() //anim
     {

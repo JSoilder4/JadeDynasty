@@ -106,6 +106,10 @@ namespace Pixelnest.BulletML.Demo
       // Stats
       GUI.Label(new Rect(Screen.width - 75, 0, 150, 20), (1.0f / Time.deltaTime).ToString("00") + " FPS");
       GUI.Label(new Rect(Screen.width - 75, 20, 150, 20), (FindObjectsOfType<BulletScript>().Length + " bullets"));
+      if(FindObjectsOfType<BulletScript>().Length > 75000)
+      {
+        Debug.Break();
+      }
 
 #if !UNITY_EDITOR
       if (GUI.Button(new Rect(5, Screen.height - 30, 200, 25), "Next demo : Boss fight!"))
