@@ -276,7 +276,7 @@ public CameraFollow camFollow;
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
                         //camFollow.y--;
-                        GameManager.GM.renderMinimap(0, -1);
+                        GameManager.GM.RenderMinimap(0, -1);
                     }
                     else
                     {
@@ -294,7 +294,7 @@ public CameraFollow camFollow;
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
                         //camFollow.x++;
-                        GameManager.GM.renderMinimap(1, 0);
+                        GameManager.GM.RenderMinimap(1, 0);
                     }
                     else
                     {
@@ -311,7 +311,7 @@ public CameraFollow camFollow;
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
                         //camFollow.y++;
-                        GameManager.GM.renderMinimap(0, 1);
+                        GameManager.GM.RenderMinimap(0, 1);
                     }
                     else
                     {
@@ -328,7 +328,7 @@ public CameraFollow camFollow;
                     {
                         camFollow.cam = CameraFollow.CamType.followAndMouse;
                         //camFollow.x--;
-                        GameManager.GM.renderMinimap(-1, 0);
+                        GameManager.GM.RenderMinimap(-1, 0);
                     }
                     else
                     {

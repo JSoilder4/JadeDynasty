@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="xDifference"></param>
     /// <param name="yDifference"></param>
-    public void renderMinimap(int xDifference, int yDifference) //should be called by moving between doors.
+    public void RenderMinimap(int xDifference, int yDifference) //should be called by moving between doors.
     {
         if (currentRoom.type == RoomGenerator.roomType.RegularX2)
         {

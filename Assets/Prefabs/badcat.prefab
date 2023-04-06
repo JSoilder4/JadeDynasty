@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: -1826813513953659857}
   - component: {fileID: 5465972966971781696}
   - component: {fileID: 7396842387821606523}
+  - component: {fileID: 1407864144}
   m_Layer: 0
   m_Name: badcat
   m_TagString: Enemy
@@ -132,7 +133,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.88, y: 8.09}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -296,6 +297,7 @@ MonoBehaviour:
   shooting: 0
   pattern: {fileID: 4900000, guid: a4126f9a2d182ff47952740fd5833348, type: 3}
   bml: {fileID: 0}
+  surpriseCatObject: {fileID: 5464818757772632612, guid: 7a38d9a0722255943b695873a4e63d80, type: 3}
 --- !u!114 &416746696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +366,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 5.88, y: 8.09}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -388,6 +390,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.0766978}
   serializedVersion: 2
   m_Radius: 0.12907133
+--- !u!114 &1407864144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915338884471120244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: 2fad8072b14d87e469dde95d0a9664bb, type: 3}
 --- !u!1001 &4679748551367856397
 PrefabInstance:
   m_ObjectHideFlags: 0

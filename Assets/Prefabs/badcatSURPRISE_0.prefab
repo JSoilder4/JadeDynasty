@@ -139,9 +139,13 @@ MonoBehaviour:
   elite: 0
   stasisFrozen: 0
   anim: {fileID: 0}
-  bml: {fileID: 0}
-  bmlXML: {fileID: 4900000, guid: 2c09a6af4a579d640a82c052617d8930, type: 3}
   timer: 1
+  maxSpeed: 0.1
+  velocity: {x: 0, y: 0}
+  lookDir: {x: 0, y: 0}
+  movepointTimer: 0
+  movepointTimerOG: 0
+  explosion: {fileID: 5370783309674314335, guid: b2d128dea75a3a546bd088642b70a2e1, type: 3}
 --- !u!114 &741139392808026412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,14 +223,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464818757772632612}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_LinearDrag: 200
+  m_AngularDrag: 200
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
