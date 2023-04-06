@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject dummyObject;
     public GameObject minimapBackground;
+    public List<minimapObject> minimapObjects;
     /// <summary>
     /// Representation of the player on the room grid. (CAN SWITCH TO ENUMS)
     /// </summary>
@@ -126,6 +127,8 @@ public class GameManager : MonoBehaviour
 
         makeMinimap();
 
+        CheckMinimapObjects();
+
         //randomGunToDrop = GameObject.Find("randomGun");
         //ammoToDrop = GameObject.Find("Ammo");
 
@@ -149,6 +152,7 @@ public class GameManager : MonoBehaviour
                 GameObject g = Instantiate(dummyObject, new Vector3(minimapBackground.transform.position.x + x-5, minimapBackground.transform.position.y + y+5, 0), Quaternion.identity, minimapBackground.transform);
                 g.GetComponent<minimapObject>().x = xForDebug;
                 g.GetComponent<minimapObject>().y = yForDebug;
+                minimapObjects.Add(g.GetComponent<minimapObject>());
                 xForDebug++;
             }
             xForDebug = 0;
@@ -179,6 +183,8 @@ public class GameManager : MonoBehaviour
         playerX += xDifference;
         playerY += yDifference;
         playerRoomGrid[playerX, playerY] = "true";
+
+        CheckMinimapObjects();
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     /// <summary>
@@ -195,6 +201,8 @@ public class GameManager : MonoBehaviour
         playerX = setX + xDifference;
         playerY = setY + yDifference;
         playerRoomGrid[playerX, playerY] = "true";
+
+        CheckMinimapObjects();
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     public void derenderBigRoom()
@@ -208,6 +216,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void CheckMinimapObjects()
+    {
+        foreach(minimapObject miniO in minimapObjects)
+        {
+            miniO.Check();
+        }
+    }
+
 
     public void updateGunUI(List<gun> guns, int gunIndex)
     {

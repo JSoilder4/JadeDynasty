@@ -14,13 +14,22 @@ public class minimapObject : MonoBehaviour
     void Start()
     {
         //sprite = GetComponent<SpriteRenderer>();
+        //image = GetComponent<Image>();
+    }
+    private void Awake()
+    {
         image = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (GameManager.GM.playerRoomGrid[x,y])
+
+    }
+    public void Check()
+    {
+        print("get checked.");
+        switch (GameManager.GM.playerRoomGrid[x, y])
         {
             case "null":
                 image.enabled = false;
