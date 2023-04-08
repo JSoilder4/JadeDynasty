@@ -146,6 +146,7 @@ MonoBehaviour:
   movepointTimer: 0
   movepointTimerOG: 0
   explosion: {fileID: 5370783309674314335, guid: b2d128dea75a3a546bd088642b70a2e1, type: 3}
+  myHPCanvas: {fileID: 6214609621597291821}
 --- !u!114 &741139392808026412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,15 +299,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 918896026892784350, guid: 4f52045a7d6fcde4188dfdaa9c6d866f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 918896026892784350, guid: 4f52045a7d6fcde4188dfdaa9c6d866f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 918896026892784350, guid: 4f52045a7d6fcde4188dfdaa9c6d866f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 918896026892784350, guid: 4f52045a7d6fcde4188dfdaa9c6d866f, type: 3}
       propertyPath: m_AnchoredPosition.x

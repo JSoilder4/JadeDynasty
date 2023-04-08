@@ -6,6 +6,7 @@ using Pixelnest.BulletML;
 public class badcatSurprise : enemy
 {
 
+
     //public Animator anim;
    // public BulletSourceScript bml;
    // public TextAsset bmlXML;
@@ -20,6 +21,8 @@ public class badcatSurprise : enemy
     public float movepointTimerOG;
 
     public GameObject explosion;
+
+    public RectTransform myHPCanvas;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -35,7 +38,7 @@ public class badcatSurprise : enemy
         lookDir = (Vector2)player.transform.position - rb.position;
         velocity = lookDir.normalized;
 
-
+        myHPCanvas = hp.HPCanvas.GetComponent<RectTransform>();
         //   bml = GetComponent<BulletSourceScript>();
     }
 
@@ -44,6 +47,22 @@ public class badcatSurprise : enemy
     {
         //base.Update();
         timer -= Time.deltaTime;
+        if(!dead && !stasisFrozen)
+        {
+            if (player.transform.position.x >= transform.position.x)
+            {
+                sprite.flipY = false;
+                myHPCanvas.transform.localPosition = new Vector3(myHPCanvas.transform.localPosition.x,0.07f,0);
+                myHPCanvas.transform.localRotation = Quaternion.Euler(0,0,0);
+            }
+            else if (player.transform.position.x <= transform.position.x)
+            {
+                
+                sprite.flipY = true;
+                myHPCanvas.transform.localPosition = new Vector3(myHPCanvas.transform.localPosition.x,-0.07f,0);
+                myHPCanvas.transform.localRotation = Quaternion.Euler(0,0,180);
+            }
+        }
         
         
         
@@ -73,7 +92,7 @@ public class badcatSurprise : enemy
         }
         else if ((player.transform.position - transform.position).magnitude > 0.5f)
         {
-            print("magnitudinal!");
+            //print("magnitudinal!");
             velocity = lookDir.normalized;
 
             movepointTimer = movepointTimerOG;
@@ -85,7 +104,7 @@ public class badcatSurprise : enemy
 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-       transform.eulerAngles = new Vector3(0, 0, angle);
+        transform.eulerAngles = new Vector3(0, 0, angle);
 
         rb.MovePosition((Vector2)transform.position + velocity * speedOG);// * Time.fixedDeltaTime);
         //rb.velocity = velocity * speed * Time.fixedDeltaTime;
@@ -96,7 +115,7 @@ public class badcatSurprise : enemy
     {
         //myState = state.dead;
         dead = true;
-        //anim.SetInteger("state", (int)myState);
+        //anim.SetInteger("state", (int)1);
         StopAllCoroutines();
         anim.SetTrigger("die");
         StartCoroutine(dieKnockback());

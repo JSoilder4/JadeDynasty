@@ -12647,6 +12647,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 538056020}
   dummyObject: {fileID: 1584250804641346240, guid: d583291fcde0d1140a256749365aac22, type: 3}
   minimapBackground: {fileID: 783371113}
+  minimapObjects: []
   genManage: {fileID: 602254765}
   randomGunToDrop: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
   ammoToDrop: {fileID: 2220907072256966216, guid: 0f730dd27098bc046852b834a27e1011, type: 3}
@@ -39767,6 +39768,7 @@ GameObject:
   - component: {fileID: 1836047754}
   - component: {fileID: 1836047755}
   - component: {fileID: 1836047756}
+  - component: {fileID: 1836047757}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -40049,6 +40051,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1836047757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836047749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 100
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1210
+  m_UpscaleRT: 1
+  m_PixelSnapping: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 0
 --- !u!213 &1908361592
 Sprite:
   m_ObjectHideFlags: 0
@@ -53355,11 +53377,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8825839606092552292, guid: 7a38d9a0722255943b695873a4e63d80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.271
+      value: -9.17
       objectReference: {fileID: 0}
     - target: {fileID: 8825839606092552292, guid: 7a38d9a0722255943b695873a4e63d80, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8825839606092552292, guid: 7a38d9a0722255943b695873a4e63d80, type: 3}
       propertyPath: m_LocalPosition.z

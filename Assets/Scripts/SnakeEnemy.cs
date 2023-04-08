@@ -5,7 +5,7 @@ using Pixelnest.BulletML;
 
 public class SnakeEnemy : enemy
 {
-private enum state
+    private enum state
     {
        // idle,
         walk,
