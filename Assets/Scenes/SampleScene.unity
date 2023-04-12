@@ -53167,14 +53167,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 4760173124461523200, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: AmmoCount
       value: 
       objectReference: {fileID: 1595257636}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: pistolShootSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: shotgunPumpSound
       value: 
       objectReference: {fileID: 8300000, guid: 561ccdcf30404ed46892eed7ad143fa7, type: 3}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: pistolReloadSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: shotgunShootSound
       value: 

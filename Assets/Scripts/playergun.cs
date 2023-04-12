@@ -52,6 +52,8 @@ public class playergun : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip shootSound;
+    public AudioClip pistolShootSound;
+    public AudioClip pistolReloadSound;
     public AudioClip shotgunShootSound;
     public AudioClip shotgunPumpSound;
     public AudioSource mySource;
@@ -365,11 +367,13 @@ private void FixedUpdate() {
                 print("Reload Partial Fail: Not enough ammo");
                 activeGun.magAmmo = pistolAmmo;
                 pistolAmmo -= activeGun.magAmmo;
+                mySource.PlayOneShot(pistolReloadSound);
                 break;
             }
             else
                 pistolAmmo -= (activeGun.magazine - activeGun.magAmmo);
                 activeGun.magAmmo = activeGun.magazine;
+                mySource.PlayOneShot(pistolReloadSound);
             break;
 
             case gunEnumScript.gunType.Sniper:
@@ -383,6 +387,7 @@ private void FixedUpdate() {
                 print("Reload Partial Fail: Not enough ammo");
                 activeGun.magAmmo = sniperAmmo;
                 sniperAmmo -= activeGun.magAmmo;
+                
                 break;
             }
             else
@@ -538,6 +543,7 @@ private void FixedUpdate() {
                 mySource.PlayOneShot(shootSound);//sumner stinky
             break;
             case gunEnumScript.gunType.Pistol:
+                mySource.PlayOneShot(pistolShootSound);
             break;
             case gunEnumScript.gunType.Shotgun:
                 mySource.PlayOneShot(shotgunShootSound);

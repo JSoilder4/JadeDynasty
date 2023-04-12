@@ -140,8 +140,8 @@ public class GameManager : MonoBehaviour
 
     public void makeMinimap()
     {
-        float height = 4.15f;
-        float width = 4.15f;
+        float height = 5f;
+        float width = 5f;
         int xForDebug = 0;
         int yForDebug = 0;
 
@@ -472,6 +472,7 @@ public class GameManager : MonoBehaviour
             }
         }
         playerRoomGrid[4, 4] = "true";
+        CheckMinimapObjects();
     }
     public void rerollGuns()
     {
@@ -534,6 +535,10 @@ public class GameManager : MonoBehaviour
                 respawn();
                 alive();
             }
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
         // if (!started && Input.GetButtonDown("Jump"))
         // {
