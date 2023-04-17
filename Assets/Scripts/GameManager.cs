@@ -479,7 +479,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < randomGuns.Length; i++)
         {
             randomGuns[i].gameObject.SetActive(true);
-            randomGuns[i].theGun.roll();//rollGun();
+            randomGuns[i].theGun.Roll();//rollGun();
         }
     }
     public void dead()

@@ -39,7 +39,7 @@ public class RandomGun : MonoBehaviour
         col = GetComponent<Collider2D>();
         tutText = GetComponentInChildren<TextMeshProUGUI>();
 
-        theGun.roll();
+        theGun.Roll();
         //rollGun();
     }
 

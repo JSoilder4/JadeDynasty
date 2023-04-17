@@ -282,24 +282,62 @@ private void FixedUpdate() {
     }
 
     public void updateAmmoUI(){
+
+        int MagAmmoInfinityLimit = 500;
         switch(activeGun.gunType){
             case gunEnumScript.gunType.Pistol:
-            AmmoCount.text = activeGun.magAmmo+"/"+pistolAmmo;
+                if(activeGun.magAmmo > MagAmmoInfinityLimit)
+                {
+                    AmmoCount.text = "∞" + "/" + pistolAmmo;
+                }
+                else
+                {
+                    AmmoCount.text = activeGun.magAmmo + "/" + pistolAmmo;
+                }
+            
             break;
             case gunEnumScript.gunType.Sniper:
-            AmmoCount.text = activeGun.magAmmo+"/"+sniperAmmo;
+                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                {
+                    AmmoCount.text = "∞" + "/" + sniperAmmo;
+                }
+                else
+                {
+                    AmmoCount.text = activeGun.magAmmo + "/" + sniperAmmo;
+                }
+                
             break;
             case gunEnumScript.gunType.SMG:
-            AmmoCount.text = activeGun.magAmmo+"/"+smgAmmo;
+                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                {
+                    AmmoCount.text = "∞" + "/" + smgAmmo;
+                }
+                else
+                {
+                    AmmoCount.text = activeGun.magAmmo + "/" + smgAmmo;
+                }
+                
             break;
             case gunEnumScript.gunType.Shotgun:
-            AmmoCount.text = activeGun.magAmmo+"/"+shotgunAmmo;
+                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                {
+                    AmmoCount.text = "∞" + " / " + shotgunAmmo;
+                }
+                else
+                {
+                    AmmoCount.text = activeGun.magAmmo + "/" + shotgunAmmo;
+                }
+                
             break;
         }
         AmmoCount.color = sprite.color;
     }
-    public void ammoPickup()//GameObject ammoObject)
+    public void ammoPickup(GameObject AmmoObject)//GameObject ammoObject)
     {
+        if (activeGun.effect == gunEnumScript.effect.Infinity)
+        {
+            return;
+        }
         int ammoBefore;
         print("expected gain: "+ activeGun.magazine);
         switch(activeGun.gunType)
@@ -328,12 +366,17 @@ private void FixedUpdate() {
             print("actual gain: "+(smgAmmo - ammoBefore));
             break;
         }
-        //Destroy(ammoObject);
+        Destroy(AmmoObject);
 
 
     }
     IEnumerator reload()
     {
+        if(activeGun.effect == gunEnumScript.effect.Infinity)
+        {
+            yield break;
+        }
+
         reloading = true;
         reloadText.enabled = true;
         print("reload timer:"+activeGun.reloadTimer);
@@ -440,10 +483,10 @@ private void FixedUpdate() {
     {
         equippedGuns.Clear();
         activeGun = new gun();
-        activeGun.roll();
-        while(activeGun.element == gunEnumScript.element.Stasis) //maybe temp? crude way to prevent spawning with stasis
+        activeGun.Roll();
+        while(activeGun.element == gunEnumScript.element.Stasis || activeGun.effect != gunEnumScript.effect.Infinity) //maybe temp? crude way to prevent spawning with stasis & keep infinity
         {
-            activeGun.roll();
+            activeGun.Roll();
         }
         equippedGuns.Add(activeGun);
         GameManager.GM.updateGunUI(equippedGuns, gunIndex);

@@ -185,6 +185,7 @@ public class ProfCatnip : enemy
     public void spawnCatSurprise() //anim
     {
         GameObject g = Instantiate(surpriseCatObject, transform.position, Quaternion.identity);
+        GameManager.GM.addSpawnedObject(g);
 
 
 

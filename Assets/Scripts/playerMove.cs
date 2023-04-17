@@ -231,8 +231,8 @@ public class playerMove : MonoBehaviour
         }
         if(collision.transform.CompareTag("Ammo"))
         {
-            pGunScript.ammoPickup();//collision.gameObject);
-            Destroy(collision.gameObject);
+            pGunScript.ammoPickup(collision.gameObject);//collision.gameObject);
+            //Destroy(collision.gameObject);
         }
         if (collision.transform.CompareTag("nextFloor"))
         {

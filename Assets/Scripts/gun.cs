@@ -80,7 +80,7 @@ public class gun //: MonoBehaviour
 
         return trigger1;
     }
-    public void roll()
+    public void Roll()
     {
        //resetRoll();
         gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
@@ -88,7 +88,7 @@ public class gun //: MonoBehaviour
 
 
         effect = RollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
-        
+
 
         
         switch (gunType)
@@ -187,6 +187,17 @@ public class gun //: MonoBehaviour
                 scatterAngle = 1;
                 spread = UnityEngine.Random.Range(1, 6);
                 
+                break;
+        }
+
+        switch (effect)
+        {
+            case gunEnumScript.effect.Infinity: //look into cases of infinity + stasis, could be too strong
+                magazine = int.MaxValue;
+                damage /= 2;
+                break;
+
+            default:
                 break;
         }
         magAmmo = magazine;

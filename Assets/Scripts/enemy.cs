@@ -164,7 +164,7 @@ public abstract class enemy : MonoBehaviour
 
         int random = Random.Range(0, 101);
 
-        if (random >= 60)
+        if (random >= 50) // 50%
         {
             GameManager.dropsEmum thingToDrop = GameManager.RollDrops();
             if (thingToDrop == GameManager.dropsEmum.gun)
