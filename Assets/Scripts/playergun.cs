@@ -55,7 +55,13 @@ public class playergun : MonoBehaviour
     public AudioClip pistolShootSound;
     public AudioClip pistolReloadSound;
     public AudioClip shotgunShootSound;
-    public AudioClip shotgunPumpSound;
+    public AudioClip shotgunPumpSound;  //use either this
+    public AudioClip shotgunReloadSound; // or this
+    public AudioClip smgShootSound;
+    public AudioClip smgReloadSound;
+    public AudioClip sniperShootSound;
+    public AudioClip sniperReloadSound;
+
     public AudioSource mySource;
 
 
@@ -601,8 +607,10 @@ private void FixedUpdate() {
                 
             break;
             case gunEnumScript.gunType.Sniper:
+                mySource.PlayOneShot(sniperShootSound);
             break;
             case gunEnumScript.gunType.SMG:
+                mySource.PlayOneShot(smgShootSound);
             break;
         }
         activeGun.betweenShotTimer = activeGun.bSTog;

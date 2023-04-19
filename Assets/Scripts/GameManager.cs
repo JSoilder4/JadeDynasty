@@ -140,8 +140,8 @@ public class GameManager : MonoBehaviour
 
     public void makeMinimap()
     {
-        float height = 5f;
-        float width = 5f;
+        float height = 5f * 1.75f;
+        float width = 5f * 1.75f;
         int xForDebug = 0;
         int yForDebug = 0;
 
@@ -213,8 +213,16 @@ public class GameManager : MonoBehaviour
         {
             foreach (GameObject g in currentRoom.doors)
             {
-                DoorControl dC = g.GetComponent<DoorControl>();
-                playerRoomGrid[dC.posX, dC.posY] = "false";
+                try
+                {
+                    DoorControl dC = g.GetComponent<DoorControl>();
+                    playerRoomGrid[dC.posX, dC.posY] = "false";
+                }
+                catch 
+                {
+                    print("ehhh etoo... bleh");
+                }
+                
             }
         }
     }
@@ -223,12 +231,18 @@ public class GameManager : MonoBehaviour
         print(location);
         foreach(GameObject g in currentRoom.doors)
             {
-                DoorControl dC = g.GetComponent<DoorControl>();
-                if(dC.doorConnectedToControl != null)
+                try
                 {
-                    playerRoomGrid[dC.doorConnectedToControl.posX, dC.doorConnectedToControl.posY] = "false";
+                    DoorControl dC = g.GetComponent<DoorControl>();
+                    if (dC.doorConnectedToControl != null)
+                    {
+                        playerRoomGrid[dC.doorConnectedToControl.posX, dC.doorConnectedToControl.posY] = "false";
+                    }
                 }
-                
+                catch
+                {
+                    print("ehhh etoo... bleh");
+                }  
             }
         foreach(minimapObject miniO in minimapObjects)
         {

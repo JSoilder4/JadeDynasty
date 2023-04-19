@@ -42,6 +42,7 @@ public class gunEnumScript : MonoBehaviour
         BackShot,
         Broken,
         HighRoller,
+        BulletHell,
 
 
         
@@ -56,7 +57,7 @@ public class gunEnumScript : MonoBehaviour
 
     public static Dictionary<effect, int> effectWeightTable = new Dictionary<effect, int>()
     {
-        {effect.Nothing, 50},
+        {effect.Nothing, 20},
         {effect.Boomerang, 30},
         {effect.EXPLOSION, 30},
         {effect.Comet, 30},
@@ -66,6 +67,7 @@ public class gunEnumScript : MonoBehaviour
         {effect.BackShot, 30},
         {effect.Broken, 30},
         {effect.HighRoller, 10},
+        {effect.BulletHell, 30},
         //{effect.Nothing, 30},
 
 

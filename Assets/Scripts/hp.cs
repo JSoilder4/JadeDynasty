@@ -247,12 +247,12 @@ public class hp : MonoBehaviour
         }
         else
         {
-            //if(myEnemyScript.stasisFrozen) //uncomment if stasis only triggers when frozen
-            //{
-            //    StasisTrigger();
-            //}
+            if (myEnemyScript.stasisFrozen) //uncomment if stasis only triggers when frozen
+            {
+                StasisTrigger();
+            }
 
-            StasisTrigger(); //comment out if stasis only triggers when frozen
+            //StasisTrigger(); //comment out if stasis only triggers when frozen
 
             if(myEnemyScript.elite)
             {
