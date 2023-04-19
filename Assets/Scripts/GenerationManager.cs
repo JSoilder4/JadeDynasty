@@ -206,6 +206,7 @@ public class GenerationManager : MonoBehaviour
         if(roomsCreated >= minRooms && !genComplete)
         {
             genComplete = true;
+            //GameManager.GM.CheckMinimapObjects("GenManager");
         }
 
         if(genComplete && !bossRoomAssigned)
@@ -225,6 +226,8 @@ public class GenerationManager : MonoBehaviour
             foreach(GameObject g in createdRooms){
                 nullRemover(g.GetComponent<RoomGenerator>().doors);
             }
+            
+
             
         }
 
@@ -254,7 +257,7 @@ public class GenerationManager : MonoBehaviour
             StartCoroutine(CheckLevel());
         }
         
-       
+    
     }
 
     public IEnumerator CheckLevel()

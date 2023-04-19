@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         makeMinimap();
 
-        CheckMinimapObjects();
+        //CheckMinimapObjects();
 
         //randomGunToDrop = GameObject.Find("randomGun");
         //ammoToDrop = GameObject.Find("Ammo");
@@ -184,11 +184,11 @@ public class GameManager : MonoBehaviour
         playerY += yDifference;
         playerRoomGrid[playerX, playerY] = "true";
 
-        CheckMinimapObjects();
+        //CheckMinimapObjects("renderMini");
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     /// <summary>
-    /// Used for switching between bigrooms. Will need to adjust minimap to account for big rooms later.
+    /// Used for switching between bigrooms.
     /// </summary>
     /// <param name="xDifference"></param>
     /// <param name="yDifference"></param>
@@ -202,7 +202,9 @@ public class GameManager : MonoBehaviour
         playerY = setY + yDifference;
         playerRoomGrid[playerX, playerY] = "true";
 
-        CheckMinimapObjects();
+        
+
+        //CheckMinimapObjects("renderMini");
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     public void derenderBigRoom()
@@ -216,8 +218,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void CheckMinimapObjects()
+    public void CheckMinimapObjects(string location)
     {
+        print(location);
+        foreach(GameObject g in currentRoom.doors)
+            {
+                DoorControl dC = g.GetComponent<DoorControl>();
+                if(dC.doorConnectedToControl != null)
+                {
+                    playerRoomGrid[dC.doorConnectedToControl.posX, dC.doorConnectedToControl.posY] = "false";
+                }
+                
+            }
         foreach(minimapObject miniO in minimapObjects)
         {
             miniO.Check();
@@ -472,7 +484,7 @@ public class GameManager : MonoBehaviour
             }
         }
         playerRoomGrid[4, 4] = "true";
-        CheckMinimapObjects();
+        //CheckMinimapObjects();
     }
     public void rerollGuns()
     {
@@ -540,6 +552,7 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+        CheckMinimapObjects("Update()");
         // if (!started && Input.GetButtonDown("Jump"))
         // {
         //     start();
