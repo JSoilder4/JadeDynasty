@@ -40088,7 +40088,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50d4336bdf346b9409e9e0f389cc1d75, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -53277,6 +53277,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7f2ff0e21408bb94da27e0d07cd91860, type: 3}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: smgReloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 12b59a9299c2588438996d20a3e7b3ef, type: 3}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: pistolShootSound
       value: 
       objectReference: {fileID: 8300000, guid: d5ad4c94ca375474db26e5d14b9cce37, type: 3}
@@ -53291,11 +53295,15 @@ PrefabInstance:
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: pistolReloadSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 12b59a9299c2588438996d20a3e7b3ef, type: 3}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: shotgunShootSound
       value: 
       objectReference: {fileID: 8300000, guid: b2839ea00676a81408967161ac2185cf, type: 3}
+    - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: sniperReloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a86e57162c4efbf4fb5f06a0e84018fe, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}

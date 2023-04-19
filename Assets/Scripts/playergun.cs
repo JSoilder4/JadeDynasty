@@ -437,12 +437,13 @@ private void FixedUpdate() {
                 print("Reload Partial Fail: Not enough ammo");
                 activeGun.magAmmo = sniperAmmo;
                 sniperAmmo -= activeGun.magAmmo;
-                
+                mySource.PlayOneShot(sniperReloadSound);
                 break;
             }
             else
                 sniperAmmo -= (activeGun.magazine - activeGun.magAmmo);
                 activeGun.magAmmo = activeGun.magazine;
+                mySource.PlayOneShot(sniperReloadSound);
             break;
 
             case gunEnumScript.gunType.SMG:
@@ -456,12 +457,14 @@ private void FixedUpdate() {
                 print("Reload Partial Fail: Not enough ammo");
                 activeGun.magAmmo = smgAmmo;
                 smgAmmo -= activeGun.magAmmo;
+                mySource.PlayOneShot(smgReloadSound);
                 break;
             }
             else
                 smgAmmo -= (activeGun.magazine - activeGun.magAmmo);
                 activeGun.magAmmo = activeGun.magazine;
-            break;
+                mySource.PlayOneShot(smgReloadSound);
+                break;
 
             case gunEnumScript.gunType.Shotgun:
             if(shotgunAmmo <= 0)
@@ -608,6 +611,8 @@ private void FixedUpdate() {
             break;
             case gunEnumScript.gunType.Sniper:
                 mySource.PlayOneShot(sniperShootSound);
+                //mySource.clip = sniperReloadSound;
+                //mySource.PlayDelayed(0.35f);
             break;
             case gunEnumScript.gunType.SMG:
                 mySource.PlayOneShot(smgShootSound);
