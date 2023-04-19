@@ -283,10 +283,10 @@ private void FixedUpdate() {
 
     public void updateAmmoUI(){
 
-        int MagAmmoInfinityLimit = 500;
+        //int MagAmmoInfinityLimit = 500;
         switch(activeGun.gunType){
             case gunEnumScript.gunType.Pistol:
-                if(activeGun.magAmmo > MagAmmoInfinityLimit)
+                if(activeGun.effect == gunEnumScript.effect.Infinity)
                 {
                     AmmoCount.text = "∞" + "/" + pistolAmmo;
                 }
@@ -297,7 +297,7 @@ private void FixedUpdate() {
             
             break;
             case gunEnumScript.gunType.Sniper:
-                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                if (activeGun.effect == gunEnumScript.effect.Infinity)
                 {
                     AmmoCount.text = "∞" + "/" + sniperAmmo;
                 }
@@ -308,7 +308,7 @@ private void FixedUpdate() {
                 
             break;
             case gunEnumScript.gunType.SMG:
-                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                if (activeGun.effect == gunEnumScript.effect.Infinity)
                 {
                     AmmoCount.text = "∞" + "/" + smgAmmo;
                 }
@@ -319,7 +319,7 @@ private void FixedUpdate() {
                 
             break;
             case gunEnumScript.gunType.Shotgun:
-                if (activeGun.magAmmo > MagAmmoInfinityLimit)
+                if (activeGun.effect == gunEnumScript.effect.Infinity)
                 {
                     AmmoCount.text = "∞" + " / " + shotgunAmmo;
                 }
@@ -397,6 +397,7 @@ private void FixedUpdate() {
     public void reload(gunEnumScript.gunType type) //use with animator later? or IEnumerator coroutine
     {
         print("reloading");
+        
         switch(type)
         {
             case gunEnumScript.gunType.Pistol:
@@ -476,6 +477,11 @@ private void FixedUpdate() {
 
         }
         reloading = false;
+        if(activeGun.effect == gunEnumScript.effect.HighRoller)
+        {
+            activeGun.Roll("HighRoller");
+            return;
+        }
         //updateAmmoUI();
     }
 
@@ -483,11 +489,12 @@ private void FixedUpdate() {
     {
         equippedGuns.Clear();
         activeGun = new gun();
-        activeGun.Roll();
-        while(activeGun.element == gunEnumScript.element.Stasis || activeGun.effect != gunEnumScript.effect.Infinity) //maybe temp? crude way to prevent spawning with stasis & keep infinity
+        activeGun.Roll("Start");
+        while(activeGun.element == gunEnumScript.element.Stasis)// || activeGun.effect != gunEnumScript.effect.Infinity) //maybe temp? crude way to prevent spawning with stasis & keep infinity
         {
-            activeGun.Roll();
+            activeGun.Roll("Start");
         }
+        activeGun.effect = gunEnumScript.effect.Infinity;
         equippedGuns.Add(activeGun);
         GameManager.GM.updateGunUI(equippedGuns, gunIndex);
         GameManager.GM.resetGunUI();
@@ -583,7 +590,7 @@ private void FixedUpdate() {
         switch(gunType)
         {
             default:
-                mySource.PlayOneShot(shootSound);//sumner stinky
+                mySource.PlayOneShot(shootSound);//sumner little stinky boy
             break;
             case gunEnumScript.gunType.Pistol:
                 mySource.PlayOneShot(pistolShootSound);
@@ -599,7 +606,10 @@ private void FixedUpdate() {
             break;
         }
         activeGun.betweenShotTimer = activeGun.bSTog;
-        activeGun.magAmmo--;
+        if(activeGun.effect != gunEnumScript.effect.Infinity){
+            activeGun.magAmmo--;
+        }
+        
         if(activeGun.magAmmo <= 0)
         {
             reloadIEnum = StartCoroutine(reload());

@@ -37,6 +37,15 @@ public class gunEnumScript : MonoBehaviour
         Comet, 
         BigBullets,
         Infinity,
+        
+        Backwards,
+        BackShot,
+        Broken,
+        HighRoller,
+
+
+        
+
     }
     public enum trigger
     {
@@ -52,7 +61,11 @@ public class gunEnumScript : MonoBehaviour
         {effect.EXPLOSION, 30},
         {effect.Comet, 30},
         {effect.BigBullets, 30},
-        {effect.Infinity, 30},
+        {effect.Infinity, 10},
+        {effect.Backwards, 30},
+        {effect.BackShot, 30},
+        {effect.Broken, 30},
+        {effect.HighRoller, 10},
         //{effect.Nothing, 30},
 
 

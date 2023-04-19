@@ -80,15 +80,16 @@ public class gun //: MonoBehaviour
 
         return trigger1;
     }
-    public void Roll()
+    public void Roll(string codeName)
     {
        //resetRoll();
         gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
         element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
 
-
-        effect = RollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
-
+        if(codeName == ""){
+            effect = RollEffect();//(gunEnumScript.effect)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.effect)).Length);
+        }
+        
 
         
         switch (gunType)
@@ -193,8 +194,27 @@ public class gun //: MonoBehaviour
         switch (effect)
         {
             case gunEnumScript.effect.Infinity: //look into cases of infinity + stasis, could be too strong
-                magazine = int.MaxValue;
-                damage /= 2;
+                //magazine = int.MaxValue;
+                //damage /= 2;
+                break;
+            case gunEnumScript.effect.Backwards:
+                scatterAngle = 180;
+                spread = 5;
+                damage *= 1.25f;
+                break;
+            case gunEnumScript.effect.BackShot:
+                scatterAngle = 180;
+                spread = 4;
+                if(numShots == 1){
+                    numShots += 1;
+                }
+                
+                break;
+            case gunEnumScript.effect.Broken:
+                //scatterAngle = 180;
+                spread = 180;
+                //numShots *= 2;UnityEngine.Random.Range(1, 10);
+                
                 break;
 
             default:
