@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour
                 catch 
                 {
                     Debug.Break();
-                    print("ehhh etoo...");
+                    print("ee~ etto...");
                 }
                 
             }
@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
                 //catch
                 //{
                     //Debug.Break();
-                    //print("ehhh etoo... bleh");
+                    //print("ee~ etto... bleh");
                 //}  
             }
         foreach(minimapObject miniO in minimapObjects)
@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator minimapCheckDelay()
     {
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(2.85f);
         CheckMinimapObjects("delayCoroutine");
     }
     public void updateGunUI(List<gun> guns, int gunIndex)
