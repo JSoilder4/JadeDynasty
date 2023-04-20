@@ -146,7 +146,7 @@ public class RoomGenerator : MonoBehaviour
             if (doorsConnected >= 2)
             {
                 print("hi" + doorsConnected);
-                genManage.RetryLevel();
+                //genManage.RetryLevel();
             }
         }
         
