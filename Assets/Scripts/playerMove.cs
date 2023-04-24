@@ -193,7 +193,7 @@ public class playerMove : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                RandomGun rGun = other.GetComponent<RandomGun>();
+                randomGun rGun = other.GetComponent<randomGun>();
                 gun rGunG = rGun.theGun;
                 if (playergun.gunScript.equippedGuns.Count >= 4)
                 {

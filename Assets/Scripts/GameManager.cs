@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
     public enemySpawn[] enemyspawners;
-    public RandomGun[] randomGuns;
+    public randomGun[] randomGuns;
     public GameObject player; //we're going to spawn the player from GM. //no we arent keklord
     public playerMove playerScript;
     public bool playerdead;
@@ -306,7 +306,7 @@ public class GameManager : MonoBehaviour
 /// <param name="mainGun"></param>
 /// <param name="otherGun"></param>
 /// <param name="rGun"></param>
-    public void swapGunAndOtherGun(gun mainGun, gun otherGun, RandomGun rGun)
+    public void swapGunAndOtherGun(gun mainGun, gun otherGun, randomGun rGun)
     {
         //guntypeIndex
         //damage

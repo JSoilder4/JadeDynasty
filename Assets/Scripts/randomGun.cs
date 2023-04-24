@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class RandomGun : MonoBehaviour
+public class randomGun : MonoBehaviour
 {
     //gunType, damage, bST, reload, ammo?, shotspeed, element, effect, numshots, burstfire?, auto?,
     //enum, int, float, float, int, float, enum, enum, int, bool?, bool?

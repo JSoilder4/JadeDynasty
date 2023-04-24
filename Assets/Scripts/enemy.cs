@@ -170,7 +170,7 @@ public abstract class enemy : MonoBehaviour
             if (thingToDrop == GameManager.dropsEmum.gun)
             {
                 GameObject omega = Instantiate(GameManager.GM.randomGunToDrop, transform.position, Quaternion.identity);
-                omega.GetComponent<RandomGun>().theGun.floor = genManage.floor;
+                omega.GetComponent<randomGun>().theGun.floor = genManage.floor;
                 GameManager.GM.rGunsToReset.Add(omega);
             }
             else if (thingToDrop == GameManager.dropsEmum.ammo)
