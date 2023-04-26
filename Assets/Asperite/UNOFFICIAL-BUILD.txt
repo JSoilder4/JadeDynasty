@@ -1,0 +1,5 @@
+This is an unofficial build done in a Windows 7 x64 machine using Visual Studio 2015.
+
+Building Aseprite is not an easy task if it is your first time doing it. It took me a few hours to make this build and a couple start-overs before realizing that TDM-GCC/MinGW binaries in the path can conflict with CMake since it will favor TDM-GCC/MinGW over Visual Studio build tools. Just follow the instructions, and you won't have to get tangled in a mess.
+
+If you can afford it, please support David Capello by buying Aseprite for $15. Otherwise, stay hungry, stay foolish, and thank you for choosing the world's best open-source sprite editor.
