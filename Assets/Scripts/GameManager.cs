@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
 
     public Image[] gunUI = new Image[4]; //gun showcase
+    //public Image[] gunUIHighlight = new Image[4];
     public Image gunUISelect;
 
     public float timer;
@@ -86,6 +87,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject randomGunToDrop;
     public GameObject ammoToDrop;
+
+    public Sprite[] pistol, shotgun, sniper, smg;
+    public Sprite pistolH, shotgunH, sniperH, smgH;
     //public static GameObject null;
 
     public enum dropsEmum
@@ -275,8 +279,26 @@ public class GameManager : MonoBehaviour
                 break;
             }
             
-
-            gunUI[i].sprite = playergun.gunScript.gunSprites[(int)guns[i].gunType];
+        switch (guns[i].gunType)
+        {
+            case gunEnumScript.gunType.Pistol:
+                gunUI[i].sprite = pistolH;
+                //gunUIHighlight[i].sprite = pistolH;
+                break;
+            case gunEnumScript.gunType.Shotgun:
+                gunUI[i].sprite = shotgunH;
+                //gunUIHighlight[i].sprite = shotgunH;
+                break;
+            case gunEnumScript.gunType.Sniper:
+                gunUI[i].sprite = sniperH;
+                //gunUIHighlight[i].sprite = sniperH;
+                break;
+            case gunEnumScript.gunType.SMG:
+                gunUI[i].sprite = smgH;
+                //gunUIHighlight[i].sprite = smgH;
+                break;
+        }
+            //gunUI[i].sprite = playergun.gunScript.gunSprites[(int)guns[i].gunType];
             gunUI[i].color = playergun.elementalColors[(int)guns[i].element];
         }
 
@@ -400,8 +422,21 @@ public class GameManager : MonoBehaviour
         elementUItext.text = "Element: " + gun.element;
         effectUItext.text = "Special: " + gun.effect;
         
-        
-        gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
+        switch(gun.gunType){
+            case gunEnumScript.gunType.Pistol:
+            gunUIImage.sprite = pistolH;
+            break;
+            case gunEnumScript.gunType.Shotgun:
+            gunUIImage.sprite = shotgunH;
+            break;
+            case gunEnumScript.gunType.Sniper:
+            gunUIImage.sprite = sniperH;
+            break;
+            case gunEnumScript.gunType.SMG:
+            gunUIImage.sprite = smgH;
+            break;
+        }
+        //gunUIImage.sprite = playergun.gunScript.gunSprites[(int)gun.gunType];
         gunUIImage.color = playergun.elementalColors[(int)gun.element];
         if(temp){
             GunStatUIPlayableDirector.Stop();

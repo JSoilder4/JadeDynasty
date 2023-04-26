@@ -274,6 +274,90 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &5249566460484437394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087121363041709997}
+  - component: {fileID: 5647131953325616795}
+  m_Layer: 0
+  m_Name: gunHighlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2087121363041709997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249566460484437394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5033534735205741765}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5647131953325616795
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249566460484437394}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -897118655, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6234107736020536944
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,13 +522,14 @@ Transform:
   m_GameObject: {fileID: 6852861367334060468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.6166835, y: -0.7947698, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2087121363041709997}
   - {fileID: 326633418883271297}
   - {fileID: 3789949085793345004}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5591420524991095601
 SpriteRenderer:
@@ -486,8 +571,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -4192210965572164248, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -496332966, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -511,18 +596,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000012107193, y: 0.00000010430813}
+  m_Offset: {x: -0.0014127307, y: -0.003531456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.08, y: 0.05}
+    pivot: {x: 0.5, y: 0.59375}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.08565006, y: 0.064426705}
+  m_Size: {x: 0.20431098, y: 0.074315086}
   m_EdgeRadius: 0
 --- !u!114 &2665430448773843162
 MonoBehaviour:
@@ -540,26 +625,27 @@ MonoBehaviour:
     gunType: 0
     damage: 10
     betweenShotTimer: 0
+    dps: 0
     bSTog: 0.25
     reloadTimer: 1
     magazine: 6
     magAmmo: 6
+    spread: 0
+    triggerType: 0
     shotSpeed: 0.2
+    numShots: 0
+    scatterAngle: 0
     element: 0
     effect: 0
-    scatterAngle: 0
-    numShots: 0
-    spread: 0
+    floor: 0
+    spriteNum: 0
   sprite: {fileID: 0}
-  pistol: {fileID: -2174860553078695780, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  shotgun: {fileID: -5210829862711413688, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  sniper: {fileID: -4192210965572164248, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
-  smg: {fileID: 6780393599720873433, guid: f9484d9b7fea7ce4e86fda10d0ef98b5, type: 3}
+  highlightSprite: {fileID: 0}
   clense: {r: 0, g: 0, b: 0, a: 0}
   fire: {r: 255, g: 0, b: 0, a: 1}
   water: {r: 0, g: 173.56018, b: 255, a: 1}
-  earth: {r: 0, g: 255, b: 0, a: 1}
-  air: {r: 255, g: 255, b: 0, a: 1}
+  lightning: {r: 1, g: 1, b: 0, a: 1}
+  stasis: {r: 1, g: 0, b: 1, a: 1}
   mySource: {fileID: 0}
   col: {fileID: 0}
   tutText: {fileID: 0}

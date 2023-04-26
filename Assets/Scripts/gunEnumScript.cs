@@ -14,6 +14,8 @@ public enum gunType2
 public class gunEnumScript : MonoBehaviour
 {
     //public static gunEnumScript gunEnums;
+
+    
     public enum gunType
     {
         Pistol,

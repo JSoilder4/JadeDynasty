@@ -38,6 +38,8 @@ public class playergun : MonoBehaviour
 
 
     public Sprite[] gunSprites; // pistol 0, shotgun 1, sniper 2, smg 3
+    //public Sprite[] pistol, shotgun, sniper, smg;
+    public SpriteRenderer gunHighlight;
     //public Sprite pistol, shotgun, sniper, smg;
     public Color clense = new Color(1, 1, 1);
     public Color fire = new Color(1, 0, 0);
@@ -528,37 +530,42 @@ private void FixedUpdate() {
     }
     public void spriteUpdate()
     {
+        gunHighlight.flipY = sprite.flipY;
         switch (activeGun.gunType)
         {
             case gunEnumScript.gunType.Pistol:
-                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Pistol];
+                sprite.sprite = GameManager.GM.pistol[activeGun.spriteNum];
+                gunHighlight.sprite = GameManager.GM.pistolH;
                 break;
             case gunEnumScript.gunType.Shotgun:
-                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Shotgun];
+                sprite.sprite = GameManager.GM.shotgun[activeGun.spriteNum];
+                gunHighlight.sprite = GameManager.GM.shotgunH;
                 break;
             case gunEnumScript.gunType.Sniper:
-                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.Sniper];
+                sprite.sprite = GameManager.GM.sniper[activeGun.spriteNum];
+                gunHighlight.sprite = GameManager.GM.sniperH;
                 break;
             case gunEnumScript.gunType.SMG:
-                sprite.sprite = gunSprites[(int)gunEnumScript.gunType.SMG];
+                sprite.sprite = GameManager.GM.smg[activeGun.spriteNum];
+                gunHighlight.sprite = GameManager.GM.smgH;
                 break;
         }
         switch (activeGun.element)
         {
             case gunEnumScript.element.Nothing:
-                sprite.color = clense;
+                gunHighlight.color = clense;
                 break;
             case gunEnumScript.element.Fire:
-                sprite.color = fire;
+                gunHighlight.color = fire;
                 break;
             case gunEnumScript.element.Water:
-                sprite.color = water;
+                gunHighlight.color = water;
                 break;
             case gunEnumScript.element.Lightning:
-                sprite.color = lightning;
+                gunHighlight.color = lightning;
                 break;
             case gunEnumScript.element.Stasis:
-                sprite.color = stasis;
+                gunHighlight.color = stasis;
                 break;
         }
     }

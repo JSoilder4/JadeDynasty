@@ -38,6 +38,7 @@ public class gun //: MonoBehaviour
     public int floor;
 
     
+    public int spriteNum;
     
 
     
@@ -83,7 +84,22 @@ public class gun //: MonoBehaviour
     public void Roll(string codeName)
     {
        //resetRoll();
+        
         gunType = (gunEnumScript.gunType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.gunType)).Length);
+        switch(gunType){
+            case gunEnumScript.gunType.Pistol:
+            spriteNum = UnityEngine.Random.Range(0, GameManager.GM.pistol.Length);
+            break;
+            case gunEnumScript.gunType.Shotgun:
+            spriteNum = UnityEngine.Random.Range(0, GameManager.GM.shotgun.Length);
+            break;
+            case gunEnumScript.gunType.Sniper:
+            spriteNum = UnityEngine.Random.Range(0, GameManager.GM.sniper.Length);
+            break;
+            case gunEnumScript.gunType.SMG:
+            spriteNum = UnityEngine.Random.Range(0, GameManager.GM.smg.Length);
+            break;
+        }
         element = (gunEnumScript.element)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(gunEnumScript.element)).Length);
 
         if(codeName == ""){
