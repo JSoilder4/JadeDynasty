@@ -142,10 +142,10 @@ public class GameManager : MonoBehaviour
         //randomGuns = GameObject.FindGameObjectsWithTag("Gun");
     }
 
-    public void makeMinimap()
+    public void makeMinimap() //redo this somehow to fit more screens
     {
-        float height = 5f * 1.75f;
-        float width = 5f * 1.75f;
+        float height = 5f;// * 1.75f;
+        float width = 5f;// * 1.75f;
         int xForDebug = 0;
         int yForDebug = 0;
 

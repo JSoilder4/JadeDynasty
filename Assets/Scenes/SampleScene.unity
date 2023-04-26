@@ -349,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &22728292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -396,7 +396,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1646,7 +1646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &111848572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2815,6 +2815,10 @@ PrefabInstance:
     - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
       propertyPath: m_Name
       value: randomGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852861367334060468, guid: e667962a6ab8db2499d72420986a2dcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -5363,7 +5367,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5717,7 +5721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &496043803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5764,7 +5768,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.64, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5803,7 +5807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &538056021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5937,7 +5941,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.64, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7601,7 +7605,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.64, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7799,7 +7803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5915338884471120244, guid: 74d08bc407b5a8c4684007277ce5180b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -13463,6 +13467,10 @@ MonoBehaviour:
   ammoToDrop: {fileID: 2220907072256966216, guid: 0f730dd27098bc046852b834a27e1011, type: 3}
   pistol:
   - {fileID: 1118776993, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
+  - {fileID: -1072201880, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
+  - {fileID: 919561153, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
+  - {fileID: 1777662321, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
+  - {fileID: -124941780, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
   shotgun:
   - {fileID: 1524942017, guid: facd7e56d54702047b796f73685aebf3, type: 3}
   sniper:
@@ -53566,7 +53574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2118124465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53613,7 +53621,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.64, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -54207,6 +54215,14 @@ PrefabInstance:
     - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586479, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_LocalPosition.x
