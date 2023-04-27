@@ -19,7 +19,7 @@ public class genericEnemyShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(col2D.enabled);
+        //print(col2D.enabled);
     }
 
     public IEnumerator collideActivateWaiter()

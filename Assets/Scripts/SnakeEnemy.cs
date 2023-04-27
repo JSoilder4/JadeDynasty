@@ -35,6 +35,7 @@ public class SnakeEnemy : enemy
     public GameObject fangs;
     public TextAsset fangXML;
 
+
    // public GameObject walkpointObjectPlsIgnore;
     //public float shootpointX;
 
@@ -43,6 +44,8 @@ public class SnakeEnemy : enemy
     //public TextAsset pattern;
 
     public BulletSourceScript fangScript;
+
+    public GameObject shadow;
 
     //public Animator anim;
 
@@ -54,6 +57,7 @@ public class SnakeEnemy : enemy
         timer = timerOG;
         theLayer = LayerMask.GetMask("Player");
         fangs = transform.GetChild(0).gameObject;
+        shadow = transform.GetChild(1).gameObject;
         fangScript = fangs.GetComponent<BulletSourceScript>();
         anim = GetComponent<Animator>();
 
@@ -77,6 +81,14 @@ public class SnakeEnemy : enemy
         if (!attacking && !dead)
         {
             base.Update();
+            if (sprite.flipX)
+            { 
+                shadow.transform.localPosition = new Vector3(0.05f, shadow.transform.localPosition.y, 0);
+            }
+            else if (!sprite.flipX)
+            {
+                shadow.transform.localPosition = new Vector3(-0.05f, shadow.transform.localPosition.y, 0);
+            }
         }
         if(!stasisFrozen)
         {
@@ -85,6 +97,11 @@ public class SnakeEnemy : enemy
                 attackPlayer();
             }
         }
+        if (dead)
+        {
+            shadow.transform.localPosition = new Vector3(0, shadow.transform.localPosition.y, 0);
+        }
+
         // if(sprite.flipX)
         // {
         //     shootPoint.transform.localPosition = new Vector3(shootpointX, shootPoint.transform.localPosition.y, 0);
@@ -93,8 +110,8 @@ public class SnakeEnemy : enemy
         // {
         //     shootPoint.transform.localPosition = new Vector3(-shootpointX, shootPoint.transform.localPosition.y, 0);
         // }
-        
-        switch(myState)
+
+        switch (myState)
         {
             // case state.idle:
             // break;

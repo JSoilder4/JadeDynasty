@@ -23,6 +23,8 @@ public class badcatSurprise : enemy
     public GameObject explosion;
 
     public RectTransform myHPCanvas;
+    public GameObject shadow;
+    public SpriteRenderer shadowSpriteRenderer;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -39,6 +41,7 @@ public class badcatSurprise : enemy
         velocity = lookDir.normalized;
 
         myHPCanvas = hp.HPCanvas.GetComponent<RectTransform>();
+        shadowSpriteRenderer = shadow.GetComponent<SpriteRenderer>();
         //   bml = GetComponent<BulletSourceScript>();
     }
 
@@ -54,6 +57,9 @@ public class badcatSurprise : enemy
                 sprite.flipY = false;
                 myHPCanvas.transform.localPosition = new Vector3(myHPCanvas.transform.localPosition.x,0.07f,0);
                 myHPCanvas.transform.localRotation = Quaternion.Euler(0,0,0);
+                shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x,0.14f,0 );//shadow.transform.localPosition.y, 0);
+                //shadow.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                //shadowSpriteRenderer.flipY = false;
             }
             else if (player.transform.position.x <= transform.position.x)
             {
@@ -61,6 +67,9 @@ public class badcatSurprise : enemy
                 sprite.flipY = true;
                 myHPCanvas.transform.localPosition = new Vector3(myHPCanvas.transform.localPosition.x,-0.07f,0);
                 myHPCanvas.transform.localRotation = Quaternion.Euler(0,0,180);
+                shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x, 0.35f, 0);
+                //shadow.transform.localRotation = Quaternion.Euler(0, 0, 180);
+                //shadowSpriteRenderer.flipY = true;
             }
         }
         
@@ -80,7 +89,7 @@ public class badcatSurprise : enemy
         {
 
             speedOG += Time.fixedDeltaTime/10;
-            print(speed);
+            //print(speed);
             //speed = 10000f;
         }
         movepointTimer -= Time.fixedDeltaTime;
