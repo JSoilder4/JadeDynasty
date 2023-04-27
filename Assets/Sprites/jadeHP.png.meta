@@ -232,6 +232,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: jadeHP_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9fd509cf84384c479e14fbcf78ed44f
+      internalID: -455128919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -244,6 +265,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       jadeHP_1: -2043860729
+      jadeHP_6: -455128919
       jadeHP_5: -1913005845
       jadeHP_0: -217917716
       jadeHP_3: 56882036

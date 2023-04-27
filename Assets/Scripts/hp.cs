@@ -338,6 +338,7 @@ public class hp : MonoBehaviour
         if (!player)
         {
             HPBar.fillAmount = currentHP / maxHP;
+            if(elemHPBar != null)
             elemHPBar.fillAmount = elemHPCurrent / elemHPMax;
             StasisBar.fillAmount = stasisDamageBuildup / (maxHP);// + elemHPMax);//(currentHP + elemHPCurrent);
         }

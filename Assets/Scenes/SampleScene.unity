@@ -5016,7 +5016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &467462201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7317,7 +7317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -765.4, y: 372.56}
+  m_AnchoredPosition: {x: -765.4, y: 451.45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771963337
@@ -13576,6 +13576,14 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 1a6846c6659cf4e4a8f5b227415899dc, type: 3}
   pickupSource: {fileID: 1385765421}
   hpText: {fileID: 467462202}
+  HPImage: {fileID: 771963337}
+  HPsprites:
+  - {fileID: -217917716, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
+  - {fileID: -2043860729, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
+  - {fileID: -1900176577, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
+  - {fileID: 56882036, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
+  - {fileID: -1237732406, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
+  - {fileID: -455128919, guid: 25596c25b48e1cd438d09c502a4e14d3, type: 3}
   playerX: 0
   playerY: 0
   currentRoom: {fileID: 0}

@@ -206,7 +206,7 @@ public class GenerationManager : MonoBehaviour
         if(roomsCreated >= minRooms && !genComplete)
         {
             genComplete = true;
-            //GameManager.GM.CheckMinimapObjects("GenManager");
+            
         }
 
         if(genComplete && !bossRoomAssigned)
@@ -226,9 +226,9 @@ public class GenerationManager : MonoBehaviour
             foreach(GameObject g in createdRooms){
                 nullRemover(g.GetComponent<RoomGenerator>().doors);
             }
-            
+            //GameManager.GM.CheckMinimapObjects("GenManager");
 
-            
+            GameManager.GM.minimapCheckingNumerator = GameManager.GM.StartCoroutine(GameManager.GM.CheckMinimapObjects("renderMini"));
         }
 
     }
@@ -289,6 +289,7 @@ public class GenerationManager : MonoBehaviour
                 doors[i].GetComponent<DoorControl>().ConnectToDoor();
             }
         }
+        //GameManager.GM.CheckMinimapObjects("GenManager");
     }
 
     public void AssignBossRoom(int floor) //picks the room furthest from the player's starting room and replaces it with the appropriate boss room (based on floor)

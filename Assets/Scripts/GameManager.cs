@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     public AudioSource pickupSource;
 
     public Text hpText;
+    public Image HPImage;
+    public Sprite[] HPsprites;
 
     public int playerX, playerY;
 
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] pistol, shotgun, sniper, smg;
     public Sprite pistolH, shotgunH, sniperH, smgH;
+
+    public Coroutine minimapCheckingNumerator;
     //public static GameObject null;
 
     public enum dropsEmum
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
 
         makeMinimap();
 
+       
         //CheckMinimapObjects();
 
         //randomGunToDrop = GameObject.Find("randomGun");
@@ -162,7 +167,8 @@ public class GameManager : MonoBehaviour
             xForDebug = 0;
             yForDebug++;
         }
-        StartCoroutine(minimapCheckDelay());
+
+        //StartCoroutine(minimapCheckDelay());
     }
 
 
@@ -189,7 +195,7 @@ public class GameManager : MonoBehaviour
         playerY += yDifference;
         playerRoomGrid[playerX, playerY] = "true";
 
-        CheckMinimapObjects("renderMini");
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     /// <summary>
@@ -207,9 +213,9 @@ public class GameManager : MonoBehaviour
         playerY = setY + yDifference;
         playerRoomGrid[playerX, playerY] = "true";
 
-        
 
-        CheckMinimapObjects("renderMini");
+
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     public void derenderBigRoom()
@@ -225,43 +231,49 @@ public class GameManager : MonoBehaviour
                 }
                 catch 
                 {
-                    Debug.Break();
+                    //Debug.Break();
                     print("ee~ etto...");
                 }
                 
             }
         }
     }
-    public void CheckMinimapObjects(string location)
+    public IEnumerator CheckMinimapObjects(string location)
     {
         print(location);
         foreach(GameObject g in currentRoom.doors)
             {
-                //try
-                //{
+            try
+            {
+                if (g.GetComponent<DoorControl>() != null)
+                {
                     DoorControl dC = g.GetComponent<DoorControl>();
                     if (dC.doorConnectedToControl != null)
                     {
                         playerRoomGrid[dC.doorConnectedToControl.posX, dC.doorConnectedToControl.posY] = "false";
                     }
-                //}
-                //catch
-                //{
-                    //Debug.Break();
-                    //print("ee~ etto... bleh");
-                //}  
+                }
+                    
+                }
+            catch
+            {
+                //Debug.Break();
+                print("ee~ etto... bleh");
             }
+        }
         foreach(minimapObject miniO in minimapObjects)
         {
             miniO.Check();
         }
+
+        yield return null;
     }
 
-    public IEnumerator minimapCheckDelay()
-    {
-        yield return new WaitForSeconds(2.85f);
-        CheckMinimapObjects("delayCoroutine");
-    }
+    //public IEnumerator minimapCheckDelay()
+    //{
+    //    yield return new WaitForSeconds(2.85f);
+    //    CheckMinimapObjects("delayCoroutine");
+    //}
     public void updateGunUI(List<gun> guns, int gunIndex)
     {
         for (int i = 0; i < gunUI.Length; i++)
@@ -504,12 +516,13 @@ public class GameManager : MonoBehaviour
         //rerollGuns();
         playergun.gunScript.resetGun(); //check
         playergun.gunScript.resetAmmo();
+        StopCoroutine(minimapCheckingNumerator);
         genManage.RetryLevel();
         genManage.floor = 0;
         sceneReset();
         resetMinimap();
 
-
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
         //spawnEnemies();
     }
     public void nextFloor()
@@ -523,11 +536,12 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         genManage.floor += 1;
         print("current floor: "+genManage.floor);
+        StopCoroutine(minimapCheckingNumerator);
         genManage.RetryLevel();
         sceneReset();
         resetMinimap();
 
-
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
         //spawnEnemies();
     }
     public void resetMinimap()
@@ -540,7 +554,8 @@ public class GameManager : MonoBehaviour
             }
         }
         playerRoomGrid[4, 4] = "true";
-        StartCoroutine(minimapCheckDelay());
+        //StartCoroutine(minimapCheckDelay());
+        //CheckMinimapObjects("");
     }
     public void rerollGuns()
     {
@@ -614,8 +629,31 @@ public class GameManager : MonoBehaviour
         //     start();
         // }
 
-        hpText.text = "HP: " + playerScript.hp.currentHP;
-
+        //hpText.text = "HP: " + playerScript.hp.currentHP;
+        switch (playerScript.hp.currentHP)
+        {
+            case 5:
+                HPImage.sprite = HPsprites[0];
+                break;
+            case 4:
+                HPImage.sprite = HPsprites[1];
+                break;
+            case 3:
+                HPImage.sprite = HPsprites[2];
+                break;
+            case 2:
+                HPImage.sprite = HPsprites[3];
+                break;
+            case 1:
+                HPImage.sprite = HPsprites[4];
+                break;
+            case 0:
+                HPImage.sprite = HPsprites[5];
+                break;
+            default:
+                HPImage.sprite = HPsprites[0];
+                break;
+        }
 
         //checkForEnemies();
     }

@@ -28,7 +28,7 @@ public class minimapObject : MonoBehaviour
     }
     public void Check()
     {
-        print("get checked.");
+        //print("get checked.");
         switch (GameManager.GM.playerRoomGrid[x, y])
         {
             case "null":
