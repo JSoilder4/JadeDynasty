@@ -168,8 +168,9 @@ public class RoomGenerator : MonoBehaviour
         //manually reset level
         if (Input.GetKeyDown(KeyCode.T))
         {
-            genManage.RetryLevel();
-            GameManager.GM.sceneReset();
+            GameManager.GM.respawn();
+            // genManage.RetryLevel();
+            // GameManager.GM.sceneReset();
         }
 
             completed = true;

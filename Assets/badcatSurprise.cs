@@ -29,8 +29,8 @@ public class badcatSurprise : enemy
     public override void Start()
     {
         base.Start();
-        speed = 0.0001f;
-        speedOG = 0.0001f;
+        speed = 0.1f;
+        speedOG = 0.1f;
 
         movepointTimerOG = 0.25f;
         movepointTimer = movepointTimerOG;
@@ -40,7 +40,13 @@ public class badcatSurprise : enemy
         lookDir = (Vector2)player.transform.position - rb.position;
         velocity = lookDir.normalized;
 
-        myHPCanvas = hp.HPCanvas.GetComponent<RectTransform>();
+        try{
+myHPCanvas = hp.HPCanvas.GetComponent<RectTransform>();
+        }
+        catch{
+print("lmao, lol even.");
+        }
+        
         shadowSpriteRenderer = shadow.GetComponent<SpriteRenderer>();
         //   bml = GetComponent<BulletSourceScript>();
     }
@@ -85,13 +91,13 @@ public class badcatSurprise : enemy
     }
     public void attackPlayer()
     {
-        if (speedOG < maxSpeed)
-        {
+        // if (speedOG < maxSpeed)
+        // {
 
-            speedOG += Time.fixedDeltaTime/10;
-            //print(speed);
-            //speed = 10000f;
-        }
+        //     speedOG += Time.fixedDeltaTime/10;
+        //     //print(speed);
+        //     //speed = 10000f;
+        // }
         movepointTimer -= Time.fixedDeltaTime;
         if (movepointTimer <= 0)
         {
@@ -115,7 +121,7 @@ public class badcatSurprise : enemy
 
         transform.eulerAngles = new Vector3(0, 0, angle);
 
-        rb.MovePosition((Vector2)transform.position + velocity * speedOG);// * Time.fixedDeltaTime);
+        rb.MovePosition((Vector2)transform.position + velocity * speed);// * Time.fixedDeltaTime);
         //rb.velocity = velocity * speed * Time.fixedDeltaTime;
         //print(rb.velocity);
     }

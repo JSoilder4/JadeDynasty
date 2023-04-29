@@ -182,7 +182,7 @@ public class hp : MonoBehaviour
                     myEnemyScript.anim.speed = 0f;
                     myEnemyScript.stasisFrozen = true;
                     sprite.color = playergun.elementalColors[4];
-                    print("I'm FROZEN: "+"\nBuildup: "+stasisDamageBuildup + "\nCurrentHP: "+currentHP);
+                //    print("I'm FROZEN: "+"\nBuildup: "+stasisDamageBuildup + "\nCurrentHP: "+currentHP);
                 break;
                 case stasisStage.Stasis2:
                     myEnemyScript.speed = myEnemyScript.speedOG/2;
@@ -356,11 +356,11 @@ public class hp : MonoBehaviour
         // }
         if (!dead &&currentHP <= 0 && !player)
         {
-            print("die" + currentHP);
+            // print("die" + currentHP);
             // GameManager.GM.updateScore(GameManager.GM.maxScore / GameManager.GM.enemiesToReset.Count);
             // GameManager.GM.enemiesToReset.Remove(gameObject);
-            Destroy(HPBar);
-            Destroy(elemHPBar);
+            //Destroy(HPBar);
+            //Destroy(elemHPBar);
             Destroy(StasisBar);
             myEnemyScript.die();
             dead = true;

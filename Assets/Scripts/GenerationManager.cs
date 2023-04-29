@@ -228,7 +228,7 @@ public class GenerationManager : MonoBehaviour
             }
             //GameManager.GM.CheckMinimapObjects("GenManager");
 
-            GameManager.GM.minimapCheckingNumerator = GameManager.GM.StartCoroutine(GameManager.GM.CheckMinimapObjects("renderMini"));
+            //GameManager.GM.minimapCheckingNumerator = GameManager.GM.StartCoroutine(GameManager.GM.CheckMinimapObjects("genman"));
         }
 
     }
@@ -372,6 +372,8 @@ public class GenerationManager : MonoBehaviour
         tRoomAssigned = false;
         timer = timerOG;
 
+        if(GameManager.GM.minimapCheckingNumerator != null)
+        GameManager.GM.StopCoroutine(GameManager.GM.minimapCheckingNumerator);
         //destroy all the stuff that was generated
         for (int i = 0; i < roomsToDestroy.Length; i++)
         {
@@ -397,7 +399,8 @@ public class GenerationManager : MonoBehaviour
         corridorsSpawned = false;
 
         //create new seed room
-        Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
+        GameObject g = Instantiate(rooms[0], roomPositions[4, 4], Quaternion.identity);
+        GameManager.GM.currentRoom = g.GetComponent<RoomGenerator>();
         roomGrid[4, 4] = true;
         roomsCreated = 1;
 

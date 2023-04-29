@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
         makeMinimap();
 
-       
+    
         //CheckMinimapObjects();
 
         //randomGunToDrop = GameObject.Find("randomGun");
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
         playerY += yDifference;
         playerRoomGrid[playerX, playerY] = "true";
 
-        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini",0));
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     /// <summary>
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini",0));
         //for(int y = 0; y < playerRoomGrid.length(1); y++){for(int x = 0; x < playerroomgrid.length; x++){}}
     }
     public void derenderBigRoom()
@@ -238,27 +238,60 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator CheckMinimapObjects(string location)
+    public IEnumerator CheckMinimapObjects(string location, float wait)
     {
         print(location);
-        foreach(GameObject g in currentRoom.doors)
-            {
+        yield return new WaitForSeconds(wait);
+        for(int i = 0; i < currentRoom.doors.Count; i++)
+        {
+            // if(currentRoom.doors[i] != null){
+            //     print("im not null guys: "+ currentRoom.doors[i]);
+            // }
+            // else{
+            //     print("im null as fuck bro"+ currentRoom.doors[i]);
+            // }
+
+            // while(currentRoom.doors[i] == null){
+            //     i++;
+            //     if(i == 4){
+            //         i = 0;
+            //     }
+            //     print(i);
+            // }
             try
             {
-                if (g.GetComponent<DoorControl>() != null)
+                if (currentRoom.doors[i].GetComponent<DoorControl>() != null && currentRoom.doors[i].GetComponent<DoorControl>().active)
                 {
-                    DoorControl dC = g.GetComponent<DoorControl>();
+                    DoorControl dC = currentRoom.doors[i].GetComponent<DoorControl>();
                     if (dC.doorConnectedToControl != null)
                     {
                         playerRoomGrid[dC.doorConnectedToControl.posX, dC.doorConnectedToControl.posY] = "false";
                     }
+                    else{
+                        print("connected door is null: " + dC.doorConnectedToControl);
+                        Debug.Break();
+                        // if(minimapCheckingNumerator != null)
+                        // StopCoroutine(minimapCheckingNumerator);
+                        // minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("recursive"));
+                        //break;
+                    }
+                }
+                else{
+                    // print("door is null: "+g);
+                    // Debug.Break();
+                    // CheckMinimapObjects("recursive");
+                    //break;
                 }
                     
                 }
             catch
             {
-                //Debug.Break();
-                print("ee~ etto... bleh");
+                
+                Debug.Break();
+                // if(minimapCheckingNumerator != null)
+                // StopCoroutine(minimapCheckingNumerator);
+                // minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("recursive"));
+                print("ee~ etto... bleh: "+ currentRoom.doors[i]);
             }
         }
         foreach(minimapObject miniO in minimapObjects)
@@ -516,13 +549,14 @@ public class GameManager : MonoBehaviour
         //rerollGuns();
         playergun.gunScript.resetGun(); //check
         playergun.gunScript.resetAmmo();
+        if(minimapCheckingNumerator != null)
         StopCoroutine(minimapCheckingNumerator);
         genManage.RetryLevel();
         genManage.floor = 0;
         sceneReset();
         resetMinimap();
 
-        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("respawn", 0.75f));
         //spawnEnemies();
     }
     public void nextFloor()
@@ -536,16 +570,19 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         genManage.floor += 1;
         print("current floor: "+genManage.floor);
+        if(minimapCheckingNumerator != null)
         StopCoroutine(minimapCheckingNumerator);
         genManage.RetryLevel();
         sceneReset();
         resetMinimap();
 
-        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("renderMini"));
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("nextlvl", 0.75f));
         //spawnEnemies();
     }
     public void resetMinimap()
     {
+        if(minimapCheckingNumerator != null)
+        StopCoroutine(minimapCheckingNumerator);
         for (int y = 0; y < 10; y++)
         {
             for (int x = 0; x < 10; x++)
@@ -554,6 +591,7 @@ public class GameManager : MonoBehaviour
             }
         }
         playerRoomGrid[4, 4] = "true";
+        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("resetminimap", 0.75f));
         //StartCoroutine(minimapCheckDelay());
         //CheckMinimapObjects("");
     }
@@ -617,6 +655,13 @@ public class GameManager : MonoBehaviour
             {
                 respawn();
                 alive();
+            }
+        }
+        else{
+            if(currentRoom.posX == 4 && currentRoom.posY == 4){
+                if(Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0){
+                    //minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("stupid solution", 0));
+                }
             }
         }
         if(Input.GetKeyDown(KeyCode.Escape))
