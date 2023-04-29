@@ -340,6 +340,7 @@ public CameraFollow camFollow;
                     //GameManager.GM.currentRoom = doorConnectedToControl.room.GetComponent<RoomGenerator>();
                     break;
             }
+            GameManager.GM.NextFloorRan = false;
             GameManager.GM.currentRoom.spawnEnemies();
             
         }

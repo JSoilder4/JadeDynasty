@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public bool playerdead;
     public Camera cam;
     public Text respawnText;
-    public Text scoreText;
+    public Text floorText;
     public Text wintext;
     public int score;
 
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI triggerUItext;
     public Image gunUIImage; //gun swap
 
-
+    
     public Image[] gunUI = new Image[4]; //gun showcase
     //public Image[] gunUIHighlight = new Image[4];
     public Image gunUISelect;
@@ -94,6 +94,8 @@ public class GameManager : MonoBehaviour
     public Sprite pistolH, shotgunH, sniperH, smgH;
 
     public Coroutine minimapCheckingNumerator;
+
+    public bool NextFloorRan;
     //public static GameObject null;
 
     public enum dropsEmum
@@ -561,22 +563,27 @@ public class GameManager : MonoBehaviour
     }
     public void nextFloor()
     {
-        player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
-        cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
-        playerX = 4;
-        playerY = 4;
-        player.GetComponent<SpriteRenderer>().enabled = true;
-        playergun.gunScript.sprite.enabled = true;
-        player.GetComponent<CircleCollider2D>().enabled = true;
-        genManage.floor += 1;
-        print("current floor: "+genManage.floor);
-        if(minimapCheckingNumerator != null)
-        StopCoroutine(minimapCheckingNumerator);
-        genManage.RetryLevel();
-        sceneReset();
-        resetMinimap();
+        if(!NextFloorRan){
+            player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
+            cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
+            playerX = 4;
+            playerY = 4;
+            player.GetComponent<SpriteRenderer>().enabled = true;
+            playergun.gunScript.sprite.enabled = true;
+            player.GetComponent<CircleCollider2D>().enabled = true;
+            genManage.floor += 1;
+            print("current floor: "+genManage.floor);
+            if(minimapCheckingNumerator != null)
+            StopCoroutine(minimapCheckingNumerator);
+            genManage.RetryLevel();
+            sceneReset();
+            resetMinimap();
 
-        minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("nextlvl", 0.75f));
+            minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("nextlvl", 0.75f));
+
+            NextFloorRan = true;
+        }
+        
         //spawnEnemies();
     }
     public void resetMinimap()
@@ -639,7 +646,7 @@ public class GameManager : MonoBehaviour
         enemiesToReset.Clear();
         rGunsToReset.Clear();
         droppedAmmoToReset.Clear();
-        resetScore();
+        //resetScore();
     }
     public void addSpawnedObject(GameObject g)
     {
@@ -648,7 +655,7 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         if(!end)
-        scoreTime();
+        setFloorText();
         if (playerdead)
         {
             if(Input.GetButtonDown("Fire1"))
@@ -707,7 +714,7 @@ public class GameManager : MonoBehaviour
     public void start()
     {
         started = true;
-        scoreText.enabled = true;
+        //scoreText.enabled = true;
         titleHeader.enabled = false;
         titleFooter.enabled = false;
         playButton.SetActive(false);// = false;
@@ -715,30 +722,29 @@ public class GameManager : MonoBehaviour
         respawn();
 
     }
-    public void updateScore(int s)
+    // public void updateScore(int s)
+    // {
+    //     score += s;
+    //     if (score < 0)
+    //     {
+    //         score = 0;
+    //     }
+    //     scoreText.text = score.ToString();
+    // }
+    public void setFloorText()
     {
-        score += s;
-        if (score < 0)
-        {
-            score = 0;
-        }
-        scoreText.text = score.ToString();
+        floorText.text = "Final Floor Reached: "+genManage.floor+1;
     }
-    public void resetScore()
-    {
-        score = 0;
-        scoreText.text = score.ToString();
-    }
-    public void scoreTime()
-    {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            timer = timerOG;
-            updateScore(-5);
-        }
+    // public void scoreTime()
+    // {
+    //     timer -= Time.deltaTime;
+    //     if(timer <= 0)
+    //     {
+    //         timer = timerOG;
+    //         updateScore(-5);
+    //     }
         
-    }
+    // }
     public void checkForEnemies()
     {
         //print(enemiesToReset.Count);
@@ -747,13 +753,13 @@ public class GameManager : MonoBehaviour
             win();
         }
     }
-    public void win()
-    {
-        scoreText.enabled = false;
-        wintext.enabled = true;
-        end = true;
-        wintext.text = "All Enemies Defeated! Final Score: " + score; 
-    }
+    // public void win()
+    // {
+    //     floorText.enabled = false;
+    //     wintext.enabled = true;
+    //     end = true;
+    //     wintext.text = "All Enemies Defeated! Final Score: " + score; 
+    // }
 
 
 

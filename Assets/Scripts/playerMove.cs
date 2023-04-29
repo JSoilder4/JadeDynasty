@@ -236,7 +236,7 @@ public class playerMove : MonoBehaviour
         }
         if (collision.transform.CompareTag("nextFloor"))
         {
-            GameManager.GM.nextFloor();
+            GameManager.GM.nextFloor();//GameManager.GM.genManage.floor+1);
 
         }
     }
