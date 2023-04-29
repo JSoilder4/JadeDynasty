@@ -745,14 +745,14 @@ public class GameManager : MonoBehaviour
     //     }
         
     // }
-    public void checkForEnemies()
-    {
-        //print(enemiesToReset.Count);
-        if (enemiesToReset.Count == 0)
-        {
-            win();
-        }
-    }
+    // public void checkForEnemies()
+    // {
+    //     //print(enemiesToReset.Count);
+    //     if (enemiesToReset.Count == 0)
+    //     {
+    //         win();
+    //     }
+    // }
     // public void win()
     // {
     //     floorText.enabled = false;
