@@ -38,6 +38,7 @@ public class playerMove : MonoBehaviour
 
     public Animator playerAnim;
 
+
     private void Awake()
     {
         hp = GetComponent<hp>();
@@ -124,6 +125,10 @@ public class playerMove : MonoBehaviour
             //print(velocity);
             //velocity *= speed;
 
+        }
+        else if(GameManager.GM.playerdead)
+        {
+            velocity = new Vector3(0,0,0);
         }
         if (!dodging)
         {
@@ -279,7 +284,7 @@ public class playerMove : MonoBehaviour
     {
         GameManager.GM.dead();
         //sprite.enabled = false;
-        playergun.gunScript.sprite.enabled = false;
+        //playergun.gunScript.sprite.enabled = false;
         //playergun.gunScript.enabled = false;
         //this.enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;

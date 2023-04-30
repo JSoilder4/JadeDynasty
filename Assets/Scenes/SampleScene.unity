@@ -6643,7 +6643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &646864728
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11382,7 +11382,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1217666774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1385765416}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: tryagainButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1217666774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13881,9 +13893,6 @@ MonoBehaviour:
   playerdead: 0
   cam: {fileID: 1836047751}
   respawnText: {fileID: 624487895}
-  scoreText: {fileID: 0}
-  wintext: {fileID: 1104151998}
-  score: 0
   GunStatUICanvas: {fileID: 1708156813}
   GunStatUIPlayableDirector: {fileID: 1708156812}
   GunStatUIAnimator: {fileID: 0}
@@ -13950,6 +13959,11 @@ MonoBehaviour:
   sniperH: {fileID: -897118655, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
   smgH: {fileID: -1279596281, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
   NextFloorRan: 0
+  endscreenUI: {fileID: 646864727}
+  floorText: {fileID: 1899299850}
+  enemiesKilledUI: {fileID: 1866583916}
+  enemiesKilled: 0
+  ammoCount: {fileID: 1595257634}
 --- !u!114 &1385765417
 MonoBehaviour:
   m_ObjectHideFlags: 0

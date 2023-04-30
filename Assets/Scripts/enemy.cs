@@ -160,7 +160,7 @@ public abstract class enemy : MonoBehaviour
     public void death() //anim
     {
         //drop stuff
-    
+        GameManager.GM.enemiesKilled++;
 
         int random = Random.Range(0, 101);
 

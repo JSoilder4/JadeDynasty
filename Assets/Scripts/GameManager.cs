@@ -16,9 +16,6 @@ public class GameManager : MonoBehaviour
     public bool playerdead;
     public Camera cam;
     public Text respawnText;
-    public Text floorText;
-    public Text wintext;
-    public int score;
 
     [Header("UI")]
     public Canvas GunStatUICanvas;
@@ -96,6 +93,16 @@ public class GameManager : MonoBehaviour
     public Coroutine minimapCheckingNumerator;
 
     public bool NextFloorRan;
+
+    public GameObject endscreenUI;
+    public TextMeshProUGUI floorText;
+    public TextMeshProUGUI enemiesKilledUI;
+    public int enemiesKilled;
+    public GameObject ammoCount;
+
+
+
+
     //public static GameObject null;
 
     public enum dropsEmum
@@ -613,12 +620,14 @@ public class GameManager : MonoBehaviour
     public void dead()
     {
         playerdead = true;
-        respawnText.enabled = true;
+        endscreenUI.SetActive(true);// = true;
+        ammoCount.SetActive(false);
     }
     public void alive()
     {
         playerdead = false;
-        respawnText.enabled = false;
+        endscreenUI.SetActive(false);// = false;
+        ammoCount.SetActive(true);
     }
     public void sceneReset()
     {
@@ -652,17 +661,22 @@ public class GameManager : MonoBehaviour
     {
         enemiesToReset.Add(g);
     }
+    public void tryagainButton()
+    {
+        respawn();
+        alive();
+    }
     public void Update()
     {
         if(!end)
-        setFloorText();
+        setEndText();
         if (playerdead)
         {
-            if(Input.GetButtonDown("Fire1"))
-            {
-                respawn();
-                alive();
-            }
+            // if(Input.GetButtonDown("Fire1"))
+            // {
+            //     respawn();
+            //     alive();
+            // }
         }
         else{
             if(currentRoom.posX == 4 && currentRoom.posY == 4){
@@ -731,9 +745,10 @@ public class GameManager : MonoBehaviour
     //     }
     //     scoreText.text = score.ToString();
     // }
-    public void setFloorText()
+    public void setEndText()
     {
         floorText.text = "Final Floor Reached: "+genManage.floor+1;
+        enemiesKilledUI.text = "Enemies Defeated: "+enemiesKilled;
     }
     // public void scoreTime()
     // {

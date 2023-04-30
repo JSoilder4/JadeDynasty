@@ -108,164 +108,111 @@ private void FixedUpdate() {
     // Update is called once per frame
     void Update()
     {
-        //print(equippedGuns.Count);
-        
-        
-        // lookDirection = playerMove.pms.lookDir;
-
-        if (GameManager.GM.started && !playerMove.pms.dodging && !reloading)
+        if(!GameManager.GM.playerdead)
         {
-            // if (activeGun.triggerType == gunEnumScript.trigger.Semi && Input.GetButtonDown("Fire1")) //semi-auto
-            // {
-            //     if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
-            //     {
-            //         if (activeGun.gunType == gunEnumScript.gunType.Pistol || activeGun.gunType == gunEnumScript.gunType.Sniper)
-            //         {
-            //             shoot(false);
-            //         }
-            //         else if (activeGun.gunType == gunEnumScript.gunType.Shotgun)
-            //         {
-            //             shoot(true);
-            //         }
-
-            //     }
-            //     else if(activeGun.magAmmo <= 0)
-            //     {
-            //         StartCoroutine(reload());
-            //     }
-            // }
-            // if (activeGun.triggerType == gunEnumScript.trigger.Auto && Input.GetMouseButton(0)) //full auto
-            // {
-            //     if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
-            //     {
-            //         // if (activeGun.gunType == gunEnumScript.gunType.SMG)
-            //         // {
-            //             shoot(false);
-            //         // }
-            //     }
-            //     else if(activeGun.magAmmo <= 0)
-            //     {
-            //         StartCoroutine(reload());
-            //     }
-
-            // }
-
-            if(activeGun.gunType == gunEnumScript.gunType.Shotgun && activeGun.betweenShotTimer == activeGun.bSTog)
+            if (GameManager.GM.started && !playerMove.pms.dodging && !reloading)
             {
-                StartCoroutine(shotgunPump());
-            }
-
-            switch(activeGun.triggerType)
-            {
-                case gunEnumScript.trigger.Semi:
-                    if(Input.GetButtonDown("Fire1"))
-                    {
-                        if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
+                if(activeGun.gunType == gunEnumScript.gunType.Shotgun && activeGun.betweenShotTimer == activeGun.bSTog)
+                {
+                    StartCoroutine(shotgunPump());
+                }
+                switch(activeGun.triggerType)
+                {
+                    case gunEnumScript.trigger.Semi:
+                        if(Input.GetButtonDown("Fire1"))
                         {
+                            if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
+                            {
 
-                            StartCoroutine(shoot(activeGun.gunType));
-                            StartCoroutine(shotgunPump());
+                                StartCoroutine(shoot(activeGun.gunType));
+                                StartCoroutine(shotgunPump());
 
+                            }
+                            else if(activeGun.magAmmo <= 0)
+                            {
+                                StartCoroutine(reload());
+                            }
                         }
-                        else if(activeGun.magAmmo <= 0)
+                    break;
+                    case gunEnumScript.trigger.Auto:
+                        if(Input.GetMouseButton(0))
                         {
-                            StartCoroutine(reload());
+                            if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
+                            {
+                                StartCoroutine(CameraFollow.CF.Shaking(0.10f,CameraFollow.ShakeCurveType.shootGun));
+                                StartCoroutine(shoot(activeGun.gunType));
+
+                            }
+                            else if(activeGun.magAmmo <= 0)
+                            {
+                                StartCoroutine(reload());
+                            }
                         }
-                    }
-                break;
-                case gunEnumScript.trigger.Auto:
-                    if(Input.GetMouseButton(0))
-                    {
-                        if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
+                    break;
+                    case gunEnumScript.trigger.Burst:
+                        if(Input.GetButtonDown("Fire1"))
                         {
-                            StartCoroutine(CameraFollow.CF.Shaking(0.10f,CameraFollow.ShakeCurveType.shootGun));
-                            StartCoroutine(shoot(activeGun.gunType));
-
+                            if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
+                            {
+                                StartCoroutine(burstFire());
+                            }
+                            else if(activeGun.magAmmo <= 0)
+                            {
+                                StartCoroutine(reload());
+                            }
                         }
-                        else if(activeGun.magAmmo <= 0)
-                        {
-                            StartCoroutine(reload());
-                        }
-                    }
-                break;
-                case gunEnumScript.trigger.Burst:
-                    if(Input.GetButtonDown("Fire1"))
-                    {
-                        if (activeGun.betweenShotTimer <= 0 && activeGun.magAmmo > 0)
-                        {
-                            StartCoroutine(burstFire());
-                        }
-                        else if(activeGun.magAmmo <= 0)
-                        {
-                            StartCoroutine(reload());
-                        }
-                    }
-                break;
+                    break;
+                }
+                if(Input.GetKeyDown(KeyCode.R) && activeGun.magAmmo != activeGun.magazine)
+                {
+                    reloadIEnum = StartCoroutine(reload());
+                }
             }
-
-
-            if(Input.GetKeyDown(KeyCode.R) && activeGun.magAmmo != activeGun.magazine)
+            if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
             {
-                reloadIEnum = StartCoroutine(reload());
-            }
-
-        }
-        
-        //if(!reloading)
-        //{
-            if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.1f)
-            {
-
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
-            {
-            //++
-            if (reloading)
-            {
-                StopCoroutine(reloadIEnum);
-                reloadText.enabled = false;
-                reloadText.text = "Reloading";
-                reloading = false;
-            }
-            if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1)
-            {
-                gunIndex++;
-            }
-            else if (gunIndex == equippedGuns.Count - 1)
-            {
-                gunIndex = 0;
-            }
-            
-            if (gunIndex >= equippedGuns.Count)
-            {
-                gunIndex = 0;
-            }
-            GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                //++
+                if (reloading)
+                {
+                    StopCoroutine(reloadIEnum);
+                    reloadText.enabled = false;
+                    reloadText.text = "Reloading";
+                    reloading = false;
+                }
+                if(equippedGuns.Count > 1 && gunIndex != equippedGuns.Count-1)
+                {
+                    gunIndex++;
+                }
+                else if (gunIndex == equippedGuns.Count - 1)
+                {
+                    gunIndex = 0;
+                }    
+                if (gunIndex >= equippedGuns.Count)
+                {
+                    gunIndex = 0;
+                }
+                GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
             {
-            //--
-            if (reloading)
-            {
-                StopCoroutine(reloadIEnum);
-                reloadText.enabled = false;
-                reloadText.text = "Reloading";
-                reloading = false;
-            }
-            gunIndex--;
-            if (gunIndex < 0)
-            {
-                gunIndex = equippedGuns.Count-1;
-            }
-            GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                //--
+                if (reloading)
+                {
+                    StopCoroutine(reloadIEnum);
+                    reloadText.enabled = false;
+                    reloadText.text = "Reloading";
+                    reloading = false;
+                }
+                gunIndex--;
+                if (gunIndex < 0)
+                {
+                    gunIndex = equippedGuns.Count-1;
+                }
+                GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
             }
             activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
-        //}
-        //print(Input.GetAxis("Mouse ScrollWheel"));
+        }
         
 
-        //print(activeGun.magAmmo+"/"+activeGun.magazine);
-        //print("Pistol Ammo:"+pistolAmmo+"\nSniper Ammo:"+sniperAmmo+"\nSMG Ammo: "+smgAmmo+"\nShotgun Ammo: "+shotgunAmmo);
         spriteUpdate();
         updateAmmoUI();
     }
