@@ -19,7 +19,7 @@ public class shot : MonoBehaviour
 
     public float shotspeed;
 
-    public bool bSciShot, bSplit, bExplode, bComet;
+    public bool bSciShot, bBounce, bExplode, bComet;
     public gunEnumScript.effect effect;
     [Header("SciShot")]
     public Vector3 startPos;
@@ -48,6 +48,14 @@ public class shot : MonoBehaviour
 
     public float damage;
 
+    public float invulnTimer;
+    public bool invuln;
+
+    public List<Collider2D> colliderBlacklist;
+
+
+    public GameObject objectThatSpawnedMe;
+    public bool effectUsed;
 
     /*
     shotSpeedTimer -= speedOffset;
@@ -89,6 +97,8 @@ public class shot : MonoBehaviour
         OGshotspeed = shotspeed;
 
         bigBulletTimer = 0.25f;
+
+        invulnTimer = 0.25f;
     }
 
     // Update is called once per frame
@@ -102,8 +112,25 @@ public class shot : MonoBehaviour
         //{
         //    rb.MovePosition(transform.position + Vector3.Normalize(overrideDirection) * shotspeed);
         //}
+
+
+
         shotEffect();
         rb.MovePosition(transform.position + transform.right *shotspeed);
+    }
+    private void FixedUpdate() {
+        if(invuln){
+            GetComponent<Collider2D>().enabled = false; 
+        }
+        if(!invuln){
+            GetComponent<Collider2D>().enabled = true; 
+        }
+        while(invuln){
+            invulnTimer -= Time.deltaTime;
+            if(invulnTimer <= 0){
+                invuln = false;
+            }
+        }
     }
 
     public void shotEffect()
@@ -119,11 +146,11 @@ public class shot : MonoBehaviour
                     sciShot();
                     break;
                 }
-            /*case 2: //split
+            case gunEnumScript.effect.Bounce: //split
                 {
-                    split();
+                    Bounce();
                     break;
-                }*/
+                }
             case gunEnumScript.effect.EXPLOSION: //explode
                 {
                     explode();
@@ -167,10 +194,10 @@ public class shot : MonoBehaviour
         }
     }
 
-    public void split()
+    public void Bounce()
     {
-        if(!copy)
-        bSplit = true;
+        bBounce = true;
+
     }
     public void explode()
     {
@@ -199,13 +226,51 @@ public class shot : MonoBehaviour
     {
         sprite.enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 0.25f);
     }
     public void playHitSound()
     {
         mySource.clip = hitSound;
         mySource.Play();
     }
+
+    // public void figureOutSide(Collider2D collision){
+    //     // RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.forward);
+    //     // ContactPoint2D[] CP2D = new ContactPoint2D[4];
+    //     // int i = hit.collider.GetContacts(CP2D);
+    //     // Vector3 theHitPos = CP2D[0].normal;
+    //         //Vector3 hit = col.contacts[0].normal;
+
+    //         Vector2 closestPoint = collision.ClosestPoint(transform.position);
+
+    //         Debug.Log(closestPoint);
+
+    //         float angle = Vector3.Angle(closestPoint, Vector3.up);
+
+    //         if (Mathf.Approximately(angle, 0))
+    //         {
+    //             //Down
+    //             Debug.Log("Down");
+    //         }
+    //         if(Mathf.Approximately(angle, 180))
+    //         {
+    //             //Up
+    //             Debug.Log("Up");
+    //         }
+    //         if(Mathf.Approximately(angle, 90)){
+    //             // Sides
+    //             Vector3 cross = Vector3.Cross(Vector3.forward, closestPoint);
+    //             if (cross.y > 0)
+    //             { // left side of the player
+    //                 Debug.Log("Left");
+    //             }
+    //             else
+    //             { // right side of the player
+    //                 Debug.Log("Right");
+    //             }
+    //         }
+    //         Debug.Break();
+    // }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -215,99 +280,126 @@ public class shot : MonoBehaviour
         }
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Dummy"))
         {
-        if (!bSplit && !bExplode && !bSciShot)
-        {
-                //Debug.Break();
-                playHitSound();
-                killTheShot();
-        }
-            else if (bSciShot)
-            {
-                shotspeed = 0;
-                if (bReturn)
+                if (!invuln &&!bBounce && !bExplode && !bSciShot)
                 {
-                    playHitSound();
-                    killTheShot();
+                        //Debug.Break();
+                        playHitSound();
+                        killTheShot();
                 }
-            }
-        else if (bSplit)
-            {
-                if(copy)
+                else if (bSciShot)
                 {
-                    playHitSound();
-                    killTheShot();
+                    shotspeed = 0;
+                    if (bReturn)
+                    {
+                        playHitSound();
+                        killTheShot();
+                    }
                 }
-                playHitSound();
-                killTheShot();
-            }
-        else if (bExplode)
-            {
-                GameObject g = Instantiate(explosionGO, transform.position, Quaternion.identity);
-                g.GetComponent<exploding>().element = element;
-                //g.GetComponent<exploding>().damage = gun.gunScript.damage;
-                killTheShot();
-            }
+                else if (bBounce)
+                    {
+                        //figureOutSide(collision);
+                        if(!effectUsed){
+                            GameObject first = Instantiate(gameObject, transform.position, Quaternion.identity);
+                            //first.GetComponent<shot>().colliderBlacklist.Add(collision);
+                            first.GetComponent<shot>().bBounce = false;
+                            first.GetComponent<shot>().invuln = true;
+                            first.GetComponent<shot>().objectThatSpawnedMe = gameObject;
+                            first.GetComponent<shot>().effect = gunEnumScript.effect.Nothing;
+                            first.transform.rotation = Quaternion.Euler(0,0, transform.rotation.eulerAngles.z + 180);
+                            effectUsed = true;
+                            playHitSound();
+                            killTheShot();
+                            //Debug.Break();
+                            
+                        }
+
+                    }
+                else if (bExplode)
+                    {
+                        GameObject g = Instantiate(explosionGO, transform.position, Quaternion.identity);
+                        g.GetComponent<exploding>().element = element;
+                        //g.GetComponent<exploding>().damage = gun.gunScript.damage;
+                        killTheShot();
+                    }
+            
+            
         }
         
     }
-    /*private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy"))
         {
-            print("OnCollisionEnter2D");
-            if (bSplit)
-        {
-            if (copy)
-            {
-                Destroy(gameObject);
-            }
-            Collider2D collider = collision.collider;
+            if(bBounce){
+                print("THISISBEINGCALLED");
+                //figureOutSide(collision.contacts[0].normal);
+                // GameObject first = Instantiate(gameObject, transform.position, Quaternion.identity);
+                // first.GetComponent<shot>().effect = gunEnumScript.effect.Nothing;
+                // first.GetComponent<shot>().bBounce = false;
+                // first.transform.Rotate(new Vector3(0,0,90));
 
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                //coming from top or bottom?]
-                if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
-                {
-
-                    if (contact.normal.y >= 0)
-                    { //am i hitting top or bottom?
-
-                        GameObject g1 = Instantiate(gameObject, new Vector2(transform.position.x, transform.position.y - 0.1f), transform.rotation);
-                        g1.GetComponent<shot>().copy = true;
-                        g1.transform.Rotate(collision.transform.forward, 90f);
-                        GameObject g2 = Instantiate(gameObject, new Vector2(transform.position.x, transform.position.y - 0.1f), transform.rotation);
-                        g2.GetComponent<shot>().copy = true;
-                        g2.transform.Rotate(collision.transform.forward, 270f);
-
-
-
-                    }
-                    if (contact.normal.y < 0)
-                    {
-
-                    }
-
-                }
-                else
-                {
-                    if (contact.normal.x >= 0)
-                    {
-
-                    }
-                    if (contact.normal.x < 0)
-                    {
-
-                    }
-                }
+                // //Debug.Break();
+                // playHitSound();
+                // killTheShot();
             }
 
 
 
 
-            Destroy(gameObject);
-        }
+            // print("OnCollisionEnter2D");
+            // if (bSplit)
+            // {
+            //     if (copy)
+            //     {
+            //         Destroy(gameObject);
+            //     }
+            //     Collider2D collider = collision.collider;
+
+            //     foreach (ContactPoint2D contact in collision.contacts)
+            //     {
+            //         //coming from top or bottom?]
+            //         if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
+            //         {
+
+            //             if (contact.normal.y >= 0)
+            //             { //am i hitting top or bottom?
+
+            //                 GameObject g1 = Instantiate(gameObject, new Vector2(transform.position.x, transform.position.y - 0.1f), transform.rotation);
+            //                 g1.GetComponent<shot>().copy = true;
+            //                 g1.transform.Rotate(collision.transform.forward, 90f);
+            //                 GameObject g2 = Instantiate(gameObject, new Vector2(transform.position.x, transform.position.y - 0.1f), transform.rotation);
+            //                 g2.GetComponent<shot>().copy = true;
+            //                 g2.transform.Rotate(collision.transform.forward, 270f);
+
+
+
+            //             }
+            //             if (contact.normal.y < 0)
+            //             {
+
+            //             }
+
+            //         }
+            //         else
+            //         {
+            //             if (contact.normal.x >= 0)
+            //             {
+
+            //             }
+            //             if (contact.normal.x < 0)
+            //             {
+
+            //             }
+            //         }
+            //     }
+
+
+
+
+            //     Destroy(gameObject);
+            // }
     }
-}*/
+}
 
 
 }

@@ -14184,7 +14184,6 @@ MonoBehaviour:
   gunUISelect: {fileID: 1719036884}
   timer: 0
   timerOG: 2
-  started: 0
   titleHeader: {fileID: 684635743}
   titleFooter: {fileID: 162018775}
   end: 0
