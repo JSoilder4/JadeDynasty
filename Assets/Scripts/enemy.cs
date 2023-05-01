@@ -178,6 +178,11 @@ public abstract class enemy : MonoBehaviour
                 GameObject delta = Instantiate(GameManager.GM.ammoToDrop, transform.position, Quaternion.identity);
                 GameManager.GM.droppedAmmoToReset.Add(delta);
             }
+            else if (thingToDrop == GameManager.dropsEmum.health)
+            {
+                GameObject bravo = Instantiate(GameManager.GM.healthToDrop, transform.position, Quaternion.identity);
+                GameManager.GM.droppedAmmoToReset.Add(bravo);
+            }
         }
 
 

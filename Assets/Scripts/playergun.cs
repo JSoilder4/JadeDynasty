@@ -110,7 +110,7 @@ private void FixedUpdate() {
     {
         if(!GameManager.GM.playerdead)
         {
-            if (GameManager.GM.started && !playerMove.pms.dodging && !reloading)
+            if (!playerMove.pms.dodging && !reloading)
             {
                 if(activeGun.gunType == gunEnumScript.gunType.Shotgun && activeGun.betweenShotTimer == activeGun.bSTog)
                 {

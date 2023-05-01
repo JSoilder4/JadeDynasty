@@ -38,6 +38,9 @@ public class playerMove : MonoBehaviour
 
     public Animator playerAnim;
 
+    public bool hpPickedup;
+    public float hpTimer;
+
 
     private void Awake()
     {
@@ -60,6 +63,8 @@ public class playerMove : MonoBehaviour
         dodgeSpeed = dodgeSpeedOG;
       //  dodgeCDTimer = dodgeCDTimerOG;
         dodgeTime = dodgeTimeOG;
+
+        hpTimer = 0.3333f;
 
         coords[0] = 0;
         coords[1] = 0;
@@ -92,6 +97,7 @@ public class playerMove : MonoBehaviour
                 dodging = true;
 
             }
+            
         }
 
     
@@ -99,6 +105,13 @@ public class playerMove : MonoBehaviour
     }
     public void checkHealth()
     {
+        if(hpPickedup){
+            hpTimer -= Time.deltaTime;
+        }
+        if(hpTimer <= 0){
+            hpPickedup = false;
+            hpTimer = 0.33333f;
+        }
         if (hp.currentHP <= 0)
         {
             die();
@@ -238,6 +251,17 @@ public class playerMove : MonoBehaviour
         {
             pGunScript.ammoPickup(collision.gameObject);//collision.gameObject);
             //Destroy(collision.gameObject);
+        }
+        if(collision.transform.CompareTag("Health"))
+        {
+            if(hp.currentHP == hp.maxHP || hpPickedup){
+
+            }
+            else{
+                hp.healDamage(1);
+                hpPickedup = true;
+                Destroy(collision.gameObject);
+            }
         }
         if (collision.transform.CompareTag("nextFloor"))
         {

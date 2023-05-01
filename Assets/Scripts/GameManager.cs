@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public float timer;
     public float timerOG;
 
-    public bool started = false;
+    //public bool started = false;
     public Text titleHeader;
     public Text titleFooter;
 
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject randomGunToDrop;
     public GameObject ammoToDrop;
+    public GameObject healthToDrop;
 
     public Sprite[] pistol, shotgun, sniper, smg;
     public Sprite pistolH, shotgunH, sniperH, smgH;
@@ -99,6 +100,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI enemiesKilledUI;
     public int enemiesKilled;
     public GameObject ammoCount;
+    public TextMeshProUGUI floorHighScoreText;
+    public TextMeshProUGUI enemiesKilledHighScoreUI;
+    public int floorHighScore = -1;
+    public int enemiesKilledHighScore = -1;
+    public bool newFloorHS;
+    public bool newEnemyHS;
 
 
 
@@ -108,7 +115,8 @@ public class GameManager : MonoBehaviour
     public enum dropsEmum
     {
         gun,
-        ammo
+        ammo,
+        health
     }
 
     public static List<GameObject> drops;
@@ -144,7 +152,11 @@ public class GameManager : MonoBehaviour
 
         makeMinimap();
 
-    
+
+        floorHighScore = PlayerPrefs.GetInt("floorHS");
+        enemiesKilledHighScore = PlayerPrefs.GetInt("enemyHS");
+
+        respawn();
         //CheckMinimapObjects();
 
         //randomGunToDrop = GameObject.Find("randomGun");
@@ -564,6 +576,7 @@ public class GameManager : MonoBehaviour
         genManage.floor = 0;
         sceneReset();
         resetMinimap();
+        ResetHighScore();
 
         minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("respawn", 0.75f));
         //spawnEnemies();
@@ -727,7 +740,7 @@ public class GameManager : MonoBehaviour
 
     public void start()
     {
-        started = true;
+        //started = true;
         //scoreText.enabled = true;
         titleHeader.enabled = false;
         titleFooter.enabled = false;
@@ -747,8 +760,42 @@ public class GameManager : MonoBehaviour
     // }
     public void setEndText()
     {
-        floorText.text = "Final Floor Reached: "+genManage.floor+1;
+        floorText.text = "Floor Reached: "+(genManage.floor+1);
         enemiesKilledUI.text = "Enemies Defeated: "+enemiesKilled;
+
+        if(genManage.floor > floorHighScore)
+        {
+            floorHighScore = genManage.floor;
+            newFloorHS = true;
+            PlayerPrefs.SetInt("floorHS", floorHighScore);
+            PlayerPrefs.Save();
+        }
+        if(enemiesKilled > enemiesKilledHighScore)
+        {
+            enemiesKilledHighScore = enemiesKilled;
+            newEnemyHS = true;
+            PlayerPrefs.SetInt("enemyHS", enemiesKilledHighScore);
+            PlayerPrefs.Save();
+        }
+        if(newFloorHS){
+            floorHighScoreText.text = "NEW High Score: " + (floorHighScore+1);
+        }
+        else{
+            floorHighScoreText.text = "High Score: " + floorHighScore;
+        }
+        if(newEnemyHS){
+            enemiesKilledHighScoreUI.text = "NEW High Score: " + enemiesKilledHighScore;
+        }
+        else{
+            enemiesKilledHighScoreUI.text = "High Score: " + enemiesKilledHighScore;
+        }
+        
+        
+
+    }
+    public void ResetHighScore(){
+        newFloorHS = false;
+        newEnemyHS = false;
     }
     // public void scoreTime()
     // {
@@ -781,8 +828,8 @@ public class GameManager : MonoBehaviour
     public static Dictionary<dropsEmum, int> enemyDropTable = new Dictionary<dropsEmum, int>()
     {
         {dropsEmum.gun, 40},
-        {dropsEmum.ammo, 60},
-        //{null, 30}
+        {dropsEmum.ammo, 50},
+        {dropsEmum.health, 10}
     };
     public static dropsEmum RollDrops()
     {
