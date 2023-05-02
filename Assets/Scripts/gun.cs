@@ -234,13 +234,15 @@ public class gun //: MonoBehaviour
                 break;
             case gunEnumScript.effect.BulletHell:
                 //scatterAngle = 180;
-               
+            
                 numShots += UnityEngine.Random.Range(10, 21);
-                float numShotMulti = (1 + (numShots / 10.0f));
+                float numShotMulti = (1 + (numShots / 10.0f))*2;
                 damage = (damage * numShotMulti) / numShots;
                 spread = UnityEngine.Random.Range(3, 7);
                 break;
-
+            case gunEnumScript.effect.Bounce:
+                damage /= 1.75f;
+                break;
             default:
                 break;
         }

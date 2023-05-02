@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2159480596448056336}
   - component: {fileID: 2159480596448056335}
   - component: {fileID: 1254181029}
+  - component: {fileID: 3991656022464314320}
   m_Layer: 0
   m_Name: SquidWepsTRANSPARENT_0
   m_TagString: shot
@@ -155,16 +156,9 @@ MonoBehaviour:
   sprite: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 52f5e9ff1dec9f24f94fd10a292f8959, type: 3}
   mySource: {fileID: 0}
-  shotgun: 0
-  sniper: 0
-  smg: 0
-  fire: {r: 1, g: 0, b: 0, a: 1}
-  water: {r: 0, g: 0.50980395, b: 1, a: 1}
-  earth: {r: 0, g: 1, b: 0, a: 1}
-  air: {r: 1, g: 1, b: 1, a: 1}
   shotspeed: 0
   bSciShot: 0
-  bSplit: 0
+  bBounce: 0
   bExplode: 0
   bComet: 0
   effect: 0
@@ -184,6 +178,12 @@ MonoBehaviour:
   element: 0
   bigBulletTimer: 0
   damage: 0
+  invulnTimer: 0
+  invuln: 0
+  colliderBlacklist: []
+  objectThatSpawnedMe: {fileID: 0}
+  effectUsed: 0
+  dead: 0
 --- !u!82 &1254181029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +280,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &3991656022464314320
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630365180264884895}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.02

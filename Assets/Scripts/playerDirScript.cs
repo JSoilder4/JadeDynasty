@@ -40,12 +40,12 @@ public class playerDirScript : MonoBehaviour
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePos.x > transform.localPosition.x)
+        if (mousePos.x > transform.localPosition.x && !GameManager.GM.playerdead)
         {
             sprite.flipX = false; //replace later; moving to animation system
             gunSprite.flipY = false;
         }
-        else
+        else if(!GameManager.GM.playerdead)
         {
             sprite.flipX = true; //replace later
             gunSprite.flipY = true;

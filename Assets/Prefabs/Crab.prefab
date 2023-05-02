@@ -261,7 +261,7 @@ Transform:
   - {fileID: 5757057416218406216}
   - {fileID: 2919218690230288803}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3399736762396899481
 SpriteRenderer:
@@ -441,6 +441,11 @@ MonoBehaviour:
   xmlR: {fileID: 4900000, guid: 1daf0c8d6e1988d498295c2e0ee39e33, type: 3}
   xmlSlamL: {fileID: 4900000, guid: 262654d744bb959498f5e4daef805513, type: 3}
   xmlSlamR: {fileID: 4900000, guid: 477fc365ff6634d408eb454d7d1af4f7, type: 3}
+  ShootSfx: {fileID: 8300000, guid: 1ee8327d5788c404db02e50c518a62a3, type: 3}
+  SlamSfx: {fileID: 8300000, guid: 6ee5634affa500a45af0d7e9c1343d55, type: 3}
+  RaiseGunSFX: {fileID: 8300000, guid: 33edfc771ae2a56429451c50865f78f1, type: 3}
+  dyingSFX: {fileID: 8300000, guid: bc1f6aab56321664fbf68ae9a7cd4277, type: 3}
+  gettingHitSFX: {fileID: 8300000, guid: 8c2d884e73bbcb04b9619a0b8549b1e4, type: 3}
 --- !u!114 &69732536865810387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,7 +488,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0

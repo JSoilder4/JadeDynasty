@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
 
     public GameObject instructions;
+
+    public Image helpButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +28,6 @@ public class MainMenuController : MonoBehaviour
     }
     public void ToggleInstructions(){
         instructions.SetActive(!instructions.activeSelf);
+        helpButton.fillCenter = !helpButton.fillCenter;
     }
 }

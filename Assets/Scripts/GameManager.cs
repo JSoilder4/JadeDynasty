@@ -556,6 +556,7 @@ public class GameManager : MonoBehaviour
     public void respawn()
     {
         //sceneReset();
+        Time.timeScale = 1;
         player.transform.position = new Vector3(0, 0, 0);// genManage.roomPositions[4,4];
         cam.transform.position = new Vector3(0, 0, 0); //genManage.roomPositions[4,4];
         cam.GetComponent<CameraFollow>().cam = CameraFollow.CamType.gridBased;
@@ -577,6 +578,7 @@ public class GameManager : MonoBehaviour
         sceneReset();
         resetMinimap();
         ResetHighScore();
+        
 
         minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("respawn", 0.75f));
         //spawnEnemies();
@@ -633,12 +635,14 @@ public class GameManager : MonoBehaviour
     public void dead()
     {
         playerdead = true;
-        endscreenUI.SetActive(true);// = true;
+        
+        //endscreenUI.SetActive(true);// = true;
         ammoCount.SetActive(false);
     }
     public void alive()
     {
         playerdead = false;
+        //Time.timeScale = 1;
         endscreenUI.SetActive(false);// = false;
         ammoCount.SetActive(true);
     }
@@ -674,10 +678,11 @@ public class GameManager : MonoBehaviour
     {
         enemiesToReset.Add(g);
     }
-    public void tryagainButton()
+    public void tryagainButton() //button
     {
-        respawn();
         alive();
+        respawn();
+        
     }
     public void Update()
     {
@@ -730,7 +735,7 @@ public class GameManager : MonoBehaviour
                 HPImage.sprite = HPsprites[5];
                 break;
             default:
-                HPImage.sprite = HPsprites[0];
+                HPImage.sprite = HPsprites[5];
                 break;
         }
 

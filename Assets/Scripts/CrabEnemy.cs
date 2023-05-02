@@ -61,6 +61,12 @@ public class CrabEnemy : enemy
     public TextAsset xmlL, xmlR, xmlSlamL, xmlSlamR;
 
     //public Animator anim;
+    public AudioClip ShootSfx;
+    public AudioClip SlamSfx;
+    public AudioClip RaiseGunSFX;
+    public AudioClip dyingSFX;
+    public AudioClip gettingHitSFX;
+    
 
 
 
@@ -82,7 +88,7 @@ public class CrabEnemy : enemy
         anim = GetComponent<Animator>();
 
         attackTimer = attackTimerOG;
-
+        
         
 
 
@@ -302,10 +308,13 @@ public class CrabEnemy : enemy
         R.Reset();
     }
 
+    public void PlayRaiseSFX(){
+        mySource.PlayOneShot(RaiseGunSFX);
+    }
     public void shoot() //anim
     {
         attacking = true;
-
+        mySource.PlayOneShot(ShootSfx);
         if (firstAttackShot)
         {
             if (sprite.flipX)
@@ -335,6 +344,7 @@ public class CrabEnemy : enemy
     public void slamShot() //anim
     {
         myState = state.slam;
+        mySource.PlayOneShot(SlamSfx);
         anim.SetInteger("state", (int)myState);
 
         StartCoroutine(theSlam());
@@ -385,7 +395,11 @@ public class CrabEnemy : enemy
     {
         base.OnTriggerEnter2D(collision);
 
+        if(collision.CompareTag("shot")){
 
+            mySource.PlayOneShot(gettingHitSFX);
+
+        }
     }
     public override void OnBecameVisible()
     {
@@ -401,6 +415,7 @@ public class CrabEnemy : enemy
     public override void die()
     {
         //Debug.Break();
+        mySource.PlayOneShot(dyingSFX);
         myState = state.dead;
         dead = true;
         anim.SetInteger("state", (int)myState);

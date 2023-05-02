@@ -56,6 +56,8 @@ public class shot : MonoBehaviour
 
     public GameObject objectThatSpawnedMe;
     public bool effectUsed;
+    public bool dead;
+    public CircleCollider2D CC2D;
 
     /*
     shotSpeedTimer -= speedOffset;
@@ -98,7 +100,9 @@ public class shot : MonoBehaviour
 
         bigBulletTimer = 0.25f;
 
-        invulnTimer = 0.25f;
+        invulnTimer = 0.5f;
+
+        CC2D = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -119,10 +123,10 @@ public class shot : MonoBehaviour
         rb.MovePosition(transform.position + transform.right *shotspeed);
     }
     private void FixedUpdate() {
-        if(invuln){
+        if(invuln && !dead){
             GetComponent<Collider2D>().enabled = false; 
         }
-        if(!invuln){
+        if(!invuln && !dead){
             GetComponent<Collider2D>().enabled = true; 
         }
         while(invuln){
@@ -166,7 +170,15 @@ public class shot : MonoBehaviour
                     bigBullets();
                     break;
                 }
+            case gunEnumScript.effect.AIBullets:
+            {
+                AIBullets();
+                break;
+            }
         }
+    }
+    public void AIBullets(){
+        CC2D.enabled = true;
     }
     
     public void sciShot()
@@ -225,6 +237,7 @@ public class shot : MonoBehaviour
     public void killTheShot()
     {
         sprite.enabled = false;
+        dead = true;
         GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject, 0.25f);
     }
@@ -278,12 +291,18 @@ public class shot : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        // if(collision.transform.CompareTag("Enemy"))
+        // {
+        //     killTheShot();
+        // }
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Dummy"))
         {
                 if (!invuln &&!bBounce && !bExplode && !bSciShot)
                 {
                         //Debug.Break();
-                        playHitSound();
+                        if(!collision.CompareTag("Enemy")){
+                            playHitSound();
+                        }
                         killTheShot();
                 }
                 else if (bSciShot)
@@ -291,7 +310,9 @@ public class shot : MonoBehaviour
                     shotspeed = 0;
                     if (bReturn)
                     {
-                        playHitSound();
+                        if(!collision.CompareTag("Enemy")){
+                            playHitSound();
+                        }
                         killTheShot();
                     }
                 }
@@ -301,13 +322,22 @@ public class shot : MonoBehaviour
                         if(!effectUsed){
                             GameObject first = Instantiate(gameObject, transform.position, Quaternion.identity);
                             //first.GetComponent<shot>().colliderBlacklist.Add(collision);
+                            first.GetComponent<AudioSource>().enabled = false;
                             first.GetComponent<shot>().bBounce = false;
                             first.GetComponent<shot>().invuln = true;
                             first.GetComponent<shot>().objectThatSpawnedMe = gameObject;
                             first.GetComponent<shot>().effect = gunEnumScript.effect.Nothing;
-                            first.transform.rotation = Quaternion.Euler(0,0, transform.rotation.eulerAngles.z + 180);
+                            Vector3 newDir = Vector3.Reflect(transform.right, collision.bounds.ClosestPoint(transform.position));
+                            //print(newDir);
+                            float angle = Mathf.Atan2(newDir.y, newDir.x) * Mathf.Rad2Deg;
+                            first.transform.rotation = Quaternion.Euler(0,0,angle);
+                            //print();
+                            //first.transform.rotation = Quaternion.Euler(0,0, transform.rotation.eulerAngles.z + 180);
                             effectUsed = true;
-                            playHitSound();
+                            if(!collision.CompareTag("Enemy")){
+                                playHitSound();
+                            }
+                            
                             killTheShot();
                             //Debug.Break();
                             
@@ -321,6 +351,9 @@ public class shot : MonoBehaviour
                         //g.GetComponent<exploding>().damage = gun.gunScript.damage;
                         killTheShot();
                     }
+
+
+                
             
             
         }
@@ -330,8 +363,9 @@ public class shot : MonoBehaviour
     {
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy"))
         {
+            print("THISISBEINGCALLED");
             if(bBounce){
-                print("THISISBEINGCALLED");
+                
                 //figureOutSide(collision.contacts[0].normal);
                 // GameObject first = Instantiate(gameObject, transform.position, Quaternion.identity);
                 // first.GetComponent<shot>().effect = gunEnumScript.effect.Nothing;

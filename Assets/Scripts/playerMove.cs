@@ -124,7 +124,7 @@ public class playerMove : MonoBehaviour
         {
             velocity.x = Input.GetAxisRaw("Horizontal");// * speed;
             velocity.y = Input.GetAxisRaw("Vertical");// * speed;
-
+            
             if (velocity.x != 0 || velocity.y != 0)
             {
                 playerAnim.SetInteger("walkState", 1);
@@ -137,11 +137,13 @@ public class playerMove : MonoBehaviour
             velocity = Vector3.Normalize(velocity);
             //print(velocity);
             //velocity *= speed;
-
+            playerGun.SetActive(true);
+            //playerAnim.speed = 1;
         }
         else if(GameManager.GM.playerdead)
         {
             velocity = new Vector3(0,0,0);
+            //playerAnim.SetTrigger("die");
         }
         if (!dodging)
         {
@@ -304,9 +306,24 @@ public class playerMove : MonoBehaviour
         yield return null;
     }
     
+    // public void deadydeaddeadANIM()//anim
+    // {
+    //     Time.timeScale = 0;
+    // }
+    public void endScreenShowup()//anim
+    {
+        GameManager.GM.endscreenUI.SetActive(true);
+        //Time.timeScale = 0;
+    }
     public void die()
     {
+        
+        
         GameManager.GM.dead();
+        if(playerGun.activeSelf)
+        playerAnim.SetTrigger("die");
+        playerGun.SetActive(false);
+
         //sprite.enabled = false;
         //playergun.gunScript.sprite.enabled = false;
         //playergun.gunScript.enabled = false;

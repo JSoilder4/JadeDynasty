@@ -47,6 +47,7 @@ public class gunEnumScript : MonoBehaviour
         BulletHell,
 
         Bounce,
+        AIBullets
 
 
         
@@ -73,6 +74,8 @@ public class gunEnumScript : MonoBehaviour
         {effect.HighRoller, 10},
         {effect.BulletHell, 30},
         {effect.Bounce, 30},
+        {effect.AIBullets, 30},
+        
         //{effect.Nothing, 30},
 
 

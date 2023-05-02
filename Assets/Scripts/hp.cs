@@ -228,6 +228,7 @@ public class hp : MonoBehaviour
     }
     public void takeDamage(gunEnumScript.element elem, float dmg, Vector3 shotDir) //enemy damage
     {
+        print("I have been called dear citizen");
         if (elem == gunEnumScript.element.Stasis)
         {
             if(!myEnemyScript.stasisFrozen)
@@ -424,17 +425,20 @@ public class hp : MonoBehaviour
         }
         if (!player && collision.transform.CompareTag("shot"))
         {
-            switch (collision.GetComponent<shot>().effect)
-            {
-                case gunEnumScript.effect.EXPLOSION:
+            if(!collision.GetComponent<shot>().invuln){
+                switch (collision.GetComponent<shot>().effect)
+                {
+                    case gunEnumScript.effect.EXPLOSION:
 
 
-                    break;
+                        break;
 
-                default:
-                    takeDamage(collision.GetComponent<shot>().element, collision.GetComponent<shot>().damage, transform.position - collision.transform.position);
-                    break;
+                    default:
+                        takeDamage(collision.GetComponent<shot>().element, collision.GetComponent<shot>().damage, transform.position - collision.transform.position);
+                        break;
+                }
             }
+            
             
 
             
