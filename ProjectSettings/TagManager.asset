@@ -11,6 +11,14 @@ TagManager:
   - Enemy
   - Dummy
   - Wall
+  - virtualCam
+  - room
+  - door
+  - Ammo
+  - Health
+  - enemyspawn
+  - roomCol
+  - nextFloor
   layers:
   - Default
   - TransparentFX

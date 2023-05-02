@@ -14222,10 +14222,22 @@ MonoBehaviour:
   - {fileID: -124941780, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
   shotgun:
   - {fileID: 1524942017, guid: facd7e56d54702047b796f73685aebf3, type: 3}
+  - {fileID: -266630770, guid: facd7e56d54702047b796f73685aebf3, type: 3}
+  - {fileID: 1850234369, guid: facd7e56d54702047b796f73685aebf3, type: 3}
+  - {fileID: 226954807, guid: facd7e56d54702047b796f73685aebf3, type: 3}
+  - {fileID: -15314763, guid: facd7e56d54702047b796f73685aebf3, type: 3}
   sniper:
   - {fileID: -496332966, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
+  - {fileID: -2073006005, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
+  - {fileID: 1664162442, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
+  - {fileID: 966481809, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
+  - {fileID: 1918408970, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
   smg:
   - {fileID: -1846081702, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
+  - {fileID: -968626490, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
+  - {fileID: -1801939270, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
+  - {fileID: 1791351007, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
+  - {fileID: 1548942466, guid: ff408a146fad8e3419749391377fb9bd, type: 3}
   pistolH: {fileID: -450474969, guid: c9a865888feb83841a1d6b380d3a26a7, type: 3}
   shotgunH: {fileID: -1271674810, guid: facd7e56d54702047b796f73685aebf3, type: 3}
   sniperH: {fileID: -897118655, guid: 4d9a21dc84cdca64db6b6f5436083084, type: 3}
@@ -55215,10 +55227,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1207377577, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586475, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1836047751}
+    - target: {fileID: 4760173122625586476, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173122625586476, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586477, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
       value: 
@@ -55274,6 +55298,10 @@ PrefabInstance:
     - target: {fileID: 4760173123808394372, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760173124461523201, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: AmmoCount
