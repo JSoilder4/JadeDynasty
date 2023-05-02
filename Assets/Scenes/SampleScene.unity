@@ -55034,6 +55034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crab
       objectReference: {fileID: 0}
+    - target: {fileID: 3399736762396899483, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3399736762396899486, guid: da872678a5dc24f43a4935ba30591ee7, type: 3}
       propertyPath: m_RootOrder
       value: 16
