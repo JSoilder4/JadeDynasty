@@ -54,6 +54,7 @@ public class RoomGenerator : MonoBehaviour
     public int doorsConnected;
 
     public bool cleared;
+    public bool clearSoundPlayed;
 
     [Header("Big Room :(")]
     public int[] posXBig = new int[4], posYBig = new int[4]; //0 = NorthWest, 1 = NorthEast, 2 = SouthWest, 3 = SouthEast
@@ -198,6 +199,9 @@ public class RoomGenerator : MonoBehaviour
             foreach(GameObject g in doors){
                 g.GetComponent<DoorControl>().locked = false;
             }
+            if(!clearSoundPlayed)
+            GetComponent<AudioSource>().PlayOneShot(GameManager.GM.roomCleared);
+            clearSoundPlayed = true;
         }
 
         //COMEBACK TO THIS LATER????
@@ -781,6 +785,7 @@ public class RoomGenerator : MonoBehaviour
             {
                 g.GetComponent<DoorControl>().locked = true;
             }
+            GetComponent<AudioSource>().PlayOneShot(GameManager.GM.roomClosed);
         }
 
     }

@@ -14266,6 +14266,8 @@ MonoBehaviour:
   newFloorHS: 0
   newEnemyHS: 0
   fadeObject: {fileID: 1456640819}
+  roomClosed: {fileID: 8300000, guid: a647e594d7c634041a8df431a1f6d25b, type: 3}
+  roomCleared: {fileID: 8300000, guid: 31c5b61a35fc4854bac51be465bf24d5, type: 3}
 --- !u!114 &1385765417
 MonoBehaviour:
   m_ObjectHideFlags: 0

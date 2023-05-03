@@ -83,7 +83,7 @@ public class gunEnumScript : MonoBehaviour
         {effect.Curley, 30},
         {effect.Slow, 30},
         {effect.Boxing, 0},
-        {effect.Close, 3000},
+        {effect.Close, 30},
         
         //{effect.Nothing, 30},
 

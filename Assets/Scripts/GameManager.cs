@@ -109,6 +109,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject fadeObject;
 
+    public AudioClip roomClosed;
+    public AudioClip roomCleared;
+
 
 
 
