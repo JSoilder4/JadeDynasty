@@ -395,7 +395,7 @@ public class CrabEnemy : enemy
     {
         base.OnTriggerEnter2D(collision);
 
-        if(collision.CompareTag("shot")){
+        if(collision.CompareTag("shot") && !stasisFrozen){
 
             mySource.PlayOneShot(gettingHitSFX);
 

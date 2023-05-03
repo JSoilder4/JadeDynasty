@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
     public bool newFloorHS;
     public bool newEnemyHS;
 
+    public GameObject fadeObject;
+
 
 
 
@@ -290,6 +292,7 @@ public class GameManager : MonoBehaviour
                     }
                     else{
                         print("connected door is null: " + dC.doorConnectedToControl);
+                        fadeObject.GetComponent<Animator>().speed = 0;
                         Debug.Break();
                         // if(minimapCheckingNumerator != null)
                         // StopCoroutine(minimapCheckingNumerator);
@@ -314,12 +317,14 @@ public class GameManager : MonoBehaviour
                 // minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("recursive"));
                 print("ee~ etto... bleh: "+ currentRoom.doors[i]);
             }
+            
         }
         foreach(minimapObject miniO in minimapObjects)
         {
             miniO.Check();
         }
-
+        // yield return new WaitForSeconds(2.5f);
+        // fadeObject.GetComponent<Animator>().speed = 1;
         yield return null;
     }
 
@@ -600,6 +605,8 @@ public class GameManager : MonoBehaviour
             genManage.RetryLevel();
             sceneReset();
             resetMinimap();
+
+            fadeObject.SetActive(true);
 
             minimapCheckingNumerator = StartCoroutine(CheckMinimapObjects("nextlvl", 0.75f));
 

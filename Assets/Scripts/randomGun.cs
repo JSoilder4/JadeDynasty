@@ -28,6 +28,8 @@ public class randomGun : MonoBehaviour
 
     public TextMeshProUGUI tutText;
 
+    public GenerationManager genManage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,8 @@ public class randomGun : MonoBehaviour
 
         col = GetComponent<Collider2D>();
         tutText = GetComponentInChildren<TextMeshProUGUI>();
-
+        genManage = GameObject.FindWithTag("GameController").GetComponent<GenerationManager>();
+        theGun.floor = genManage.floor;
         theGun.Roll("");
         //rollGun();
     }

@@ -47,7 +47,12 @@ public class gunEnumScript : MonoBehaviour
         BulletHell,
 
         Bounce,
-        AIBullets
+        AIBullets,
+        Curley,
+        Slow,
+        Boxing, //unimplemented
+        Close,
+
 
 
         
@@ -72,9 +77,13 @@ public class gunEnumScript : MonoBehaviour
         {effect.BackShot, 30},
         {effect.Broken, 30},
         {effect.HighRoller, 10},
-        {effect.BulletHell, 30},
+        {effect.BulletHell, 20},
         {effect.Bounce, 30},
         {effect.AIBullets, 30},
+        {effect.Curley, 30},
+        {effect.Slow, 30},
+        {effect.Boxing, 0},
+        {effect.Close, 3000},
         
         //{effect.Nothing, 30},
 

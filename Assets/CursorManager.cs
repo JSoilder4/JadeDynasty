@@ -6,6 +6,7 @@ public class CursorManager : MonoBehaviour
 {
 
     public Texture2D cursor;
+    public Texture2D[] elemCursors;
     public Vector2 cursorHotspot;
 
     public static CursorManager cursorMan;
@@ -27,13 +28,15 @@ public class CursorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         cursorHotspot = new Vector2(cursor.width/2, cursor.height/2);
-        Cursor.SetCursor(cursor, cursorHotspot, CursorMode.ForceSoftware);
+        Cursor.SetCursor(elemCursors[(int)playergun.gunScript.activeGun.element], cursorHotspot, CursorMode.ForceSoftware);
+
+        //GUI.skin.settings.cursorColor = playergun.elementalColors[(int)playergun.gunScript.activeGun.element];
     }
 }

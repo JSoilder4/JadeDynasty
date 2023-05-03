@@ -243,6 +243,18 @@ public class gun //: MonoBehaviour
             case gunEnumScript.effect.Bounce:
                 damage /= 1.75f;
                 break;
+            case gunEnumScript.effect.Slow:
+                shotSpeed /= 10;
+            break;
+            case gunEnumScript.effect.Close:
+                damage *= 5;
+                if(damage > 60*(floor+1))
+                {
+                    damage = 60*(floor+1);
+                }
+                shotSpeed =  20*(1/ damage);
+                shotSpeed /= 2;
+            break;
             default:
                 break;
         }

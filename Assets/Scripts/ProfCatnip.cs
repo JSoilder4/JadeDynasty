@@ -170,7 +170,7 @@ public class ProfCatnip : enemy
     {
         base.OnTriggerEnter2D(collision);
 
-        if(collision.CompareTag("shot")){
+        if(collision.CompareTag("shot") && !stasisFrozen){
             playAHitSound();
         }
     }
@@ -201,6 +201,7 @@ public class ProfCatnip : enemy
         dead = true;
         anim.SetInteger("state", (int)myState);
         StopAllCoroutines();
+        anim.speed = 1f;
         anim.SetTrigger("die");
         StartCoroutine(dieKnockback());
         //StartCoroutine(deathCoroutine(2f));

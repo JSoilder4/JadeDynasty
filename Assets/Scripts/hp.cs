@@ -30,6 +30,8 @@ public class hp : MonoBehaviour
     public float stasisDamageBuildup;
     public float stasisTimer;
     public float stasisTimerOG;
+    public GameObject stasisChains;
+    public AudioClip chainExplosion;
 
     enum stasisStage
     {
@@ -178,8 +180,15 @@ public class hp : MonoBehaviour
         switch(StasisStage)
         {
                 case stasisStage.StasisFrozen:
+
                     myEnemyScript.speed = 0;
                     myEnemyScript.anim.speed = 0f;
+                    if(!myEnemyScript.stasisFrozen)
+                    {
+                        GameObject g = Instantiate(stasisChains, transform.position, Quaternion.identity);
+                        g.GetComponent<stasisChains>().enemyScriptThatSpawnedMe = myEnemyScript;
+                        //mySource.PlayOneShot(chained);
+                    }
                     myEnemyScript.stasisFrozen = true;
                     sprite.color = playergun.elementalColors[4];
                 //    print("I'm FROZEN: "+"\nBuildup: "+stasisDamageBuildup + "\nCurrentHP: "+currentHP);
@@ -220,6 +229,7 @@ public class hp : MonoBehaviour
         {
             currentHP -= stasisDamageBuildup;
         }
+        mySource.PlayOneShot(chainExplosion);
         myEnemyScript.speed = myEnemyScript.speedOG;
         myEnemyScript.anim.speed = 1f;
         sprite.color = playergun.elementalColors[0];

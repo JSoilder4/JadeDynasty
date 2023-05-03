@@ -226,6 +226,8 @@ public class GenerationManager : MonoBehaviour
             foreach(GameObject g in createdRooms){
                 nullRemover(g.GetComponent<RoomGenerator>().doors);
             }
+
+            GameManager.GM.fadeObject.GetComponent<Animator>().speed = 1;
             //GameManager.GM.CheckMinimapObjects("GenManager");
 
             //GameManager.GM.minimapCheckingNumerator = GameManager.GM.StartCoroutine(GameManager.GM.CheckMinimapObjects("genman"));
@@ -362,6 +364,7 @@ public class GenerationManager : MonoBehaviour
 
     public void RetryLevel() //retry the level generation, mostly for debug
     {
+        
         //find all the stuff that was generated
         GameObject[] roomsToDestroy = GameObject.FindGameObjectsWithTag("room");
       //  GameObject[] corridorsToDestroy = GameObject.FindGameObjectsWithTag("corridor");
@@ -371,6 +374,9 @@ public class GenerationManager : MonoBehaviour
         bossRoomAssigned = false;
         tRoomAssigned = false;
         timer = timerOG;
+        GameManager.GM.fadeObject.SetActive(false);
+        GameManager.GM.fadeObject.SetActive(true);
+        GameManager.GM.fadeObject.GetComponent<Animator>().speed = 0;
 
         if(GameManager.GM.minimapCheckingNumerator != null)
         GameManager.GM.StopCoroutine(GameManager.GM.minimapCheckingNumerator);

@@ -178,7 +178,7 @@ print("lmao, lol even.");
                 
             //}
         }
-        if(collision.CompareTag("shot")){
+        if(collision.CompareTag("shot") && !stasisFrozen){
             playAHitSound();
         }
     }

@@ -415,6 +415,8 @@ MonoBehaviour:
   stasisDamageBuildup: 0
   stasisTimer: 0
   stasisTimerOG: 0
+  stasisChains: {fileID: 8851027492081280231, guid: d5d5136312452684086ca5cdfbf344b9, type: 3}
+  chainExplosion: {fileID: 8300000, guid: 2c335c415d4ade54caf1ed15ccf9cf22, type: 3}
   elemHPMax: 0
   elemHPCurrent: 0
 --- !u!95 &-1826813513953659857

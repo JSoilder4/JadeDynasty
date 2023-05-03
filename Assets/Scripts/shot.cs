@@ -59,6 +59,8 @@ public class shot : MonoBehaviour
     public bool dead;
     public CircleCollider2D CC2D;
 
+    public float startngDamage;
+    public float fakeDamage;
     /*
     shotSpeedTimer -= speedOffset;
         if (shotSpeedTimer <= 0)
@@ -103,6 +105,18 @@ public class shot : MonoBehaviour
         invulnTimer = 0.5f;
 
         CC2D = GetComponent<CircleCollider2D>();
+
+
+
+        switch(effect)
+        {
+            case gunEnumScript.effect.Close:
+            transform.localScale = new Vector3(transform.localScale.x+damage*1f,transform.localScale.y+damage*1f,0);
+            startngDamage = damage;
+            fakeDamage = startngDamage;
+            fakeDamage -= 1f;
+            break;
+        }
     }
 
     // Update is called once per frame
@@ -118,7 +132,7 @@ public class shot : MonoBehaviour
         //}
 
 
-
+        //print(Vector3.right);
         shotEffect();
         rb.MovePosition(transform.position + transform.right *shotspeed);
     }
@@ -175,10 +189,43 @@ public class shot : MonoBehaviour
                 AIBullets();
                 break;
             }
+            case gunEnumScript.effect.Curley:
+            {
+                Curley();
+                break;
+            }
+            case gunEnumScript.effect.Close:
+            {
+                Close();
+                break;
+            }
         }
     }
     public void AIBullets(){
         CC2D.enabled = true;
+    }
+    public void Close(){
+        //bigBulletTimer -= Time.deltaTime;
+        transform.localScale = new Vector3(transform.localScale.x-(startngDamage - fakeDamage),transform.localScale.y-(startngDamage - fakeDamage),0);
+        
+        fakeDamage -= Time.fixedDeltaTime * (startngDamage - fakeDamage);
+
+        damage = transform.localScale.x;
+
+
+        if(damage <= 0 || (transform.localScale.x <= 0 && transform.localScale.y <= 0)){
+            Destroy(gameObject);
+        }
+        // if(bigBulletTimer <= 0)
+        // {
+        //     damage += 1;
+        //     bigBulletTimer = 0.25f;
+        // }
+    }
+    public void Curley(){
+        print(transform.rotation.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(0,0, transform.rotation.eulerAngles.z + (Time.deltaTime*500));
+        shotspeed += Time.deltaTime/100;
     }
     
     public void sciShot()
@@ -297,17 +344,10 @@ public class shot : MonoBehaviour
         // }
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Dummy"))
         {
-                if (!invuln &&!bBounce && !bExplode && !bSciShot)
-                {
-                        //Debug.Break();
-                        if(!collision.CompareTag("Enemy")){
-                            playHitSound();
-                        }
-                        killTheShot();
-                }
-                else if (bSciShot)
-                {
-                    shotspeed = 0;
+            switch(effect)
+            {
+                case gunEnumScript.effect.Boomerang:
+                shotspeed = 0;
                     if (bReturn)
                     {
                         if(!collision.CompareTag("Enemy")){
@@ -315,10 +355,9 @@ public class shot : MonoBehaviour
                         }
                         killTheShot();
                     }
-                }
-                else if (bBounce)
-                    {
-                        //figureOutSide(collision);
+                break;
+                case gunEnumScript.effect.Bounce:
+                //figureOutSide(collision);
                         if(!effectUsed){
                             GameObject first = Instantiate(gameObject, transform.position, Quaternion.identity);
                             //first.GetComponent<shot>().colliderBlacklist.Add(collision);
@@ -340,16 +379,61 @@ public class shot : MonoBehaviour
                             
                             killTheShot();
                             //Debug.Break();
-                            
                         }
-
-                    }
-                else if (bExplode)
-                    {
+                break;
+                case gunEnumScript.effect.EXPLOSION:
                         GameObject g = Instantiate(explosionGO, transform.position, Quaternion.identity);
                         g.GetComponent<exploding>().element = element;
                         //g.GetComponent<exploding>().damage = gun.gunScript.damage;
                         killTheShot();
+                break;
+                case gunEnumScript.effect.Boxing:
+                    if(collision.transform.CompareTag("Enemy"))
+                    {
+                        StartCoroutine(knockbackPunch(collision.GetComponent<Rigidbody2D>(), collision.gameObject));
+
+
+                    }
+                    killTheShot();
+                break;
+                default:
+                    if(!invuln)
+                    {
+                        if(!collision.CompareTag("Enemy")){
+                            playHitSound();
+                        }
+                        killTheShot();
+                    }
+                break;
+            }
+
+
+
+
+
+
+
+
+
+
+                if (!invuln && !bBounce && !bExplode && !bSciShot)
+                {
+                        //Debug.Break();
+
+                }
+                else if (bSciShot)
+                {
+                    
+                }
+                else if (bBounce)
+                    {
+                        
+                        
+
+                    }
+                else if (bExplode)
+                    {
+                
                     }
 
 
@@ -359,11 +443,28 @@ public class shot : MonoBehaviour
         }
         
     }
+    public IEnumerator knockbackPunch(Rigidbody2D baby, GameObject enemyObject)
+    {
+        
+        baby.angularDrag = 0.05f;
+        baby.drag = 0f;
+        Vector3 directionForce = transform.position - enemyObject.transform.position;
+        Vector3 force = directionForce.normalized * 200 * Time.deltaTime; 
+        // print(directionForce);
+        // directionForce.Normalize();
+        // print(directionForce);
+        rb.velocity = force;
+        yield return new WaitForSeconds(1.5f);
+        baby.angularDrag = 200f;
+        baby.drag = 200f;
+
+        yield return null;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Destructable") || collision.transform.CompareTag("Enemy"))
         {
-            print("THISISBEINGCALLED");
+            //print("THISISBEINGCALLED");
             if(bBounce){
                 
                 //figureOutSide(collision.contacts[0].normal);
