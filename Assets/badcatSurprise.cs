@@ -25,6 +25,9 @@ public class badcatSurprise : enemy
     public RectTransform myHPCanvas;
     public GameObject shadow;
     public SpriteRenderer shadowSpriteRenderer;
+    public AudioClip hitSFX;
+    public AudioClip hitSFX2;
+    public AudioClip explosionSFX;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -89,6 +92,16 @@ print("lmao, lol even.");
             attackPlayer();
         }
     }
+    public void playAHitSound()
+    {
+        int carl = Random.Range(0, 2);
+        if(carl == 1){
+            mySource.PlayOneShot(hitSFX2);
+        }
+        else{
+            mySource.PlayOneShot(hitSFX);
+        }
+    }
     public void attackPlayer()
     {
         // if (speedOG < maxSpeed)
@@ -128,6 +141,7 @@ print("lmao, lol even.");
 
     public override void die()
     {
+        mySource.Stop();
         //myState = state.dead;
         dead = true;
         //anim.SetInteger("state", (int)1);
@@ -143,6 +157,7 @@ print("lmao, lol even.");
         {
 
             //spawn explosion
+            mySource.PlayOneShot(explosionSFX);
             Instantiate(explosion, transform.position, Quaternion.identity);
 
 
@@ -162,6 +177,9 @@ print("lmao, lol even.");
             //{
                 
             //}
+        }
+        if(collision.CompareTag("shot")){
+            playAHitSound();
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)

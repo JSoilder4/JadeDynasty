@@ -209,6 +209,38 @@ private void FixedUpdate() {
                 }
                 GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
             }
+            else if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if(equippedGuns[0] != null)
+                {
+                    gunIndex = 0;
+                    GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if(equippedGuns[1] != null)
+                {
+                    gunIndex = 1;
+                    GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if(equippedGuns[2] != null)
+                {
+                    gunIndex = 2;
+                    GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if(equippedGuns[3] != null)
+                {
+                    gunIndex = 3;
+                    GameManager.GM.gunSwapUI(equippedGuns[gunIndex], true);
+                }
+            }
             activeGun = equippedGuns[Mathf.Clamp(gunIndex, 0, equippedGuns.Count-1)];
         }
         

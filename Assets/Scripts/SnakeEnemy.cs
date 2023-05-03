@@ -48,6 +48,9 @@ public class SnakeEnemy : enemy
     public GameObject shadow;
 
     //public Animator anim;
+    public AudioClip hitSFX;
+    public AudioClip shootSFX;
+    public AudioClip dieSFX;
 
 
     //Start is called before the first frame update
@@ -208,6 +211,7 @@ public class SnakeEnemy : enemy
 
     public void shoot() //anim
     {
+        mySource.PlayOneShot(shootSFX, 0.5f);
         attacking = true;
         walkCounter--;
         fangScript.xmlFile = fangXML;
@@ -224,7 +228,10 @@ public class SnakeEnemy : enemy
     {
         base.OnTriggerEnter2D(collision);
 
-
+        if(collision.CompareTag("shot"))
+        {
+            mySource.PlayOneShot(hitSFX);
+        }
     }
     public override void OnBecameVisible()
     {
@@ -237,6 +244,7 @@ public class SnakeEnemy : enemy
 
     public override void die()
     {
+        mySource.PlayOneShot(dieSFX);
         myState = state.dead;
         dead = true;
         anim.SetInteger("state", (int)myState);

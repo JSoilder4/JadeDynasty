@@ -123,7 +123,7 @@ Transform:
   - {fileID: 2017544875}
   - {fileID: 9069641253209503053}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1392077466934847665
 SpriteRenderer:
@@ -245,6 +245,9 @@ MonoBehaviour:
   shooting: 0
   fangScript: {fileID: 0}
   shadow: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: 7725e6b05ebc9744bad9c03f079345ff, type: 3}
+  shootSFX: {fileID: 8300000, guid: e5994f33f3f69014da145d603f373037, type: 3}
+  dieSFX: {fileID: 8300000, guid: e5c3fda792ad51a42b7a1c81cbcad44c, type: 3}
 --- !u!50 &1392077466934847823
 Rigidbody2D:
   serializedVersion: 4

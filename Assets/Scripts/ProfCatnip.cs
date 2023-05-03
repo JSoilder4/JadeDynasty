@@ -34,6 +34,11 @@ public class ProfCatnip : enemy
     public GameObject surpriseCatObject;
     //public BulletSourceScript surpriseBml;
 
+    public AudioClip dyingSFX;
+    public AudioClip shootSFX;
+    public AudioClip hitSFX;
+    public AudioClip hitSFX2;
+
     
 
     // Start is called before the first frame update
@@ -136,10 +141,25 @@ public class ProfCatnip : enemy
     //         timer = timerOG;
     //     }
     // }
-    public void shoot()
+    public void shoot() //anim i think
     {
+
         bml.xmlFile = pattern;
         bml.Reset();
+    }
+    public void playShootingSound()//anim definitely
+    {
+        mySource.PlayOneShot(shootSFX);
+    }
+    public void playAHitSound()
+    {
+        int carl = Random.Range(0, 2);
+        if(carl == 1){
+            mySource.PlayOneShot(hitSFX2, 0.15f);
+        }
+        else{
+            mySource.PlayOneShot(hitSFX, 0.15f);
+        }
     }
 
 
@@ -150,7 +170,9 @@ public class ProfCatnip : enemy
     {
         base.OnTriggerEnter2D(collision);
 
-
+        if(collision.CompareTag("shot")){
+            playAHitSound();
+        }
     }
     public override void OnBecameVisible()
     {
@@ -174,6 +196,7 @@ public class ProfCatnip : enemy
     // }
     public override void die()
     {
+
         myState = state.dead;
         dead = true;
         anim.SetInteger("state", (int)myState);
@@ -182,8 +205,13 @@ public class ProfCatnip : enemy
         StartCoroutine(dieKnockback());
         //StartCoroutine(deathCoroutine(2f));
     }
+    public void playDyingSFX() //anim
+    {
+        mySource.PlayOneShot(dyingSFX);
+    }
     public void spawnCatSurprise() //anim
     {
+        
         GameObject g = Instantiate(surpriseCatObject, transform.position, Quaternion.identity);
         GameManager.GM.addSpawnedObject(g);
 
