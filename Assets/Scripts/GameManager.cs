@@ -713,10 +713,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        // if(Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     Application.Quit();
+        // }
         //CheckMinimapObjects("Update()");
         // if (!started && Input.GetButtonDown("Jump"))
         // {

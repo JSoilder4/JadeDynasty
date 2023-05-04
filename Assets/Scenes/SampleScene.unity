@@ -5626,7 +5626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 68.5, y: 104.799805}
+  m_AnchoredPosition: {x: 68.5, y: 170}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &491883454
@@ -16200,7 +16200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 178.8999, y: 63.200195}
+  m_AnchoredPosition: {x: 203.1, y: 97.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595257636
@@ -55354,7 +55354,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1207377577, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_SortingOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4760173122625586475, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: cam
@@ -55426,7 +55426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523201, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: m_SortingOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4760173124461523206, guid: f48e1c6ed098a67489b97e5bed418bf4, type: 3}
       propertyPath: AmmoCount

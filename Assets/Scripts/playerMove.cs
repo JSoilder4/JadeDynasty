@@ -76,10 +76,10 @@ public class playerMove : MonoBehaviour
 
             
 
-        if (Input.GetKeyDown(KeyCode.Z))// dev key remove later
-        {
-            GameManager.GM.rerollGuns();
-        }
+        // if (Input.GetKeyDown(KeyCode.Z))// dev key remove later
+        // {
+        //     GameManager.GM.rerollGuns();
+        // }
         if (!GameManager.GM.playerdead)
         {
             if ((velocity.x != 0 || velocity.y != 0) && Input.GetKeyDown(KeyCode.Space) && !dodging)

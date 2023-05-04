@@ -331,25 +331,25 @@ private void FixedUpdate() {
         {
             case gunEnumScript.gunType.Pistol:
             ammoBefore = pistolAmmo;
-            pistolAmmo += activeGun.magazine*4;
+            pistolAmmo += pistolAmmoMax/4;
             print("actual gain: "+(pistolAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.Shotgun:
             ammoBefore = shotgunAmmo;
-            shotgunAmmo += activeGun.magazine*4;
+            shotgunAmmo += shotgunAmmoMax/4;
             print("actual gain: "+(shotgunAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.Sniper:
             ammoBefore = sniperAmmo;
-            sniperAmmo += activeGun.magazine*4;
+            sniperAmmo += sniperAmmoMax/4;
             print("actual gain: "+(sniperAmmo - ammoBefore));
             break;
 
             case gunEnumScript.gunType.SMG:
             ammoBefore = smgAmmo;
-            smgAmmo += activeGun.magazine*4;
+            smgAmmo += smgAmmoMax/4;
             print("actual gain: "+(smgAmmo - ammoBefore));
             break;
         }

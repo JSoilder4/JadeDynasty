@@ -69,11 +69,11 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         currentRoom = GameManager.GM.currentRoom;
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            GameManager.GM.playerX = 4;
-            GameManager.GM.playerY = 4;
-        }
+        // if(Input.GetKeyDown(KeyCode.T))
+        // {
+        //     GameManager.GM.playerX = 4;
+        //     GameManager.GM.playerY = 4;
+        // }
         mousePos = camVar.ScreenToWorldPoint(Input.mousePosition);
         switch (cam)
         {

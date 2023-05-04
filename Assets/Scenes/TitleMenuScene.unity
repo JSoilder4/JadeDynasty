@@ -6010,6 +6010,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CursorManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4447503711475792100, guid: 87e62a6fc9ba706438760b756a4239db, type: 3}
+      propertyPath: titlescreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4447503711475792101, guid: 87e62a6fc9ba706438760b756a4239db, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursorManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CursorManager : MonoBehaviour
     public Vector2 cursorHotspot;
 
     public static CursorManager cursorMan;
+
+    //public bool titlescreen;
 
     private void Awake() {
         
@@ -35,7 +38,17 @@ public class CursorManager : MonoBehaviour
     void Update()
     {
         cursorHotspot = new Vector2(cursor.width/2, cursor.height/2);
-        Cursor.SetCursor(elemCursors[(int)playergun.gunScript.activeGun.element], cursorHotspot, CursorMode.ForceSoftware);
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Cursor.SetCursor(cursor, cursorHotspot, CursorMode.ForceSoftware);
+        }
+        else
+        {
+            Cursor.SetCursor(elemCursors[(int)playergun.gunScript.activeGun.element], cursorHotspot, CursorMode.ForceSoftware);
+        }
+
+        
 
         //GUI.skin.settings.cursorColor = playergun.elementalColors[(int)playergun.gunScript.activeGun.element];
     }
