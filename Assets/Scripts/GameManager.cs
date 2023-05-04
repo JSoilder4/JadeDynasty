@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -700,11 +701,11 @@ public class GameManager : MonoBehaviour
         setEndText();
         if (playerdead)
         {
-            // if(Input.GetButtonDown("Fire1"))
-            // {
-            //     respawn();
-            //     alive();
-            // }
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+                print("working");
+            }
         }
         else{
             if(currentRoom.posX == 4 && currentRoom.posY == 4){
@@ -796,7 +797,7 @@ public class GameManager : MonoBehaviour
             floorHighScoreText.text = "NEW High Score: " + (floorHighScore+1);
         }
         else{
-            floorHighScoreText.text = "High Score: " + floorHighScore;
+            floorHighScoreText.text = "High Score: " + (floorHighScore+1);
         }
         if(newEnemyHS){
             enemiesKilledHighScoreUI.text = "NEW High Score: " + enemiesKilledHighScore;

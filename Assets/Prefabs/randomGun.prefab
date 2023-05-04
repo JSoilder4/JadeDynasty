@@ -614,7 +614,7 @@ Transform:
   - {fileID: 326633418883271297}
   - {fileID: 3789949085793345004}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5591420524991095601
 SpriteRenderer:
@@ -681,7 +681,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0014127307, y: -0.003531456}
+  m_Offset: {x: -0.0034121275, y: -0.009529661}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -692,7 +692,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20431098, y: 0.074315086}
+  m_Size: {x: 0.332273, y: 0.15829015}
   m_EdgeRadius: 0
 --- !u!114 &2665430448773843162
 MonoBehaviour:
@@ -734,6 +734,7 @@ MonoBehaviour:
   mySource: {fileID: 0}
   col: {fileID: 0}
   tutText: {fileID: 0}
+  genManage: {fileID: 0}
 --- !u!82 &2988217779029011855
 AudioSource:
   m_ObjectHideFlags: 0
